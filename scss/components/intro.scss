@@ -1,0 +1,30 @@
+.ma-intro {
+    &-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        filter: blur(4px);
+        user-select: none;
+
+        &::before {
+            @include ma-solidpseudo;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(245, 245, 245);
+            background: linear-gradient(0deg, rgba(245, 245, 245, 1) 0%, rgba(245, 245, 245, 0) 100%);
+        }
+    }
+
+    &-img {
+        width: 100%;
+        height: auto;
+    }
+
+    &-p {
+        margin: 36px 0 0 0;
+        color: #858482;
+    }
+}

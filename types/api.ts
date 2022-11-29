@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { ApiFailureCode } from '/constants/api/api-failure-code'
+import type { ApiFailureCode } from '../___mathematica/constants/api/api-failure-code'
 
 export type ApiQueryType = Record<text, text | text[]>
 

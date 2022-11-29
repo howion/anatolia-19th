@@ -1,0 +1,16 @@
+::-moz-selection {
+    // color: red;
+    background: $color-true-yellow;
+}
+
+::selection {
+    // color: rgb(7, 6, 6);
+    background: $color-true-yellow;
+}
+
+input,
+img,
+i.material-icons,
+button {
+    user-select: none;
+}

@@ -4,10 +4,11 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn prettier:fix && next build",
     "start": "next start",
-    "prettier": "prettier --write .",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "prettier:fix": "prettier --write .",
+    "stylelint:fix": "stylelint --fix"
   },
   "dependencies": {
     "@types/lodash": "^4.14.190",
@@ -23,19 +24,31 @@
     "react-dom": "^18.2.0",
     "rooks": "^7.4.2",
     "rxjs": "^7.5.7",
+    "sass": "^1.56.1",
     "typescript": "4.9.3"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.0.5",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "eslint": "^8.28.0",
     "eslint-config-next": "^13.0.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-sonarjs": "^0.16.0",
     "eslint-plugin-unicorn": "^45.0.1",
-    "sass": "^1.56.1",
+    "prettier": "^2.8.0",
+    "stylelint": "^14.15.0",
+    "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-recess-order": "^3.0.0",
-    "stylelint-config-sass-guidelines": "^9.0.1",
-    "stylelint-formatter-pretty": "^3.1.1"
-  }
+    "stylelint-config-recommended-scss": "^8.0.0",
+    "stylelint-formatter-pretty": "^3.1.1",
+    "stylelint-webpack-plugin": "^3.3.0"
+  },
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ]
 }

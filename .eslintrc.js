@@ -1,4 +1,9 @@
 module.exports = {
+    env: {
+        browser: true,
+        commonjs: true,
+        node: true
+    },
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
@@ -6,13 +11,9 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:sonarjs/recommended',
         'next/core-web-vitals',
-        'next',
-        'prettier'
+        'plugin:@next/next/recommended',
+        'plugin:prettier/recommended'
     ],
-
-    //--------------------------------------------------------------------------
-    // Rules
-    //-------------------------------------------------------------------------
     rules: {
         // DISABLE
         '@typescript-eslint/no-empty-interface': [0],
@@ -23,6 +24,7 @@ module.exports = {
         'no-control-regex': [0],
         'unicorn/prevent-abbreviations': [0],
         'unicorn/text-encoding-identifier-case': [0],
+        'unicorn/no-abusive-eslint-disable': [0],
 
         // WARN
         '@typescript-eslint/ban-ts-comment': [
@@ -42,11 +44,6 @@ module.exports = {
         'linebreak-style': [2, 'windows'],
         'quotes': [2, 'single'],
         'semi': [2, 'never'],
-        '@typescript-eslint/explicit-module-boundary-types': [
-            1,
-            {
-                allowArgumentsExplicitlyTypedAsAny: true
-            }
-        ]
+        '@typescript-eslint/explicit-module-boundary-types': [1, { allowArgumentsExplicitlyTypedAsAny: true }]
     }
 }

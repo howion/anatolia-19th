@@ -1,10 +1,10 @@
 export const PatternsMisc = {
-    username: /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/,
+    username: /^[\dA-Za-z]([._-](?![._-])|[\dA-Za-z]){3,18}[\dA-Za-z]$/,
     nonemptyText: /^(?!\s*$).+/,
-    kebabCase: /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/,
-    lowerCamelCase: /^[a-z][a-zA-Z0-9]+$/,
-    upperCamelCase: /^[A-Z][a-zA-Z0-9]+$/,
-    snakeCase: /^[a-z0-9]+(?:_[a-z0-9]+)*$/
+    kebabCase: /^([a-z][\da-z]*)(-[\da-z]+)*$/,
+    lowerCamelCase: /^[a-z][\dA-Za-z]+$/,
+    upperCamelCase: /^[A-Z][\dA-Za-z]+$/,
+    snakeCase: /^[\da-z]+(?:_[\da-z]+)*$/
 } as const
 
 export const Patterns = {
