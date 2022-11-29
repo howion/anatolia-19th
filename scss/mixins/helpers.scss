@@ -1,0 +1,24 @@
+@mixin ma-solidpseudo {
+    display: block;
+    content: '';
+}
+
+@mixin ma-wrapper($max-width) {
+    position: relative;
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+}
+
+@mixin ma-clearfix {
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    content: '';
+}
+
+@mixin ma-dotback($width, $dot-size, $dot-color) {
+    background-image: radial-gradient($dot-color $dot-size, transparent 0);
+    background-size: $width $width;
+}

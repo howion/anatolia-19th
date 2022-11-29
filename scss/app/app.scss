@@ -1,0 +1,25 @@
+body {
+    width: 100%;
+    // overflow-y: scroll;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    height: 100vh !important; // for smoothscroll
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, sans-serif;
+    //min-height: 100vh;
+    //scroll-behavior: smooth;
+
+    > main {
+        min-height: 100vh;
+        overflow: hidden;
+    }
+}
+
+/* additional resets */
+* {
+    &:focus {
+        outline: none;
+    }
+}

@@ -1,0 +1,13 @@
+@mixin ma-prefer-quality {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+@mixin ma-prefer-performance {
+    /* stylelint-disable-next-line */
+    font-smooth: never;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: none;
+    image-rendering: optimizeSpeed;
+}

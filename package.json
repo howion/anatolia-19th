@@ -1,0 +1,41 @@
+{
+  "name": "anatolia-19th",
+  "version": "0.1.0",
+  "private": false,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prettier": "prettier --write .",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.190",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "lodash": "^4.17.21",
+    "modern-normalize": "^1.1.0",
+    "moment": "^2.29.4",
+    "next": "^13.0.5",
+    "next-seo": "^5.14.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rooks": "^7.4.2",
+    "rxjs": "^7.5.7",
+    "typescript": "4.9.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "eslint": "^8.28.0",
+    "eslint-config-next": "^13.0.5",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-sonarjs": "^0.16.0",
+    "eslint-plugin-unicorn": "^45.0.1",
+    "sass": "^1.56.1",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-formatter-pretty": "^3.1.1"
+  }
+}

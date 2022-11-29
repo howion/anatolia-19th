@@ -1,0 +1,9 @@
+# !.stylelintrc.js
+
+___*/
+.next/
+node_modules/
+prisma/
+public/
+
+!.eslintrc.js
