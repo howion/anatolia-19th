@@ -68,7 +68,6 @@
                 flex: 1 1 0;
                 display: flex;
                 align-items: flex-end;
-                color: #fff;
                 cursor: pointer;
                 user-select: none;
                 border-radius: 8px;
@@ -88,10 +87,6 @@
                 }
             }
 
-            &-container:hover &-cover {
-                transform: scale(1.1);
-            }
-
             &-cover {
                 position: absolute;
                 top: 0;
@@ -106,7 +101,8 @@
                 transition: transform 500ms;
             }
 
-            &-span {
+            &-label {
+                color: #fff;
                 z-index: 4;
                 width: 100%;
                 text-align: center;
@@ -114,6 +110,10 @@
                 font-size: 18px;
                 text-transform: uppercase;
                 padding: 30px 10px;
+            }
+
+            &-container:hover &-cover {
+                transform: scale(1.1);
             }
         }
 

@@ -25,7 +25,7 @@ function Project(props: ProjectProps): FCReturn {
                     backgroundImage: `url("${props.src}")`
                 }}
             />
-            <span className="ma-home-projects-project-span">{props.txt}</span>
+            <span className="ma-home-projects-project-label">{props.txt}</span>
             {/* <Image className="ma-home-projects-project-img" src={props.src} alt={props.txt} /> */}
         </div>
     )
