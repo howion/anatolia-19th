@@ -6,13 +6,13 @@ button {
     border: 0;
     cursor: pointer;
     padding: 14px 23px 14px 19px;
-    background-color: rgba($color-islamic, 0.8);
+    background-color: rgba($color-islamic-dark, 0.8);
     border-radius: 6px;
     color: #fff;
     user-select: none;
 
     &:hover {
-        background-color: rgba($color-islamic, 0.9);
+        background-color: rgba($color-islamic-dark, 0.9);
     }
 
     > i {

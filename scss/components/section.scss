@@ -1,0 +1,53 @@
+.ma-section {
+    &-title {
+        position: relative;
+        display: inline-block;
+        padding: 0 17px;
+        z-index: 0;
+
+        > span {
+            position: absolute;
+            user-select: none;
+            display: block;
+            font-size: 28px;
+            line-height: 28px;
+            top: -(28px + 12px);
+            left: 17px;
+        }
+
+        &::before, &::after {
+            position: absolute;
+            display: block;
+            content: '';
+            width: 48px;
+            height: 48px;
+        }
+
+        &.c1 {
+            > span { color: #00C34E; }
+            &::before, &::after { border-color: #00C34E; }
+        }
+        &.c2 {
+            &::before, &::after { background-color: #FBDB40; }
+        }
+        &.c3 {
+            &::before, &::after { background-color: #2461FF; }
+        }
+
+        &.s1 {
+            &::before {
+                top: -7px;
+                left: 0;
+                border-width: 4px 0 0 4px;
+                border-style: solid;
+            }
+
+            &::after {
+                bottom: -7px;
+                right: 0;
+                border-width: 0 4px 4px 0;
+                border-style: solid;
+            }
+        }
+    }
+}

@@ -10,6 +10,9 @@ import digitalMapJPG from '/public/img/projects/digital_map.jpg'
 import exploreAnatolia from '/public/img/projects/explore_anatolia.jpg'
 import graphsJPG from '/public/img/projects/graphs.jpg'
 import sourcesJPG from '/public/img/projects/sources.jpg'
+import { Emblem } from '/components/emblem'
+import { useState } from 'react'
+import { Splash } from '/components/splash'
 
 interface ProjectProps {
     src: text
@@ -32,19 +35,24 @@ function Project(props: ProjectProps): FCReturn {
 }
 
 export default function Home() {
+    const [h, setH] = useState(false)
     return (
         <>
             <Meta />
             <Intro />
+            <div onClick={() => setH(!h)}>
+                <Splash hidden={h} />
+            </div>
             <div className="ma-mwcontainer">
                 {/* SEARCH */}
                 <div className="ma-home-search-container">
                     <input
                         className="ma-home-search-input"
-                        placeholder="Search in 19th Century Anatolia Project..."
+                        placeholder="Search in the 19th Century Anatolia Project Database..."
                         type="text"
                     />
                     <i className="ma-home-search-i material-icons">search</i>
+                    <div className="focuser"></div>
                 </div>
 
                 {/* PROJECTS */}
@@ -54,6 +62,14 @@ export default function Home() {
                     <Project src="/img/projects/digital_map.jpg" txt="Digital Map" />
                     <Project src="/img/projects/graphs.jpg" txt="Graphs" />
                     <Project src="/img/projects/explore_anatolia.jpg" txt="Explore Anatolia" />
+                </div>
+
+                {/* SPONSORS */}
+                <div className="ma-home-sponsors-container">
+                    <h2 className='ma-section-title s1 c1'><span>01</span>Project Sponsors</h2>
+                    <div className="ma-home-sponsors-list">
+                        <div className="ma-home-sponsors-sponsor"></div>
+                    </div>
                 </div>
             </div>
             <br />
