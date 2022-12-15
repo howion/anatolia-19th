@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 module.exports = {
     env: {
         browser: true,
@@ -25,6 +26,8 @@ module.exports = {
         'unicorn/prevent-abbreviations': [0],
         'unicorn/text-encoding-identifier-case': [0],
         'unicorn/no-abusive-eslint-disable': [0],
+        'unicorn/no-useless-undefined': [0],
+        'unicorn/no-keyword-prefix': [0],
 
         // WARN
         '@typescript-eslint/ban-ts-comment': [
@@ -39,6 +42,7 @@ module.exports = {
         'indent': [1, 4, { SwitchCase: 1 }],
         'max-len': [1, { code: 120 }],
         'unicorn/no-null': [1],
+        'prettier/prettier': [1],
 
         // ERROR
         'linebreak-style': [2, 'windows'],

@@ -1,5 +1,5 @@
 $scrollbar-px: 0;
-$scrollbar-default-width: 12px + $scrollbar-px*2;
+$scrollbar-default-width: 12px + $scrollbar-px * 2;
 $scrollbar-default-track-color: transparent;
 $scrollbar-default-thumb-color: rgba($color-islamic, 1);
 $scrollbar-default-thumbhover-color: rgba($color-islamic, 1);
@@ -15,7 +15,7 @@ $scrollbar-default-thumbhover-color: rgba($color-islamic, 1);
     box-shadow: none;
 
     // &:hover {
-        // background-color: rgba(0,0,0,0.1) !important;
+    // background-color: rgba(0,0,0,0.1) !important;
     // }
 }
 

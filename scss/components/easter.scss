@@ -1,0 +1,51 @@
+.ma-easter {
+    &-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 999999999;
+        visibility: hidden;
+
+        &.enabled {
+            visibility: visible;
+
+            ~ #app {
+                // animation: ma-keyframe-shake 500ms 6 linear;
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        ~ #app {
+            transition: opacity 2s, visibility 3s;
+            // animation-iteration-count: infinite;
+        }
+    }
+
+    // &-left, &-right {
+    //     position: absolute;
+    //     top: 0;
+    //     width: 50vw;
+    //     height: 100vh;
+    //     overflow: hidden;
+    // }
+
+    // &-left {
+    //     left: 0;
+    // }
+
+    // &-right {
+    //     left: 50vw;
+
+    //     > canvas {
+    //         &:first-child {
+    //             display: block;
+    //         }
+
+    //         display: none;
+    //         margin-left: -50vw;
+    //     }
+    // }
+}

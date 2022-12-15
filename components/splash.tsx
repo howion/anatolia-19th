@@ -15,21 +15,20 @@ export function Splash(props: SplashProps): FCReturn {
         // if (_last !== props.hidden) {
         //     if (_timeout) clearTimeout(_timeout)
         //     _setTimeout(setTimeout(() => {
-            // if (_timeout && _last !== props.hidden) clearTimeout(_timeout)
-            // if (_last !== props.hidden) _setLast(props.hidden)
-
-            // if (props.hidden) {
-            //     document.body.style.overflow = 'hidden'
-            // } else {
-            //     _setTimeout(setTimeout(() => {
-            //         // document.body.style.overflow = props.hidden ? 'overlay' : 'hidden'
-            //         // _setLast(!_last)
-            //         // _setTimeout(undefined)
-            //     }, DELAY))
-            // }
-            //     _setTimeout(undefined)
-            // }, (_last === undefined || _timeout !== undefined) ? 0 : (1300 + 1500)))
-            // _setLast(props.hidden)
+        // if (_timeout && _last !== props.hidden) clearTimeout(_timeout)
+        // if (_last !== props.hidden) _setLast(props.hidden)
+        // if (props.hidden) {
+        //     document.body.style.overflow = 'hidden'
+        // } else {
+        //     _setTimeout(setTimeout(() => {
+        //         // document.body.style.overflow = props.hidden ? 'overlay' : 'hidden'
+        //         // _setLast(!_last)
+        //         // _setTimeout(undefined)
+        //     }, DELAY))
+        // }
+        //     _setTimeout(undefined)
+        // }, (_last === undefined || _timeout !== undefined) ? 0 : (1300 + 1500)))
+        // _setLast(props.hidden)
         // }
     }
 

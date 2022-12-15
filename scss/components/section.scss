@@ -2,6 +2,7 @@
     &-title {
         position: relative;
         display: inline-block;
+        user-select: none;
         padding: 0 17px;
         z-index: 0;
 
@@ -12,41 +13,119 @@
             font-size: 28px;
             line-height: 28px;
             top: -(28px + 12px);
-            left: 17px;
+            left: 15px;
+            text-align: right;
         }
 
-        &::before, &::after {
+        > span, &::before, &::after {
+            transition: transform 300ms;
+            // will-change: transform;
+        }
+
+        &:hover {
+            > span {
+                transform: translateY(-4px);
+            }
+            &::before {
+                transform: translateX(-3px) rotate(-5deg);
+            }
+            &::after {
+                transform: translateX(3px) rotate(5deg);
+            }
+        }
+
+        &::before,
+        &::after {
             position: absolute;
             display: block;
             content: '';
             width: 48px;
             height: 48px;
+            border-style: solid;
+        }
+
+        &::before {
+            top: -7px;
+            left: 0;
+        }
+
+        &::after {
+            bottom: -7px;
+            right: 0;
         }
 
         &.c1 {
-            > span { color: #00C34E; }
-            &::before, &::after { border-color: #00C34E; }
+            > span {
+                color: #00c34e;
+            }
+            &::before,
+            &::after {
+                border-color: #00c34e;
+            }
         }
+
         &.c2 {
-            &::before, &::after { background-color: #FBDB40; }
+            > span {
+                color: $color-trueyellow;
+            }
+            &::before,
+            &::after {
+                border-color: $color-trueyellow;
+            }
         }
+
         &.c3 {
-            &::before, &::after { background-color: #2461FF; }
+            > span {
+                color: #2461ff;
+            }
+            &::before,
+            &::after {
+                border-color: #2461ff;
+            }
         }
 
         &.s1 {
             &::before {
+                border-width: 4px 0 0 4px;
+            }
+
+            &::after {
+                border-width: 0 4px 4px 0;
+            }
+        }
+
+        &.s2 {
+            &::before {
                 top: -7px;
                 left: 0;
-                border-width: 4px 0 0 4px;
+                border-width: 0 4px 4px 4px;
+                border-style: solid;
+                z-index: -1;
+            }
+
+            &::after {
+                bottom: -7px;
+                right: 0;
+                border-width: 4px 4px 4px 0;
+                border-style: solid;
+            }
+        }
+
+
+        &.s3 {
+            &::before {
+                top: -7px;
+                left: 0;
+                border-width: 4px;
                 border-style: solid;
             }
 
             &::after {
                 bottom: -7px;
                 right: 0;
-                border-width: 0 4px 4px 0;
+                border-width: 24px;
                 border-style: solid;
+                z-index: -1;
             }
         }
     }

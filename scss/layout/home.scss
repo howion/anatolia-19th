@@ -23,17 +23,24 @@
             border-radius: 8px;
             padding: 24px 36px;
             font-weight: 500;
+            color: #000;
 
-            &:focus ~ .focuser {
-                visibility: visible;
-                opacity: 0.5;
+            &:focus {
+                & ~ .focuser {
+                    visibility: visible;
+                    opacity: 0.5;
+                }
+
+                & ~ i {
+                    color: #000;
+                }
             }
         }
 
         &-i {
             cursor: pointer;
             position: absolute;
-            right: 29px;
+                right: 30px;
             top: 18px;
             font-size: 32px;
             color: $color-gray-500;
@@ -56,6 +63,7 @@
         &-label {
             display: block;
             position: absolute;
+            user-select: none;
             font-weight: 500;
             font-size: 18px;
             color: #323232;
@@ -68,6 +76,12 @@
 
         &-project {
             &-container {
+                &.disabled {
+                    pointer-events: none;
+                    opacity: 0.5;
+                    filter: grayscale(100%);
+                }
+
                 position: relative;
                 z-index: 0;
                 background-color: darken(#fff, 15%);
@@ -135,16 +149,95 @@
     }
 
     &-sponsors {
+        &-back {
+            position: absolute;
+            left: -35vw;
+            top: -320px;
+            opacity: 15%;
+        }
+
         &-container {
+            position: relative;
             margin-top: 180px;
         }
 
+        $height: 64px;
+
         &-list {
             display: flex;
+            gap: 48px;
             justify-content: flex-start;
-            height: 72px;
+            height: height;
             margin-top: 72px;
             width: 100%;
+        }
+
+        &-sponsor {
+            filter: grayscale(100%);
+            opacity: 0.5;
+            height: height;
+
+            transition: opacity 500ms,
+                        filter 500ms;
+
+            &:hover {
+                filter: none;
+                opacity: 1;
+            }
+        }
+    }
+
+    &-stats {
+        &-container {
+            position: relative;
+            min-height: 550px;
+            z-index: 0;
+            margin: 100px 0 0 0;
+            color: #fff;
+        }
+
+        &-back {
+            &::before {
+                position: absolute;
+                content: '';
+                display: block;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: $color-islamic-dark;
+            }
+        }
+    }
+
+    &-people {
+        &-wrapper {
+            margin: 140px 0 0 0;
+        }
+
+        &-grid {
+            display: flex;
+            flex-direction: row;
+            margin: 100px 0 0 0;
+            gap: 20px 88px;
+            width: 100%;
+            padding: 32px;
+        }
+
+        &-card {
+            flex-grow: 1;
+            min-width: 218px;
+            background-color: #fff;
+            // width: 218px;
+            aspect-ratio: 218 / 292;
+            // height: 260px;
+
+        }
+    }
+
+    &-faq {
+        &-wrapper {
+            margin: 250px 0 0 0;
         }
     }
 }
