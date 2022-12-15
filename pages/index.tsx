@@ -79,7 +79,7 @@ export default function Home(): FCReturn {
                 <section className="ma-home-projects-container">
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
                     <Project src="/img/projects/sources.jpg" txt="Sources" disabled />
-                    <Project src="/img/projects/digital_map.jpg" txt="Digital Map"/>
+                    <a href="/map"><Project src="/img/projects/digital_map.jpg" txt="Digital Map"/></a>
                     <Project src="/img/projects/graphs.jpg" txt="Graphs" disabled />
                     <Project src="/img/projects/explore_anatolia.jpg" txt="Explore Anatolia" disabled />
                 </section>
