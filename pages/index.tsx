@@ -4,23 +4,25 @@ import { Meta } from '/components/meta'
 import { Header } from '../components/header'
 
 import { useState } from 'react'
-import { Splash } from '/components/splash'
 
+// IMAGES
 import odtuLogo from '/public/img/sponsor/odtu.png'
 // import adimOdtuLogo from '/public/img/sponsor/adimodtu.png'
 import saltLogo from '/public/img/sponsor/salt.svg'
 import sarkTicaret from '/public/img/sark_ticaret.png'
 import { Footer } from '/components/footer'
+import { Splash } from '/components/splash'
 
 interface ProjectProps {
     disabled?: boolean
+    href?: text
     src: text
     txt: text
 }
 
 function Project(props: ProjectProps): FCReturn {
     return (
-        <div className={'ma-home-projects-project-container' + (props.disabled ? ' disabled' : '')}>
+        <a href={props.href ?? '#'} className={'ma-home-projects-project-container' + (props.disabled ? ' disabled' : '')}>
             <div
                 className="ma-home-projects-project-cover"
                 style={{
@@ -29,7 +31,7 @@ function Project(props: ProjectProps): FCReturn {
             />
             <span className="ma-home-projects-project-label">{props.txt}</span>
             {/* <Image className="ma-home-projects-project-img" src={props.src} alt={props.txt} /> */}
-        </div>
+        </a>
     )
 }
 
@@ -38,30 +40,31 @@ interface PersonProps {
     // title: text
 }
 
-function Person(props: PersonProps): FCReturn {
-    return (
-        <div className="ma-home-people-card">
-        </div>
-    )
-}
+// function Person(props: PersonProps): FCReturn {
+//     return (
+//         <div className="ma-home-people-card">
+//         </div>
+//     )
+// }
 
-interface AccordionItemProps {}
+// interface AccordionItemProps {}
 
-function AccordionItem(props: PersonProps): FCReturn {
-    return (
-        null
-    )
-}
+// function AccordionItem(props: PersonProps): FCReturn {
+//     return (
+//         null
+//     )
+// }
 
 export default function Home(): FCReturn {
     const [h, setH] = useState(false)
+
 
     return (
         <>
             <Meta />
             <Header />
             <div onClick={() => setH(!h)}>
-                <Splash hidden={h} />
+                {/* <Splash hidden={h} /> */}
             </div>
             <div className="ma-mwcontainer">
                 {/* SEARCH */}
@@ -79,7 +82,7 @@ export default function Home(): FCReturn {
                 <section className="ma-home-projects-container">
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
                     <Project src="/img/projects/sources.jpg" txt="Sources" disabled />
-                    <a href="/map"><Project src="/img/projects/digital_map.jpg" txt="Digital Map"/></a>
+                    <Project src="/img/projects/digital_map.jpg" txt="Digital Map" href='/map'/>
                     <Project src="/img/projects/graphs.jpg" txt="Graphs" disabled />
                     <Project src="/img/projects/explore_anatolia.jpg" txt="Explore Anatolia" disabled />
                 </section>
