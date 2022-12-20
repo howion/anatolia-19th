@@ -7,28 +7,44 @@ generator client {
 }
 
 datasource db {
-  provider          = "postgresql"
+  provider          = "mysql"
   url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("DATABASE_SHADOW_URL")
 }
 
-model Marker {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Pinpoint {
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
   yearStart   Int
   yearEnd     Int?
   address     String?
   lat         Float
   lon         Float
-  name        String   @db.VarChar(255)
-  icon        String
-  //   author
-  occupations String[]
-  relationsF  Marker[] @relation("MarkerRelations")
-  relationsB  Marker[] @relation("MarkerRelations")
+  name        String     @db.VarChar(255)
+  marker      Marker     @relation(fields: [markerId], references: [id])
+  author      String?
+  occupations String
+  relationsF  Pinpoint[] @relation("PinpointRelations")
+  relationsB  Pinpoint[] @relation("PinpointRelations")
+  sources     Source[]
+  markerId    Int
+}
 
-  //   relations
+model Marker {
+  id       Int        @id @default(autoincrement())
+  color    String?
+  icon     String?
+  Pinpoint Pinpoint[]
+}
+
+model Source {
+  id         Int       @id @default(autoincrement())
+  shortName  String
+  source     String
+  url        String?
+  Pinpoint   Pinpoint? @relation(fields: [pinpointId], references: [id])
+  pinpointId Int?
 }
 
 // model User {

@@ -17,7 +17,9 @@
             text-align: right;
         }
 
-        > span, &::before, &::after {
+        > span,
+        &::before,
+        &::after {
             transition: transform 300ms;
             // will-change: transform;
         }
@@ -110,7 +112,6 @@
                 border-style: solid;
             }
         }
-
 
         &.s3 {
             &::before {

@@ -1,4 +1,76 @@
 .ma-footer {
     background-color: $color-islamic-dark;
-    padding: 50px 0 100px 0;
+    padding: 64px 0 0 0;
+    font-size: 16px;
+    user-select: none;
+
+    &-section {
+        display: flex;
+        flex-wrap: wrap;
+        color: #fff;
+        flex-direction: column;
+
+        &-container {
+            display: flex;
+            gap: 130px;
+            width: 100%;
+            margin-top: 72px;
+        }
+
+        &-title {
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: rgba(#fff, 0.5);
+            margin: 0 0 24px 0;
+        }
+
+        &-list {
+            list-style-type: none;
+            display: flex;
+            white-space: nowrap;
+            flex-direction: column;
+            gap: 10px;
+
+            &-item {
+                font-weight: 400;
+                text-decoration: none;
+                color: #fff;
+
+                &:hover {
+                    color: $color-trueyellow;
+                }
+            }
+        }
+    }
+
+    &-bottom {
+        &-container {
+            border-top: 1px solid rgba(#fff, 0.1);
+            margin-top: 125px;
+        }
+
+        display: flex;
+        align-items: center;
+        padding-bottom: 2px;
+        justify-content: space-between;
+        text-decoration: none;
+        width: 100%;
+        height: 60px;
+
+        &-copyright {
+            color: rgba(#fff, 0.5);
+            font-weight: 400;
+            user-select: text;
+        }
+
+        &-sitemap {
+            text-decoration: none;
+            color: #fff;
+
+            &:hover {
+                color: $color-trueyellow;
+            }
+        }
+    }
 }

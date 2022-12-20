@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import Document, { Html, Head, Main, NextScript, DocumentInitialProps, DocumentContext } from 'next/document'
+import { Splash } from '/components/splash'
 // import { Splash } from '@components/splash'
 
 /*
@@ -47,6 +48,7 @@ export default class MyDocument extends Document {
                 </Head>
                 <body style={{ backgroundColor: '#fff' }}>
                     <Main />
+                    <Splash />
                     <NextScript />
                 </body>
             </Html>

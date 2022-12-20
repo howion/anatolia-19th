@@ -28,6 +28,8 @@ module.exports = {
         'unicorn/no-abusive-eslint-disable': [0],
         'unicorn/no-useless-undefined': [0],
         'unicorn/no-keyword-prefix': [0],
+        'unicorn/prefer-query-selector': [0],
+        'unicorn/consistent-function-scoping': [0],
 
         // WARN
         '@typescript-eslint/ban-ts-comment': [

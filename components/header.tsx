@@ -7,7 +7,7 @@ import homeIntroback from '/public/img/home-introback.jpg'
 
 interface HeaderProps {}
 
-export function Header(props: HeaderProps): FCReturn {
+export function Header(props: HeaderProps): FCReturn<HeaderProps> {
     return (
         <header className="ma-header">
             <div className="ma-mwcontainer">

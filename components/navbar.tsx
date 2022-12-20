@@ -3,7 +3,7 @@ import { Emblem } from '/components/emblem'
 
 interface NavbarProps {}
 
-export function Navbar(props: NavbarProps): FCReturn {
+export function Navbar(props: NavbarProps): FCReturn<NavbarProps> {
     return (
         <header className="ma-navbar">
             <Emblem h={72} />

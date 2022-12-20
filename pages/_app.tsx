@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+import { useDidMount } from 'rooks'
 import { Meta } from '/components/meta'
 
 const Easter = dynamic(() => import('/components/easter'), {
@@ -15,9 +16,18 @@ import '/scss/_index.scss'
  * text effects
  */
 
-export default function App({ Component, pageProps, router }: FCProps<AppProps>): FCReturn {
+export default function App({ Component, pageProps, router }: FCProps<AppProps>): FCReturn<AppProps> {
     let route = router.route?.split('/')[1].trim() ?? ''
     if (!route) route = 'home'
+
+    useDidMount(() => {
+        const splash = window.document.getElementById('ma-splash')
+        if (splash) {
+            splash.classList.add('hidden')
+            if (route === 'map') splash.style.display = 'none'
+        }
+        setTimeout(() => (window.document.body.style.overflow = 'overlay'), splash ? 2750 : 0)
+    })
 
     return (
         <>
