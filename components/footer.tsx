@@ -9,7 +9,7 @@ interface FooterItemProps {
 
 function FooterItem(props: FooterItemProps): FCReturn<FooterItemProps> {
     return (
-        <Link href={props.href} className="ma-footer-section-list-item">
+        <Link href={props.href} target="_blank" className="ma-footer-section-list-item">
             {props.text}
         </Link>
     )
@@ -36,18 +36,18 @@ export function Footer(): FCReturn {
                 <Emblem h={72} textFill="#FFF" />
                 <div className="ma-footer-section-container">
                     <FooterSection title="Socials">
-                        <FooterItem href="#" text="Explore with GitHub️" />
-                        <FooterItem href="#" text="Follow on Twitter" />
-                        <FooterItem href="#" text="Connect via LinkedIn" />
+                        <FooterItem href="https://github.com/howion/anatolia-19th/" text="Explore with GitHub️" />
+                        <FooterItem href="https://twitter.com/19thanatolia" text="Follow on Twitter" />
+                        <FooterItem href="https://www.linkedin.com/company/anatolia-19th-century-project/" text="Connect via LinkedIn" />
                     </FooterSection>
                     <FooterSection title="Technologies Used">
-                        <FooterItem href="#" text="NextJS 14 (React + TS + SASS)" />
-                        <FooterItem href="#" text="Mapbox" />
-                        <FooterItem href="#" text="OpenStreet Map" />
+                        <FooterItem href="https://nextjs.org/" text="NextJS 13 (React + TS + SASS)" />
+                        <FooterItem href="https://www.mapbox.com/" text="Mapbox" />
+                        <FooterItem href="https://www.openstreetmap.org/" text="OpenStreetMap" />
                     </FooterSection>
                     <FooterSection title="Contact Us">
-                        <FooterItem href="#" text="anatolia19-hist@metu.edu.tr" />
-                        <FooterItem href="#" text="(+90) 0312 727 2507" />
+                        <FooterItem href="mailto:anatolia19-hist@metu.edu.tr" text="anatolia19-hist@metu.edu.tr" />
+                        <FooterItem href="tel:+903127272507" text="(+90) 312 727 2507" />
                     </FooterSection>
                 </div>
             </div>
