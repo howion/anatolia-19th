@@ -7,6 +7,8 @@ import { Meta } from '/components/meta'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { Emblem } from '/components/emblem'
 import Link from 'next/link'
+import { TransitorService } from '/services/transitor.service'
+import { Anchor } from '/components/anchor'
 // import '@watergis/mapbox-gl-export/css/styles.css'
 
 // @ts-ignore err
@@ -39,6 +41,7 @@ export default function Home(): FCReturn {
     const [isModalActive, setIsModalActive] = React.useState(true)
 
     const onMapLoad = React.useCallback(async () => {
+        TransitorService.hideTransitor()
         // const map = mapRef.current!
         // const mapNative = map.getMap()
         // const { CompassControl, ZoomControl } = await import('mapbox-gl-controls')
@@ -93,9 +96,9 @@ export default function Home(): FCReturn {
                 <Emblem h={60} textFill="#fff" />
             </div>
             <div className="ma-map-search-container">
-                <Link href="/">
+                <Anchor href="/" animate>
                     <i className="ma-map-search-back material-icons">arrow_back</i>
-                </Link>
+                </Anchor>
                 <input
                     className="ma-map-search-input"
                     type="text"

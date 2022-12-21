@@ -30,6 +30,7 @@ module.exports = {
         'unicorn/no-keyword-prefix': [0],
         'unicorn/prefer-query-selector': [0],
         'unicorn/consistent-function-scoping': [0],
+        'unicorn/prefer-spread': [0],
 
         // WARN
         '@typescript-eslint/ban-ts-comment': [

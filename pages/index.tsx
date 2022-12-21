@@ -1,9 +1,7 @@
+import React from 'react'
 import Image from 'next/image'
 import { Meta } from '/components/meta'
-
 import { Header } from '../components/header'
-
-import { useState } from 'react'
 
 // IMAGES
 import odtuLogo from '/public/img/sponsor/odtu.png'
@@ -11,7 +9,6 @@ import odtuLogo from '/public/img/sponsor/odtu.png'
 import saltLogo from '/public/img/sponsor/salt.svg'
 import sarkTicaret from '/public/img/sark_ticaret.png'
 import { Footer } from '/components/footer'
-import { Splash } from '/components/splash'
 import Link from 'next/link'
 
 import peopleSelcuk from '/public/img/people/selcuk.png'
@@ -21,6 +18,11 @@ import peopleKadri from '/public/img/people/kadri.png'
 import peopleZelal from '/public/img/people/zelal.png'
 import peopleRasit from '/public/img/people/rasit.png'
 import peopleDoga from '/public/img/people/doga.png'
+import peopleMert from '/public/img/people/mert.png'
+import { Accordion, AccordionContainer } from '/components/accordion'
+import { Anchor } from '/components/anchor'
+import { useDidMount } from 'rooks'
+import { TransitorService } from '/services/transitor.service'
 
 interface ProjectProps {
     disabled?: boolean
@@ -31,9 +33,10 @@ interface ProjectProps {
 
 function Project(props: ProjectProps): FCReturn<ProjectProps> {
     return (
-        <Link
+        <Anchor
             href={props.href ?? '#'}
             className={'ma-home-projects-project-container' + (props.disabled ? ' disabled' : '')}
+            animate
         >
             <div
                 className="ma-home-projects-project-cover"
@@ -42,8 +45,7 @@ function Project(props: ProjectProps): FCReturn<ProjectProps> {
                 }}
             />
             <span className="ma-home-projects-project-label">{props.txt}</span>
-            {/* <Image className="ma-home-projects-project-img" src={props.src} alt={props.txt} /> */}
-        </Link>
+        </Anchor>
     )
 }
 
@@ -72,13 +74,14 @@ function Person(props: PersonProps): FCReturn<PersonProps> {
 // }
 
 export default function Home(): FCReturn {
-    const [h, setH] = useState(false)
+    useDidMount(() => {
+        TransitorService.hideTransitor()
+    })
 
     return (
         <>
             <Meta />
             <Header />
-            <div onClick={() => setH(!h)}>{/* <Splash hidden={h} /> */}</div>
             <div className="ma-mwcontainer">
                 {/* SEARCH */}
                 <section className="ma-home-search-container">
@@ -129,17 +132,49 @@ export default function Home(): FCReturn {
                     <div className="ma-home-people-grid">
                         <Person name="Selçuk Dursun" role="Supervisor" src={peopleSelcuk} />
                         <Person name="Ebru Boyar" role="Supervisor" src={peopleEbru} />
-                        <Person name="Agah Enes Yasa" role="Coordinator" src={peopleAgah} />
-                        <Person name="Mustafa Kadri Yekeler" role="Ottoman-Turkish Translator" src={peopleKadri} />
+                        <Person name="Agah Enes Yasa" role="Founder & Coordinator" src={peopleAgah} />
+                        <Person
+                            name="Mustafa Kadri Yekeler"
+                            role="Founder & Ottoman Turkish Translator"
+                            src={peopleKadri}
+                        />
                         <Person name="Zelal Deniz Erdoğan" role="Editor (Until 2022)" src={peopleZelal} />
-                        <Person name="Raşit Alp Atasoy" role="Ottoman-Turkish Translator" src={peopleRasit} />
+                        <Person name="Raşit Alp Atasoy" role="Ottoman Turkish Translator" src={peopleRasit} />
                         <Person name="A. Doğa Aydın" role="Secondary Source Researcher" src={peopleDoga} />
+                        <Person name="Ömer Mert Coşkun" role="Developer" src={peopleMert} />
                     </div>
 
                     <div className="ma-home-faq-wrapper">
                         <h2 className="ma-section-title s3 c3">
                             <span>03</span>Frequently Asked Questions
                         </h2>
+
+                        <AccordionContainer>
+                            <Accordion title="Why?" active>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.
+                            </Accordion>
+                            <Accordion title="What's next?">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.
+                            </Accordion>
+                            <Accordion title="How can I contribute to the project?">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.
+                            </Accordion>
+                        </AccordionContainer>
                     </div>
                 </div>
             </div>

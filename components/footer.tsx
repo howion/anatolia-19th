@@ -38,7 +38,10 @@ export function Footer(): FCReturn {
                     <FooterSection title="Socials">
                         <FooterItem href="https://github.com/howion/anatolia-19th/" text="Explore with GitHub️" />
                         <FooterItem href="https://twitter.com/19thanatolia" text="Follow on Twitter" />
-                        <FooterItem href="https://www.linkedin.com/company/anatolia-19th-century-project/" text="Connect via LinkedIn" />
+                        <FooterItem
+                            href="https://www.linkedin.com/company/anatolia-19th-century-project/"
+                            text="Connect via LinkedIn"
+                        />
                     </FooterSection>
                     <FooterSection title="Technologies Used">
                         <FooterItem href="https://nextjs.org/" text="NextJS 13 (React + TS + SASS)" />

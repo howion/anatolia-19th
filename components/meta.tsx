@@ -1,6 +1,6 @@
 import type { NextSeoProps } from 'next-seo'
 
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { DefaultSeo } from 'next-seo'
 import { App } from '/constants/app'
 import Head from 'next/head'
@@ -13,7 +13,7 @@ export interface MetaProps extends Omit<NextSeoProps, 'titleTemplate' | 'default
     _viewport?: boolean
 }
 
-export function Meta(props: MetaProps): ReactElement {
+export function Meta(props: MetaProps): FCReturn<MetaProps> {
     const _keywords = props.keywords ?? App.defaults.keywords
     const _seoProps = _.omit(props, 'title', 'keywords', 'description', 'author', 'themeColor', '_viewport')
 

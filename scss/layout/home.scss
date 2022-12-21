@@ -177,10 +177,10 @@
             opacity: 0.5;
             height: height;
 
-            transition: opacity 500ms, filter 500ms;
+            // transition: opacity 500ms, filter 500ms;
 
             &:hover {
-                filter: none;
+                // filter: none;
                 opacity: 1;
             }
         }

@@ -4,6 +4,7 @@ import { useDidMount } from 'rooks'
 
 // @ts-ignore type module is broken
 import cheet from 'cheet.js'
+import { ClientUtil } from '/utils/client.util'
 
 // async function capture(): Promise<HTMLCanvasElement> {
 //     return await html2canvas(document.body, {
@@ -42,43 +43,74 @@ import cheet from 'cheet.js'
 // }
 
 const CHEETS = {
-    aha: 'a h a',
-    exit: 'e s c'
+    // aha: 'aha'.split('').join(' '),
+    batman: 'batman'.split('').join(' '),
+    exit: 'esc'.split('').join(' ')
 } as const
+
+// eslint-disable-next-line max-len
+const BATMAN_SRC =
+    'https://www.youtube.com/embed/R67YWuwKPek?autoplay=1&showinfo=0&controls=0&modestbranding=1&autohide=1&loop=1&playlist=R67YWuwKPek&disablekb=1&rel=0'
 
 export default function Easter(): FCReturn {
     const [isActive, setIsActive] = useState(false)
-    // const [canvas, setCanvas] = useState<HTMLCanvasElement | undefined | null>(undefined)
     const [didMount, setDidMount] = useState(false)
-
     const easterRef = useRef<HTMLDivElement>(null)
-    // const leftRef = useRef<HTMLDivElement>(null)
-    // const rightRef = useRef<HTMLDivElement>(null)
+    const [content, setContent] = useState('')
 
     useDidMount(() => {
+        // REGISTER CHEATS
         cheet(CHEETS.exit)
-        cheet(CHEETS.aha)
+        cheet(CHEETS.batman)
 
         cheet.done((seq: text) => {
-            if (seq === CHEETS.aha) return setIsActive(true)
-            if (seq === CHEETS.exit) return setIsActive(false)
+            if (seq === CHEETS.exit) {
+                setContent('')
+                setDidMount(false)
+                ClientUtil.showBodyScroll()
+                return setIsActive(false)
+            }
+            if (isActive) return
+            if (seq === CHEETS.batman) {
+                setContent('batman')
+                return setIsActive(true)
+            }
         })
     })
 
     if (isActive && !didMount) {
-        window.document.body.style.overflow = 'hidden'
+        ClientUtil.hideBodyScroll()
         setDidMount(true)
     }
 
     if (!isActive && didMount) {
-        window.document.body.style.overflow = ''
+        ClientUtil.showBodyScroll()
         setDidMount(false)
+        setContent('')
     }
 
     return (
         <div ref={easterRef} className={'ma-easter-container' + (didMount ? ' enabled' : '')}>
-            {/* <div ref={leftRef} className="ma-easter-left"></div> */}
-            {/* <div ref={rightRef} className="ma-easter-right"></div> */}
+            <div className="ma-easter-transitor" />
+            <div className="ma-easter-content">
+                {didMount ? (
+                    <>
+                        {content === 'batman' ? (
+                            <>
+                                <iframe
+                                    width="100%"
+                                    height="100%"
+                                    src={BATMAN_SRC}
+                                    title=""
+                                    frameBorder="0"
+                                    allow="autoplay; encrypted-media"
+                                    allowFullScreen={false}
+                                />
+                            </>
+                        ) : undefined}
+                    </>
+                ) : undefined}
+            </div>
         </div>
     )
 }

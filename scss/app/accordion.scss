@@ -1,0 +1,71 @@
+.ma-accordion {
+    &-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 48px;
+    }
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+
+    &-head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+
+            &::before,
+            &::after {
+                display: block;
+                content: '';
+                position: absolute;
+                background-color: #323232;
+            }
+
+            &::before {
+                top: (24px - 3px)/2;
+                left: 0;
+                width: 24px;
+                height: 3px;
+            }
+
+            &::after {
+                top: 0;
+                width: 3px;
+                height: 24px;
+                left: (24px - 3px)/2;
+            }
+        }
+
+        &-title {
+            font-size: 28px;
+            color: #323232;
+            margin-left: 24px;
+            font-weight: 500;
+            // transition: margin-left 500ms ease;
+        }
+    }
+
+    &-content {
+        display: none;
+        padding: 24px 0 24px 48px;
+        color: #858482;
+        font-size: 18px;
+        text-align: justify;
+    }
+
+    &.active &-content {
+        display: block;
+    }
+
+    &.active &-head-icon::after {
+        display: none;
+    }
+}
