@@ -2,21 +2,21 @@ import React, { useRef } from 'react'
 import mapbox from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 import { Meta } from '/components/meta'
 
-// IMAGES
-
 import { useDidMount } from 'rooks'
 import { TransitorService } from '/services/transitor.service'
-
-import 'mapbox-gl/dist/mapbox-gl.css'
 
 import { ClientUtil } from '/utils/client.util'
 import { Emblem } from '/components/emblem'
 import { Input } from '/components/input'
 import { Anchor } from '/components/anchor'
 
+import 'mapbox-gl/dist/mapbox-gl.css'
+
+
 export default function Contact(): FCReturn {
     const mapRef = useRef<mapbox.Map | null>(null)
     const mapContainerRef = React.useRef<HTMLDivElement>(null)
+    const markerRef = React.useRef<mapbox.Marker | null>(null)
 
     useDidMount(() => {
         if (!ClientUtil.isClient || mapRef.current) return
@@ -39,6 +39,31 @@ export default function Contact(): FCReturn {
 
         map.on('load', () => {
             TransitorService.hideTransitor()
+        })
+
+        map.on('click', (e) => {
+            const lngLat = e.lngLat
+
+            if (markerRef.current) {
+                // markerRef.current.setLngLat(lngLat)
+                // markerRef.current.addTo(map)
+                markerRef.current.remove()
+                markerRef.current = null
+            }
+
+            markerRef.current = new mapbox.Marker({ color: '#ff0000' }).setLngLat(lngLat).addTo(map)
+
+            //     m.setLngLat(lngLat).addTo(map)
+            //     setMarker(m)
+
+            // if (markerRef.current) {
+            //     console.log('removed it!');
+            //     markerRef.current = ""
+            //     marker.remove()
+            //     setMarker(null)
+            // } else {
+            //
+            // }
         })
 
         if (map.loaded()) TransitorService.hideTransitor()
@@ -114,8 +139,8 @@ export default function Contact(): FCReturn {
                     <div className="col-xs">
                         <Input
                             type="text"
-                            label="Position — Optional"
-                            placeholder="Your current position"
+                            label="Academic Level"
+                            placeholder="Your academic level"
                             optional={true}
                         />
                     </div>
@@ -165,9 +190,12 @@ export default function Contact(): FCReturn {
                         label="Note — Optional"
                         placeholder="Please write your extra notes related to the data here..."
                         defaultValue={0}
+                        optional={true}
                     />
                     </div>
                 </div>
+
+                <button>SUBMIT</button>
             </section>
             {/* </div> */}
 

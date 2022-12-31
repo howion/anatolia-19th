@@ -21,9 +21,16 @@ export function Anchor(props: AnchorProps): FCReturn<AnchorProps> {
                 if (props.animate) {
                     e.preventDefault()
                     TransitorService.showTransitor()
-                    setTimeout(() => {
-                        router.push(props.href)
-                    }, 1500 + 500) // 500ms extra
+                    if (router.asPath === props.href) {
+                        setTimeout(() => {
+                            router.push(props.href)
+                            window.location.reload()
+                        }, 1500)
+                    } else {
+                        setTimeout(() => {
+                            router.push(props.href)
+                        }, 1500 + 500) // 500ms extra
+                    }
                 }
             }}
         >

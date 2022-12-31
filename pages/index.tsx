@@ -1,14 +1,21 @@
 import React from 'react'
 import Image from 'next/image'
 import { Meta } from '/components/meta'
-import { Header } from '../components/header'
+import { Header } from '/components/header'
 
 // IMAGES
-import odtuLogo from '/public/img/sponsor/odtu.png'
 // import adimOdtuLogo from '/public/img/sponsor/adimodtu.png'
-import saltLogo from '/public/img/sponsor/salt.svg'
-import sarkTicaret from '/public/img/sark_ticaret.png'
 import { Footer } from '/components/footer'
+import { Accordion, AccordionContainer } from '/components/accordion'
+import { Anchor } from '/components/anchor'
+import { useDidMount } from 'rooks'
+import { TransitorService } from '/services/transitor.service'
+
+import odtuLogo from '/public/img/sponsor/odtu.png'
+import saltLogo from '/public/img/sponsor/salt.svg'
+
+import homeIntroback from '/public/img/home-introback.jpg'
+import sarkTicaret from '/public/img/sark_ticaret.png'
 
 import peopleSelcuk from '/public/img/people/selcuk.png'
 import peopleEbru from '/public/img/people/ebru.png'
@@ -17,10 +24,6 @@ import peopleKadri from '/public/img/people/kadri.png'
 import peopleRasit from '/public/img/people/rasit.png'
 import peopleDoga from '/public/img/people/doga.png'
 import peopleMert from '/public/img/people/mert.png'
-import { Accordion, AccordionContainer } from '/components/accordion'
-import { Anchor } from '/components/anchor'
-import { useDidMount } from 'rooks'
-import { TransitorService } from '/services/transitor.service'
 
 interface ProjectProps {
     disabled?: boolean
@@ -63,14 +66,6 @@ function Person(props: PersonProps): FCReturn<PersonProps> {
     )
 }
 
-// interface AccordionItemProps {}
-
-// function AccordionItem(props: PersonProps): FCReturn {
-//     return (
-//         null
-//     )
-// }
-
 export default function Home(): FCReturn {
     useDidMount(() => {
         TransitorService.hideTransitor()
@@ -79,7 +74,12 @@ export default function Home(): FCReturn {
     return (
         <>
             <Meta />
-            <Header />
+            <Header
+                headerImage={homeIntroback}
+                subtitle="Web Portal"
+                // eslint-disable-next-line max-len
+                text="Welcome to the 19th Century Anatolia Project’s website. An undergraduate digital humanities project aiming to compile as well as digitize intricate data on the region in this century, Anatolia19 here presents its latest work."
+            />
             <div className="ma-mwcontainer">
                 {/* SEARCH */}
                 <section className="ma-home-search-container">
@@ -95,9 +95,9 @@ export default function Home(): FCReturn {
                 {/* PROJECTS */}
                 <section className="ma-home-projects-container">
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
-                    <Project src="/img/projects/sources.jpg" txt="Sources" disabled />
+                    <Project src="/img/projects/sources.jpg" txt="Sources" href="/sources" />
                     <Project src="/img/projects/digital_map.jpg" txt="Digital Map" href="/map" />
-                    <Project src="/img/projects/graphs.jpg" txt="Graphs" disabled />
+                    <Project src="/img/projects/graphs.jpg" txt="Graphs" href="/graphs" />
                     <Project src="/img/projects/explore_anatolia.jpg" txt="Explore Anatolia" disabled />
                 </section>
 
@@ -148,30 +148,20 @@ export default function Home(): FCReturn {
                         </h2>
 
                         <AccordionContainer>
-                            <Accordion title="Why?" active>
+                            <Accordion title="Why are you doing this project?" active>
+                                <p>The 19th century is an era of transformation all over the world, the ground upon which the world we now live in was constructed. In the particular case of the Ottoman Empire, the reign of Sultan Abdulaziz and Abdulhamid II signified the start of the prosperity of Anatolia following their deeds and reforms in terms of Anatolian infrastructure. The era following the first railway concession in 1856 is significant to understand the Ottoman Empire realizing itself in complex relations with the West, its integration into the global system, and to analyze the origins of contemporary Turkey.</p>
+                            </Accordion>
+                            <Accordion title="Where do you get your sources from?">
+                                <p>We use various subsidiary sources and documents at the Presidency Ottoman Archive in Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection, Istanbul Municipality Ataturk Library and Bibliothèque Nationale de France. For detailed information, see the <Anchor href="/sources" animate>sources</Anchor> page.</p>
+                            </Accordion>
+                            {/* <Accordion title="How can I contribute to the project?">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
                                 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.
-                            </Accordion>
-                            <Accordion title="What's next?">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </Accordion>
-                            <Accordion title="How can I contribute to the project?">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </Accordion>
+                            </Accordion> */}
                         </AccordionContainer>
                     </div>
                 </div>

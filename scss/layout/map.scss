@@ -1,15 +1,15 @@
+#app-main-map {
+    @include ma-prefer-quality;
+    overflow: hidden !important;
+    background-color: #4C9D8A;
+}
+
 .mapbox-improve-map {
     display: none !important;
 }
 
 .mapboxgl-ctrl-attrib-button {
     background-repeat: no-repeat !important;
-}
-
-#app-main-map {
-    @include ma-prefer-quality;
-    overflow: hidden !important;
-    background-color: #4C9D8A;
 }
 
 .ma-map {

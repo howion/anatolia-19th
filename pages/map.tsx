@@ -69,34 +69,6 @@ export default function Home(): FCReturn {
         )
     })
 
-    // const onMapLoad = React.useCallback(async () => {
-    //     TransitorService.hideTransitor()
-    //     // const map = mapRef.current!
-    //     // const mapNative = map.getMap()
-    //     // const { CompassControl, ZoomControl } = await import('mapbox-gl-controls')
-    //     // // const { MapboxExportControl, Size, PageOrientation, Format, DPI } = await import("@watergis/mapbox-gl-export")
-    //     // map.addControl(new CompassControl(), 'top-right')
-    //     // map.addControl(new ZoomControl(), 'top-right')
-    //     // map.addControl(new MapboxExportControl({
-    //     //     accessToken: MAPBOX_PUBLIC_TOKEN,
-    //     //     PageSize: Size.A3,
-    //     //     PageOrientation: PageOrientation.Portrait,
-    //     //     Format: Format.PNG,
-    //     //     DPI: DPI[96],
-    //     //     Crosshair: true,
-    //     //     PrintableArea: true
-    //     // }), 'top-right')
-    //     // mapNative.addControl()
-    //     // map.addControl((new MapboxInspect({
-    //     //     popup: new mapboxgl.Popup({
-    //     //         closeButton: false,
-    //     //         closeOnClick: false
-    //     //     })
-    //     // }));
-    //     // map.on('move', () => {})
-    //     // console.log(map.getMap())
-    // }, [])
-
     function hideModal() {
         // setShowControls(true)
         setIsModalActive(false)

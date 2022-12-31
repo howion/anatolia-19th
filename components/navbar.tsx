@@ -7,7 +7,9 @@ interface NavbarProps {}
 export function Navbar(props: NavbarProps): FCReturn<NavbarProps> {
     return (
         <header className="ma-navbar">
-            <Emblem h={72} />
+            <Anchor href="/" animate>
+                <Emblem h={72} />
+            </Anchor>
             <Anchor href="/contact" animate>
                 <button>
                     <i className="material-icons">add</i>

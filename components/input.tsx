@@ -1,11 +1,17 @@
 import React from 'react'
 
-interface InputProps {
-    type: 'text' | 'textarea'
-    placeholder?: text
+interface SelectOption {
+    value: any
     label: text
+}
+
+interface InputProps {
+    type: 'text' | 'textarea' | 'select'
+    options?: SelectOption[]
+    placeholder?: text
+    label?: text
     optional?: boolean
-    defaultValue?: text | number
+    defaultValue?: text | number | SelectOption['value']
     // value?: text
 }
 
@@ -27,6 +33,19 @@ export function Input(props: InputProps): FCReturn<InputProps> {
                     placeholder={props.placeholder}
                     defaultValue={props.defaultValue}
                 />
+            ) : undefined}
+            {props.type === 'select' ? (
+                <select>
+                    {props.options!.map((v, i) => (
+                        <option
+                            key={i}
+                            value={v.value}
+                            selected={v.value === props.defaultValue}
+                        >
+                            {v.label}
+                        </option>
+                    ))}
+                </select>
             ) : undefined}
         </div>
     )

@@ -1,5 +1,6 @@
-#app-main-contact {
-    background-color: #fff;
+#app-main-sources {
+    @include ma-prefer-quality;
+    background-color: #f5f5f5;
 }
 
 .ma-contact {

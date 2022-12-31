@@ -47,6 +47,8 @@ export function Footer(): FCReturn {
                         <FooterItem href="https://nextjs.org/" text="NextJS 13 (React + TS + SASS)" />
                         <FooterItem href="https://www.mapbox.com/" text="Mapbox" />
                         <FooterItem href="https://www.openstreetmap.org/" text="OpenStreetMap" />
+                        <FooterItem href="https://www.figma.com/" text="Figma" />
+                        <FooterItem href="https://reactflow.dev/" text="React Flow" />
                     </FooterSection>
                     <FooterSection title="Contact Us">
                         <FooterItem href="mailto:anatolia19-hist@metu.edu.tr" text="anatolia19-hist@metu.edu.tr" />
