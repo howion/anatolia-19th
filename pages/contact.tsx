@@ -46,12 +46,7 @@ export default function Contact(): FCReturn {
         map.dragRotate.disable()
         map.touchZoomRotate.disableRotation()
 
-        map.addControl(
-            new mapbox.FullscreenControl({
-                container: window.document.body
-            }),
-            'top-right'
-        )
+        map.addControl(new mapbox.FullscreenControl(), 'top-right')
         map.addControl(new mapbox.NavigationControl(), 'top-right')
         map.addControl(
             new mapbox.GeolocateControl({
@@ -73,7 +68,7 @@ export default function Contact(): FCReturn {
             <section className="ma-contact-map-container">
                 <div className="ma-map-search-container ma-map-search-container--contact">
                     <Anchor href="/" animate>
-                        <i className="ma-map-search-back material-icons">arrow_back</i>
+                        <i className="material-icons ma-map-search-back">arrow_back</i>
                     </Anchor>
                 </div>
                 <div ref={mapContainerRef} className="ma-contact-map" />
@@ -160,6 +155,17 @@ export default function Contact(): FCReturn {
                             placeholder="0.0000"
                             defaultValue={0}
                         />
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-xs">
+                    <Input
+                        type="textarea"
+                        label="Note — Optional"
+                        placeholder="Please write your extra notes related to the data here..."
+                        defaultValue={0}
+                    />
                     </div>
                 </div>
             </section>

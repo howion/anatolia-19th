@@ -51,20 +51,20 @@
 
         &-back {
             $size: 48px;
-            display: block;
-            cursor: pointer;
-            width: $size;
-            height: $size;
-            border-radius: $size/2;
-            background-color: rgba(#000, 0.8);
-            color: #fff;
-            line-height: $size;
-            text-align: center;
-            transition: color 300ms, background-color 300ms;
+            display: block !important;
+            cursor: pointer !important;
+            width: $size !important;
+            height: $size !important;
+            border-radius: $size/2 !important;
+            background-color: rgba(#000, 0.8) !important;
+            color: #fff !important;
+            line-height: $size !important;
+            text-align: center !important;
+            transition: color 300ms, background-color 300ms !important;
 
             &:hover {
-                color: $color-trueyellow;
-                background-color: rgba(#000, 0.9);
+                color: $color-trueyellow !important;
+                background-color: rgba(#000, 0.9) !important;
             }
         }
 

@@ -12,7 +12,7 @@ input[type='text'] {
     $color-default: rgba(#000, 0.2);
     $color-focus: rgba(#000, 0.4);
 
-    > input {
+    > input, textarea {
         font-size: 14px;
         border: 1px solid $color-default !important;
         color: #000;
@@ -21,6 +21,12 @@ input[type='text'] {
         &::placeholder {
             color: $color-placeholder;
         }
+    }
+
+    > textarea {
+        min-height: 140px;
+        padding: 20px !important;
+        resize: vertical;
     }
 
     > label {

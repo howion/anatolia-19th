@@ -139,7 +139,7 @@ export default function Home(): FCReturn {
             </div>
             <div className="ma-map-search-container">
                 <Anchor href="/" animate>
-                    <i className="ma-map-search-back material-icons">arrow_back</i>
+                    <i className="material-icons ma-map-search-back">arrow_back</i>
                 </Anchor>
                 <input
                     className="ma-map-search-input"

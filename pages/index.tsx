@@ -88,7 +88,7 @@ export default function Home(): FCReturn {
                         placeholder="Search in the 19th Century Anatolia Project Database..."
                         type="text"
                     />
-                    <i className="ma-home-search-i material-icons">search</i>
+                    <i className="material-icons ma-home-search-i">search</i>
                     <div className="focuser"></div>
                 </section>
 

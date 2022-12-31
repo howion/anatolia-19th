@@ -38,12 +38,12 @@
         }
 
         &-i {
-            cursor: pointer;
-            position: absolute;
-            right: 30px;
-            top: 18px;
-            font-size: 32px;
-            color: $color-gray-500;
+            cursor: pointer !important;
+            position: absolute !important;
+            right: 30px !important;
+            top: 18px !important;
+            font-size: 32px !important;
+            color: $color-gray-500 !important;
         }
     }
 
