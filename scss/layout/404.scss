@@ -1,6 +1,9 @@
-.ma-404 {
+#app-main-404 {
     @include ma-prefer-quality;
     background-color: #fff;
+}
+
+.ma-404 {
 
     &-figure {
         position: relative;

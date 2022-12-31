@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDidMount } from 'rooks'
+import { Emblem } from './emblem'
 import { useService } from '/hooks/use-service'
 import { TransitorService } from '/services/transitor.service'
 
@@ -6,7 +8,15 @@ export function Transitor(): FCReturn {
     const isActive = useService<boolean>(TransitorService, false)
 
     return (
-        <div id="ma-transitor" className={isActive ? 'active' : undefined}>
+        <div
+            id="ma-transitor"
+            className={isActive ? 'active' : undefined}
+            // onClick={() => isActive ? TransitorService.hideTransitor(0) : TransitorService.showTransitor()}
+        >
+            <Emblem
+                h={120}
+                textFill="#ffffff"
+            />
             <div className="ma-transitor-tile" />
             <div className="ma-transitor-tile" />
             <div className="ma-transitor-tile" />

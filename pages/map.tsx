@@ -1,89 +1,131 @@
-import React, { useState } from 'react'
-import type { MapRef, ViewState } from 'react-map-gl'
-import Map, { FullscreenControl, GeolocateControl, Marker, NavigationControl } from 'react-map-gl'
-import { Meta } from '/components/meta'
-// import { useDidMount } from 'rooks'
+import React, { useRef } from 'react'
+import { useDidMount } from 'rooks'
+import mapbox from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
-import 'mapbox-gl/dist/mapbox-gl.css'
+import { Meta } from '/components/meta'
 import { Emblem } from '/components/emblem'
-import Link from 'next/link'
 import { TransitorService } from '/services/transitor.service'
 import { Anchor } from '/components/anchor'
-// import '@watergis/mapbox-gl-export/css/styles.css'
+import { ClientUtil } from '/utils/client.util'
 
-// @ts-ignore err
-// import { RulerControl } from 'mapbox-gl-controls'
+import 'mapbox-gl/dist/mapbox-gl.css'
 
-// const Dynamic = dynamic(() => import('mapbox-gl-controls').then(s => s.RulerControl), {
-//     ssr: false
-// })
-
-// @ts-ignore
-// import MapboxInspect from 'mapbox-gl-inspect'
-
-// const MAPBOX_PUBLIC_TOKEN = 'pk.eyJ1IjoiaG93aW9uIiwiYSI6ImNsYjh6b2gycDBia2ozd21nYjh3Y2JmcWUifQ.DE19OL-ugnq3dq66xKjoEw'
-const MAPBOX_PUBLIC_TOKEN = 'pk.eyJ1IjoiaG93aW9uIiwiYSI6ImNsYjh6b2gycDBia2ozd21nYjh3Y2JmcWUifQ.DE19OL-ugnq3dq66xKjoEw'
-
-/**
- * TODO:
- * TURKEY GEOFENCE
- */
+function getModalWidth(): number {
+    if (!window) return 0
+    const modalRef = window.document.querySelector('.ma-map-modal') as HTMLDivElement | null
+    if (!modalRef) return 0
+    return modalRef.offsetWidth ?? 0
+}
 
 export default function Home(): FCReturn {
-    const [viewState, setViewState] = React.useState<Partial<ViewState>>({
-        longitude: 35,
-        latitude: 40,
-        zoom: 5,
-        bearing: 0
-    })
+    // const [viewState, setViewState] = React.useState<DECK_ViewState>(InitialViewState)
     // const [showControls, setShowControls] = useState(true)
-    const mapRef = React.useRef<MapRef>(null)
-    const [isModalActive, setIsModalActive] = React.useState(true)
+    const mapRef = useRef<mapbox.Map | null>(null)
+    const mapContainerRef = React.useRef<HTMLDivElement>(null)
+    const [isModalActive, setIsModalActive] = React.useState(false)
 
-    const onMapLoad = React.useCallback(async () => {
-        TransitorService.hideTransitor()
-        // const map = mapRef.current!
-        // const mapNative = map.getMap()
-        // const { CompassControl, ZoomControl } = await import('mapbox-gl-controls')
-        // // const { MapboxExportControl, Size, PageOrientation, Format, DPI } = await import("@watergis/mapbox-gl-export")
-        // map.addControl(new CompassControl(), 'top-right')
-        // map.addControl(new ZoomControl(), 'top-right')
-        // map.addControl(new MapboxExportControl({
-        //     accessToken: MAPBOX_PUBLIC_TOKEN,
-        //     PageSize: Size.A3,
-        //     PageOrientation: PageOrientation.Portrait,
-        //     Format: Format.PNG,
-        //     DPI: DPI[96],
-        //     Crosshair: true,
-        //     PrintableArea: true
-        // }), 'top-right')
-        // mapNative.addControl()
-        // map.addControl((new MapboxInspect({
-        //     popup: new mapboxgl.Popup({
-        //         closeButton: false,
-        //         closeOnClick: false
-        //     })
-        // }));
-        // map.on('move', () => {})
-        // console.log(map.getMap())
-    }, [])
+    useDidMount(() => {
+        if (!ClientUtil.isClient || mapRef.current) return
+        mapbox.accessToken = ClientUtil.MAPBOX_PUBLIC_TOKEN
+
+        // mapRef.current!.addEventListener('contextmenu', (e) => e.preventDefault())
+
+        mapRef.current = new mapbox.Map({
+            container: mapContainerRef.current!,
+            style: ClientUtil.MAPBOX_STYLE_MAP,
+            center: [35, 39],
+            zoom: 6,
+            attributionControl: true,
+            boxZoom: false,
+            logoPosition: 'bottom-right'
+            // antialias: false
+        })
+
+        const map = mapRef.current
+
+        map.on('load', () => {
+            TransitorService.hideTransitor()
+        })
+
+        if (map.loaded()) TransitorService.hideTransitor()
+
+        map.dragRotate.disable()
+        map.touchZoomRotate.disableRotation()
+
+        map.addControl(
+            new mapbox.FullscreenControl({
+                container: window.document.body
+            })
+        )
+        map.addControl(new mapbox.NavigationControl())
+        map.addControl(
+            new mapbox.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true
+                },
+                trackUserLocation: false,
+                showUserHeading: false
+            })
+        )
+    })
+
+    // const onMapLoad = React.useCallback(async () => {
+    //     TransitorService.hideTransitor()
+    //     // const map = mapRef.current!
+    //     // const mapNative = map.getMap()
+    //     // const { CompassControl, ZoomControl } = await import('mapbox-gl-controls')
+    //     // // const { MapboxExportControl, Size, PageOrientation, Format, DPI } = await import("@watergis/mapbox-gl-export")
+    //     // map.addControl(new CompassControl(), 'top-right')
+    //     // map.addControl(new ZoomControl(), 'top-right')
+    //     // map.addControl(new MapboxExportControl({
+    //     //     accessToken: MAPBOX_PUBLIC_TOKEN,
+    //     //     PageSize: Size.A3,
+    //     //     PageOrientation: PageOrientation.Portrait,
+    //     //     Format: Format.PNG,
+    //     //     DPI: DPI[96],
+    //     //     Crosshair: true,
+    //     //     PrintableArea: true
+    //     // }), 'top-right')
+    //     // mapNative.addControl()
+    //     // map.addControl((new MapboxInspect({
+    //     //     popup: new mapboxgl.Popup({
+    //     //         closeButton: false,
+    //     //         closeOnClick: false
+    //     //     })
+    //     // }));
+    //     // map.on('move', () => {})
+    //     // console.log(map.getMap())
+    // }, [])
 
     function hideModal() {
         // setShowControls(true)
         setIsModalActive(false)
+        mapRef.current?.easeTo({
+            padding: {
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0
+            },
+            duration: 500
+        })
     }
 
     function showModal() {
         // setShowControls(false)
         setIsModalActive(true)
+        mapRef.current?.easeTo({
+            padding: {
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: getModalWidth()
+            },
+            duration: 500
+        })
     }
 
-    // eslint-disable-next-line
-    function onPinpointClick(id: number) {}
-
-    // useDidMount(() => {
-    //     console.log(map)
-    // })
+    // function onPinpointClick(id: number) { }
 
     // const SW = [34.8, 24.5]
     // const NE = [41.8, 44.8]
@@ -137,31 +179,28 @@ export default function Home(): FCReturn {
                     </ol>
                 </div>
             </div>
-            <div className="ma-map-container">
-                <Map
+            <div ref={mapContainerRef} className="ma-map-container">
+                {/* <div id="map" className="ma-map"></div> */}
+                {/* <Map
                     ref={mapRef}
-                    initialViewState={viewState}
-                    // viewState={viewState}
+                    // initialViewState={InitialViewState}
+                    viewState={viewState}
                     onMove={(e) => setViewState(e.viewState)}
                     // mapStyle="mapbox://styles/mapbox/streets-v9"
-                    mapStyle="mapbox://styles/howion/clbrzux99000p14pmookcim4w"
+                    mapStyle={MAPBOX_STYLE}
                     mapboxAccessToken={MAPBOX_PUBLIC_TOKEN}
                     // maxBounds={Boundaries}
                     onLoad={onMapLoad}
-                    bearing={0}
+                    // bearing={0}
+                    // pitchWithRotate={false}
                     boxZoom={false}
                 >
                     {isModalActive ? undefined : (
                         <>
-                            <FullscreenControl />
-                            <GeolocateControl />
                             <NavigationControl />
                         </>
                     )}
-                    {/* <ScaleControl /> */}
-
-                    <Marker longitude={32} latitude={38.8} color="red" onClick={showModal} />
-                </Map>
+                </Map> */}
             </div>
         </>
     )

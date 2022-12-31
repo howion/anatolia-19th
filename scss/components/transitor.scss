@@ -1,6 +1,19 @@
 $ma-transitor-tiles: 5;
 $ma-transitor-bgc: $color-islamic-dark;
 
+@keyframes maAnimatorFadeAnimation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 #ma-transitor {
     position: fixed;
     z-index: 9999;
@@ -10,6 +23,20 @@ $ma-transitor-bgc: $color-islamic-dark;
     height: 100vh;
     transition: width 0s 1.5s ease;
     // visibility: hidden;
+
+    > .ma-emblem {
+        position: fixed;
+        z-index: 10;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateZ(0);
+        opacity: 0;
+        visibility: hidden;
+        // transition: opacity 1.5s ease 1s;
+
+        // transition: visibility 0 ;
+        // opacity: 0;
+    }
 
     > .ma-transitor-tile {
         $h: 100% / $ma-transitor-tiles;
@@ -33,6 +60,13 @@ $ma-transitor-bgc: $color-islamic-dark;
         // visibility: visible;
         width: 100%;
         transition-delay: 0s;
+
+        > .ma-emblem {
+            visibility: visible;
+            // opacity: 0.5;
+            // animation: 1s infinite normal maAnimatorFadeAnimation;
+            animation: maAnimatorFadeAnimation 2s ease 1s infinite;
+        }
 
         > .ma-transitor-tile {
             width: 100%;

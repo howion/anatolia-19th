@@ -14,8 +14,9 @@ import { useRef } from 'react'
 
 /* TODO:
  * smooth scroll
- * mouse
  * text effects
+ * better 404 page
+ * custom pointers
  */
 
 export default function App({ Component, pageProps, router }: FCProps<AppProps>): FCReturn<AppProps> {

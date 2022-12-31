@@ -1,5 +1,15 @@
+.mapbox-improve-map {
+    display: none !important;
+}
+
+.mapboxgl-ctrl-attrib-button {
+    background-repeat: no-repeat !important;
+}
+
 #app-main-map {
-    overflow: hidden;
+    @include ma-prefer-quality;
+    overflow: hidden !important;
+    background-color: #4C9D8A;
 }
 
 .ma-map {
@@ -19,7 +29,7 @@
     &-emblem {
         position: fixed;
         left: 0;
-        bottom: 33px;
+        bottom: 20px;
         padding: 16px 28px;
         z-index: 10;
         background-color: rgba(#000, 0.5);

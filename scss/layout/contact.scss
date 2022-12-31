@@ -1,0 +1,60 @@
+#app-main-contact {
+    background-color: #fff;
+}
+
+.ma-contact {
+    // &-container {
+    //     display: flex;
+    //     flex-direction: row;
+    // }
+
+    $map-vw: 40vw;
+
+    &-map {
+        width: 100%;
+        height: 100%;
+
+        &-container {
+            position: fixed;
+            width: $map-vw;
+            height: 100vh;
+        }
+
+        .mapboxgl-canvas-container {
+            cursor: crosshair !important;
+        }
+    }
+
+    &-content {
+        $px: 55px;
+        $py: 48px;
+        padding: $py ($px + $scrollbar-default-width) $py calc($map-vw + $px);
+
+        h1 {
+            font-size: 48px;
+            margin-top: 72px;
+            margin-left: -2px;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 32px;
+            line-height: 1.3;
+            font-weight: 500;
+            margin-top: 90px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 16px;
+            text-align: justify;
+            margin-top: 24px;
+            color: #808080;
+        }
+
+        > .row {
+            margin: 24px -6px 0 -6px !important;
+            row-gap: 24px !important;
+        }
+    }
+}

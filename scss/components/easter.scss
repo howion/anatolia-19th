@@ -8,7 +8,7 @@
         background-color: #eee;
     }
     50% {
-        border-width: calc(50vh - 0.5px) calc(25vw);
+        border-width: calc(50vh - 0.5px) calc(35vw);
     }
     75% {
         border-width: calc(50vh - 0.5px) 0;
@@ -31,10 +31,10 @@
         &.enabled {
             visibility: visible;
 
-            ~ #app {
-                // animation: ma-keyframe-shake 500ms 6 linear;
-                // visibility: hidden;
-            }
+            // ~ #app {
+            //     // animation: ma-keyframe-shake 500ms 6 linear;
+            //     // visibility: hidden;
+            // }
         }
 
         // ~ #app {
