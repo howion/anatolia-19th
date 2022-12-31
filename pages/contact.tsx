@@ -12,6 +12,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import { ClientUtil } from '/utils/client.util'
 import { Emblem } from '/components/emblem'
 import { Input } from '/components/input'
+import { Anchor } from '/components/anchor'
 
 export default function Contact(): FCReturn {
     const mapRef = useRef<mapbox.Map | null>(null)
@@ -70,8 +71,14 @@ export default function Contact(): FCReturn {
 
             {/* <div className="ma-contact-container"> */}
             <section className="ma-contact-map-container">
+                <div className="ma-map-search-container ma-map-search-container--contact">
+                    <Anchor href="/" animate>
+                        <i className="ma-map-search-back material-icons">arrow_back</i>
+                    </Anchor>
+                </div>
                 <div ref={mapContainerRef} className="ma-contact-map" />
             </section>
+
             <section className="ma-contact-content">
                 <Emblem h={72} />
                 <h1>Submit New Data</h1>
@@ -111,11 +118,11 @@ export default function Contact(): FCReturn {
                     </div>
                     <div className="col-xs">
                         <Input
-                                type="text"
-                                label="Position — Optional"
-                                placeholder="Your current position"
-                                optional={true}
-                            />
+                            type="text"
+                            label="Position — Optional"
+                            placeholder="Your current position"
+                            optional={true}
+                        />
                     </div>
                 </div>
 
@@ -123,30 +130,36 @@ export default function Contact(): FCReturn {
 
                 <div className="row">
                     <div className="col-xs">
-                        <div className="ma-input-container">
-                            <label>Data Name</label>
-                            <input type="text" className="ma-input" placeholder="aga" />
-                        </div>
+                        <Input
+                            type="text"
+                            label="Data Name"
+                            placeholder="An explanatory short name"
+                        />
                     </div>
                     <div className="col-xs">
-                        <div className="ma-input-container">
-                            <label>Data Type</label>
-                            <input type="text" className="ma-input" placeholder="aga" />
-                        </div>
+                        <Input
+                            type="text"
+                            label="Data Type"
+                            placeholder="Select"
+                        />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-xs">
-                        <div className="ma-input-container">
-                            <label>Latitude — Click on the map to autofill</label>
-                            <input type="text" className="ma-input" placeholder="aga" />
-                        </div>
+                        <Input
+                            type="text"
+                            label="Latitude — Click on the map to autofill"
+                            placeholder="0.000"
+                            defaultValue={0}
+                        />
                     </div>
                     <div className="col-xs">
-                        <div className="ma-input-container">
-                            <label>Longitude — Click on the map to autofill</label>
-                            <input type="text" className="ma-input" placeholder="aga" />
-                        </div>
+                        <Input
+                            type="text"
+                            label="Longitude — Click on the map to autofill"
+                            placeholder="0.0000"
+                            defaultValue={0}
+                        />
                     </div>
                 </div>
             </section>

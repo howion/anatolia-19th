@@ -9,13 +9,11 @@ import odtuLogo from '/public/img/sponsor/odtu.png'
 import saltLogo from '/public/img/sponsor/salt.svg'
 import sarkTicaret from '/public/img/sark_ticaret.png'
 import { Footer } from '/components/footer'
-import Link from 'next/link'
 
 import peopleSelcuk from '/public/img/people/selcuk.png'
 import peopleEbru from '/public/img/people/ebru.png'
 import peopleAgah from '/public/img/people/agah.png'
 import peopleKadri from '/public/img/people/kadri.png'
-import peopleZelal from '/public/img/people/zelal.png'
 import peopleRasit from '/public/img/people/rasit.png'
 import peopleDoga from '/public/img/people/doga.png'
 import peopleMert from '/public/img/people/mert.png'
@@ -138,7 +136,7 @@ export default function Home(): FCReturn {
                             role="Founder & Ottoman Turkish Translator"
                             src={peopleKadri}
                         />
-                        <Person name="Zelal Deniz Erdoğan" role="Editor (Until 2022)" src={peopleZelal} />
+                        {/* <Person name="Zelal Deniz Erdoğan" role="Editor (Until 2022)" src={peopleZelal} /> */}
                         <Person name="Raşit Alp Atasoy" role="Ottoman Turkish Translator" src={peopleRasit} />
                         <Person name="A. Doğa Aydın" role="Secondary Source Researcher" src={peopleDoga} />
                         <Person name="Ömer Mert Coşkun" role="Developer" src={peopleMert} />

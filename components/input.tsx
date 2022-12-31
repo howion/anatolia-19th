@@ -5,6 +5,7 @@ interface InputProps {
     placeholder?: text
     label: text
     optional?: boolean
+    defaultValue?: text | number
     // value?: text
 }
 
@@ -16,6 +17,7 @@ export function Input(props: InputProps): FCReturn<InputProps> {
                 <textarea
                     className="ma-input ma-input-textarea"
                     placeholder={props.placeholder}
+                    defaultValue={props.defaultValue}
                 />
             ) : undefined}
             {props.type === 'text' ? (
@@ -23,6 +25,7 @@ export function Input(props: InputProps): FCReturn<InputProps> {
                     type="text"
                     className="ma-input"
                     placeholder={props.placeholder}
+                    defaultValue={props.defaultValue}
                 />
             ) : undefined}
         </div>
