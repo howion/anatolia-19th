@@ -80,7 +80,7 @@ export default function Home(): FCReturn {
                 // eslint-disable-next-line max-len
                 text="Welcome to the 19th Century Anatolia Project’s website. An undergraduate digital humanities project aiming to compile as well as digitize intricate data on the region in this century, Anatolia19 here presents its latest work."
             />
-            <div className="ma-mwcontainer">
+            <div className="ma-mwcontainer" data-scroll-section>
                 {/* SEARCH */}
                 <section className="ma-home-search-container">
                     <input
@@ -95,10 +95,10 @@ export default function Home(): FCReturn {
                 {/* PROJECTS */}
                 <section className="ma-home-projects-container">
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
-                    <Project src="/img/projects/sources.jpg" txt="Sources" href="/sources" />
                     <Project src="/img/projects/digital_map.jpg" txt="Digital Map" href="/map" />
-                    <Project src="/img/projects/graphs.jpg" txt="Graphs" href="/graphs" />
                     <Project src="/img/projects/explore_anatolia.jpg" txt="Explore Anatolia" disabled />
+                    <Project src="/img/projects/graphs.jpg" txt="Graphs" href="/graphs" />
+                    <Project src="/img/projects/sources.jpg" txt="Sources" href="/sources" />
                 </section>
 
                 {/* SPONSORS */}
@@ -117,12 +117,12 @@ export default function Home(): FCReturn {
             </div>
 
             {/* STATS */}
-            <section className="ma-home-stats-container">
+            <section className="ma-home-stats-container" data-scroll-section>
                 {/* <div className="ma-home-stats-back" /> */}
                 <div className="ma-mwcontainer"></div>
             </section>
 
-            <div className="ma-mwcontainer">
+            <div className="ma-mwcontainer" data-scroll-section>
                 <div className="ma-home-people-wrapper">
                     <h2 className="ma-section-title s2 c2">
                         <span>02</span>People

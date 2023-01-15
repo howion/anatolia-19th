@@ -31,7 +31,7 @@ function FooterSection(props: FooterSectionProps): FCReturn<FooterSectionProps> 
 
 export function Footer(): FCReturn {
     return (
-        <footer className="ma-footer">
+        <footer className="ma-footer" data-scroll-section>
             <div className="ma-mwcontainer">
                 <Emblem h={72} textFill="#FFF" />
                 <div className="ma-footer-section-container">

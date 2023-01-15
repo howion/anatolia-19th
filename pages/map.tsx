@@ -119,16 +119,13 @@ export default function Home(): FCReturn {
                     placeholder="Search in 19th Century Anatolia Project..."
                 />
             </div>
-            <div className={'ma-map-modal' + (isModalActive ? ' active' : '')}>
+            {/* <div className={'ma-map-modal' + (isModalActive ? ' active' : '')}>
                 <div className="ma-map-modal-slide" onClick={() => (isModalActive ? hideModal() : showModal())}>
                     <i className="material-icons">chevron_right</i>
                 </div>
                 <div className="ma-map-modal-header">
                     <h1 className="ma-map-modal-header-title">Altın-ı Sükûn</h1>
-                    <div className="ma-map-modal-header-occupations">
-                        {/* <div className="ma-map-modal-content-labels-label">e</div> */}
-                        Jewelry, Banking
-                    </div>
+                    <div className="ma-map-modal-header-occupations">Jewelry, Banking</div>
                 </div>
                 <div className="ma-map-modal-content">
                     <p>
@@ -150,30 +147,33 @@ export default function Home(): FCReturn {
                         <li>Commercial 1978</li>
                     </ol>
                 </div>
+            </div> */}
+            <div className="ma-map-modal-container">
+                <div className="ma-map-modal-buttons">
+                    <i className="material-icons ma-map-modal-button">close</i>
+                    <i className="material-icons ma-map-modal-button">share</i>
+                </div>
+                <div className="ma-map-modal">
+                    <span className="ma-map-modal-label">DATA SUMMARY</span>
+                    <h1 className="ma-map-modal-title">Sevan Bedros Nisanyan</h1>
+                    <span className="ma-map-modal-tag">Architect</span>
+                    <span className="ma-map-modal-tag">Author</span>
+                    <div className="ma-map-modal-markdown">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div className="ma-map-modal">
+                    <span className="ma-map-modal-label">REFERENCES</span>
+                    <ol className="ma-map-modal-references">
+                        <li>Rush, E. C., Obolonkin, V., Battin, M., Wouldes, T., & Rowan, J. (2015b). Body composition in offspring of New Zealand women: Ethnic and gender differences at age 1–3 years in 2005–2009. Annals Of Human Biology, 42(5), 492–497.</li>
+                        <li>Commercial 1978</li>
+                    </ol>
+                </div>
+                <div className="ma-map-modal">
+                    <span className="ma-map-modal-label">ACTIVITIES & NOTES</span>
+                </div>
             </div>
-            <div ref={mapContainerRef} className="ma-map-container">
-                {/* <div id="map" className="ma-map"></div> */}
-                {/* <Map
-                    ref={mapRef}
-                    // initialViewState={InitialViewState}
-                    viewState={viewState}
-                    onMove={(e) => setViewState(e.viewState)}
-                    // mapStyle="mapbox://styles/mapbox/streets-v9"
-                    mapStyle={MAPBOX_STYLE}
-                    mapboxAccessToken={MAPBOX_PUBLIC_TOKEN}
-                    // maxBounds={Boundaries}
-                    onLoad={onMapLoad}
-                    // bearing={0}
-                    // pitchWithRotate={false}
-                    boxZoom={false}
-                >
-                    {isModalActive ? undefined : (
-                        <>
-                            <NavigationControl />
-                        </>
-                    )}
-                </Map> */}
-            </div>
+            <div ref={mapContainerRef} className="ma-map-container" />
         </>
     )
     // <div style={{

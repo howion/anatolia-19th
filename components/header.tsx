@@ -12,7 +12,7 @@ interface HeaderProps {
 
 export function Header(props: HeaderProps): FCReturn<HeaderProps> {
     return (
-        <header className="ma-header">
+        <header className="ma-header" data-scroll-section>
             <div className="ma-mwcontainer">
                 <Navbar />
                 <h1>The 19th Century Anatolia Project — {props.subtitle}</h1>

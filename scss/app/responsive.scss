@@ -1,9 +1,14 @@
 @media (max-width: 1310px) {
     .ma-home {
         &-projects-label {
-            position: relative;
-            width: 100%;
-            transform: none;
+            position: relative !important;
+            width: 100% !important;
+            transform: none !important;
+            margin-left: 1px !important;
+        }
+
+        &-people-grid {
+            gap: 0.7vw 1vw !important;
         }
     }
 }
@@ -25,6 +30,15 @@
             height: 64px !important;
         }
     }
+
+
+    .ma-home {
+        &-people-grid {
+            grid-template-columns: 1fr 1fr 1fr !important;
+            gap: 0.7vw 1vw !important;
+        }
+    }
+
 
     h1 {
         font-size: 64px !important;
@@ -61,7 +75,7 @@
 @media (max-width: 830px) {
     .ma-home {
         &-people-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr !important;
         }
     }
 }
@@ -69,7 +83,7 @@
 @media (max-width: 500px) {
     .ma-home {
         &-people-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
         }
     }
 }

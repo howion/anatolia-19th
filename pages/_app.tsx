@@ -3,14 +3,16 @@ import dynamic from 'next/dynamic'
 import { useDidMount } from 'rooks'
 import { Meta } from '/components/meta'
 import { Transitor } from '/components/transitor'
+// import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import { useRef } from 'react'
 
 const Easter = dynamic(() => import('/components/easter'), {
     ssr: false
 })
 
 // SCSS
+// import 'locomotive-scroll/dist/locomotive-scroll.css'
 import '/scss/_index.scss'
-import { useRef } from 'react'
 
 /* TODO:
  * smooth scroll
@@ -53,11 +55,19 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
             <Meta _viewport={true} />
             <Easter />
             <Transitor />
-            <div id="app" ref={appRef} data-scroll-container>
+            {/* <LocomotiveScrollProvider
+                options={{
+                    smooth: true
+                }}
+                watch={[router.asPath]}
+                onLocationChange={(scroll: any) => scroll.scrollTo(0, { duration: 0, disableLerp: true })}
+                containerRef={appRef}
+            > */}
+            <div id="app" ref={appRef}>
                 {/*<FancyCursorProvider>
-                    <FancyCursor className="app-cursor-inner"/>
-                    <FancyCursor className="app-cursor-outer"/>
-                </FancyCursorProvider>*/}
+                        <FancyCursor className="app-cursor-inner"/>
+                        <FancyCursor className="app-cursor-outer"/>
+                    </FancyCursorProvider>*/}
                 {/* <Splash /> */}
                 {/* <Modal /> */}
                 <main id={'app-main-' + route}>
@@ -65,6 +75,7 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
                     <Component {...pageProps} />
                 </main>
             </div>
+            {/* </LocomotiveScrollProvider> */}
         </>
     )
 }

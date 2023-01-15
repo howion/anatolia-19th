@@ -102,6 +102,7 @@ export default function Contact(): FCReturn {
             <section className="ma-contact-content">
                 <Emblem h={72} />
                 <h1>Submit New Data</h1>
+                <br />
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     <br />
@@ -195,7 +196,13 @@ export default function Contact(): FCReturn {
                     </div>
                 </div>
 
-                <button>SUBMIT</button>
+                <br />
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <br />
+
+                <button className="btn btn-sharp btn-sharp-islamic">SUBMIT</button>
             </section>
             {/* </div> */}
 

@@ -11,7 +11,7 @@ export function Navbar(props: NavbarProps): FCReturn<NavbarProps> {
                 <Emblem h={72} />
             </Anchor>
             <Anchor href="/contact" animate>
-                <button>
+                <button className="btn btn-round">
                     <i className="material-icons">add</i>
                     <span>SUBMIT DATA</span>
                 </button>
