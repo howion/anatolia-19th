@@ -18,7 +18,7 @@ import homeIntroback from '/public/img/home-introback.jpg'
 import sarkTicaret from '/public/img/sark_ticaret.png'
 
 import peopleSelcuk from '/public/img/people/selcuk.png'
-import peopleEbru from '/public/img/people/ebru.png'
+// import peopleEbru from '/public/img/people/ebru.png'
 import peopleAgah from '/public/img/people/agah.png'
 import peopleKadri from '/public/img/people/kadri.png'
 import peopleRasit from '/public/img/people/rasit.png'
@@ -129,7 +129,7 @@ export default function Home(): FCReturn {
                     </h2>
                     <div className="ma-home-people-grid">
                         <Person name="Selçuk Dursun" role="Supervisor" src={peopleSelcuk} />
-                        <Person name="Ebru Boyar" role="Supervisor" src={peopleEbru} />
+                        {/* <Person name="Ebru Boyar" role="Supervisor" src={peopleEbru} /> */}
                         <Person name="Agah Enes Yasa" role="Founder & Coordinator" src={peopleAgah} />
                         <Person
                             name="Mustafa Kadri Yekeler"

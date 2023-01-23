@@ -53,6 +53,8 @@ export default function Contact(): FCReturn {
 
             markerRef.current = new mapbox.Marker({ color: '#ff0000' }).setLngLat(lngLat).addTo(map)
 
+            console.log(lngLat)
+
             //     m.setLngLat(lngLat).addTo(map)
             //     setMarker(m)
 
@@ -93,7 +95,9 @@ export default function Contact(): FCReturn {
             <section className="ma-contact-map-container">
                 <div className="ma-map-search-container ma-map-search-container--contact">
                     <Anchor href="/" animate>
-                        <i className="material-icons ma-map-search-back">arrow_back</i>
+                        <button className="btn btn-icon">
+                            <i className="material-icons">arrow_back</i>
+                        </button>
                     </Anchor>
                 </div>
                 <div ref={mapContainerRef} className="ma-contact-map" />

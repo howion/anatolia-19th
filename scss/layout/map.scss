@@ -49,24 +49,24 @@
             }
         }
 
-        &-back {
-            $size: 48px;
-            display: block !important;
-            cursor: pointer !important;
-            width: $size !important;
-            height: $size !important;
-            border-radius: $size/2 !important;
-            background-color: rgba(#000, 0.8) !important;
-            color: #fff !important;
-            line-height: $size !important;
-            text-align: center !important;
-            transition: color 300ms, background-color 300ms !important;
+        // &-back {
+        //     $size: 48px;
+        //     display: block !important;
+        //     cursor: pointer !important;
+        //     width: $size !important;
+        //     height: $size !important;
+        //     border-radius: $size/2 !important;
+        //     background-color: rgba(#000, 0.8) !important;
+        //     color: #fff !important;
+        //     line-height: $size !important;
+        //     text-align: center !important;
+        //     transition: color 300ms, background-color 300ms !important;
 
-            &:hover {
-                color: $color-trueyellow !important;
-                background-color: rgba(#000, 0.9) !important;
-            }
-        }
+        //     &:hover {
+        //         color: $color-trueyellow !important;
+        //         background-color: rgba(#000, 0.9) !important;
+        //     }
+        // }
 
         &-input {
             height: 64px;
@@ -114,10 +114,18 @@
             padding: 20px 20px 20px 0;
             color: rgba(#fff, 0.7);
 
-            // background-color: $bgc;
-            // transform: translateX(100%);
+            transform: translateX(100%);
             transition: transform 500ms ease;
             pointer-events: none;
+        }
+
+        &-container.--active {
+            transform: translateX(0) !important;
+        }
+
+        &-container.--active &-buttons {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         &-buttons {
@@ -128,19 +136,9 @@
             row-gap: 12px   ;
             top: 20px + 8px;
             left: -(10px + $--button-width);
-        }
-
-        &-button {
-            width: $--button-width;
-            height: $--button-width;
-            color: #fff;
-            background-color: rgba(#000, 0.8);
-            border-radius: $--button-width/2;
-            text-align: center;
-            line-height: $--button-width;
-            font-size: 24px;
-            cursor: pointer;
-            pointer-events: all;
+            opacity: 0;
+            // transform: translateY(-100%);
+            transition: transform 500ms, opacity 500ms;
         }
 
         &-label {

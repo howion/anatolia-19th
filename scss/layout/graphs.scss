@@ -22,4 +22,40 @@
         width: 100vw;
         height: 100vh;
     }
+
+    &-node {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+        &.--size-4 {
+            transform: scale(1 + 4*0.25)
+        }
+
+        &-image {
+            width: auto;
+            height: auto;
+            max-width: 150px;
+        }
+
+        &-title {
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px;
+            white-space: nowrap;
+            // text-transform: uppercase;
+        }
+
+        &-subtitle {
+            color: rgba(#fff, 0.7);
+            font-size: 16px;
+            font-weight: 400;
+            margin-top: 4px;
+            white-space: nowrap;
+        }
+    }
 }

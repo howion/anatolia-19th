@@ -9,6 +9,34 @@
     padding: 14px 28px 14px 28px;
     user-select: none;
     white-space: nowrap;
+    pointer-events: all;
+
+    &.btn-icon {
+        $--size: 48px;
+
+        display: block;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        width: $--size;
+        height: $--size;
+        padding: 0;
+        border-radius: $--size/2;
+        transition: color 300ms, background-color 300ms;
+
+        >i {
+            width: $--size;
+            height: $--size;
+            text-align: center;
+            line-height: $--size;
+            font-size: $--size/2;
+            padding: 0;
+        }
+
+        &:hover {
+            color: #fbdb40 !important;
+            background-color: rgba(0, 0, 0, 0.9) !important;
+        }
+    }
 
     &.btn-round {
         background-color: rgba($color-islamic-dark, 0.8);
@@ -17,6 +45,16 @@
 
         &:hover {
             background-color: rgba($color-islamic-dark, 0.9);
+        }
+
+        > i {
+            display: block;
+            width: 20px;
+            height: 20px;
+            font-size: 20px;
+            line-height: 20px;
+            margin-right: 10px;
+            margin-left: -8px;
         }
     }
 
@@ -71,16 +109,6 @@
                 background-color: $--color-islamic;
             }
         }
-    }
-
-    > i {
-        display: block;
-        width: 20px !important;
-        height: 20px !important;
-        font-size: 20px !important;
-        line-height: 20px !important;
-        margin-right: 10px;
-        margin-left: -8px;
     }
 
     > span {

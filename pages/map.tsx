@@ -67,6 +67,16 @@ export default function Home(): FCReturn {
                 showUserHeading: false
             })
         )
+
+        // test marker start
+        const marker = new mapbox.Marker()
+            .setLngLat([27.6377, 38.8217])
+            .addTo(map)
+            .getElement()
+            .addEventListener('click', () => {
+                showModal()
+            })
+        // test marker end
     })
 
     function hideModal() {
@@ -111,7 +121,9 @@ export default function Home(): FCReturn {
             </div>
             <div className="ma-map-search-container">
                 <Anchor href="/" animate>
-                    <i className="material-icons ma-map-search-back">arrow_back</i>
+                    <button className="btn btn-icon">
+                        <i className="material-icons">arrow_back</i>
+                    </button>
                 </Anchor>
                 <input
                     className="ma-map-search-input"
@@ -148,16 +160,20 @@ export default function Home(): FCReturn {
                     </ol>
                 </div>
             </div> */}
-            <div className="ma-map-modal-container">
+            <div className={'ma-map-modal-container' + (isModalActive ? ' --active' : '')}>
                 <div className="ma-map-modal-buttons">
-                    <i className="material-icons ma-map-modal-button">close</i>
-                    <i className="material-icons ma-map-modal-button">share</i>
+                    <button className="btn btn-icon" onClick={hideModal}>
+                        <i className="material-icons">close</i>
+                    </button>
+                    <button className="btn btn-icon">
+                        <i className="material-icons">share</i>
+                    </button>
                 </div>
                 <div className="ma-map-modal">
                     <span className="ma-map-modal-label">DATA SUMMARY</span>
                     <h1 className="ma-map-modal-title">Sevan Bedros Nisanyan</h1>
                     <span className="ma-map-modal-tag">Architect</span>
-                    <span className="ma-map-modal-tag">Author</span>
+                    <span className="ma-map-modal-tag">Writer</span>
                     <div className="ma-map-modal-markdown">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
