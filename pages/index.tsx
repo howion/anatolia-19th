@@ -11,8 +11,9 @@ import { Anchor } from '/components/anchor'
 import { useDidMount } from 'rooks'
 import { TransitorService } from '/services/transitor.service'
 
-import odtuLogo from '/public/img/sponsor/odtu.png'
-import saltLogo from '/public/img/sponsor/salt.svg'
+import RefOdtu from '/public/img/ref/odtu.png'
+import RefSalt from '/public/img/ref/salt.svg'
+import RefAnamed from '/public/img/ref/anamed.png'
 
 import homeIntroback from '/public/img/home-introback.jpg'
 import sarkTicaret from '/public/img/sark_ticaret.png'
@@ -22,6 +23,7 @@ import peopleSelcuk from '/public/img/people/selcuk.png'
 import peopleAgah from '/public/img/people/agah.png'
 import peopleKadri from '/public/img/people/kadri.png'
 import peopleRasit from '/public/img/people/rasit.png'
+import peopleFurkan from '/public/img/people/furkan.jpeg'
 import peopleDoga from '/public/img/people/doga.png'
 import peopleMert from '/public/img/people/mert.png'
 
@@ -108,8 +110,9 @@ export default function Home(): FCReturn {
                         <span>01</span>Project Sponsors
                     </h2>
                     <div className="ma-home-sponsors-list">
-                        <Image className="ma-home-sponsors-sponsor" height={64} src={odtuLogo} alt="" />
-                        <Image className="ma-home-sponsors-sponsor" height={64} src={saltLogo} alt="" />
+                        <Image className="ma-home-sponsors-sponsor" height={64} src={RefOdtu} alt="" />
+                        <Image className="ma-home-sponsors-sponsor" height={64} src={RefSalt} alt="" />
+                        <Image className="ma-home-sponsors-sponsor" height={64} src={RefAnamed} alt="" />
                         {/* <Image className="ma-home-sponsors-sponsor" src="/sponsor/adimodtu.png" alt=""/> */}
                         {/* <Image className="ma-home-sponsors-sponsor" src="/sponsor/salt.svg" alt=""/> */}
                     </div>
@@ -138,6 +141,7 @@ export default function Home(): FCReturn {
                         />
                         {/* <Person name="Zelal Deniz Erdoğan" role="Editor (Until 2022)" src={peopleZelal} /> */}
                         <Person name="Raşit Alp Atasoy" role="Ottoman Turkish Translator" src={peopleRasit} />
+                        <Person name="Furkan Arslan" role="Ottoman Turkish Translator" src={peopleFurkan} />
                         <Person name="A. Doğa Aydın" role="Secondary Source Researcher" src={peopleDoga} />
                         <Person name="Ömer Mert Coşkun" role="Developer" src={peopleMert} />
                     </div>
