@@ -5,6 +5,7 @@ import { Meta } from '/components/meta'
 import { Transitor } from '/components/transitor'
 // import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { useRef } from 'react'
+import { Inter } from 'next/font/google'
 
 const Easter = dynamic(() => import('/components/easter'), {
     ssr: false
@@ -20,6 +21,14 @@ import '/scss/_index.scss'
  * better 404 page
  * custom pointers
  */
+
+const inter = Inter({
+    weight: 'variable',
+    preload: true,
+    adjustFontFallback: true,
+    display: 'swap',
+    subsets: ['latin', 'latin-ext']
+})
 
 export default function App({ Component, pageProps, router }: FCProps<AppProps>): FCReturn<AppProps> {
     let route = router.route?.split('/')[1].trim() ?? ''
@@ -63,7 +72,7 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
                 onLocationChange={(scroll: any) => scroll.scrollTo(0, { duration: 0, disableLerp: true })}
                 containerRef={appRef}
             > */}
-            <div id="app" ref={appRef}>
+            <div id="app" ref={appRef} className={inter.className}>
                 {/*<FancyCursorProvider>
                         <FancyCursor className="app-cursor-inner"/>
                         <FancyCursor className="app-cursor-outer"/>

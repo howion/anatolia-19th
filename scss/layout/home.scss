@@ -42,7 +42,7 @@
             position: absolute !important;
             right: 30px !important;
             top: 18px !important;
-            font-size: 32px !important;
+            font-size: 2rem !important;
             color: $color-gray-500 !important;
         }
     }
@@ -65,7 +65,7 @@
             position: absolute;
             user-select: none;
             font-weight: 500;
-            font-size: 18px;
+            font-size: 1.125rem;
             color: #323232;
             top: 0;
             letter-spacing: 2px;
@@ -129,7 +129,7 @@
                 width: 100%;
                 text-align: center;
                 font-weight: 500;
-                font-size: 18px;
+                font-size: 1.125rem;
                 text-transform: uppercase;
                 padding: 30px 10px;
             }
@@ -279,13 +279,13 @@
             }
 
             &-name {
-                font-size: 19px;
+                font-size: 1.1875rem;
                 margin: 12px 0 6px 0;
                 color: #323232;
             }
 
             &-role {
-                font-size: 14px;
+                font-size: 0.875rem;
                 text-transform: uppercase;
                 color: #acacac;
             }

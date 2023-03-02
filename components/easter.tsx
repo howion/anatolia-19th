@@ -19,7 +19,7 @@ const BATMAN_SRC =
 
 // eslint-disable-next-line max-len
 const KIRBY_SRC =
-'https://www.youtube.com/embed/Se1uh3PS78Y?autoplay=1&showinfo=0&controls=0&modestbranding=1&autohide=1&loop=1&playlist=Se1uh3PS78Y&disablekb=1&rel=0'
+    'https://www.youtube.com/embed/Se1uh3PS78Y?autoplay=1&showinfo=0&controls=0&modestbranding=1&autohide=1&loop=1&playlist=Se1uh3PS78Y&disablekb=1&rel=0'
 
 export default function Easter(): FCReturn {
     const [isActive, setIsActive] = useState(false)

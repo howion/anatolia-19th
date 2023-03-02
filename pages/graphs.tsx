@@ -13,7 +13,7 @@ import ReactFlow, {
     Controls,
     Background,
     useNodesState,
-    useEdgesState,
+    useEdgesState
     // addEdge,
 } from 'reactflow'
 
@@ -47,7 +47,7 @@ function computeRadialCoordinates(center: XYPosition, radius: number, count: num
     return result
 }
 
-const circ1 = computeRadialCoordinates({x: 0, y: 0}, 500, 3)
+const circ1 = computeRadialCoordinates({ x: 0, y: 0 }, 500, 3)
 const circMecidi = computeRadialCoordinates(circ1[0], 350, 3)
 
 const initialNodes: Node<any>[] = [
@@ -157,7 +157,7 @@ export default function Graphs(): FCReturn {
                     nodesConnectable={false}
                     elementsSelectable={false}
 
-                // onConnect={onConnect}
+                    // onConnect={onConnect}
                 >
                     {/* <MiniMap maskColor="red" /> */}
                     <Controls showFitView={false} showInteractive={false} />

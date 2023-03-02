@@ -33,7 +33,7 @@
         align-items: center;
 
         &.--size-4 {
-            transform: scale(1 + 4*0.25)
+            transform: scale(1 + 4 * 0.25);
         }
 
         &-image {
@@ -45,14 +45,14 @@
         &-title {
             color: #fff;
             font-weight: 700;
-            font-size: 20px;
+            font-size: 1.25rem;
             white-space: nowrap;
             // text-transform: uppercase;
         }
 
         &-subtitle {
             color: rgba(#fff, 0.7);
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 400;
             margin-top: 4px;
             white-space: nowrap;

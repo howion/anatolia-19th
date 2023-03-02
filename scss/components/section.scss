@@ -10,8 +10,8 @@
             position: absolute;
             user-select: none;
             display: block;
-            font-size: 28px;
-            line-height: 28px;
+            font-size: 1.75rem;
+            line-height: 1.75rem;
             top: -(28px + 12px);
             left: 15px;
             text-align: right;
@@ -83,6 +83,14 @@
             &::before,
             &::after {
                 border-color: #2461ff;
+            }
+        }
+
+        &.s0 {
+            padding: 0;
+
+            &::before, &::after {
+                display: none;
             }
         }
 

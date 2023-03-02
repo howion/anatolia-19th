@@ -152,11 +152,34 @@ export default function Home(): FCReturn {
                         </h2>
 
                         <AccordionContainer>
-                            <Accordion title="Why are you doing this project?" active>
-                                <p>The 19th century is an era of transformation all over the world, the ground upon which the world we now live in was constructed. In the particular case of the Ottoman Empire, the reign of Sultan Abdulaziz and Abdulhamid II signified the start of the prosperity of Anatolia following their deeds and reforms in terms of Anatolian infrastructure. The era following the first railway concession in 1856 is significant to understand the Ottoman Empire realizing itself in complex relations with the West, its integration into the global system, and to analyze the origins of contemporary Turkey.</p>
+                            <Accordion title="How can I contribute to the Project from outside?" active>
+                                <p>
+                                    Anatolia19 Project invites its researchers for their contributions on various subjects and is open to academic/non-academic contributions. For more detailed information, see the Submit Data section.
+                                </p>
+                            </Accordion>
+                            <Accordion title="Why are you doing this project?">
+                                <p>
+                                    The 19th century is an era of transformation all over the world, the ground upon
+                                    which the world we now live in was constructed. In the particular case of the
+                                    Ottoman Empire, the reign of Sultan Abdulaziz and Abdulhamid II signified the start
+                                    of the prosperity of Anatolia following their deeds and reforms in terms of
+                                    Anatolian infrastructure. The era following the first railway concession in 1856 is
+                                    significant to understand the Ottoman Empire realizing itself in complex relations
+                                    with the West, its integration into the global system, and to analyze the origins of
+                                    contemporary Turkey.
+                                </p>
                             </Accordion>
                             <Accordion title="Where do you get your sources from?">
-                                <p>We use various subsidiary sources and documents at the Presidency Ottoman Archive in Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection, Istanbul Municipality Ataturk Library and Bibliothèque Nationale de France. For detailed information, see the <Anchor href="/sources" animate>sources</Anchor> page.</p>
+                                <p>
+                                    We use various subsidiary sources and documents at the Presidency Ottoman Archive in
+                                    Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection, Istanbul
+                                    Municipality Ataturk Library and Bibliothèque Nationale de France. For detailed
+                                    information, see the{' '}
+                                    <Anchor href="/sources" animate>
+                                        sources
+                                    </Anchor>{' '}
+                                    page.
+                                </p>
                             </Accordion>
                             {/* <Accordion title="How can I contribute to the project?">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

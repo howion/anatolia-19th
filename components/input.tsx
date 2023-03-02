@@ -18,7 +18,10 @@ interface InputProps {
 export function Input(props: InputProps): FCReturn<InputProps> {
     return (
         <div className="ma-input-container">
-            <label>{props.label}{props.optional ? undefined : ' *'}</label>
+            <label>
+                {props.label}
+                {/* {props.optional ? undefined : ' *'} */}
+            </label>
             {props.type === 'textarea' ? (
                 <textarea
                     className="ma-input ma-input-textarea"
@@ -37,11 +40,7 @@ export function Input(props: InputProps): FCReturn<InputProps> {
             {props.type === 'select' ? (
                 <select>
                     {props.options!.map((v, i) => (
-                        <option
-                            key={i}
-                            value={v.value}
-                            selected={v.value === props.defaultValue}
-                        >
+                        <option key={i} value={v.value} selected={v.value === props.defaultValue}>
                             {v.label}
                         </option>
                     ))}

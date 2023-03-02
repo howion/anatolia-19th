@@ -9,19 +9,24 @@ h6 {
 }
 
 h1 {
-    font-size: 72px;
+    font-size: 4rem;
     // line-height: 1.22;
-    font-weight: 600;
-}
-
-h2 {
-    font-size: 48px;
-    line-height: 58px;
     font-weight: 700;
 }
 
+h2 {
+    font-size: 3rem;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
 p {
-    font-size: 18px;
+    font-size: 1rem;
     line-height: 1.35;
 
     > a {

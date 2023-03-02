@@ -2,13 +2,14 @@
     &-container {
         display: flex;
         flex-direction: column;
-        padding-top: 48px;
+        // padding-top: 48px;
+        margin-top: 50px;
     }
 
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 12px;
+    margin-top: 10px;
 
     &-head {
         width: 100%;
@@ -18,8 +19,11 @@
         cursor: pointer;
 
         &-icon {
-            min-width: 24px;
-            min-height: 24px;
+            $--size: 20px;
+            $--width: 3px;
+
+            min-width: $--size;
+            min-height: $--size;
             position: relative;
 
             &::before,
@@ -31,24 +35,24 @@
             }
 
             &::before {
-                top: (24px - 3px)/2;
+                top: ($--size - $--width)/2;
                 left: 0;
-                width: 24px;
-                height: 3px;
+                width: $--size;
+                height: $--width;
             }
 
             &::after {
                 top: 0;
-                width: 3px;
-                height: 24px;
-                left: (24px - 3px)/2;
+                width: $--width;
+                height: $--size;
+                left: ($--size - $--width)/2;
             }
         }
 
         &-title {
-            font-size: 28px;
+            font-size: 1.5rem;
             color: #323232;
-            margin-left: 24px;
+            margin-left: 20px;
             font-weight: 500;
             // transition: margin-left 500ms ease;
         }
@@ -56,9 +60,9 @@
 
     &-content {
         display: none;
-        padding: 24px 0 24px 48px;
+        padding: 24px 0 14px 41px;
         color: #858482;
-        font-size: 18px;
+        font-size: 1.125rem;
         text-align: justify;
     }
 

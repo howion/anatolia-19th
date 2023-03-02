@@ -13,10 +13,7 @@ export function Transitor(): FCReturn {
             className={isActive ? 'active' : undefined}
             // onClick={() => isActive ? TransitorService.hideTransitor(0) : TransitorService.showTransitor()}
         >
-            <Emblem
-                h={120}
-                textFill="#ffffff"
-            />
+            <Emblem h={96} textFill="#ffffff" />
             <div className="ma-transitor-tile" />
             <div className="ma-transitor-tile" />
             <div className="ma-transitor-tile" />

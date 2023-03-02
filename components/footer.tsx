@@ -33,24 +33,33 @@ export function Footer(): FCReturn {
     return (
         <footer className="ma-footer" data-scroll-section>
             <div className="ma-mwcontainer">
-                <Emblem h={72} textFill="#FFF" />
+                <Emblem h={68} textFill="#FFF" />
                 <div className="ma-footer-section-container">
+                    <FooterSection title="Website">
+                        <FooterItem href="/" text="Home" />
+                        <FooterItem href="/map" text="Digital Map" />
+                        {/* <FooterItem href="/map" text="Explore Anatolia" /> */}
+                        <FooterItem href="/graphs" text="Graphs" />
+                        <FooterItem href="/sources" text="Sources" />
+                        <FooterItem href="/contact" text="Submit Data" />
+                    </FooterSection>
                     <FooterSection title="Socials">
-                        <FooterItem href="https://github.com/howion/anatolia-19th/" text="Explore with GitHub️" />
-                        <FooterItem href="https://twitter.com/19thanatolia" text="Follow on Twitter" />
+                        <FooterItem href="https://github.com/howion/anatolia-19th/" text="GitHub️" />
+                        <FooterItem href="https://twitter.com/19thanatolia" text="Twitter" />
                         <FooterItem
                             href="https://www.linkedin.com/company/anatolia-19th-century-project/"
-                            text="Connect via LinkedIn"
+                            text="LinkedIn"
                         />
                     </FooterSection>
-                    <FooterSection title="Technologies Used">
+                    <FooterSection title="Tech Stack">
                         <FooterItem href="https://nextjs.org/" text="NextJS 13 (React + TS + SASS)" />
+                        <FooterItem href="https://vercel.com/" text="Vercel" />
                         <FooterItem href="https://www.mapbox.com/" text="Mapbox" />
                         <FooterItem href="https://www.openstreetmap.org/" text="OpenStreetMap" />
                         <FooterItem href="https://www.figma.com/" text="Figma" />
                         <FooterItem href="https://reactflow.dev/" text="React Flow" />
                     </FooterSection>
-                    <FooterSection title="Contact Us">
+                    <FooterSection title="Contact">
                         <FooterItem href="mailto:anatolia19-hist@metu.edu.tr" text="anatolia19-hist@metu.edu.tr" />
                         <FooterItem href="tel:+903127272507" text="(+90) 312 727 2507" />
                     </FooterSection>

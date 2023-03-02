@@ -175,13 +175,22 @@ export default function Home(): FCReturn {
                     <span className="ma-map-modal-tag">Architect</span>
                     <span className="ma-map-modal-tag">Writer</span>
                     <div className="ma-map-modal-markdown">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
                     </div>
                 </div>
                 <div className="ma-map-modal">
                     <span className="ma-map-modal-label">REFERENCES</span>
                     <ol className="ma-map-modal-references">
-                        <li>Rush, E. C., Obolonkin, V., Battin, M., Wouldes, T., & Rowan, J. (2015b). Body composition in offspring of New Zealand women: Ethnic and gender differences at age 1–3 years in 2005–2009. Annals Of Human Biology, 42(5), 492–497.</li>
+                        <li>
+                            Rush, E. C., Obolonkin, V., Battin, M., Wouldes, T., & Rowan, J. (2015b). Body composition
+                            in offspring of New Zealand women: Ethnic and gender differences at age 1–3 years in
+                            2005–2009. Annals Of Human Biology, 42(5), 492–497.
+                        </li>
                         <li>Commercial 1978</li>
                     </ol>
                 </div>

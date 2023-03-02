@@ -12,7 +12,6 @@ import { Anchor } from '/components/anchor'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 
-
 export default function Contact(): FCReturn {
     const mapRef = useRef<mapbox.Map | null>(null)
     const mapContainerRef = React.useRef<HTMLDivElement>(null)
@@ -104,76 +103,54 @@ export default function Contact(): FCReturn {
             </section>
 
             <section className="ma-contact-content">
-                <Emblem h={72} />
+                <Emblem h={64} />
                 <h1>Submit New Data</h1>
                 <br />
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Anatolia19 project welcomes data contributions made within the framework of academic ethics without any discrimination other than the central team and adds it to the main map with the contributor’s information. To do this, fill out the form below and send it to us!
                     <br />
                     <br />
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    The standby time is between one week and two months.
                 </p>
 
-                <h2>Personal Details *</h2>
+                <h2>Personal Details</h2>
 
                 <div className="row">
                     <div className="col-xs">
-                        <Input
-                            type="text"
-                            label="Full Name"
-                            placeholder="Your full name"
-                        />
+                        <Input type="text" label="Full Name" placeholder="Your full name" />
                     </div>
                     <div className="col-xs">
-                        <Input
-                            type="text"
-                            label="University — Optional"
-                            placeholder="Lorem?"
-                            optional={true}
-                        />
+                        <Input type="text" label="University — Optional" placeholder="Lorem?" optional={true} />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-xs">
+                        <Input type="text" label="Email" placeholder="Your mail adress" />
+                    </div>
+                    <div className="col-xs">
+                        <Input type="text" label="Academic Level" placeholder="Your academic level" optional={true} />
+                    </div>
+                </div>
+
+                <h2>Data Details</h2>
+
+                <br />
+                <p>As with any data in our project, the data you will contribute should have a location. You can do this either by entering the latitude/longitude information you have or by using the tool on the side and marking it on the map by auto-filling. Please zoom in on the street, mountain or village of the data on the map and mark it to post the most accurate result.</p>
+                <br />
+
+                <div className="row">
+                    <div className="col-xs">
+                        <Input type="text" label="Data Name" placeholder="An explanatory short name" />
+                    </div>
+                    <div className="col-xs">
+                        <Input type="text" label="Data Type" placeholder="Select" />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-xs">
                         <Input
                             type="text"
-                            label="Email"
-                            placeholder="Your mail adress"
-                        />
-                    </div>
-                    <div className="col-xs">
-                        <Input
-                            type="text"
-                            label="Academic Level"
-                            placeholder="Your academic level"
-                            optional={true}
-                        />
-                    </div>
-                </div>
-
-                <h2>Data Details *</h2>
-
-                <div className="row">
-                    <div className="col-xs">
-                        <Input
-                            type="text"
-                            label="Data Name"
-                            placeholder="An explanatory short name"
-                        />
-                    </div>
-                    <div className="col-xs">
-                        <Input
-                            type="text"
-                            label="Data Type"
-                            placeholder="Select"
-                        />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-xs">
-                        <Input
-                            type="text"
-                            label="Latitude — Click on the map to autofill"
+                            label="Latitude"
                             placeholder="0.000"
                             defaultValue={0}
                         />
@@ -181,7 +158,7 @@ export default function Contact(): FCReturn {
                     <div className="col-xs">
                         <Input
                             type="text"
-                            label="Longitude — Click on the map to autofill"
+                            label="Longitude"
                             placeholder="0.0000"
                             defaultValue={0}
                         />
@@ -190,23 +167,21 @@ export default function Contact(): FCReturn {
 
                 <div className="row">
                     <div className="col-xs">
-                    <Input
-                        type="textarea"
-                        label="Note — Optional"
-                        placeholder="Please write your extra notes related to the data here..."
-                        defaultValue={0}
-                        optional={true}
-                    />
+                        <Input
+                            type="textarea"
+                            label="Note — Optional"
+                            placeholder="Please write your extra notes related to the data here..."
+                            defaultValue={0}
+                            optional={true}
+                        />
                     </div>
                 </div>
-
                 <br />
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <br />
-
-                <button className="btn btn-sharp btn-sharp-islamic">SUBMIT</button>
+                <button className="btn btn-sharp btn-sharp-islamic" style={{
+                    transform: 'translateX(2px)'
+                }}>
+                    <span>SUBMIT</span>
+                </button>
             </section>
             {/* </div> */}
 
