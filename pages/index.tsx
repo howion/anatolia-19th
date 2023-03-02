@@ -154,7 +154,9 @@ export default function Home(): FCReturn {
                         <AccordionContainer>
                             <Accordion title="How can I contribute to the Project from outside?" active>
                                 <p>
-                                    Anatolia19 Project invites its researchers for their contributions on various subjects and is open to academic/non-academic contributions. For more detailed information, see the Submit Data section.
+                                    Anatolia19 Project invites its researchers for their contributions on various
+                                    subjects and is open to academic/non-academic contributions. For more detailed
+                                    information, see the Submit Data section.
                                 </p>
                             </Accordion>
                             <Accordion title="Why are you doing this project?">

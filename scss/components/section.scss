@@ -89,7 +89,8 @@
         &.s0 {
             padding: 0;
 
-            &::before, &::after {
+            &::before,
+            &::after {
                 display: none;
             }
         }

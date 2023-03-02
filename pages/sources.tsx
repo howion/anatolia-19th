@@ -39,7 +39,9 @@ export function Source(props: SourceProps): FCReturn {
             </div>
             <div className="ma-sources-section-rhs">
                 <div className="ma-sources-section-rhs-pics">
-                    {props.pics.map((v, i) => <Image className="ma-sources-section-rhs-pics-pic" src={v} key={i} alt="" />)}
+                    {props.pics.map((v, i) => (
+                        <Image className="ma-sources-section-rhs-pics-pic" src={v} key={i} alt="" />
+                    ))}
                 </div>
             </div>
         </section>
@@ -86,7 +88,6 @@ export default function Sources(): FCReturn {
                     subtitle="via SALT Online"
                     text="In 80 years, from the 1850s to the 1930s, which we examined in our Project, the Anatolian map has undergone many physical, political and social transformations. We focus on these transformations and show the data we obtained from more than seventy maps in the French National Library, David Ramsey Map Collection and Ottoman State Archives on the main map of our Project in layers. In this context, we aim to both facilitate the work of researchers working in different disciplines and inspire more micro-scale studies."
                     href="https://archives.saltresearch.org/handle/123456789/2301"
-                    pics={[annurie1]}
                     pics={[annurie1]}
                 />
                 <Source

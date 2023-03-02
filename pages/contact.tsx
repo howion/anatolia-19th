@@ -107,7 +107,9 @@ export default function Contact(): FCReturn {
                 <h1>Submit New Data</h1>
                 <br />
                 <p>
-                    Anatolia19 project welcomes data contributions made within the framework of academic ethics without any discrimination other than the central team and adds it to the main map with the contributor’s information. To do this, fill out the form below and send it to us!
+                    Anatolia19 project welcomes data contributions made within the framework of academic ethics without
+                    any discrimination other than the central team and adds it to the main map with the contributor’s
+                    information. To do this, fill out the form below and send it to us!
                     <br />
                     <br />
                     The standby time is between one week and two months.
@@ -135,7 +137,12 @@ export default function Contact(): FCReturn {
                 <h2>Data Details</h2>
 
                 <br />
-                <p>As with any data in our project, the data you will contribute should have a location. You can do this either by entering the latitude/longitude information you have or by using the tool on the side and marking it on the map by auto-filling. Please zoom in on the street, mountain or village of the data on the map and mark it to post the most accurate result.</p>
+                <p>
+                    As with any data in our project, the data you will contribute should have a location. You can do
+                    this either by entering the latitude/longitude information you have or by using the tool on the side
+                    and marking it on the map by auto-filling. Please zoom in on the street, mountain or village of the
+                    data on the map and mark it to post the most accurate result.
+                </p>
                 <br />
 
                 <div className="row">
@@ -148,20 +155,10 @@ export default function Contact(): FCReturn {
                 </div>
                 <div className="row">
                     <div className="col-xs">
-                        <Input
-                            type="text"
-                            label="Latitude"
-                            placeholder="0.000"
-                            defaultValue={0}
-                        />
+                        <Input type="text" label="Latitude" placeholder="0.000" defaultValue={0} />
                     </div>
                     <div className="col-xs">
-                        <Input
-                            type="text"
-                            label="Longitude"
-                            placeholder="0.0000"
-                            defaultValue={0}
-                        />
+                        <Input type="text" label="Longitude" placeholder="0.0000" defaultValue={0} />
                     </div>
                 </div>
 
@@ -177,9 +174,12 @@ export default function Contact(): FCReturn {
                     </div>
                 </div>
                 <br />
-                <button className="btn btn-sharp btn-sharp-islamic" style={{
-                    transform: 'translateX(2px)'
-                }}>
+                <button
+                    className="btn btn-sharp btn-sharp-islamic"
+                    style={{
+                        transform: 'translateX(2px)'
+                    }}
+                >
                     <span>SUBMIT</span>
                 </button>
             </section>
