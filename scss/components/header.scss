@@ -29,5 +29,16 @@
     &-p {
         margin: 36px 0 0 0;
         color: #858482;
+        font-size: 1.0625rem;
+    }
+
+    &-title {
+        // font-weight: 700;
+        font-size: 4.5rem;
+        >span {
+            display: block;
+            // color: rgba(#000, 0.6);
+            // color: $color-islamic;
+        }
     }
 }

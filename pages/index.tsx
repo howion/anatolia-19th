@@ -106,8 +106,8 @@ export default function Home(): FCReturn {
                 {/* SPONSORS */}
                 <section className="ma-home-sponsors-container">
                     <Image className="ma-home-sponsors-back" src={sarkTicaret} alt="" />
-                    <h2 className="ma-section-title s1 c1">
-                        <span>01</span>Project Sponsors
+                    <h2 className="ma-section-title s0 c1">
+                        Project Sponsors
                     </h2>
                     <div className="ma-home-sponsors-list">
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefOdtu} alt="" />
@@ -128,7 +128,8 @@ export default function Home(): FCReturn {
             <div className="ma-mwcontainer" data-scroll-section>
                 <div className="ma-home-people-wrapper">
                     <h2 className="ma-section-title s2 c2">
-                        <span>02</span>People
+                        <span>07</span>
+                        People
                     </h2>
                     <div className="ma-home-people-grid">
                         <Person name="Selçuk Dursun" role="Supervisor" src={peopleSelcuk} />
@@ -148,11 +149,11 @@ export default function Home(): FCReturn {
 
                     <div className="ma-home-faq-wrapper">
                         <h2 className="ma-section-title s3 c3">
-                            <span>03</span>Frequently Asked Questions
+                            :: Frequently Asked Questions ::
                         </h2>
 
                         <AccordionContainer>
-                            <Accordion title="How can I contribute to the Project from outside?" active>
+                            <Accordion title="How can I contribute to this project?" active>
                                 <p>
                                     Anatolia19 Project invites its researchers for their contributions on various
                                     subjects and is open to academic/non-academic contributions. For more detailed
