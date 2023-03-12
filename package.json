@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn prettier:fix && next build",
+    "build": "rm -rf public/_internal && cp -R node_modules/@prisma/studio/build public/_internal && yarn prettier:fix && next build",
     "start": "next start",
     "lint": "eslint .",
     "prisma": "npx prisma format && npx prisma migrate dev && npx prisma generate",
@@ -15,7 +15,9 @@
     "bin:commercials": "ts-node ./bin/commercials-excel-to-db"
   },
   "dependencies": {
-    "@prisma/client": "4.11.0",
+    "@prisma/client": "^4.11.0",
+    "@prisma/studio": "^0.483.0",
+    "@prisma/studio-vercel": "^0.423.0",
     "@types/locomotive-scroll": "^4.1.0",
     "@types/lodash": "^4.14.190",
     "@types/mapbox-gl": "^2.7.10",

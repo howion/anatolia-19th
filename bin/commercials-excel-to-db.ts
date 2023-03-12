@@ -13,10 +13,7 @@ function isNullish(val: any): boolean {
         if (val === '?' || !val) return true
     }
 
-    if (
-        val === null ||
-        val === undefined
-    ) return true
+    if (val === null || val === undefined) return true
 
     return false
 }
@@ -62,13 +59,13 @@ async function main() {
             const relations = _relations
                 .split(',')
                 .map((r: string) => String(r).trim())
-                .filter(r => !!r)
-                .map(r => Number.parseInt(r))
+                .filter((r) => !!r)
+                .map((r) => Number.parseInt(r))
             // const sources = _sources.split('/').map((r: string) => Number.parseInt(String(r).trim()))
             const occupations = _occupation
                 .split(',')
                 .map((r: string) => String(r).trim())
-                .map(o => ({
+                .map((o) => ({
                     where: {
                         name: o
                     },
@@ -135,7 +132,7 @@ async function main() {
 
         for (const _id in relationMap) {
             const id = Number.parseInt(_id)
-            const rels = relationMap[id].map(r => ({ id: r }))
+            const rels = relationMap[id].map((r) => ({ id: r }))
 
             await Database.pinpoint.update({
                 where: {
@@ -161,7 +158,6 @@ async function main() {
     }
 
     console.log('Bitti!')
-
 }
 
 main()

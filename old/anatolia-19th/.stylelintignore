@@ -1,9 +1,0 @@
-___*/
-.next/
-node_modules/
-prisma/
-public/
-
-package.json
-*.md
-.env

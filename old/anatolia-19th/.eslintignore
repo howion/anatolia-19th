@@ -1,9 +1,0 @@
-# !.stylelintrc.js
-
-.next/
-node_modules/
-prisma/
-public/
-
-.next.config.js
-.eslintrc.js

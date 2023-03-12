@@ -15,7 +15,9 @@ export function Header(props: HeaderProps): FCReturn<HeaderProps> {
         <header className="ma-header" data-scroll-section>
             <div className="ma-mwcontainer">
                 <Navbar />
-                <h1 className="ma-header-title">The 19th Century Anatolia Project <span>{'— ' + props.subtitle}</span></h1>
+                <h1 className="ma-header-title">
+                    The 19th Century Anatolia Project <span>{'— ' + props.subtitle}</span>
+                </h1>
                 <p className="ma-header-p">{props.text}</p>
             </div>
             <div className="ma-header-back">

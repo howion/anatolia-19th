@@ -4,9 +4,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
-  //   relationMode = "prisma"
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Pinpoint {
@@ -24,7 +24,10 @@ model Pinpoint {
   relationsF  Pinpoint[]   @relation("PinpointRelations")
   relationsB  Pinpoint[]   @relation("PinpointRelations")
   sources     Source[]
-  markerId    Int
+
+  markerId Int
+
+  @@index([markerId])
 }
 
 model Occupation {

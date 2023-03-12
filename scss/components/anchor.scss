@@ -10,10 +10,11 @@ a.ma-anchor {
         font-weight: 500;
         padding: 4px 10px;
 
-        &::before, &::after {
+        &::before,
+        &::after {
             position: absolute;
             display: block;
-            content: "";
+            content: '';
             width: 50%;
             // transform: translateX(-100%);
             height: 1px;
@@ -21,7 +22,8 @@ a.ma-anchor {
             transition: width 300ms;
         }
 
-        &:hover::before, &:hover::after {
+        &:hover::before,
+        &:hover::after {
             width: 100% !important;
         }
 
