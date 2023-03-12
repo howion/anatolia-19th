@@ -3,6 +3,8 @@ body {
     overflow-x: hidden;
     overflow: hidden;
     // overflow: overlay; // onload
+
+    @include ma-prefer-quality;
 }
 
 #app {

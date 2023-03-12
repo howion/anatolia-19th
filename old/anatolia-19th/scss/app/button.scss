@@ -1,0 +1,134 @@
+.btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    padding: 0.875rem 1.9rem 0.875rem 1.9rem;
+    user-select: none;
+    white-space: nowrap;
+    pointer-events: all;
+
+    &.btn-icon {
+        $--size: 3rem;
+
+        display: block;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        width: $--size;
+        height: $--size;
+        padding: 0;
+        border-radius: $--size/2;
+        transition: color 300ms, background-color 300ms;
+
+        > i {
+            width: $--size;
+            height: $--size;
+            text-align: center;
+            line-height: $--size;
+            font-size: $--size/2;
+            padding: 0;
+        }
+
+        &:hover {
+            color: #fbdb40 !important;
+            background-color: rgba(0, 0, 0, 0.9) !important;
+        }
+    }
+
+    &.btn-round {
+        background-color: rgba($color-islamic-dark, 0.8);
+        border-radius: 18px 0 18px 0;
+        color: #fff;
+
+        &:hover {
+            background-color: rgba($color-islamic-dark, 0.9);
+        }
+
+        > i {
+            display: block;
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 1.25rem;
+            line-height: 1.25rem;
+            margin-right: 10px;
+            margin-left: -8px;
+        }
+    }
+
+    &.btn-sharp {
+        $--color: #000;
+        background-color: transparent;
+        // border:
+
+        color: $--color;
+        border: 1px solid $--color;
+        transition: color 300ms, opacity 300ms;
+
+        &::before {
+            display: block;
+            content: '';
+            position: absolute;
+            background-color: $--color;
+            width: 0%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transition: width 300ms;
+            z-index: -1;
+        }
+
+        &:hover {
+            color: #fff;
+
+            &::before {
+                width: 100%;
+            }
+            // color: lighten($color, 20%);
+            // border: 1px solid lighten($color, 20%);
+        }
+
+        &-gray {
+            $--color-gray: #000;
+            color: $--color-gray;
+            border-color: $--color-gray;
+            opacity: 0.5;
+
+            &::before {
+                background-color: $--color-gray;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &-blue {
+            $--color-blue: #2461ff;
+            color: $--color-blue;
+            border-color: $--color-blue;
+
+            &::before {
+                background-color: $--color-blue;
+            }
+        }
+
+        &-islamic {
+            $--color-islamic: $color-islamic;
+            color: $--color-islamic;
+            border-color: $--color-islamic;
+
+            &::before {
+                background-color: $--color-islamic;
+            }
+        }
+    }
+
+    > span {
+        font-size: 0.875rem;
+        line-height: 1rem;
+        font-weight: 500;
+    }
+}

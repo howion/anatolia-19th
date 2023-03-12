@@ -1,0 +1,13 @@
+# Git
+/.gitattributes
+/.gitignore
+
+# Development Files
+/.editorconfig
+/.eslintignore
+/.eslintrc.js
+/.prettierrc.js
+/.stylelintrc.js
+
+# Readme Files
+*.md

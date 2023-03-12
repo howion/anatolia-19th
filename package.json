@@ -7,8 +7,12 @@
     "build": "yarn prettier:fix && next build",
     "start": "next start",
     "lint": "eslint .",
+    "prisma": "npx prisma format && npx prisma migrate dev && npx prisma generate",
+    "studio": "npx prisma studio",
     "prettier:fix": "prettier --write .",
-    "stylelint:fix": "stylelint --fix"
+    "stylelint:fix": "stylelint --fix",
+    "bin:console": "ts-node ./bin/console",
+    "bin:commercials": "ts-node ./bin/commercials-excel-to-db"
   },
   "dependencies": {
     "@prisma/client": "4.11.0",

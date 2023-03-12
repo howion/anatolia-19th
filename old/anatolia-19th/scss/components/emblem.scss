@@ -1,0 +1,24 @@
+.ma-emblem {
+    position: relative;
+    user-select: none;
+}
+
+.ma-emblem.t0 {
+    .ma-emblem-project {
+        transform: translate(225px, (-154px + 52px));
+    }
+
+    .ma-emblem-anatolia {
+        transform: translate(-5px, -15px);
+    }
+    // animation: translateEmblem1 1s 1s infinite;
+}
+
+@keyframes translateEmblem1 {
+    0% {
+        transform: translet(0px, 0px);
+    }
+    100% {
+        transform: translate(439px, -345px);
+    }
+}

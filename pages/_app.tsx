@@ -62,8 +62,6 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
     return (
         <>
             <Meta _viewport={true} />
-            <Easter />
-            <Transitor />
             {/* <LocomotiveScrollProvider
                 options={{
                     smooth: true
@@ -73,6 +71,8 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
                 containerRef={appRef}
             > */}
             <div id="app" ref={appRef} className={inter.className}>
+                <Easter />
+                <Transitor />
                 {/*<FancyCursorProvider>
                         <FancyCursor className="app-cursor-inner"/>
                         <FancyCursor className="app-cursor-outer"/>

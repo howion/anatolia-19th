@@ -1,0 +1,87 @@
+@media (max-width: 1310px) {
+    .ma-home {
+        &-projects-label {
+            position: relative !important;
+            width: 100% !important;
+            transform: none !important;
+            margin-left: 1px !important;
+        }
+
+        &-people-grid {
+            gap: 0.7vw 1vw !important;
+        }
+    }
+}
+
+@media (max-width: 1263px) {
+    .ma-home {
+        &-people-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .ma-navbar {
+        padding-bottom: 48px;
+
+        > .ma-emblem > svg {
+            width: auto;
+            height: 64px !important;
+        }
+    }
+
+    .ma-home {
+        &-people-grid {
+            grid-template-columns: 1fr 1fr 1fr !important;
+            gap: 0.7vw 1vw !important;
+        }
+    }
+
+    h1 {
+        font-size: 4rem !important;
+    }
+
+    p {
+        font-size: 1rem !important;
+    }
+
+    .ma-section {
+        &-title {
+            font-size: 2.625rem;
+
+            > span {
+                // font-size: ;
+            }
+        }
+    }
+
+    .ma-home {
+        &-search {
+            &-container {
+                margin-top: 28px;
+            }
+
+            &-input {
+                font-size: 0.9375rem;
+                padding: 20px 32px;
+            }
+        }
+    }
+}
+
+@media (max-width: 830px) {
+    .ma-home {
+        &-people-grid {
+            grid-template-columns: 1fr 1fr !important;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .ma-home {
+        &-people-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+}

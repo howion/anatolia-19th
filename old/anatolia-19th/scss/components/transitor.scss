@@ -1,0 +1,81 @@
+$ma-transitor-tiles: 5;
+$ma-transitor-bgc: $color-islamic-dark;
+
+@keyframes maAnimatorFadeAnimation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+#ma-transitor {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100vh;
+    transition: width 0s 1.5s ease;
+    // visibility: hidden;
+
+    > .ma-emblem {
+        position: fixed;
+        z-index: 10;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateZ(0);
+        opacity: 0;
+        visibility: hidden;
+        // transition: opacity 1.5s ease 1s;
+
+        // transition: visibility 0 ;
+        // opacity: 0;
+    }
+
+    > .ma-transitor-tile {
+        $h: 100% / $ma-transitor-tiles;
+
+        position: absolute;
+        left: 0;
+        width: 0;
+        height: $h;
+        background-color: $ma-transitor-bgc;
+        transition: width 0.7s ease;
+
+        @for $i from 0 through $ma-transitor-tiles {
+            &:nth-child(#{$i}) {
+                top: ($i - 1) * $h;
+                transition-delay: #{($i - 1) * 0.2s};
+            }
+        }
+    }
+
+    &.active {
+        // visibility: visible;
+        width: 100%;
+        transition-delay: 0s;
+
+        > .ma-emblem {
+            visibility: visible;
+            // opacity: 0.5;
+            // animation: 1s infinite normal maAnimatorFadeAnimation;
+            animation: maAnimatorFadeAnimation 2s ease 1s infinite;
+        }
+
+        > .ma-transitor-tile {
+            width: 100%;
+
+            @for $i from 0 through $ma-transitor-tiles {
+                &:nth-child(#{$i}) {
+                    transition-delay: #{($i - 1) * 0.2s};
+                }
+            }
+        }
+    }
+}

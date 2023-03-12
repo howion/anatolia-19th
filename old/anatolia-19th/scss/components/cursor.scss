@@ -1,0 +1,59 @@
+.app-cursor {
+    &-outer,
+    &-inner {
+        mix-blend-mode: difference;
+    }
+
+    &-outer {
+        width: 36px;
+        height: 36px;
+        background-color: #fff;
+        border-radius: 18px;
+        //border: 2px solid rgba(#000, 0.5);
+        //background-color: rgba(#000, 1);
+        transition: transform 500ms, opacity 500ms;
+        --speed: 0.15;
+
+        &.cursor-pointer {
+            --scale: 2;
+            --speed: 0.07;
+            //    border-radius: 8px;
+            //    background-color: transparent;
+            //    border: 4px solid rgba(#000, 0.5);
+            //    mix-blend-mode: unset;
+            //    top:    calc(var(--focus-y) - 10px) !important;
+            //    left:   calc(var(--focus-x) - 10px) !important;
+            //    width:  calc(var(--focus-w) + 20px) !important;
+            //    height: calc(var(--focus-h) + 20px) !important;
+        }
+    }
+
+    &-inner {
+        width: 8px;
+        height: 8px;
+        //background-color: rgba(#000, 0.6);
+        background-color: #fff1f2;
+        border-radius: 8px;
+    }
+}
+
+//#app * {
+//    cursor: none;
+//}
+
+//.ma-cursor {
+//    > &-outer, &-inner {
+//        position: fixed;
+//        display: block;
+//    }
+//
+//    > &-outer {
+//        z-index: 999;
+//        width: 32px;
+//        height: 32px;
+//        pointer-events: none;
+//        border: 2px solid #000;
+//        border-radius: 16px;
+//        transition: none;
+//    }
+//}

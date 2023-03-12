@@ -4,137 +4,46 @@ generator client {
 }
 
 datasource db {
-  provider          = "mysql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("DATABASE_SHADOW_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  //   relationMode = "prisma"
 }
 
 model Pinpoint {
-  id          Int        @id @default(autoincrement())
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id          Int          @id @default(autoincrement())
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
   yearStart   Int
   yearEnd     Int?
-  address     String?
   lat         Float
   lon         Float
-  name        String     @db.VarChar(255)
-  marker      Marker     @relation(fields: [markerId], references: [id])
-  author      String?
-  occupations String
-  relationsF  Pinpoint[] @relation("PinpointRelations")
-  relationsB  Pinpoint[] @relation("PinpointRelations")
+  name        String       @db.VarChar(255)
+  marker      Marker       @relation(fields: [markerId], references: [id])
+  //   author      String?  @db.VarChar(255)
+  occupations Occupation[]
+  relationsF  Pinpoint[]   @relation("PinpointRelations")
+  relationsB  Pinpoint[]   @relation("PinpointRelations")
   sources     Source[]
   markerId    Int
 }
 
+model Occupation {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique @db.VarChar(255)
+  Pinpoint Pinpoint[]
+}
+
 model Marker {
   id       Int        @id @default(autoincrement())
-  color    String?
-  icon     String?
+  color    String?    @db.VarChar(255)
+  icon     String?    @db.VarChar(255)
   Pinpoint Pinpoint[]
 }
 
 model Source {
-  id         Int       @id @default(autoincrement())
-  shortName  String
-  source     String
-  url        String?
-  Pinpoint   Pinpoint? @relation(fields: [pinpointId], references: [id])
-  pinpointId Int?
+  id        Int        @id @default(autoincrement())
+  shortName String     @unique
+  source    String     @db.VarChar(255)
+  url       String?    @db.VarChar(255)
+  Pinpoint  Pinpoint[]
 }
-
-// model User {
-//   id              Int              @id @default(autoincrement())
-//   createdAt       DateTime         @default(now())
-//   name            String
-//   code            String           @unique
-//   mail            String?
-//   balance         Float
-//   pass            String
-//   token           String
-//   type            String // user, admin
-//   remaining       Int // giris hakki
-//   discounts       String // discount1,discount2
-//   vadesigecen     Float            @default(0)
-//   orders          Order[]
-//   searches        Searches[]
-//   SpecialDiscount SpecialDiscount?
-//   OnlineOdeme     OnlineOdeme[]
-// }
-
-// model OnlineOdeme {
-//   id            Int      @id @default(autoincrement())
-//   createdAt     DateTime @default(now())
-//   user          User     @relation(fields: [userId], references: [id])
-//   userId        Int
-//   TRX           String   @unique
-//   CodeForHash   String
-//   amount        Float
-//   installments  Int
-//   Status        String // await, success, failure
-//   OrderId       String?
-//   FinishedExtra Json?
-//   Aciklama      String?
-// }
-
-// model Searches {
-//   id           Int      @id @default(autoincrement())
-//   createdAt    DateTime @default(now())
-//   user         User     @relation(fields: [userId], references: [id])
-//   searchedCode String
-//   userId       Int
-// }
-
-// model Crosses {
-//   id    Int    @id @default(autoincrement())
-//   code  String // code
-//   cross String @db.VarChar(1024) // ,code,code,code // mind the comma prefix
-// }
-
-// model Order {
-//   id        Int      @id @default(autoincrement())
-//   code      String   @unique
-//   createdAt DateTime @default(now())
-//   total     Float
-//   user      User     @relation(fields: [userId], references: [id])
-//   userId    Int
-//   delivery  String // kargo, arac, kendim
-//   // carrier     String?
-//   // carrierCode String?
-//   payment   String // cari, online
-//   status    String // 'Onay Bekliyor' | 'Onaylandı ve Kargoya Verilecek' | 'İptal Edildi' | 'Kargoya Verildi'
-//   data      Json // json: [[code, count, price, name, category]...]
-//   note      String   @db.VarChar(1024)
-// }
-
-// model SpecialDiscount {
-//   id     Int  @id @default(autoincrement())
-//   user   User @relation(fields: [userId], references: [id])
-//   userId Int  @unique
-//   data   Json // {code1: price, code2: price}
-// }
-
-// model Config {
-//   id    Int    @id @default(autoincrement())
-//   name  String
-//   value Json
-//   type  String
-// }
-
-// model Basket {
-//   id       Int    @id @default(autoincrement())
-//   userCode String @unique
-//   list     String @db.VarChar(1024) // product_id_1,...
-//   count    String @db.VarChar(1024) // c1,c2...
-// }
-
-// model Product {
-//   id           Int      @id @default(autoincrement())
-//   createdAt    DateTime @default(now())
-//   name         String
-//   code         String   @unique
-//   price        Float
-//   availability Int
-//   category     String
-// }

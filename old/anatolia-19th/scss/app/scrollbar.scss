@@ -1,0 +1,35 @@
+$scrollbar-px: 0;
+$scrollbar-default-width: 12px + $scrollbar-px * 2;
+$scrollbar-default-track-color: transparent;
+$scrollbar-default-thumb-color: rgba($color-islamic, 1);
+$scrollbar-default-thumbhover-color: rgba($color-islamic, 1);
+
+::-webkit-scrollbar {
+    width: $scrollbar-default-width;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: $scrollbar-default-track-color;
+    box-shadow: none;
+
+    // &:hover {
+    // background-color: rgba(0,0,0,0.1) !important;
+    // }
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $scrollbar-default-thumb-color;
+    border: $scrollbar-px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    // border-radius: 100px;
+    // border: 6px solid rgba(#000, 0);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $scrollbar-default-thumbhover-color;
+    background-clip: padding-box;
+}
