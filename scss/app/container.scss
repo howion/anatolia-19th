@@ -6,4 +6,8 @@
 
     padding-left: $view-max-width-px;
     padding-right: $view-max-width-px;
+
+    &-md {
+        max-width: 960px !important;
+    }
 }

@@ -1,21 +1,26 @@
 .ma-accordion {
+    $--head-color: rgba(#000, 0.6);
+    $--head-color-active: rgba(#000, 1);
+
     &-container {
         display: flex;
         flex-direction: column;
         // padding-top: 48px;
-        margin-top: 64px;
     }
 
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(#000, 0.05);
 
     &-head {
         width: 100%;
         display: flex;
+        padding: 10px 0;
         word-break: break-all;
         align-items: center;
+        justify-content: space-between;
         cursor: pointer;
 
         &-icon {
@@ -25,13 +30,14 @@
             min-width: $--size;
             min-height: $--size;
             position: relative;
+            margin-left: 20px;
 
             &::before,
             &::after {
                 display: block;
                 content: '';
                 position: absolute;
-                background-color: #323232;
+                background-color: $--head-color;
             }
 
             &::before {
@@ -50,9 +56,8 @@
         }
 
         &-title {
-            font-size: 1.5rem;
-            color: #323232;
-            margin-left: 20px;
+            font-size: 1.6rem;
+            color: $--head-color;
             font-weight: 500;
             // transition: margin-left 500ms ease;
         }
@@ -60,14 +65,18 @@
 
     &-content {
         display: none;
-        padding: 24px 0 14px 41px;
+        padding: (24px - 10px) 0 24px 0;
         color: #858482;
         font-size: 1.125rem;
-        text-align: justify;
+        text-align: left;
     }
 
     &.active &-content {
         display: block;
+    }
+
+    &.active &-head-title {
+        color: $--head-color-active;
     }
 
     &.active &-head-icon::after {

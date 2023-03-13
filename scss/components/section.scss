@@ -2,10 +2,11 @@
     &-title {
         position: relative;
         display: inline-block;
-        user-select: none;
         padding: 0.25rem 1.125rem;
         z-index: 0;
-        font-size: 2.75rem;
+        font-size: 3rem;
+        font-weight: 800;
+        color: $color-primary-title;
 
         > span {
             position: absolute;
@@ -126,5 +127,13 @@
                 transform: translateX(-50%);
             }
         }
+    }
+
+    &-text {
+        margin-top: 1.5rem;
+        color: $color-primary-text;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 0 10vw;
     }
 }

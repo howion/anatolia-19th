@@ -17,8 +17,8 @@ export function Accordion(props: AccordionProps): FCReturn<AccordionProps> {
     return (
         <div className={'ma-accordion' + (isActive ? ' active' : '')}>
             <div className="ma-accordion-head" onClick={() => setIsActive(!isActive)}>
-                <div className="ma-accordion-head-icon" />
                 <div className="ma-accordion-head-title">{props.title}</div>
+                <div className="ma-accordion-head-icon" />
             </div>
             <div className="ma-accordion-content">{props.children}</div>
         </div>

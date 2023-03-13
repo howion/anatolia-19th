@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "build": "rm -rf public/_internal && cp -R node_modules/@prisma/studio/build public/_internal && yarn prettier:fix && next build",
+    "build": "yarn prettier:fix && next build",
     "start": "next start",
     "lint": "eslint .",
     "prisma": "npx prisma format && npx prisma migrate dev && npx prisma generate",
@@ -17,7 +17,6 @@
   "dependencies": {
     "@prisma/client": "^4.11.0",
     "@prisma/studio": "^0.483.0",
-    "@prisma/studio-vercel": "^0.423.0",
     "@types/locomotive-scroll": "^4.1.0",
     "@types/lodash": "^4.14.191",
     "@types/mapbox-gl": "^2.7.10",
@@ -51,7 +50,9 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.2.4",
+    "@types/cli-progress": "^3.11.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "cli-progress": "^3.12.0",
     "eslint": "^8.36.0",
     "eslint-config-next": "^13.2.4",
     "eslint-config-prettier": "^8.7.0",
@@ -61,6 +62,7 @@
     "eslint-plugin-unicorn": "^46.0.0",
     "npm-check-updates": "^16.7.12",
     "prettier": "^2.8.4",
+    "read-excel-file": "^5.6.1",
     "stylelint": "^15.2.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recess-order": "^4.0.0",

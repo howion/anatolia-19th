@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { Anchor } from './anchor'
 import { Emblem } from '/components/emblem'
 
 interface FooterItemProps {
@@ -33,7 +34,9 @@ export function Footer(): FCReturn {
     return (
         <footer className="ma-footer" data-scroll-section>
             <div className="ma-mwcontainer">
-                <Emblem h={68} textFill="#FFF" />
+                <Anchor href="/" animate>
+                    <Emblem h={68} textFill="#FFF" />
+                </Anchor>
                 <div className="ma-footer-section-container">
                     <FooterSection title="Website">
                         <FooterItem href="/" text="Home" />
@@ -67,10 +70,16 @@ export function Footer(): FCReturn {
             </div>
             <div className="ma-footer-bottom-container">
                 <div className="ma-mwcontainer ma-footer-bottom">
-                    <span className="ma-footer-bottom-copyright">Anatolia: 19th Century &copy; 2022</span>
-                    <Link href="#" className="ma-footer-bottom-sitemap">
+                    <span className="ma-footer-bottom-copyright">
+                        {/* by <a href="https://github.com/howion" target="_blank">howion</a> */}
+                        Licensed under the{' '}
+                        <a href="https://github.com/howion/anatolia-19th/blob/main/LICENSE" target="_blank">
+                            GNU Affero General Public License v3.0
+                        </a>
+                    </span>
+                    {/* <Link href="#" className="ma-footer-bottom-sitemap">
                         sitemap.xml
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </footer>

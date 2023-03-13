@@ -2,6 +2,9 @@
 /.gitattributes
 /.gitignore
 
+# Scripts
+/bin
+
 # Development Files
 /.editorconfig
 /.eslintignore

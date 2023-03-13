@@ -107,6 +107,11 @@ export default function Home(): FCReturn {
                 <section className="ma-home-sponsors-container">
                     <Image className="ma-home-sponsors-back" src={sarkTicaret} alt="" />
                     <h2 className="ma-section-title s0 c1">Project Sponsors</h2>
+                    <p className="ma-section-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, perspiciatis obcaecati? Quia
+                        architecto laborum quam, sequi inventore eaque illum error obcaecati voluptatem. Praesentium
+                        eius id alias eos est voluptas soluta?
+                    </p>
                     <div className="ma-home-sponsors-list">
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefOdtu} alt="" />
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefSalt} alt="" />
@@ -132,12 +137,8 @@ export default function Home(): FCReturn {
                     <div className="ma-home-people-grid">
                         <Person name="Selçuk Dursun" role="Supervisor" src={peopleSelcuk} />
                         {/* <Person name="Ebru Boyar" role="Supervisor" src={peopleEbru} /> */}
-                        <Person name="Agah Enes Yasa" role="Founder & Coordinator" src={peopleAgah} />
-                        <Person
-                            name="Mustafa Kadri Yekeler"
-                            role="Founder & Ottoman Turkish Translator"
-                            src={peopleKadri}
-                        />
+                        <Person name="Agah Enes Yasa" role="Founder / Coordinator" src={peopleAgah} />
+                        <Person name="M. Kadri Yekeler" role="Founder / Ottoman Turkish Translator" src={peopleKadri} />
                         {/* <Person name="Zelal Deniz Erdoğan" role="Editor (Until 2022)" src={peopleZelal} /> */}
                         <Person name="Raşit Alp Atasoy" role="Ottoman Turkish Translator" src={peopleRasit} />
                         <Person name="Furkan Arslan" role="Ottoman Turkish Translator" src={peopleFurkan} />
@@ -146,41 +147,50 @@ export default function Home(): FCReturn {
                     </div>
 
                     <div className="ma-home-faq-wrapper">
-                        <h2 className="ma-section-title s3 c3">:: Frequently Asked Questions ::</h2>
-
-                        <AccordionContainer>
-                            <Accordion title="How can I contribute to this project?" active>
-                                <p>
-                                    Anatolia19 Project invites its researchers for their contributions on various
-                                    subjects and is open to academic/non-academic contributions. For more detailed
-                                    information, see the Submit Data section.
-                                </p>
-                            </Accordion>
-                            <Accordion title="Why are you doing this project?">
-                                <p>
-                                    The 19th century is an era of transformation all over the world, the ground upon
-                                    which the world we now live in was constructed. In the particular case of the
-                                    Ottoman Empire, the reign of Sultan Abdulaziz and Abdulhamid II signified the start
-                                    of the prosperity of Anatolia following their deeds and reforms in terms of
-                                    Anatolian infrastructure. The era following the first railway concession in 1856 is
-                                    significant to understand the Ottoman Empire realizing itself in complex relations
-                                    with the West, its integration into the global system, and to analyze the origins of
-                                    contemporary Turkey.
-                                </p>
-                            </Accordion>
-                            <Accordion title="Where do you get your sources from?">
-                                <p>
-                                    We use various subsidiary sources and documents at the Presidency Ottoman Archive in
-                                    Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection, Istanbul
-                                    Municipality Ataturk Library and Bibliothèque Nationale de France. For detailed
-                                    information, see the{' '}
-                                    <Anchor href="/sources" animate>
-                                        sources
-                                    </Anchor>{' '}
-                                    page.
-                                </p>
-                            </Accordion>
-                            {/* <Accordion title="How can I contribute to the project?">
+                        <h2 className="ma-section-title s0 c3">Frequently Asked Questions</h2>
+                        <p className="ma-section-text">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni dignissimos perspiciatis
+                            alias minima ullam voluptate facilis officiis sit quas quis non aliquid animi, veritatis
+                            distinctio recusandae. Quas nesciunt incidunt earum.
+                        </p>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <div className="ma-mwcontainer ma-mwcontainer-md">
+                            <AccordionContainer>
+                                <Accordion title="How can I contribute to this project?" active>
+                                    <p>
+                                        <i>Anatolia: 19th Century</i> project invites its researchers for their
+                                        contributions on various subjects and is open to academic/non-academic
+                                        contributions. For more detailed information, see the Submit Data section.
+                                    </p>
+                                </Accordion>
+                                <Accordion title="Why are you doing this project?">
+                                    <p>
+                                        The 19th century is an era of transformation all over the world, the ground upon
+                                        which the world we now live in was constructed. In the particular case of the
+                                        Ottoman Empire, the reign of Sultan Abdulaziz and Abdulhamid II signified the
+                                        start of the prosperity of Anatolia following their deeds and reforms in terms
+                                        of Anatolian infrastructure. The era following the first railway concession in
+                                        1856 is significant to understand the Ottoman Empire realizing itself in complex
+                                        relations with the West, its integration into the global system, and to analyze
+                                        the origins of contemporary Turkey.
+                                    </p>
+                                </Accordion>
+                                <Accordion title="Where do you get your sources from?">
+                                    <p>
+                                        We use various subsidiary sources and documents at the Presidency Ottoman
+                                        Archive in Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection,
+                                        Istanbul Municipality Ataturk Library and Bibliothèque Nationale de France. For
+                                        detailed information, see the{' '}
+                                        <Anchor href="/sources" animate>
+                                            sources
+                                        </Anchor>{' '}
+                                        page.
+                                    </p>
+                                </Accordion>
+                                {/* <Accordion title="How can I contribute to the project?">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
@@ -188,7 +198,8 @@ export default function Home(): FCReturn {
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.
                             </Accordion> */}
-                        </AccordionContainer>
+                            </AccordionContainer>
+                        </div>
                     </div>
                 </div>
             </div>

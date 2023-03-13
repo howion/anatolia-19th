@@ -103,7 +103,7 @@ export default function Contact(): FCReturn {
             </section>
 
             <section className="ma-contact-content">
-                <Emblem h={64} />
+                <Emblem h={72} />
                 <h1>Submit New Data</h1>
                 <br />
                 <p>
