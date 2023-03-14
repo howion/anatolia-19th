@@ -157,9 +157,10 @@ export default function Home(): FCReturn {
                         <br />
                         <br />
                         <br />
-                        <div className="ma-mwcontainer ma-mwcontainer-md">
+                        <br />
+                        <div className="ma-mwcontainer ma-mwcontainer-md px-0">
                             <AccordionContainer>
-                                <Accordion title="How can I contribute to this project?" active>
+                                <Accordion title="How can I contribute to this project?">
                                     <p>
                                         <i>Anatolia: 19th Century</i> project invites its researchers for their
                                         contributions on various subjects and is open to academic/non-academic

@@ -16,9 +16,9 @@
             margin-left: 1px !important;
         }
 
-        &-people-grid {
-            gap: 0.7vw 1vw !important;
-        }
+        // &-people-grid {
+        //     gap: 0.7vw 1vw !important;
+        // }
 
         &-search {
             &-input {
@@ -52,6 +52,54 @@
     }
 }
 
+@media (max-width: 670px) {
+    .ma-home-search-i {
+        display: none !important;
+    }
+
+    .ma-header {
+        &-title {
+            font-size: 3rem !important;
+        }
+
+        &-p {
+            font-size: 0.875rem !important;
+        }
+
+        .ma-emblem {
+            height: 64px !important;
+        }
+    }
+
+    .ma-section {
+        &-title {
+            font-size: 2.625rem !important;
+        }
+
+        &-text {
+            font-size: 0.875rem !important;
+        }
+    }
+
+    .ma-accordion {
+        &-head {
+            &-icon {
+                display: none !important;
+            }
+
+            &-title {
+                font-size: 1.4rem !important;
+            }
+        }
+
+        &-content {
+            >p {
+                font-size: 0.875rem !important;
+            }
+        }
+    }
+}
+
 @media (max-width: 1263px) {
     .ma-footer {
         .ma-emblem {
@@ -70,11 +118,11 @@
         }
     }
 
-    .ma-home {
-        &-people-grid {
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-    }
+    // .ma-home {
+    //     &-people-grid {
+    //         grid-template-columns: 1fr 1fr 1fr;
+    //     }
+    // }
 }
 
 @media (max-width: 1000px) {
@@ -87,12 +135,12 @@
         }
     }
 
-    .ma-home {
-        &-people-grid {
-            grid-template-columns: 1fr 1fr 1fr !important;
-            gap: 0.7vw 1vw !important;
-        }
-    }
+    // .ma-home {
+    //     &-people-grid {
+    //         grid-template-columns: 1fr 1fr 1fr !important;
+    //         gap: 0.7vw 1vw !important;
+    //     }
+    // }
 
     // h1 {
     //     font-size: 4rem !important;
@@ -126,18 +174,18 @@
     }
 }
 
-@media (max-width: 830px) {
-    .ma-home {
-        &-people-grid {
-            grid-template-columns: 1fr 1fr !important;
-        }
-    }
-}
+// @media (max-width: 830px) {
+//     .ma-home {
+//         &-people-grid {
+//             grid-template-columns: 1fr 1fr !important;
+//         }
+//     }
+// }
 
-@media (max-width: 500px) {
-    .ma-home {
-        &-people-grid {
-            grid-template-columns: 1fr !important;
-        }
-    }
-}
+// @media (max-width: 500px) {
+//     .ma-home {
+//         &-people-grid {
+//             grid-template-columns: 1fr !important;
+//         }
+//     }
+// }

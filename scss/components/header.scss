@@ -2,6 +2,8 @@
     // position: relative;
     // z-index: 0;
 
+    text-align: center;
+
     &-back {
         position: absolute;
         top: 0;
@@ -29,7 +31,7 @@
     &-p {
         margin: 2rem 0 0 0;
         color: rgba(#000, 0.4);
-        font-weight: 400;
+        font-weight: 500;
         font-size: 1.0625rem;
     }
 

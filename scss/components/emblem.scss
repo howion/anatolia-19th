@@ -1,6 +1,11 @@
 .ma-emblem {
     position: relative;
     user-select: none;
+
+    >svg {
+        width: auto;
+        height: 100%;
+    }
 }
 
 .ma-emblem.t0 {
