@@ -90,7 +90,7 @@ export default function Sources(): FCReturn {
                 <Source
                     title="Literature and Newspapers"
                     subtitle="via Atatürk Library"
-                    text="In 80 years, from the 1850s to the 1930s, which we examined in our Project, the Anatolian map has undergone many physical, political and social transformations. We focus on these transformations and show the data we obtained from more than seventy maps in the French National Library, David Ramsey Map Collection and Ottoman State Archives on the main map of our Project in layers. In this context, we aim to both facilitate the work of researchers working in different disciplines and inspire more micro-scale studies."
+                    text="While creating our Project, we did not ignore the diaries, memoirs, and chapters from novels and newspapers that we classify as literature. Especially for researchers looking for individual experiences in our Project, we will add a layer of emotion to our main map with the data we will extract from various magazines, the diaries and memories of travellers visiting Anatolia, and the analysis of the style and words used in describing the environment in newspapers. This layer will not only show the state of the experience but also serve as a bibliography for researchers and open the door to new discoveries."
                     pics={[newspaper1, newspaper2]}
                 />
                 <Source

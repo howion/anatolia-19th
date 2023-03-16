@@ -82,7 +82,7 @@ function Person(props: PersonProps): FCReturn<PersonProps> {
                 <div className="ma-home-people-card-content-links">
                     {props.links
                         ? props.links.map((v, i) => (
-                              <a className="ma-home-people-card-content-link" href={v.link} key={i}>
+                              <a className="ma-home-people-card-content-link" href={v.link} target="_blank" key={i}>
                                   {typeof v.icon === 'string' ? (
                                       <i className="material-icons">{v.icon}</i>
                                   ) : (
@@ -143,8 +143,8 @@ export default function Home(): FCReturn {
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
                     <Project src="/img/projects/digital_map.jpg" txt="Digital Map" href="/map" />
                     <Project src="/img/projects/explore_anatolia.jpg" txt="Explore Anatolia" disabled />
-                    <Project src="/img/projects/graphs.jpg" txt="Graphs" href="/graphs" />
-                    <Project src="/img/projects/sources.jpg" txt="Sources" href="/sources" />
+                    <Project src="/img/projects/graphs.png" txt="Graphs" href="/graphs" />
+                    <Project src="/img/sources/newspaper1.jpg" txt="Sources" href="/sources" />
                 </section>
 
                 {/* SPONSORS */}
@@ -185,8 +185,27 @@ export default function Home(): FCReturn {
                         </p>
                     </div>
                     <div className="ma-home-people-side-people">
-                        <Person src={peopleSelcuk} name="Selcuk Dursun" role="Supervisor" start="2021" end="Present" />
-                        <Person src={peopleAgah} name="Agah Enes Yasa" role="Coordinator" start="2021" end="Present" />
+                        <Person
+                            src={peopleSelcuk}
+                            name="Selcuk Dursun"
+                            role="Supervisor"
+                            start="2021"
+                            end="Present"
+                            links={[
+                                { link: 'https://twitter.com/tariHist', icon: siTwitter }
+                            ]}
+                        />
+                        <Person
+                            src={peopleAgah}
+                            name="Agah Enes Yasa"
+                            role="Coordinator"
+                            start="2021"
+                            end="Present"
+                            links={[
+                                { link: 'https://www.linkedin.com/in/ag%C3%A2h-enes-yasa-69887b222/', icon: siLinkedin },
+                                { link: 'https://twitter.com/agahens', icon: siTwitter }
+                            ]}
+                        />
                         <Person
                             src={peopleMert}
                             name="Omer Mert Coskun"
@@ -231,9 +250,9 @@ export default function Home(): FCReturn {
                     </div>
                     <div className="ma-home-people-side-text">
                         <h2 className="ma-section-title c2">
-                            <b>Here We Are</b>
+                            <b>Here They Were</b>
                             <br />
-                            Meet With Our Team
+                            Previous Members
                         </h2>
                         <p className="ma-section-text px-0">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consequuntur itaque
@@ -297,7 +316,6 @@ export default function Home(): FCReturn {
                     </div>
                 </div>
             </div>
-            import siLinkedIn from 'simple-icons/icons/linkedin.svg'
             <br />
             <br />
             <br />
