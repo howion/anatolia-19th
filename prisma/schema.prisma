@@ -10,43 +10,87 @@ datasource db {
 }
 
 model Pinpoint {
-  id          Int          @id @default(autoincrement())
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  yearStart   Int
-  yearEnd     Int?
-  lat         Float
-  lon         Float
-  name        String       @db.VarChar(255)
-  marker      Marker       @relation(fields: [markerId], references: [id])
-  //   author      String?  @db.VarChar(255)
-  occupations Occupation[]
-  relationsF  Pinpoint[]   @relation("PinpointRelations")
-  relationsB  Pinpoint[]   @relation("PinpointRelations")
-  sources     Source[]
+  id           Int                @id @default(autoincrement())
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  yearStart    Int
+  yearEnd      Int?
+  lat          Float
+  lon          Float
+  name         String             @db.VarChar(255)
+  marker       Marker             @relation(fields: [markerId], references: [id])
+  occupations  Occupation[]
+  relationsF   Pinpoint[]         @relation("PinpointRelations")
+  relationsB   Pinpoint[]         @relation("PinpointRelations")
+  markdown     String             @db.VarChar(10000)
+  sources      Source[]
+  author       Author             @relation(fields: [authorId], references: [id])
+  contributors Contributor[]
+  activities   PinpointActivity[]
 
   markerId Int
+  authorId Int
 
   @@index([markerId])
+  @@index([authorId])
+}
+
+enum PinpointActivityType {
+  COMMENT
+  UPDATE
+  NOTE
+}
+
+model PinpointActivity {
+  id         Int                  @id @default(autoincrement())
+  createdAt  DateTime             @default(now())
+  updatedAt  DateTime             @updatedAt
+  type       PinpointActivityType
+  owner      String               @db.VarChar(255)
+  value      String               @db.VarChar(1000)
+  Pinpoint   Pinpoint?            @relation(fields: [pinpointId], references: [id])
+  pinpointId Int?
+
+  @@index([pinpointId])
+}
+
+model Author {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String   @db.VarChar(255)
+
+  Pinpoint Pinpoint[]
+}
+
+model Contributor {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+
+  Pinpoint Pinpoint[]
 }
 
 model Occupation {
-  id       Int        @id @default(autoincrement())
-  name     String     @unique @db.VarChar(255)
+  id   Int    @id @default(autoincrement())
+  name String @unique @db.VarChar(255)
+
   Pinpoint Pinpoint[]
 }
 
 model Marker {
-  id       Int        @id @default(autoincrement())
-  color    String?    @db.VarChar(255)
-  icon     String?    @db.VarChar(255)
+  id    Int     @id @default(autoincrement())
+  color String? @db.VarChar(255)
+  icon  String? @db.VarChar(255)
+
   Pinpoint Pinpoint[]
 }
 
 model Source {
-  id        Int        @id @default(autoincrement())
-  shortName String     @unique
-  source    String     @db.VarChar(255)
-  url       String?    @db.VarChar(255)
-  Pinpoint  Pinpoint[]
+  id        Int     @id @default(autoincrement())
+  shortName String  @unique
+  source    String  @db.VarChar(255)
+  url       String? @db.VarChar(255)
+
+  Pinpoint Pinpoint[]
 }

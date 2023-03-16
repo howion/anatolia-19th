@@ -21,6 +21,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': [0],
         '@typescript-eslint/no-var-requires': [0],
         '@typescript-eslint/no-non-null-assertion': [0],
+        'unicorn/prefer-top-level-await': [0],
         'react/prop-types': [0],
         'no-control-regex': [0],
         'unicorn/prevent-abbreviations': [0],

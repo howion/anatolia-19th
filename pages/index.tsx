@@ -56,16 +56,28 @@ interface PersonProps {
     src: any
     name: text
     role: text
+    start: text
+    end: text
 }
 
 function Person(props: PersonProps): FCReturn<PersonProps> {
     return (
         <div className="ma-home-people-card">
-            <Image className="ma-home-people-card-img" src={props.src} alt="" />
-            <span className="ma-home-people-card-name">{props.name}</span>
-            <span className="ma-home-people-card-role">{props.role}</span>
+            <Image className="ma-home-people-card-pic" src={props.src} alt="" />
+            <div className="ma-home-people-card-content">
+                <span>{props.start} &nbsp;&mdash;&nbsp; {props.end}</span>
+                <h4>{props.name}</h4>
+                <b>{props.role}</b>
+            </div>
         </div>
     )
+    // return (
+    //     <div className="ma-home-people-card">
+    //         <Image className="ma-home-people-card-img" src={props.src} alt="" />
+    //         <span className="ma-home-people-card-name">{props.name}</span>
+    //         <span className="ma-home-people-card-role">{props.role}</span>
+    //     </div>
+    // )
 }
 
 export default function Home(): FCReturn {
@@ -82,7 +94,7 @@ export default function Home(): FCReturn {
                 // eslint-disable-next-line max-len
                 text="Welcome to the 19th Century Anatolia Project’s website. An undergraduate digital humanities project aiming to compile as well as digitize intricate data on the region in this century, Anatolia19 here presents its latest work."
             />
-            <div className="ma-mwcontainer" data-scroll-section>
+            <div className="ma-mwcontainer">
                 {/* SEARCH */}
                 <section className="ma-home-search-container">
                     <input
@@ -106,8 +118,8 @@ export default function Home(): FCReturn {
                 {/* SPONSORS */}
                 <section className="ma-home-sponsors-container">
                     <Image className="ma-home-sponsors-back" src={sarkTicaret} alt="" />
-                    <h2 className="ma-section-title s0 c1">Project Sponsors</h2>
-                    <p className="ma-section-text">
+                    <h2 className="ma-section-title c1 text-center">Project Sponsors</h2>
+                    <p className="ma-section-text text-center">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, perspiciatis obcaecati? Quia
                         architecto laborum quam, sequi inventore eaque illum error obcaecati voluptatem. Praesentium
                         eius id alias eos est voluptas soluta?
@@ -123,75 +135,103 @@ export default function Home(): FCReturn {
             </div>
 
             {/* STATS */}
-            <section className="ma-home-stats-container" data-scroll-section>
+            <section className="ma-home-stats-container">
                 {/* <div className="ma-home-stats-back" /> */}
                 <div className="ma-mwcontainer"></div>
             </section>
 
-            <div className="ma-mwcontainer" data-scroll-section>
+            <div className="ma-mwcontainer">
                 <div className="ma-home-people-wrapper">
-                    <h2 className="ma-section-title s2 c2">
-                        <span>07</span>
-                        People
-                    </h2>
-                    <div className="ma-home-people-grid">
+                    <div className="ma-home-people-side-text">
+                        <h2 className="ma-section-title c2">
+                            <b>Here We Are</b>
+                            <br />
+                            Meet With Our Team
+                        </h2>
+                        <p className="ma-section-text px-0">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consequuntur itaque eaque quisquam quasi asperiores provident laboriosam, esse ratione recusandae veritatis quia earum cumque voluptas sapiente quidem vitae cum voluptate?
+                        </p>
+                    </div>
+                    <div className="ma-home-people-side-people">
+                        <Person src={peopleSelcuk} name="Selcuk Dursun" role="Supervisor" start="2021" end="Present" />
+                        <Person src={peopleAgah} name="Agah Enes Yasa" role="Coordinator" start="2021" end="Present" />
+                        <Person src={peopleMert} name="Omer Mert Coskun" role="Developer" start="2022" end="Present" />
+                        <Person src={peopleFurkan} name="Furkan Arslan" role="Ottoman Turkish Translator" start="2023" end="Present" />
+                        <Person src={peopleKadri} name="Mustafa Kadri Yekeler" role="Ottoman Turkish Translator" start="2021" end="Present" />
+                    </div>
+                </div>
+                <div className="ma-home-people-wrapper is-flipped">
+                    <div className="ma-home-people-side-people">
+                        <Person src={peopleSelcuk} name="Selcuk Dursun" role="Supervisor" start="2021" end="Present" />
+                        <Person src={peopleAgah} name="Agah Enes Yasa" role="Founder & Coordinator" start="2021" end="Present" />
+                        <Person src={peopleMert} name="Omer Mert Coskun" role="Developer" start="2022" end="Present" />
+                    </div>
+                    <div className="ma-home-people-side-text">
+                        <h2 className="ma-section-title c2">
+                            <b>Here We Are</b>
+                            <br />
+                            Meet With Our Team
+                        </h2>
+                        <p className="ma-section-text px-0">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consequuntur itaque eaque quisquam quasi asperiores provident laboriosam, esse ratione recusandae veritatis quia earum cumque voluptas sapiente quidem vitae cum voluptate?
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+                    {/* <div className="ma-home-people-grid">
                         <Person name="Selçuk Dursun" role="Supervisor" src={peopleSelcuk} />
-                        {/* <Person name="Ebru Boyar" role="Supervisor" src={peopleEbru} /> */}
                         <Person name="Agah Enes Yasa" role="Founder / Coordinator" src={peopleAgah} />
                         <Person name="M. Kadri Yekeler" role="Founder / Ottoman Turkish Translator" src={peopleKadri} />
-                        {/* <Person name="Zelal Deniz Erdoğan" role="Editor (Until 2022)" src={peopleZelal} /> */}
                         <Person name="Raşit Alp Atasoy" role="Ottoman Turkish Translator" src={peopleRasit} />
                         <Person name="Furkan Arslan" role="Ottoman Turkish Translator" src={peopleFurkan} />
                         <Person name="A. Doğa Aydın" role="Secondary Source Researcher" src={peopleDoga} />
                         <Person name="Ömer Mert Coşkun" role="Developer" src={peopleMert} />
-                    </div>
+                    </div> */}
 
-                    <div className="ma-home-faq-wrapper">
-                        <h2 className="ma-section-title s0 c3">Frequently Asked Questions</h2>
-                        <p className="ma-section-text">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni dignissimos perspiciatis
-                            alias minima ullam voluptate facilis officiis sit quas quis non aliquid animi, veritatis
-                            distinctio recusandae. Quas nesciunt incidunt earum.
-                        </p>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <div className="ma-mwcontainer ma-mwcontainer-md px-0">
-                            <AccordionContainer>
-                                <Accordion title="How can I contribute to this project?">
-                                    <p>
-                                        <i>Anatolia: 19th Century</i> project invites its researchers for their
-                                        contributions on various subjects and is open to academic/non-academic
-                                        contributions. For more detailed information, see the Submit Data section.
-                                    </p>
-                                </Accordion>
-                                <Accordion title="Why are you doing this project?">
-                                    <p>
-                                        The 19th century is an era of transformation all over the world, the ground upon
-                                        which the world we now live in was constructed. In the particular case of the
-                                        Ottoman Empire, the reign of Sultan Abdulaziz and Abdulhamid II signified the
-                                        start of the prosperity of Anatolia following their deeds and reforms in terms
-                                        of Anatolian infrastructure. The era following the first railway concession in
-                                        1856 is significant to understand the Ottoman Empire realizing itself in complex
-                                        relations with the West, its integration into the global system, and to analyze
-                                        the origins of contemporary Turkey.
-                                    </p>
-                                </Accordion>
-                                <Accordion title="Where do you get your sources from?">
-                                    <p>
-                                        We use various subsidiary sources and documents at the Presidency Ottoman
-                                        Archive in Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection,
-                                        Istanbul Municipality Ataturk Library and Bibliothèque Nationale de France. For
-                                        detailed information, see the{' '}
-                                        <Anchor href="/sources" animate>
-                                            sources
-                                        </Anchor>{' '}
-                                        page.
-                                    </p>
-                                </Accordion>
-                                {/* <Accordion title="How can I contribute to the project?">
+            <div className="ma-mwcontainer">
+                <div className="ma-home-faq-wrapper">
+                    <h2 className="ma-section-title c3 text-center">Frequently Asked Questions</h2>
+                    <p className="ma-section-text text-center m-b-5">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni dignissimos perspiciatis
+                        alias minima ullam voluptate facilis officiis sit quas quis non aliquid animi, veritatis
+                        distinctio recusandae. Quas nesciunt incidunt earum.
+                    </p>
+
+                    <div className="ma-mwcontainer ma-mwcontainer-md px-0">
+                        <AccordionContainer>
+                            <Accordion title="How can I contribute to this project?">
+                                <p>
+                                    <i>Anatolia: 19th Century</i> project invites its researchers for their
+                                    contributions on various subjects and is open to academic/non-academic
+                                    contributions. For more detailed information, see the Submit Data section.
+                                </p>
+                            </Accordion>
+                            <Accordion title="Why are you doing this project?">
+                                <p>
+                                    The 19th century is an era of transformation all over the world, the ground upon
+                                    which the world we now live in was constructed. In the particular case of the
+                                    Ottoman Empire, the reign of Sultan Abdulaziz and Abdulhamid II signified the
+                                    start of the prosperity of Anatolia following their deeds and reforms in terms
+                                    of Anatolian infrastructure. The era following the first railway concession in
+                                    1856 is significant to understand the Ottoman Empire realizing itself in complex
+                                    relations with the West, its integration into the global system, and to analyze
+                                    the origins of contemporary Turkey.
+                                </p>
+                            </Accordion>
+                            <Accordion title="Where do you get your sources from?">
+                                <p>
+                                    We use various subsidiary sources and documents at the Presidency Ottoman
+                                    Archive in Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection,
+                                    Istanbul Municipality Ataturk Library and Bibliothèque Nationale de France. For
+                                    detailed information, see the{' '}
+                                    <Anchor href="/sources" animate>
+                                        sources
+                                    </Anchor>{' '}
+                                    page.
+                                </p>
+                            </Accordion>
+                            {/* <Accordion title="How can I contribute to the project?">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
@@ -199,8 +239,7 @@ export default function Home(): FCReturn {
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.
                             </Accordion> */}
-                            </AccordionContainer>
-                        </div>
+                        </AccordionContainer>
                     </div>
                 </div>
             </div>
