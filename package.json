@@ -4,12 +4,12 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn prettier:fix && next build",
+    "build": "yarn prettier && next build",
     "start": "next start",
     "lint": "eslint .",
     "prisma": "npx prisma format && npx prisma migrate dev && npx prisma generate",
     "studio": "npx prisma studio",
-    "prettier:fix": "prettier --write .",
+    "prettier": "prettier --write .",
     "stylelint:fix": "stylelint --fix",
     "bin:console": "ts-node ./bin/console",
     "bin:commercials": "ts-node ./bin/commercials-excel-to-db"
@@ -46,6 +46,7 @@
     "rooks": "^7.4.4",
     "rxjs": "^7.8.0",
     "sass": "^1.59.2",
+    "simple-icons": "^8.7.0",
     "typescript": "4.9.5"
   },
   "devDependencies": {

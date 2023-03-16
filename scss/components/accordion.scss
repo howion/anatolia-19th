@@ -19,7 +19,7 @@
         display: block;
         content: '';
         position: absolute;
-        width: calc(100% );
+        width: calc(100%);
         height: calc(100%);
         background-color: rgba(#fff, 0.3);
         border: 1px solid rgba(#000, 0.05);
@@ -73,7 +73,7 @@
         }
 
         &-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: $--head-color;
             font-weight: 500;
             // transition: margin-left 500ms ease;

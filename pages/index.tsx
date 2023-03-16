@@ -27,6 +27,9 @@ import peopleFurkan from '/public/img/people/furkan.jpeg'
 import peopleDoga from '/public/img/people/doga.png'
 import peopleMert from '/public/img/people/mert.png'
 
+import { siGithub, siTwitter, siLinkedin, siBehance } from 'simple-icons'
+
+
 interface ProjectProps {
     disabled?: boolean
     href?: text
@@ -52,12 +55,18 @@ function Project(props: ProjectProps): FCReturn<ProjectProps> {
     )
 }
 
+interface PersonLink {
+    link: text
+    icon: any
+}
+
 interface PersonProps {
     src: any
     name: text
     role: text
     start: text
     end: text
+    links?: PersonLink[]
 }
 
 function Person(props: PersonProps): FCReturn<PersonProps> {
@@ -65,9 +74,32 @@ function Person(props: PersonProps): FCReturn<PersonProps> {
         <div className="ma-home-people-card">
             <Image className="ma-home-people-card-pic" src={props.src} alt="" />
             <div className="ma-home-people-card-content">
-                <span>{props.start} &nbsp;&mdash;&nbsp; {props.end}</span>
+                <span>
+                    {props.start} &nbsp;&mdash;&nbsp; {props.end}
+                </span>
                 <h4>{props.name}</h4>
                 <b>{props.role}</b>
+                <div className="ma-home-people-card-content-links">
+                    {props.links
+                        ? props.links.map((v, i) => (
+                              <a className="ma-home-people-card-content-link" href={v.link} key={i}>
+                                  {typeof v.icon === 'string' ? (
+                                      <i className="material-icons">{v.icon}</i>
+                                  ) : (
+                                      <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          width={24}
+                                          height={24}
+                                          fill={'#' + v.icon.hex}
+                                          viewBox="0 0 24 24"
+                                      >
+                                          <path d={v.icon.path} />
+                                      </svg>
+                                  )}
+                              </a>
+                          ))
+                        : undefined}
+                </div>
             </div>
         </div>
     )
@@ -133,13 +165,11 @@ export default function Home(): FCReturn {
                     </div>
                 </section>
             </div>
-
             {/* STATS */}
             <section className="ma-home-stats-container">
                 {/* <div className="ma-home-stats-back" /> */}
                 <div className="ma-mwcontainer"></div>
             </section>
-
             <div className="ma-mwcontainer">
                 <div className="ma-home-people-wrapper">
                     <div className="ma-home-people-side-text">
@@ -149,21 +179,54 @@ export default function Home(): FCReturn {
                             Meet With Our Team
                         </h2>
                         <p className="ma-section-text px-0">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consequuntur itaque eaque quisquam quasi asperiores provident laboriosam, esse ratione recusandae veritatis quia earum cumque voluptas sapiente quidem vitae cum voluptate?
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consequuntur itaque
+                            eaque quisquam quasi asperiores provident laboriosam, esse ratione recusandae veritatis quia
+                            earum cumque voluptas sapiente quidem vitae cum voluptate?
                         </p>
                     </div>
                     <div className="ma-home-people-side-people">
                         <Person src={peopleSelcuk} name="Selcuk Dursun" role="Supervisor" start="2021" end="Present" />
                         <Person src={peopleAgah} name="Agah Enes Yasa" role="Coordinator" start="2021" end="Present" />
-                        <Person src={peopleMert} name="Omer Mert Coskun" role="Developer" start="2022" end="Present" />
-                        <Person src={peopleFurkan} name="Furkan Arslan" role="Ottoman Turkish Translator" start="2023" end="Present" />
-                        <Person src={peopleKadri} name="Mustafa Kadri Yekeler" role="Ottoman Turkish Translator" start="2021" end="Present" />
+                        <Person
+                            src={peopleMert}
+                            name="Omer Mert Coskun"
+                            role="Developer"
+                            start="2022"
+                            end="Present"
+                            links={[
+                                { link: 'https://howion.com', icon: 'public' },
+                                { link: 'https://github.com/howion', icon: siGithub},
+                                { link: 'https://www.linkedin.com/in/omer-mert-coskun/', icon: siLinkedin },
+                                { link: 'https://www.behance.net/howion', icon: siBehance },
+                                { link: 'https://twitter.com/howionwastaken', icon: siTwitter }
+                            ]}
+                        />
+                        <Person
+                            src={peopleFurkan}
+                            name="Furkan Arslan"
+                            role="Ottoman Turkish Translator"
+                            start="2023"
+                            end="Present"
+                        />
+                        <Person
+                            src={peopleKadri}
+                            name="Mustafa Kadri Yekeler"
+                            role="Ottoman Turkish Translator"
+                            start="2021"
+                            end="Present"
+                        />
                     </div>
                 </div>
                 <div className="ma-home-people-wrapper is-flipped">
                     <div className="ma-home-people-side-people">
                         <Person src={peopleSelcuk} name="Selcuk Dursun" role="Supervisor" start="2021" end="Present" />
-                        <Person src={peopleAgah} name="Agah Enes Yasa" role="Founder & Coordinator" start="2021" end="Present" />
+                        <Person
+                            src={peopleAgah}
+                            name="Agah Enes Yasa"
+                            role="Founder & Coordinator"
+                            start="2021"
+                            end="Present"
+                        />
                         <Person src={peopleMert} name="Omer Mert Coskun" role="Developer" start="2022" end="Present" />
                     </div>
                     <div className="ma-home-people-side-text">
@@ -173,29 +236,20 @@ export default function Home(): FCReturn {
                             Meet With Our Team
                         </h2>
                         <p className="ma-section-text px-0">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consequuntur itaque eaque quisquam quasi asperiores provident laboriosam, esse ratione recusandae veritatis quia earum cumque voluptas sapiente quidem vitae cum voluptate?
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consequuntur itaque
+                            eaque quisquam quasi asperiores provident laboriosam, esse ratione recusandae veritatis quia
+                            earum cumque voluptas sapiente quidem vitae cum voluptate?
                         </p>
                     </div>
                 </div>
             </div>
-
-                    {/* <div className="ma-home-people-grid">
-                        <Person name="Selçuk Dursun" role="Supervisor" src={peopleSelcuk} />
-                        <Person name="Agah Enes Yasa" role="Founder / Coordinator" src={peopleAgah} />
-                        <Person name="M. Kadri Yekeler" role="Founder / Ottoman Turkish Translator" src={peopleKadri} />
-                        <Person name="Raşit Alp Atasoy" role="Ottoman Turkish Translator" src={peopleRasit} />
-                        <Person name="Furkan Arslan" role="Ottoman Turkish Translator" src={peopleFurkan} />
-                        <Person name="A. Doğa Aydın" role="Secondary Source Researcher" src={peopleDoga} />
-                        <Person name="Ömer Mert Coşkun" role="Developer" src={peopleMert} />
-                    </div> */}
-
             <div className="ma-mwcontainer">
                 <div className="ma-home-faq-wrapper">
                     <h2 className="ma-section-title c3 text-center">Frequently Asked Questions</h2>
                     <p className="ma-section-text text-center m-b-5">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni dignissimos perspiciatis
-                        alias minima ullam voluptate facilis officiis sit quas quis non aliquid animi, veritatis
-                        distinctio recusandae. Quas nesciunt incidunt earum.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni dignissimos perspiciatis alias
+                        minima ullam voluptate facilis officiis sit quas quis non aliquid animi, veritatis distinctio
+                        recusandae. Quas nesciunt incidunt earum.
                     </p>
 
                     <div className="ma-mwcontainer ma-mwcontainer-md px-0">
@@ -211,20 +265,20 @@ export default function Home(): FCReturn {
                                 <p>
                                     The 19th century is an era of transformation all over the world, the ground upon
                                     which the world we now live in was constructed. In the particular case of the
-                                    Ottoman Empire, the reign of Sultan Abdulaziz and Abdulhamid II signified the
-                                    start of the prosperity of Anatolia following their deeds and reforms in terms
-                                    of Anatolian infrastructure. The era following the first railway concession in
-                                    1856 is significant to understand the Ottoman Empire realizing itself in complex
-                                    relations with the West, its integration into the global system, and to analyze
-                                    the origins of contemporary Turkey.
+                                    Ottoman Empire, the reign of Sultan Abdulaziz and Abdulhamid II signified the start
+                                    of the prosperity of Anatolia following their deeds and reforms in terms of
+                                    Anatolian infrastructure. The era following the first railway concession in 1856 is
+                                    significant to understand the Ottoman Empire realizing itself in complex relations
+                                    with the West, its integration into the global system, and to analyze the origins of
+                                    contemporary Turkey.
                                 </p>
                             </Accordion>
                             <Accordion title="Where do you get your sources from?">
                                 <p>
-                                    We use various subsidiary sources and documents at the Presidency Ottoman
-                                    Archive in Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection,
-                                    Istanbul Municipality Ataturk Library and Bibliothèque Nationale de France. For
-                                    detailed information, see the{' '}
+                                    We use various subsidiary sources and documents at the Presidency Ottoman Archive in
+                                    Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection, Istanbul
+                                    Municipality Ataturk Library and Bibliothèque Nationale de France. For detailed
+                                    information, see the{' '}
                                     <Anchor href="/sources" animate>
                                         sources
                                     </Anchor>{' '}
@@ -243,13 +297,11 @@ export default function Home(): FCReturn {
                     </div>
                 </div>
             </div>
-
+            import siLinkedIn from 'simple-icons/icons/linkedin.svg'
             <br />
             <br />
             <br />
             <br />
-            <br />
-
             <Footer />
         </>
     )
