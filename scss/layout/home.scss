@@ -288,24 +288,36 @@
                 display: flex;
                 flex-direction: column;
 
-                > h4 {
+                &-name {
                     font-size: 1.5rem;
                     font-weight: 700;
                     color: $color-primary-title;
                     margin-top: 4px;
                 }
 
-                > span {
+                &-years {
                     font-size: 1rem;
                     color: $color-islamic;
                     font-weight: 600;
                 }
 
-                > b {
+                &-role {
                     font-size: 1rem;
                     color: $color-primary-text;
                     font-weight: 600;
                     margin-top: 6px;
+                }
+
+                &-email {
+                    font-size: 0.875rem;
+                    color: $color-primary-text;
+                    opacity: .7;
+                    font-weight: 500;
+                    margin-top: 6px;
+
+                    &:hover {
+                        color: $color-truegreen;
+                    }
                 }
 
                 // >p {
@@ -326,7 +338,7 @@
                     width: 24px;
                     height: 24px;
                     filter: saturate(0);
-                    opacity: .2;
+                    opacity: 0.25;
 
                     > img {
                         width: 100%;

@@ -4,6 +4,7 @@
 import readXlsxFile from 'read-excel-file/node'
 import { Database } from '../lib/database'
 import cliProgress from 'cli-progress'
+import slugify from 'slugify'
 
 const COMMERCIAL1889 = './bin/excels/commercial1889.xlsx'
 
@@ -76,6 +77,15 @@ async function main() {
 
             relationMap[id] = relations
 
+            const slug = slugify(name, {
+                replacement: '-',
+                strict: true,
+                remove: undefined,
+                trim: true,
+                locale: 'en',
+                lower: true,
+            }) + `-${id}`
+
             await Database.pinpoint.upsert({
                 where: { id },
                 update: {
@@ -83,6 +93,7 @@ async function main() {
                     lat: 0,
                     lon: 0,
                     name,
+                    slug,
                     occupations: {
                         connectOrCreate: occupations
                     },
@@ -98,6 +109,7 @@ async function main() {
                     lat: 0,
                     lon: 0,
                     name,
+                    slug,
                     markerId: 1,
                     occupations: {
                         connectOrCreate: occupations

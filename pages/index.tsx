@@ -27,8 +27,7 @@ import peopleFurkan from '/public/img/people/furkan.jpeg'
 import peopleDoga from '/public/img/people/doga.png'
 import peopleMert from '/public/img/people/mert.png'
 
-import { siGithub, siTwitter, siLinkedin, siBehance } from 'simple-icons'
-
+import { siGithub, siTwitter, siLinkedin, siBehance, siOrcid, siDribbble } from 'simple-icons'
 
 interface ProjectProps {
     disabled?: boolean
@@ -74,32 +73,35 @@ function Person(props: PersonProps): FCReturn<PersonProps> {
         <div className="ma-home-people-card">
             <Image className="ma-home-people-card-pic" src={props.src} alt="" />
             <div className="ma-home-people-card-content">
-                <span>
+                <span className="ma-home-people-card-content-years">
                     {props.start} &nbsp;&mdash;&nbsp; {props.end}
                 </span>
-                <h4>{props.name}</h4>
-                <b>{props.role}</b>
-                <div className="ma-home-people-card-content-links">
-                    {props.links
-                        ? props.links.map((v, i) => (
-                              <a className="ma-home-people-card-content-link" href={v.link} target="_blank" key={i}>
-                                  {typeof v.icon === 'string' ? (
-                                      <i className="material-icons">{v.icon}</i>
-                                  ) : (
-                                      <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          width={24}
-                                          height={24}
-                                          fill={'#' + v.icon.hex}
-                                          viewBox="0 0 24 24"
-                                      >
-                                          <path d={v.icon.path} />
-                                      </svg>
-                                  )}
-                              </a>
-                          ))
-                        : undefined}
-                </div>
+                <h4 className="ma-home-people-card-content-name">{props.name}</h4>
+                <b className="ma-home-people-card-content-role">{props.role}</b>
+                {props.links ? (
+                    <div className="ma-home-people-card-content-links">
+                        {props.links.map((v, i) => (
+                            <a className="ma-home-people-card-content-link" href={v.link} target="_blank" key={i}>
+                                {typeof v.icon === 'string' ? (
+                                    <i className="material-icons">{v.icon}</i>
+                                ) : (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        fill={'#' + v.icon.hex}
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path d={v.icon.path} />
+                                    </svg>
+                                )}
+                            </a>
+                        ))}
+                    </div>
+                ) : undefined}
+            {/* <a href="#" className="ma-home-people-card-content-email">
+                me@howion.com
+            </a> */}
             </div>
         </div>
     )
@@ -191,9 +193,7 @@ export default function Home(): FCReturn {
                             role="Supervisor"
                             start="2021"
                             end="Present"
-                            links={[
-                                { link: 'https://twitter.com/tariHist', icon: siTwitter }
-                            ]}
+                            links={[{ link: 'https://twitter.com/tariHist', icon: siTwitter }]}
                         />
                         <Person
                             src={peopleAgah}
@@ -202,7 +202,10 @@ export default function Home(): FCReturn {
                             start="2021"
                             end="Present"
                             links={[
-                                { link: 'https://www.linkedin.com/in/ag%C3%A2h-enes-yasa-69887b222/', icon: siLinkedin },
+                                {
+                                    link: 'https://www.linkedin.com/in/ag%C3%A2h-enes-yasa-69887b222/',
+                                    icon: siLinkedin
+                                },
                                 { link: 'https://twitter.com/agahens', icon: siTwitter }
                             ]}
                         />
@@ -214,10 +217,13 @@ export default function Home(): FCReturn {
                             end="Present"
                             links={[
                                 { link: 'https://howion.com', icon: 'public' },
-                                { link: 'https://github.com/howion', icon: siGithub},
+                                { link: 'mailto:me@howion.com', icon: 'mail' },
+                                { link: 'https://github.com/howion', icon: siGithub },
                                 { link: 'https://www.linkedin.com/in/omer-mert-coskun/', icon: siLinkedin },
                                 { link: 'https://www.behance.net/howion', icon: siBehance },
-                                { link: 'https://twitter.com/howionwastaken', icon: siTwitter }
+                                { link: 'https://dribbble.com/howion', icon: siDribbble },
+                                { link: 'https://twitter.com/howionwastaken', icon: siTwitter },
+                                { link: 'https://orcid.org/0000-0002-8324-2325', icon: siOrcid }
                             ]}
                         />
                         <Person

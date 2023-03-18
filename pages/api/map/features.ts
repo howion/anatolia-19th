@@ -1,10 +1,10 @@
 import type { ApiRequest, ApiResponse } from '/types/api'
 import { HTTPStatusCode } from '/constants/http-status-code'
-import { checkMethod, CORS } from '/utils/api.util'
+import { checkMethod } from '/utils/api.util'
 import { Database } from '/lib/database'
 
 export default async function GETFeatures(req: ApiRequest, res: ApiResponse<any>): Promise<void> {
-    await CORS(req, res)
+    // await CORS(req, res)
     //--------------------------------------------------------------------------
     if (!checkMethod(req, res, ['GET'])) return
     //--------------------------------------------------------------------------
@@ -12,24 +12,61 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<any>
     // if (!body) return
     //--------------------------------------------------------------------------
 
+    let { take } = req.query as Record<text, any>
+
+    take = take ? Number.parseInt(take) : 10
+
+    if (take) {
+        take = Number.parseInt(take)
+
+        if (Number.isNaN(take)) {
+            take = 10
+        }
+    } else {
+        take = 10
+    }
+
     try {
-        const pinpoints = await Database.pinpoint.findMany({
+        const _pinpoints = await Database.pinpoint.findMany({
             where: {
                 // lat: { gt: 0 },
                 // lon: { gt: 0 }
             },
-            include: {
-                marker: false,
-                relationsF: {
+            select: {
+                createdAt: false,
+                updatedAt: false,
+                relationsB: false,
+                sources: false,
+
+                id: true,
+                lat: true,
+                lon: true,
+                yearStart: true,
+                yearEnd: true,
+
+                marker: {
                     select: {
                         id: true
                     }
                 },
-                relationsB: false,
-                sources: true
+                relationsF: {
+                    select: {
+                        id: true
+                    }
+                }
             },
-            take: 10
+            take: take
         })
+
+        const pinpoints: Record<number, any> = {}
+
+        for (const pinpoint of _pinpoints) {
+            pinpoints[pinpoint.id] = {
+                ...pinpoint,
+                marker: pinpoint.marker.id,
+                relationsF: pinpoint.relationsF.map((r) => r.id)
+            }
+        }
 
         return res.status(HTTPStatusCode.OK).json({
             success: true,

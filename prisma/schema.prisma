@@ -9,24 +9,24 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Pinpoint {
-  id           Int                @id @default(autoincrement())
-  createdAt    DateTime           @default(now())
-  updatedAt    DateTime           @updatedAt
+model Feature {
+  id           Int               @id @default(autoincrement())
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
   yearStart    Int
   yearEnd      Int?
   lat          Float
   lon          Float
-  name         String             @db.VarChar(255)
-  marker       Marker             @relation(fields: [markerId], references: [id])
+  name         String            @db.VarChar(255)
+  marker       Marker            @relation(fields: [markerId], references: [id])
   occupations  Occupation[]
-  relationsF   Pinpoint[]         @relation("PinpointRelations")
-  relationsB   Pinpoint[]         @relation("PinpointRelations")
-  markdown     String             @db.VarChar(10000)
+  relationsF   Feature[]         @relation("FeatureRelations")
+  relationsB   Feature[]         @relation("FeatureRelations")
+  markdown     String            @default("") @db.VarChar(10000)
   sources      Source[]
-  author       Author             @relation(fields: [authorId], references: [id])
+  author       Author            @relation(fields: [authorId], references: [id])
   contributors Contributor[]
-  activities   PinpointActivity[]
+  activities   FeatureActivity[]
 
   markerId Int
   authorId Int
@@ -35,23 +35,23 @@ model Pinpoint {
   @@index([authorId])
 }
 
-enum PinpointActivityType {
+enum FeatureActivityType {
   COMMENT
   UPDATE
   NOTE
 }
 
-model PinpointActivity {
-  id         Int                  @id @default(autoincrement())
-  createdAt  DateTime             @default(now())
-  updatedAt  DateTime             @updatedAt
-  type       PinpointActivityType
-  owner      String               @db.VarChar(255)
-  value      String               @db.VarChar(1000)
-  Pinpoint   Pinpoint?            @relation(fields: [pinpointId], references: [id])
-  pinpointId Int?
+model FeatureActivity {
+  id        Int                 @id @default(autoincrement())
+  createdAt DateTime            @default(now())
+  updatedAt DateTime            @updatedAt
+  type      FeatureActivityType
+  owner     String              @db.VarChar(255)
+  value     String              @db.VarChar(1000)
+  Feature   Feature?            @relation(fields: [featureId], references: [id])
+  featureId Int?
 
-  @@index([pinpointId])
+  @@index([featureId])
 }
 
 model Author {
@@ -59,7 +59,7 @@ model Author {
   createdAt DateTime @default(now())
   name      String   @db.VarChar(255)
 
-  Pinpoint Pinpoint[]
+  Feature Feature[]
 }
 
 model Contributor {
@@ -68,14 +68,14 @@ model Contributor {
   name      String   @db.VarChar(255)
   email     String   @db.VarChar(255)
 
-  Pinpoint Pinpoint[]
+  Feature Feature[]
 }
 
 model Occupation {
   id   Int    @id @default(autoincrement())
   name String @unique @db.VarChar(255)
 
-  Pinpoint Pinpoint[]
+  Feature Feature[]
 }
 
 model Marker {
@@ -83,7 +83,7 @@ model Marker {
   color String? @db.VarChar(255)
   icon  String? @db.VarChar(255)
 
-  Pinpoint Pinpoint[]
+  Feature Feature[]
 }
 
 model Source {
@@ -92,5 +92,5 @@ model Source {
   source    String  @db.VarChar(255)
   url       String? @db.VarChar(255)
 
-  Pinpoint Pinpoint[]
+  Feature Feature[]
 }
