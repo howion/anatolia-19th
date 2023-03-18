@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `Feature` ADD COLUMN `points` JSON NULL,
+    ADD COLUMN `type` ENUM('POINT', 'LINE', 'POLYGON') NOT NULL DEFAULT 'POINT';

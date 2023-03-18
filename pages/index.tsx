@@ -99,7 +99,7 @@ function Person(props: PersonProps): FCReturn<PersonProps> {
                         ))}
                     </div>
                 ) : undefined}
-            {/* <a href="#" className="ma-home-people-card-content-email">
+                {/* <a href="#" className="ma-home-people-card-content-email">
                 me@howion.com
             </a> */}
             </div>

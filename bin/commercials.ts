@@ -4,33 +4,33 @@
 import readXlsxFile from 'read-excel-file/node'
 import { Database } from '../lib/database'
 import cliProgress from 'cli-progress'
-import slugify from 'slugify'
+// import slugify from 'slugify'
 
 const COMMERCIAL1889 = './bin/excels/commercial1889.xlsx'
 
-function isNullish(val: any): boolean {
-    if (typeof val === 'string') {
-        val = val.trim()
-        if (val === '?' || !val) return true
-    }
+// function isNullish(val: any): boolean {
+//     if (typeof val === 'string') {
+//         val = val.trim()
+//         if (val === '?' || !val) return true
+//     }
 
-    if (val === null || val === undefined) return true
+//     if (val === null || val === undefined) return true
 
-    return false
-}
+//     return false
+// }
 
 async function main() {
     const rows = await readXlsxFile(COMMERCIAL1889)
-    const knownOccupations = []
+    // const knownOccupations = []
     const relationMap: Record<number, number[]> = {}
     const numberOfRecords = rows.length - 1
-    const pinpointUpserts = []
+    // const featureUpserts = []
 
     try {
-        console.log('Eklenecek/Yenilenecek Kayıt Sayısı: ' + numberOfRecords)
-        console.log('Pinpoint ilk kayıtları yapılıyor...')
-        const barPinpointUpserts = new cliProgress.SingleBar({}, cliProgress.Presets.rect)
-        barPinpointUpserts.start(numberOfRecords, 0)
+        console.log('Eklenecek/Yenilenecek kayıt sayısı: ' + numberOfRecords)
+        console.log('Feature ilk kayıtları yapılıyor...')
+        const barFeatureUpserts = new cliProgress.SingleBar({}, cliProgress.Presets.rect)
+        barFeatureUpserts.start(numberOfRecords, 0)
 
         for (const i in rows) {
             const row = rows[i]
@@ -77,23 +77,22 @@ async function main() {
 
             relationMap[id] = relations
 
-            const slug = slugify(name, {
-                replacement: '-',
-                strict: true,
-                remove: undefined,
-                trim: true,
-                locale: 'en',
-                lower: true,
-            }) + `-${id}`
+            // const slug = slugify(name, {
+            //     replacement: '-',
+            //     strict: true,
+            //     remove: undefined,
+            //     trim: true,
+            //     locale: 'en',
+            //     lower: true,
+            // }) + `-${id}`
 
-            await Database.pinpoint.upsert({
+            await Database.feature.upsert({
                 where: { id },
                 update: {
                     yearStart: 1889,
                     lat: 0,
                     lon: 0,
                     name,
-                    slug,
                     occupations: {
                         connectOrCreate: occupations
                     },
@@ -109,8 +108,8 @@ async function main() {
                     lat: 0,
                     lon: 0,
                     name,
-                    slug,
                     markerId: 1,
+                    authorId: 1,
                     occupations: {
                         connectOrCreate: occupations
                     },
@@ -122,10 +121,10 @@ async function main() {
                 }
             })
 
-            barPinpointUpserts.update(id)
+            barFeatureUpserts.update(id)
         }
 
-        barPinpointUpserts.stop()
+        barFeatureUpserts.stop()
 
         // await Database.$transaction(pinpointUpserts)
         console.log('Başarılı!')
@@ -146,7 +145,7 @@ async function main() {
             const id = Number.parseInt(_id)
             const rels = relationMap[id].map((r) => ({ id: r }))
 
-            await Database.pinpoint.update({
+            await Database.feature.update({
                 where: {
                     id
                 },

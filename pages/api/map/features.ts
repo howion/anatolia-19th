@@ -12,22 +12,8 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<any>
     // if (!body) return
     //--------------------------------------------------------------------------
 
-    let { take } = req.query as Record<text, any>
-
-    take = take ? Number.parseInt(take) : 10
-
-    if (take) {
-        take = Number.parseInt(take)
-
-        if (Number.isNaN(take)) {
-            take = 10
-        }
-    } else {
-        take = 10
-    }
-
     try {
-        const _pinpoints = await Database.pinpoint.findMany({
+        const found = await Database.feature.findMany({
             where: {
                 // lat: { gt: 0 },
                 // lon: { gt: 0 }
@@ -55,23 +41,23 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<any>
                     }
                 }
             },
-            take: take
+            take: 10
         })
 
-        const pinpoints: Record<number, any> = {}
+        const features: Record<number, any> = {}
 
-        for (const pinpoint of _pinpoints) {
-            pinpoints[pinpoint.id] = {
-                ...pinpoint,
-                marker: pinpoint.marker.id,
-                relationsF: pinpoint.relationsF.map((r) => r.id)
+        for (const feature of found) {
+            features[feature.id] = {
+                ...feature,
+                marker: feature.marker.id,
+                relationsF: feature.relationsF.map((r) => r.id)
             }
         }
 
         return res.status(HTTPStatusCode.OK).json({
             success: true,
             data: {
-                pinpoints: pinpoints
+                pinpoints: features
             }
         })
     } catch (error) {
