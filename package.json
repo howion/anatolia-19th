@@ -6,14 +6,14 @@
     "dev": "next dev",
     "build": "yarn prettier && next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "npx eslint .",
     "prisma": "npx prisma format && npx prisma migrate dev && npx prisma generate",
     "studio": "npx prisma studio",
-    "prettier": "prettier --write .",
-    "stylelint:fix": "stylelint --fix",
-    "bin:match-ids": "ts-node ./bin/match-ids",
-    "bin:commercials": "ts-node ./bin/commercials",
-    "bin:console": "ts-node ./bin/console"
+    "prettier": "npx prettier --write .",
+    "stylelint:fix": "npx stylelint --fix",
+    "bin:match-ids": "npx ts-node ./bin/match-ids",
+    "bin:commercials": "npx ts-node ./bin/commercials",
+    "bin:console": "npx ts-node ./bin/console"
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",

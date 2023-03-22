@@ -7,6 +7,8 @@ CREATE TABLE `Feature` (
     `yearEnd` INTEGER NULL,
     `lat` DOUBLE NOT NULL,
     `lon` DOUBLE NOT NULL,
+    `type` ENUM('POINT', 'LINE', 'POLYGON') NOT NULL DEFAULT 'POINT',
+    `points` JSON NOT NULL,
     `name` VARCHAR(255) NOT NULL,
     `markdown` VARCHAR(10000) NOT NULL DEFAULT '',
     `markerId` INTEGER NOT NULL,
