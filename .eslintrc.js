@@ -32,6 +32,7 @@ module.exports = {
         'unicorn/prefer-query-selector': [0],
         'unicorn/consistent-function-scoping': [0],
         'unicorn/prefer-spread': [0],
+        'unicorn/no-null': [0],
 
         // WARN
         '@typescript-eslint/ban-ts-comment': [
@@ -52,6 +53,5 @@ module.exports = {
         'linebreak-style': [2, 'windows'],
         'quotes': [2, 'single'],
         'semi': [2, 'never'],
-        '@typescript-eslint/explicit-module-boundary-types': [1, { allowArgumentsExplicitlyTypedAsAny: true }]
     }
 }

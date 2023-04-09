@@ -6,6 +6,17 @@
         width: auto;
         height: 100%;
     }
+
+    &-beta {
+        position: absolute;
+        top: 0;
+        right: -8%;
+        background-color: $color-trueyellow;
+        color: #000;
+        padding: 5px 8px 4px 8px;
+        font-size: 12px;
+        font-weight: 600;
+    }
 }
 
 .ma-emblem.t0 {

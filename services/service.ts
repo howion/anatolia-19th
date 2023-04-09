@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs'
-
-/* eslint @typescript-eslint/no-unused-vars: 0 */
-export interface Service<T> {}
+export interface Service<T> {
+    new (...args: any[]): object
+    /* static */ subscribe(callback: (hidden: T) => void): void
+}

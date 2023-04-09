@@ -8,7 +8,7 @@ import { ClientUtil } from '/utils/client.util'
 
 const CHEETS = {
     // aha: 'aha'.split('').join(' '),
-    konami: 'up up down down left right left right b a',
+    // konami: 'up up down down left right left right b a',
     batman: 'batman'.split('').join(' '),
     exit: 'esc'.split('').join(' ')
 } as const
@@ -18,8 +18,8 @@ const BATMAN_SRC =
     'https://www.youtube.com/embed/R67YWuwKPek?autoplay=1&showinfo=0&controls=0&modestbranding=1&autohide=1&loop=1&playlist=R67YWuwKPek&disablekb=1&rel=0'
 
 // eslint-disable-next-line max-len
-const KIRBY_SRC =
-    'https://www.youtube.com/embed/Se1uh3PS78Y?autoplay=1&showinfo=0&controls=0&modestbranding=1&autohide=1&loop=1&playlist=Se1uh3PS78Y&disablekb=1&rel=0'
+// const KIRBY_SRC =
+//     'https://www.youtube.com/embed/Se1uh3PS78Y?autoplay=1&showinfo=0&controls=0&modestbranding=1&autohide=1&loop=1&playlist=Se1uh3PS78Y&disablekb=1&rel=0'
 
 export default function Easter(): FCReturn {
     const [isActive, setIsActive] = useState(false)
@@ -29,7 +29,7 @@ export default function Easter(): FCReturn {
 
     useDidMount(() => {
         // REGISTER CHEATS
-        cheet(CHEETS.konami)
+        // cheet(CHEETS.konami)
         cheet(CHEETS.exit)
         cheet(CHEETS.batman)
 
@@ -46,10 +46,10 @@ export default function Easter(): FCReturn {
                 return setIsActive(true)
             }
 
-            if (seq === CHEETS.konami) {
-                setContent('konami')
-                return setIsActive(true)
-            }
+            // if (seq === CHEETS.konami) {
+            //     setContent('konami')
+            //     return setIsActive(true)
+            // }
         })
     })
 
@@ -81,7 +81,7 @@ export default function Easter(): FCReturn {
                                 allowFullScreen={false}
                             />
                         ) : undefined}
-                        {content === 'konami' ? (
+                        {/* {content === 'konami' ? (
                             <>
                                 <iframe
                                     width="100%"
@@ -93,7 +93,7 @@ export default function Easter(): FCReturn {
                                     allowFullScreen={false}
                                 />
                             </>
-                        ) : undefined}
+                        ) : undefined} */}
                     </>
                 ) : undefined}
             </div>

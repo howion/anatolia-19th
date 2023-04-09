@@ -7,7 +7,9 @@ export function useService<T>(service: Service<T>, initial: T): T {
 
     if (!didSub) {
         setDidSub(true)
-        ;(service as any).subscribe(dispatch)
+        if (service) {
+            service.subscribe(dispatch)
+        }
     }
 
     return obj

@@ -149,14 +149,12 @@ export default function Home(): FCReturn {
                     <Project src="/img/sources/newspaper1.jpg" txt="Sources" href="/sources" />
                 </section>
 
-                {/* SPONSORS */}
+                {/* REFERENCES */}
                 <section className="ma-home-sponsors-container">
                     <Image className="ma-home-sponsors-back" src={sarkTicaret} alt="" />
-                    <h2 className="ma-section-title c1 text-center">Project Sponsors</h2>
+                    <h2 className="ma-section-title c1 text-center">Project References</h2>
                     <p className="ma-section-text text-center">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, perspiciatis obcaecati? Quia
-                        architecto laborum quam, sequi inventore eaque illum error obcaecati voluptatem. Praesentium
-                        eius id alias eos est voluptas soluta?
+                        Supporters of our project in many ways including but not limited to transporation, accomodation and access to the their archieves.
                     </p>
                     <div className="ma-home-sponsors-list">
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefOdtu} alt="" />
@@ -181,9 +179,7 @@ export default function Home(): FCReturn {
                             Meet With Our Team
                         </h2>
                         <p className="ma-section-text px-0">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis consequuntur itaque
-                            eaque quisquam quasi asperiores provident laboriosam, esse ratione recusandae veritatis quia
-                            earum cumque voluptas sapiente quidem vitae cum voluptate?
+                            Hereby you can see everyone involved with our project from it's first days to this very day.
                         </p>
                     </div>
                     <div className="ma-home-people-side-people">
@@ -272,9 +268,8 @@ export default function Home(): FCReturn {
                 <div className="ma-home-faq-wrapper">
                     <h2 className="ma-section-title c3 text-center">Frequently Asked Questions</h2>
                     <p className="ma-section-text text-center m-b-5">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni dignissimos perspiciatis alias
-                        minima ullam voluptate facilis officiis sit quas quis non aliquid animi, veritatis distinctio
-                        recusandae. Quas nesciunt incidunt earum.
+                        Here are a few of the questions we get the most. If you don't see what is on your mind, reach
+                        out to us anytime via email.
                     </p>
 
                     <div className="ma-mwcontainer ma-mwcontainer-md px-0">

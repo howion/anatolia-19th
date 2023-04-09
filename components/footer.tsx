@@ -44,7 +44,7 @@ export function Footer(): FCReturn {
                         {/* <FooterItem href="/map" text="Explore Anatolia" /> */}
                         <FooterItem href="/graphs" text="Graphs" />
                         <FooterItem href="/sources" text="Sources" />
-                        <FooterItem href="/contact" text="Submit Data" />
+                        <FooterItem href="/submit-data" text="Submit Data" />
                     </FooterSection>
                     <FooterSection title="Socials">
                         <FooterItem href="https://github.com/howion/anatolia-19th/" text="GitHub️" />
@@ -63,8 +63,8 @@ export function Footer(): FCReturn {
                         <FooterItem href="https://reactflow.dev/" text="React Flow" />
                     </FooterSection>
                     <FooterSection title="Contact">
-                        <FooterItem href="mailto:anatolia19-hist@metu.edu.tr" text="anatolia19-hist@metu.edu.tr" />
-                        <FooterItem href="tel:+903127272507" text="(+90) 312 727 2507" />
+                        <FooterItem href="mailto:yasa.enes@metu.edu.tr" text="yasa.enes@metu.edu.tr" />
+                        {/* <FooterItem href="tel:+903127272507" text="(+90) 312 727 2507" /> */}
                     </FooterSection>
                 </div>
             </div>

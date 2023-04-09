@@ -31,6 +31,10 @@
         $py: 48px;
         padding: $py ($px + $scrollbar-default-width) $py calc($map-vw + $px);
 
+        .ma-emblem {
+            display: inline-flex;
+        }
+
         h1 {
             font-size: 3rem;
             margin-top: 72px;

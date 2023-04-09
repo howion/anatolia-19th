@@ -3,7 +3,7 @@ import { ApiFailureCode } from '/constants/api/api-failure-code'
 import { HTTPStatusCode } from '/constants/http-status-code'
 import { ApiRequest, ApiResponse } from '/types/api'
 
-export async function CORS(req: ApiRequest, res: ApiResponse): Promise<void> {
+export async function CORS(req: ApiRequest<any>, res: ApiResponse<any>): Promise<void> {
     await NextCors(req, res, {
         // Options
         methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
@@ -12,7 +12,7 @@ export async function CORS(req: ApiRequest, res: ApiResponse): Promise<void> {
     })
 }
 
-export function checkMethod(req: ApiRequest, res: ApiResponse, allowedMethods: text[]): boolean {
+export function checkMethod(req: ApiRequest<any>, res: ApiResponse<any>, allowedMethods: text[]): boolean {
     if (!allowedMethods.includes(req.method ?? '')) {
         res.status(HTTPStatusCode.OK).json({
             success: false,

@@ -10,7 +10,7 @@ export function Navbar(props: NavbarProps): FCReturn<NavbarProps> {
             <Anchor href="/" animate>
                 <Emblem h={72} />
             </Anchor>
-            <Anchor href="/contact" animate>
+            <Anchor href="/submit-data" animate>
                 <button className="btn btn-round">
                     {/* <i className="material-icons">add</i> */}
                     <span>SUBMIT DATA</span>

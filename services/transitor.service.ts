@@ -2,7 +2,7 @@ import { Subject } from 'rxjs'
 import { Service } from '/services/service'
 import { ClientUtil } from '/utils/client.util'
 
-export class TransitorService implements Service<boolean> {
+export class TransitorService implements StaticImplements<Service<boolean>, typeof TransitorService> {
     protected static subject = new Subject<boolean>() // isActive
 
     public static showTransitor(): void {

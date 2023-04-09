@@ -1,7 +1,7 @@
 // import type { FC } from 'react'
 
-declare type FCProps<P = {}> = Parameters<React.FC<P>>[0]
-declare type FCReturn<P = {}> = ReturnType<React.FC<P>>
+declare type FCProps<P = object> = Parameters<React.FC<P>>[0]
+declare type FCReturn<P = object> = ReturnType<React.FC<P>>
 
 declare type text = string
 
@@ -17,6 +17,8 @@ type RecursivePartial<T> = {
         ? RecursivePartial<T[P]>
         : T[P]
 }
+
+declare type StaticImplements<I extends new (...args: any[]) => any, C extends I> = InstanceType<I>
 
 declare type Mutable<T> = { -readonly [P in keyof T]: T[P] }
 
