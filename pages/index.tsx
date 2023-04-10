@@ -154,7 +154,8 @@ export default function Home(): FCReturn {
                     <Image className="ma-home-sponsors-back" src={sarkTicaret} alt="" />
                     <h2 className="ma-section-title c1 text-center">Project References</h2>
                     <p className="ma-section-text text-center">
-                        Supporters of our project in many ways including but not limited to transporation, accomodation and access to the their archieves.
+                        Supporters of our project in many ways including but not limited to transporation, accomodation
+                        and access to the their archieves.
                     </p>
                     <div className="ma-home-sponsors-list">
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefOdtu} alt="" />

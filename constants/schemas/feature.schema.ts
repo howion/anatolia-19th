@@ -8,7 +8,7 @@ export interface ApiFeaturesReponse {
 export interface ApiFeaturesFeature {
     id: number
     lat: number
-    lot: number
+    lon: number
     markerId: number
     authorId: number
     relationsF: number[]

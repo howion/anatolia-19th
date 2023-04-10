@@ -42,19 +42,22 @@ export default function Home(): FCReturn {
         })
     }, [mapRef])
 
-    const showModal = useCallback((id: number) => {
-        setShowControls(false)
-        setIsModalActive(true)
-        mapRef.current?.easeTo({
-            padding: {
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: getModalWidth()
-            },
-            duration: 500
-        })
-    }, [mapRef])
+    const showModal = useCallback(
+        (id: number) => {
+            setShowControls(false)
+            setIsModalActive(true)
+            mapRef.current?.easeTo({
+                padding: {
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: getModalWidth()
+                },
+                duration: 500
+            })
+        },
+        [mapRef]
+    )
 
     useDidMount(async () => {
         // make sure the map is initialized only once
@@ -108,7 +111,7 @@ export default function Home(): FCReturn {
 
         if (features?.success) {
             setFeatures(features.data)
-            const {points} = features.data
+            const { points } = features.data
 
             for (const pid in points) {
                 const point = points[pid]

@@ -52,6 +52,6 @@ module.exports = {
         // ERROR
         'linebreak-style': [2, 'windows'],
         'quotes': [2, 'single'],
-        'semi': [2, 'never'],
+        'semi': [2, 'never']
     }
 }
