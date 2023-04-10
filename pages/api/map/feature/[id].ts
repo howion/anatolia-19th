@@ -1,6 +1,7 @@
 import type { ApiRequest, ApiResponse } from '/types/api'
 import { HTTPStatusCode } from '/constants/http-status-code'
 import { checkMethod } from '/utils/api.util'
+import { Database } from '/lib/database'
 
 export default async function GETFeatures(req: ApiRequest, res: ApiResponse<any>): Promise<void> {
     // await CORS(req, res)
@@ -12,9 +13,25 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<any>
     //--------------------------------------------------------------------------
 
     try {
+        const { id } = req.query
+        const nid = Number.parseInt(id as string)
+
+        const feature = await Database.feature.findUnique({
+            where: {
+                id: nid
+            },
+            include: {
+                occupations: true,
+                sources: true,
+                author: true,
+                contributors: true,
+                activities: true
+            }
+        })
+
         return res.status(HTTPStatusCode.OK).json({
             success: true,
-            data: {}
+            data: feature
         })
     } catch (error) {
         console.log(error)

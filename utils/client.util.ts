@@ -23,8 +23,12 @@ export class ClientUtil {
         }
     }
 
-    public static async retrieveFeatures(): Promise<ApiResponseSchema<ApiFeaturesReponse> | null> {
+    public static async retrieveAllFeatures(): Promise<ApiResponseSchema<ApiFeaturesReponse> | null> {
         return await ClientUtil.makeApiRequest<ApiFeaturesReponse>('/map/features')
+    }
+
+    public static async retrieveFeature(id: number) {
+        return await ClientUtil.makeApiRequest<any>(`/map/feature/${id}`)
     }
 
     public static async makeApiRequest<T extends Record<text, any> = Record<text, any>>(

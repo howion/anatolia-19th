@@ -27,6 +27,7 @@ export default function Home(): FCReturn {
     const [isModalActive, setIsModalActive] = useState(false)
     const [features, setFeatures] = useState<ApiFeaturesReponse | null>(null)
     const [featureMarkers, setFeatureMarkers] = useState<Record<text, mapbox.Marker>>({})
+    const [activeFeature, setActiveFeature] = useState<any | null>(null)
 
     const hideModal = useCallback(() => {
         setShowControls(true)
@@ -43,9 +44,16 @@ export default function Home(): FCReturn {
     }, [mapRef])
 
     const showModal = useCallback(
-        (id: number) => {
+        async (id: number) => {
+            const res = await ClientUtil.retrieveFeature(id)
+            if (!res?.success) return
+
+            console.log(res.data)
+
+            setActiveFeature(res.data)
             setShowControls(false)
             setIsModalActive(true)
+
             mapRef.current?.easeTo({
                 padding: {
                     top: 0,
@@ -106,7 +114,7 @@ export default function Home(): FCReturn {
             })
         )
 
-        const features = await ClientUtil.retrieveFeatures()
+        const features = await ClientUtil.retrieveAllFeatures()
         const featureMarkers: Record<text, mapbox.Marker> = {}
 
         if (features?.success) {
@@ -164,44 +172,41 @@ export default function Home(): FCReturn {
                     placeholder="Search in 19th Century Anatolia Project..."
                 />
             </div>
-            <div className={'ma-map-modal-container' + (isModalActive ? ' --active' : '')}>
-                <div className="ma-map-modal-buttons">
-                    <button className="btn btn-icon" onClick={hideModal}>
-                        <i className="material-icons">close</i>
-                    </button>
-                    <button className="btn btn-icon">
-                        <i className="material-icons">share</i>
-                    </button>
-                </div>
-                <div className="ma-map-modal">
-                    <span className="ma-map-modal-label">DATA SUMMARY</span>
-                    <h1 className="ma-map-modal-title">Sevan Bedros Nisanyan</h1>
-                    <span className="ma-map-modal-tag">Architect</span>
-                    <span className="ma-map-modal-tag">Writer</span>
-                    <div className="ma-map-modal-markdown">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
+            {activeFeature ? (
+                <div className={'ma-map-modal-container' + (isModalActive ? ' --active' : '')}>
+                    <div className="ma-map-modal-buttons">
+                        <button className="btn btn-icon" onClick={hideModal}>
+                            <i className="material-icons">close</i>
+                        </button>
+                        <button className="btn btn-icon">
+                            <i className="material-icons">share</i>
+                        </button>
+                    </div>
+                    <div className="ma-map-modal">
+                        <span className="ma-map-modal-label">DATA SUMMARY</span>
+                        <h1 className="ma-map-modal-title">{activeFeature.name}</h1>
+                        <span className="ma-map-modal-tag">{activeFeature.occupations[0].name}</span>
+                        {/* <span className="ma-map-modal-tag">Writer</span> */}
+                        <div className="ma-map-modal-markdown">
+                            <p>{activeFeature.markdown}</p>
+                        </div>
+                    </div>
+                    <div className="ma-map-modal">
+                        <span className="ma-map-modal-label">REFERENCES</span>
+                        <ol className="ma-map-modal-references">
+                            {/* <li>
+                                Rush, E. C., Obolonkin, V., Battin, M., Wouldes, T., & Rowan, J. (2015b). Body composition
+                                in offspring of New Zealand women: Ethnic and gender differences at age 1–3 years in
+                                2005–2009. Annals Of Human Biology, 42(5), 492–497.
+                            </li> */}
+                            <li>Commercial 1978</li>
+                        </ol>
+                    </div>
+                    <div className="ma-map-modal">
+                        <span className="ma-map-modal-label">ACTIVITIES & NOTES</span>
                     </div>
                 </div>
-                <div className="ma-map-modal">
-                    <span className="ma-map-modal-label">REFERENCES</span>
-                    <ol className="ma-map-modal-references">
-                        <li>
-                            Rush, E. C., Obolonkin, V., Battin, M., Wouldes, T., & Rowan, J. (2015b). Body composition
-                            in offspring of New Zealand women: Ethnic and gender differences at age 1–3 years in
-                            2005–2009. Annals Of Human Biology, 42(5), 492–497.
-                        </li>
-                        <li>Commercial 1978</li>
-                    </ol>
-                </div>
-                <div className="ma-map-modal">
-                    <span className="ma-map-modal-label">ACTIVITIES & NOTES</span>
-                </div>
-            </div>
+            ) : undefined}
             <div ref={mapContainerRef} className="ma-map-container" />
         </>
     )
