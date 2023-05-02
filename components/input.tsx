@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 interface SelectOption {
     value: any
@@ -15,7 +15,7 @@ interface InputProps {
     // value?: text
 }
 
-export function Input(props: InputProps): FCReturn<InputProps> {
+export const Input = forwardRef((props: InputProps, ref: any) => {
     return (
         <div className="ma-input-container">
             <label>
@@ -24,6 +24,7 @@ export function Input(props: InputProps): FCReturn<InputProps> {
             </label>
             {props.type === 'textarea' ? (
                 <textarea
+                    ref={ref as React.Ref<HTMLTextAreaElement>}
                     className="ma-input ma-input-textarea"
                     placeholder={props.placeholder}
                     defaultValue={props.defaultValue}
@@ -31,6 +32,7 @@ export function Input(props: InputProps): FCReturn<InputProps> {
             ) : undefined}
             {props.type === 'text' ? (
                 <input
+                    ref={ref as React.Ref<HTMLInputElement>}
                     type="text"
                     className="ma-input"
                     placeholder={props.placeholder}
@@ -38,7 +40,7 @@ export function Input(props: InputProps): FCReturn<InputProps> {
                 />
             ) : undefined}
             {props.type === 'select' ? (
-                <select>
+                <select ref={ref as React.Ref<HTMLSelectElement>}>
                     {props.options!.map((v, i) => (
                         <option key={i} value={v.value} selected={v.value === props.defaultValue}>
                             {v.label}
@@ -48,4 +50,4 @@ export function Input(props: InputProps): FCReturn<InputProps> {
             ) : undefined}
         </div>
     )
-}
+})

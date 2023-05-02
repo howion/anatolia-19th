@@ -17,6 +17,16 @@ export default function Contact(): FCReturn {
     const mapContainerRef = React.useRef<HTMLDivElement>(null)
     const markerRef = React.useRef<mapbox.Marker | null>(null)
 
+    const input_personal_name = useRef<HTMLInputElement>(null)
+    const input_personal_university = useRef<HTMLInputElement>(null)
+    const input_personal_email = useRef<HTMLInputElement>(null)
+    const input_personal_academiclevel = useRef<HTMLInputElement>(null)
+    const input_data_name = useRef<HTMLInputElement>(null)
+    const input_data_type = useRef<HTMLInputElement>(null)
+    const input_data_lat = useRef<HTMLInputElement>(null)
+    const input_data_lon = useRef<HTMLInputElement>(null)
+    const input_data_note = useRef<HTMLInputElement>(null)
+
     useDidMount(() => {
         if (!ClientUtil.isClient || mapRef.current) return
         mapbox.accessToken = ClientUtil.MAPBOX_PUBLIC_TOKEN
@@ -51,6 +61,8 @@ export default function Contact(): FCReturn {
             }
 
             markerRef.current = new mapbox.Marker({ color: '#ff0000' }).setLngLat(lngLat).addTo(map)
+            input_data_lat.current!.value = String(lngLat.lat)
+            input_data_lon.current!.value = String(lngLat.lng)
 
             console.log(lngLat)
 
@@ -119,18 +131,30 @@ export default function Contact(): FCReturn {
 
                 <div className="row">
                     <div className="col-xs">
-                        <Input type="text" label="Full Name" placeholder="Your full name" />
+                        <Input ref={input_personal_name} type="text" label="Full Name" placeholder="Your full name" />
                     </div>
                     <div className="col-xs">
-                        <Input type="text" label="University — Optional" placeholder="Lorem?" optional={true} />
+                        <Input
+                            ref={input_personal_university}
+                            type="text"
+                            label="University — Optional"
+                            placeholder="Lorem?"
+                            optional={true}
+                        />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-xs">
-                        <Input type="text" label="Email" placeholder="Your mail adress" />
+                        <Input ref={input_personal_email} type="text" label="Email" placeholder="Your mail adress" />
                     </div>
                     <div className="col-xs">
-                        <Input type="text" label="Academic Level" placeholder="Your academic level" optional={true} />
+                        <Input
+                            ref={input_personal_academiclevel}
+                            type="text"
+                            label="Academic Level"
+                            placeholder="Your academic level"
+                            optional={true}
+                        />
                     </div>
                 </div>
 
@@ -147,28 +171,40 @@ export default function Contact(): FCReturn {
 
                 <div className="row">
                     <div className="col-xs">
-                        <Input type="text" label="Data Name" placeholder="An explanatory short name" />
+                        <Input
+                            ref={input_data_name}
+                            type="text"
+                            label="Data Name"
+                            placeholder="An explanatory short name"
+                        />
                     </div>
                     <div className="col-xs">
-                        <Input type="text" label="Data Type" placeholder="Select" />
+                        <Input ref={input_data_type} type="text" label="Data Type" placeholder="Select" />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-xs">
-                        <Input type="text" label="Latitude" placeholder="0.000" defaultValue={0} />
+                        <Input ref={input_data_lat} type="text" label="Latitude" placeholder="0.000" defaultValue={0} />
                     </div>
                     <div className="col-xs">
-                        <Input type="text" label="Longitude" placeholder="0.0000" defaultValue={0} />
+                        <Input
+                            ref={input_data_lon}
+                            type="text"
+                            label="Longitude"
+                            placeholder="0.0000"
+                            defaultValue={0}
+                        />
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col-xs">
                         <Input
+                            ref={input_data_note}
                             type="textarea"
                             label="Note — Optional"
                             placeholder="Please write your extra notes related to the data here..."
-                            defaultValue={0}
+                            defaultValue=""
                             optional={true}
                         />
                     </div>

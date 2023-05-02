@@ -23,6 +23,7 @@ module.exports = {
         '@typescript-eslint/no-non-null-assertion': [0],
         'unicorn/prefer-top-level-await': [0],
         'react/prop-types': [0],
+        'react/display-name': [0],
         'no-control-regex': [0],
         'unicorn/prevent-abbreviations': [0],
         'unicorn/text-encoding-identifier-case': [0],
