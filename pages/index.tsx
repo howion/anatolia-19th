@@ -160,7 +160,7 @@ export default function Home(): FCReturn {
                     <div className="ma-home-sponsors-list">
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefOdtu} alt="" />
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefSalt} alt="" />
-                        <Image className="ma-home-sponsors-sponsor" height={64} src={RefAnamed} alt="" />
+                        {/* <Image className="ma-home-sponsors-sponsor" height={64} src={RefAnamed} alt="" /> */}
                         {/* <Image className="ma-home-sponsors-sponsor" src="/sponsor/adimodtu.png" alt=""/> */}
                         {/* <Image className="ma-home-sponsors-sponsor" src="/sponsor/salt.svg" alt=""/> */}
                     </div>
@@ -239,7 +239,7 @@ export default function Home(): FCReturn {
                         />
                     </div>
                 </div>
-                <div className="ma-home-people-wrapper is-flipped">
+                {/* <div className="ma-home-people-wrapper is-flipped">
                     <div className="ma-home-people-side-people">
                         <Person src={peopleSelcuk} name="Selcuk Dursun" role="Supervisor" start="2021" end="Present" />
                         <Person
@@ -263,7 +263,7 @@ export default function Home(): FCReturn {
                             earum cumque voluptas sapiente quidem vitae cum voluptate?
                         </p>
                     </div>
-                </div>
+                </div> */}
             </div>
             <div className="ma-mwcontainer">
                 <div className="ma-home-faq-wrapper">
