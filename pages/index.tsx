@@ -126,7 +126,7 @@ export default function Home(): FCReturn {
                 headerImage={homeIntroback}
                 subtitle="Web Portal"
                 // eslint-disable-next-line max-len
-                text="Welcome to the 19th Century Anatolia Project’s website. An undergraduate digital humanities project aiming to compile as well as digitize intricate data on the region in this century, Anatolia19 here presents its latest work."
+                text="Welcome to the 19th Century Anatolia Project’s website. An undergraduate digital humanities project aiming to compile as well as digitize intricate data on the region in this century. Anatolia 19, here, presents its latest work."
             />
             <div className="ma-mwcontainer">
                 {/* SEARCH */}

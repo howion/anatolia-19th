@@ -25,7 +25,7 @@ export default class MyDocument extends Document {
                     {/*<meta httpEquiv="X-UA-Compatible" content="IE=edge"/>*/}
                     <meta charSet="UTF-8" />
                     <meta name="referrer" content="origin" />
-                    <link rel="icon" href="/favicon.ico" />
+                    <link rel="icon" href="/favicon.svg" />
                     <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                     <link
                         rel="stylesheet"

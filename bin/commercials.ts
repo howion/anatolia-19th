@@ -42,6 +42,8 @@ async function main() {
             // eslint-disable-next-line prefer-const
             let [name, province, year, _occupation, _, _sources, _relations, _address] = row
 
+            if (!name) continue
+
             // normalize values
             name = String(name).trim()
             province = String(province).trim() // vilayet not modern provinces

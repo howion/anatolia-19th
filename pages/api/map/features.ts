@@ -17,7 +17,8 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiF
         const found = await Database.feature.findMany({
             where: {
                 lat: { gt: 0 },
-                lon: { gt: 0 }
+                lon: { gt: 0 },
+                type: 'POINT'
             },
             select: {
                 createdAt: false,
@@ -46,8 +47,7 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiF
                         id: true
                     }
                 }
-            },
-            take: 10
+            }
         })
 
         const points: Record<number, any> = {}
