@@ -18,7 +18,7 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiF
             where: {
                 lat: { gt: 0 },
                 lon: { gt: 0 },
-                type: 'POINT'
+                type: 'POINT' // for now
             },
             select: {
                 createdAt: false,
