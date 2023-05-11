@@ -13,7 +13,10 @@
     "stylelint:fix": "npx stylelint --fix",
     "bin:match-ids": "npx ts-node ./bin/match-ids",
     "bin:commercials": "npx ts-node ./bin/commercials",
-    "bin:console": "npx ts-node ./bin/console"
+    "bin:console": "npx ts-node ./bin/console",
+
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^4.13.0",
