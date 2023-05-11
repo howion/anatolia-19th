@@ -1,11 +1,13 @@
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import { useDidMount } from 'rooks'
+import { useRef } from 'react'
+import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react';
 import { Meta } from '/components/meta'
 import { Transitor } from '/components/transitor'
 // import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
-import { useRef } from 'react'
-import { Inter } from 'next/font/google'
+
 
 const Easter = dynamic(() => import('/components/easter'), {
     ssr: false
@@ -84,6 +86,7 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
                     <Component {...pageProps} />
                 </main>
             </div>
+            <Analytics />
             {/* </LocomotiveScrollProvider> */}
         </>
     )

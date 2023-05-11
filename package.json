@@ -14,7 +14,6 @@
     "bin:match-ids": "npx ts-node ./bin/match-ids",
     "bin:commercials": "npx ts-node ./bin/commercials",
     "bin:console": "npx ts-node ./bin/console",
-
     "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "prisma:generate": "prisma generate"
   },
@@ -28,6 +27,7 @@
     "@types/node": "18.16.3",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
+    "@vercel/analytics": "^1.0.1",
     "@watergis/mapbox-gl-export": "^2.0.0",
     "axios": "^1.4.0",
     "cheet.js": "^0.3.3",
