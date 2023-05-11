@@ -14,6 +14,7 @@ import { TransitorService } from '/services/transitor.service'
 import RefOdtu from '/public/img/ref/odtu.png'
 import RefSalt from '/public/img/ref/salt.svg'
 import RefAnamed from '/public/img/ref/anamed.png'
+import RefHafizaMerkezi from '/public/img/ref/hafizamerkezi.png'
 
 import homeIntroback from '/public/img/home-introback.jpg'
 import sarkTicaret from '/public/img/sark_ticaret.png'
@@ -160,9 +161,7 @@ export default function Home(): FCReturn {
                     <div className="ma-home-sponsors-list">
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefOdtu} alt="" />
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefSalt} alt="" />
-                        {/* <Image className="ma-home-sponsors-sponsor" height={64} src={RefAnamed} alt="" /> */}
-                        {/* <Image className="ma-home-sponsors-sponsor" src="/sponsor/adimodtu.png" alt=""/> */}
-                        {/* <Image className="ma-home-sponsors-sponsor" src="/sponsor/salt.svg" alt=""/> */}
+                        <Image className="ma-home-sponsors-sponsor" height={64} src={RefHafizaMerkezi} alt="" />
                     </div>
                 </section>
             </div>
