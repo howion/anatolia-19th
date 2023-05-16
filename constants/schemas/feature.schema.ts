@@ -3,6 +3,7 @@ export interface ApiFeature {}
 export interface ApiFeaturesReponse {
     points: Record<number, ApiFeaturesFeature>
     polygons: Record<number, ApiFeaturesFeature>
+    GSON: Record<any, any>
     markers: Record<number, ApiFeaturesMarker>
     authors: Record<number, ApiFeaturesAuthor>
 }

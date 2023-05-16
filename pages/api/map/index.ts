@@ -2,7 +2,7 @@ import type { ApiRequest, ApiResponse } from '/types/api'
 import { HTTPStatusCode } from '/constants/http-status-code'
 import { checkMethod } from '/utils/api.util'
 import { Database } from '/lib/database'
-import { ApiFeaturesMarker, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
+import { ApiFeaturesReponse } from '/constants/schemas/feature.schema'
 
 export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiFeaturesReponse>): Promise<void> {
     // await CORS(req, res)
@@ -47,11 +47,17 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiF
                         id: true
                     }
                 }
-            }
+            },
+            // take: 10
         })
 
         const points: Record<number, any> = {}
         const polygons: Record<number, any> = {}
+
+        const GSON: Record<any, any> = {
+            type: 'FeatureCollection',
+            features: []
+        }
 
         for (const feature of found) {
             const type = feature.type
@@ -70,6 +76,18 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiF
             if (type === 'POINT') {
                 _data.points = undefined
                 points[feature.id] = _data
+
+                GSON.features.push({
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [feature.lon, feature.lat]
+                    },
+                    properties: {
+                        id: feature.id
+                    }
+                })
+
                 continue
             }
 
@@ -97,6 +115,8 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiF
             data: {
                 points,
                 polygons,
+
+                GSON,
                 markers,
                 authors
             }

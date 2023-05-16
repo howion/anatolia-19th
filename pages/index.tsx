@@ -15,6 +15,7 @@ import RefOdtu from '/public/img/ref/odtu.png'
 import RefSalt from '/public/img/ref/salt.svg'
 import RefAnamed from '/public/img/ref/anamed.png'
 import RefHafizaMerkezi from '/public/img/ref/hafizamerkezi.png'
+import RefVekam from '/public/img/ref/vekam.svg'
 
 import homeIntroback from '/public/img/home-introback.jpg'
 import sarkTicaret from '/public/img/sark_ticaret.png'
@@ -162,6 +163,7 @@ export default function Home(): FCReturn {
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefOdtu} alt="" />
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefSalt} alt="" />
                         <Image className="ma-home-sponsors-sponsor" height={64} src={RefHafizaMerkezi} alt="" />
+                        <Image className="ma-home-sponsors-sponsor" height={64} src={RefVekam} alt="" />
                     </div>
                 </section>
             </div>

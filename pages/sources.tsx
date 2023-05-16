@@ -84,7 +84,7 @@ export default function Sources(): FCReturn {
                     title="Maps"
                     subtitle="via SALT Online"
                     text="In 80 years, from the 1850s to the 1930s, which we examined in our Project, the Anatolian map has undergone many physical, political and social transformations. We focus on these transformations and show the data we obtained from more than seventy maps in the French National Library, David Ramsey Map Collection and Ottoman State Archives on the main map of our Project in layers. In this context, we aim to both facilitate the work of researchers working in different disciplines and inspire more micro-scale studies."
-                    href="https://archives.saltresearch.org/handle/123456789/2301"
+                    href="https://www.davidrumsey.com/luna/servlet/view/all/what/Ottoman+Mapping?sort=pub_list_no_initialsort%2Cpub_date%2Cpub_list_no%2Cseries_no&os=0&pgs=100&res=1&cic=RUMSEY%7E8%7E1"
                     pics={[maps1]}
                 />
                 <Source

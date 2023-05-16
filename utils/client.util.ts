@@ -24,7 +24,7 @@ export class ClientUtil {
     }
 
     public static async retrieveAllFeatures(): Promise<ApiResponseSchema<ApiFeaturesReponse> | null> {
-        return await ClientUtil.makeApiRequest<ApiFeaturesReponse>('/map/features')
+        return await ClientUtil.makeApiRequest<ApiFeaturesReponse>('/map')
     }
 
     public static async retrieveFeature(id: number) {

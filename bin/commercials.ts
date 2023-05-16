@@ -40,18 +40,20 @@ async function main() {
             if (i === '0') continue
 
             // eslint-disable-next-line prefer-const
-            let [name, province, year, _occupation, _, _sources, _relations, _address] = row
+            let [name, city, year, _occupation, _, _sources, _relations, _address] = row
 
             if (!name) continue
 
             // normalize values
             name = String(name).trim()
-            province = String(province).trim() // vilayet not modern provinces
+            city = String(city).trim() // vilayet not modern province
             year = Number.parseInt(String(year).trim())
             _occupation = String(_occupation ?? '').trim()
             _sources = String(_sources ?? '').trim()
             _relations = String(_relations ?? '').trim()
             _address = String(_address ?? '').trim()
+
+            const _sourcePage = Number.parseInt((_sources.split('/')[1] ?? '').trim()) ?? 0
 
             if (Number.isNaN(year)) {
                 console.log(`Year is NaN: ${year} for the row with id: ${id}`)
@@ -94,6 +96,7 @@ async function main() {
                     yearStart: 1889,
                     lat: 0,
                     lon: 0,
+                    city,
                     name,
                     occupations: {
                         connectOrCreate: occupations
@@ -102,10 +105,14 @@ async function main() {
                         connect: {
                             shortName: 'AC1889'
                         }
+                    },
+                    sourceDetail: { // object of objects if multiple sources
+                        p: _sourcePage,
                     }
                 },
                 create: {
                     id,
+                    city,
                     yearStart: 1889,
                     lat: 0,
                     lon: 0,
@@ -119,6 +126,9 @@ async function main() {
                         connect: {
                             shortName: 'AC1889'
                         }
+                    },
+                    sourceDetail: {
+                        p: _sourcePage,
                     }
                 }
             })

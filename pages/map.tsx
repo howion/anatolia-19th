@@ -25,7 +25,7 @@ export default function Home(): FCReturn {
     const mapRef = useRef<mapbox.Map | null>(null)
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const [isModalActive, setIsModalActive] = useState(false)
-    const [features, setFeatures] = useState<ApiFeaturesReponse | null>(null)
+    const features = useRef<ApiFeaturesReponse | null>(null)
     const [featureMarkers, setFeatureMarkers] = useState<Record<text, mapbox.Marker>>({})
     const [activeFeature, setActiveFeature] = useState<any | null>(null)
 
@@ -76,6 +76,21 @@ export default function Home(): FCReturn {
         // todo: enable this in production
         // mapRef.current!.addEventListener('contextmenu', (e) => e.preventDefault())
 
+        const _features = await ClientUtil.retrieveAllFeatures()
+        // const featureMarkers: Record<text, mapbox.Marker> = {}
+
+        if (_features && _features.success) {
+            features.current = _features.data
+
+            // for (const pid in points) {
+            //     const point = points[pid]
+            //     const marker = new mapbox.Marker().setLngLat([point.lon, point.lat]).addTo(map)
+            //     const pidn = Number.parseInt(pid)
+            //     featureMarkers[pidn] = marker
+            //     marker.getElement().addEventListener('click', () => showModal(pidn))
+            // }
+        }
+
         mapRef.current = new mapbox.Map({
             container: mapContainerRef.current!,
             style: ClientUtil.MAPBOX_STYLE_MAP,
@@ -91,6 +106,100 @@ export default function Home(): FCReturn {
 
         map.on('load', () => {
             TransitorService.hideTransitor()
+
+            const { GSON } = features.current!
+
+            map.addSource('points', {
+                type: 'geojson',
+                data: GSON as any,
+                cluster: true,
+                clusterMaxZoom: 10, // Max zoom to cluster points on
+                clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
+            })
+
+            map.addLayer({
+                id: 'clusters',
+                type: 'circle',
+                source: 'points',
+                filter: ['has', 'point_count'],
+                paint: {
+                    // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
+                    // with three steps to implement three types of circles:
+                    //   * Blue, 20px circles when point count is less than 100
+                    //   * Yellow, 30px circles when point count is between 100 and 750
+                    //   * Pink, 40px circles when point count is greater than or equal to 750
+                    'circle-color': [
+                        'step',
+                        ['get', 'point_count'],
+                        '#51bbd6', 100,
+                        '#f1f075', 750,
+                        '#f28cb1'
+                    ],
+                    'circle-radius': [
+                        'step',
+                        ['get', 'point_count'],
+                        20, 100 ,
+                        30, 750,
+                        40
+                    ]
+                }
+            })
+
+            map.addLayer({
+                id: 'cluster-count',
+                type: 'symbol',
+                source: 'points',
+                filter: ['has', 'point_count'],
+                layout: {
+                    'text-field': ['get', 'point_count_abbreviated'],
+                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                    'text-size': 12
+                }
+            })
+
+            map.addLayer({
+                id: 'unclustered-point',
+                type: 'circle',
+                source: 'points',
+                filter: ['!', ['has', 'point_count']],
+                paint: {
+                    'circle-color': '#11b4da',
+                    'circle-radius': 8,
+                    'circle-stroke-width': 1,
+                    'circle-stroke-color': '#fff'
+                }
+            })
+
+            map.on('click', 'unclustered-point', (e) => {
+                const __features = map.queryRenderedFeatures(e.point, {
+                    layers: ['unclustered-point']
+                })
+                console.log(e)
+                console.log(__features)
+            })
+
+            // inspect a cluster on click
+            // map.on('click', 'clusters', (e) => {
+            //     const __features = map.queryRenderedFeatures(e.point, {
+            //         layers: ['clusters']
+            //     })
+
+            //     console.log(e)
+
+            //     // const _id = __features[0].properties!.id
+            //     // console.log(__features[0].geometry.coordinates)
+
+            //     // @ts-ignore getClusterExpansionZoom is not in the types
+            //     // map.getSource('points').getClusterExpansionZoom(_id, (error, zoom) => {
+            //     //     if (error) return
+            //     //     map.easeTo({
+            //     //         // @ts-ignore geometry do have coordinates unlike what ts says
+            //     //         center: [0, 0, 0],
+            //     //         duration: 500,
+            //     //         zoom: zoom
+            //     //     })
+            //     // })
+            // })
         })
 
         if (map.loaded()) TransitorService.hideTransitor()
@@ -114,23 +223,7 @@ export default function Home(): FCReturn {
             })
         )
 
-        const features = await ClientUtil.retrieveAllFeatures()
-        const featureMarkers: Record<text, mapbox.Marker> = {}
-
-        if (features?.success) {
-            setFeatures(features.data)
-            const { points } = features.data
-
-            for (const pid in points) {
-                const point = points[pid]
-                const marker = new mapbox.Marker().setLngLat([point.lat, point.lon]).addTo(map)
-                const pidn = Number.parseInt(pid)
-                featureMarkers[pidn] = marker
-                marker.getElement().addEventListener('click', () => showModal(pidn))
-            }
-        }
-
-        setFeatureMarkers(featureMarkers)
+        // setFeatureMarkers(featureMarkers)
 
         // test marker start
         // const marker = new mapbox.Marker()

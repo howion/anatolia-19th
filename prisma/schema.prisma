@@ -16,25 +16,28 @@ enum FeatureGeometryType {
 }
 
 model Feature {
-  id           Int                 @id @default(autoincrement())
-  createdAt    DateTime            @default(now())
-  updatedAt    DateTime            @updatedAt
-  yearStart    Int
-  yearEnd      Int?
-  lat          Float // center of mass or the point itself
-  lon          Float
-  type         FeatureGeometryType @default(POINT)
-  points       Json                @default("{}")
-  name         String              @db.VarChar(255)
-  marker       Marker              @relation(fields: [markerId], references: [id])
-  occupations  Occupation[]
-  relationsF   Feature[]           @relation("FeatureRelations")
-  relationsB   Feature[]           @relation("FeatureRelations")
-  markdown     String              @default("") @db.VarChar(10000)
-  sources      Source[]
-  author       Author              @relation(fields: [authorId], references: [id])
-  contributors Contributor[]
-  activities   FeatureActivity[]
+  id                Int                 @id @default(autoincrement())
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  yearStart         Int?
+  yearEnd           Int?
+  city              String
+  lat               Float // center of mass or the point itself
+  lon               Float
+  isLocationPrecise Boolean             @default(false)
+  type              FeatureGeometryType @default(POINT)
+  points            Json                @default("{}")
+  name              String              @db.VarChar(255)
+  marker            Marker              @relation(fields: [markerId], references: [id])
+  occupations       Occupation[]
+  relationsF        Feature[]           @relation("FeatureRelations")
+  relationsB        Feature[]           @relation("FeatureRelations")
+  sourceDetail      Json                @default("{}")
+  markdown          String              @default("") @db.VarChar(10000)
+  sources           Source[]
+  author            Author              @relation(fields: [authorId], references: [id])
+  contributors      Contributor[]
+  activities        FeatureActivity[]
 
   markerId Int
   authorId Int

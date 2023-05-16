@@ -32,13 +32,14 @@ async function main() {
         const { properties, geometry } = feature
         const { type, coordinates } = geometry
 
-        const { id } = properties
+        // eslint-disable-next-line prefer-const
+        let { id, p: isPrecise } = properties
 
         if (type === 'Point') {
             // typeof coordinates = [lat, lon] here
 
             if (id !== 0 && !id) {
-                console.log('MAPBOX PROPERTY ID IS NULL OR UNDEFINED')
+                console.log('\nMAPBOX PROPERTY ID IS NULL OR UNDEFINED')
                 console.log('Feature: ' + JSON.stringify(feature))
                 continue
             }
@@ -50,9 +51,10 @@ async function main() {
                     },
                     data: {
                         type: 'POINT',
-                        lat: coordinates[0],
-                        lon: coordinates[1],
-                        points: coordinates
+                        lon: coordinates[0],
+                        lat: coordinates[1],
+                        points: coordinates,
+                        isLocationPrecise: isPrecise ? true : false
                     }
                 })
             } catch (error) {
