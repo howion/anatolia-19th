@@ -181,7 +181,7 @@ export default function Home(): FCReturn {
                             Meet With Our Team
                         </h2>
                         <p className="ma-section-text px-0">
-                            Hereby you can see everyone involved with our project from it's first days to this very day.
+                            Hereby you can see everyone involved with our project at the moment.
                         </p>
                     </div>
                     <div className="ma-home-people-side-people">
@@ -218,10 +218,10 @@ export default function Home(): FCReturn {
                                 { link: 'mailto:me@howion.com', icon: 'mail' },
                                 { link: 'https://github.com/howion', icon: siGithub },
                                 { link: 'https://www.linkedin.com/in/omer-mert-coskun/', icon: siLinkedin },
+                                { link: 'https://orcid.org/0000-0002-8324-2325', icon: siOrcid },
                                 { link: 'https://www.behance.net/howion', icon: siBehance },
                                 { link: 'https://dribbble.com/howion', icon: siDribbble },
-                                { link: 'https://twitter.com/howionwastaken', icon: siTwitter },
-                                { link: 'https://orcid.org/0000-0002-8324-2325', icon: siOrcid }
+                                { link: 'https://twitter.com/howionwastaken', icon: siTwitter }
                             ]}
                         />
                         <Person

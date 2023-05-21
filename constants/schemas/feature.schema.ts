@@ -1,4 +1,28 @@
-export interface ApiFeature {}
+import { FeatureGeometryType } from '/lib/database'
+
+export interface ApiFeature {
+    activities: any // TODO
+    author: ApiFeaturesAuthor
+    authorId: number
+    city: text
+    contributors: any // TODO
+    createdAt: text // in ... format
+    updatedAt: text // in ... format
+    id: number
+    isLocationPrecise: boolean
+    lon: number
+    lat: number
+    markdown: text
+    markedId: number
+    name: text
+    occupations: any // TODO
+    points: any // TODO
+    sourceDetail: any // TODO
+    sources: ApiFeaturesSource[]
+    type: FeatureGeometryType
+    yearStart?: number
+    yearEnd?: number
+}
 
 export interface ApiFeaturesReponse {
     points: Record<number, ApiFeaturesFeature>
@@ -6,6 +30,7 @@ export interface ApiFeaturesReponse {
     GSON: Record<any, any>
     markers: Record<number, ApiFeaturesMarker>
     authors: Record<number, ApiFeaturesAuthor>
+    sources: Record<number, ApiFeaturesSource>
 }
 
 export interface ApiFeaturesFeature {
@@ -27,4 +52,11 @@ export interface ApiFeaturesMarker {
 export interface ApiFeaturesAuthor {
     id: number
     name: text
+}
+
+export interface ApiFeaturesSource {
+    id: number
+    shortName: text
+    source: text
+    url?: text
 }

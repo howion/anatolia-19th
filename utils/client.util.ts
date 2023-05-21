@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { ApiResponseSchema } from '/types/api'
-import { ApiFeaturesReponse } from '/constants/schemas/feature.schema'
+import { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
 
 export class ClientUtil {
     public static readonly MAPBOX_PUBLIC_TOKEN =
@@ -27,7 +27,7 @@ export class ClientUtil {
         return await ClientUtil.makeApiRequest<ApiFeaturesReponse>('/map')
     }
 
-    public static async retrieveFeature(id: number) {
+    public static async retrieveFeature(id: number): Promise<ApiResponseSchema<ApiFeature> | null> {
         return await ClientUtil.makeApiRequest<any>(`/map/feature/${id}`)
     }
 

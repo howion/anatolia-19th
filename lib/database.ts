@@ -1,6 +1,6 @@
 import { Prisma, PrismaClient } from '@prisma/client'
 
-export type { Feature, Occupation, Marker, Source } from '@prisma/client'
+export type { Feature, Occupation, Marker, Source, FeatureGeometryType } from '@prisma/client'
 
 declare global {
     // eslint-disable-next-line no-var

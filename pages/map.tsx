@@ -9,8 +9,7 @@ import { Anchor } from '/components/anchor'
 import { ClientUtil } from '/utils/client.util'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { ApiFeaturesReponse } from '/constants/schemas/feature.schema'
-import type { ApiFeaturesFeature } from '/constants/schemas/feature.schema'
+import { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
 
 function getModalWidth(): number {
     if (!window) return 0
@@ -27,7 +26,7 @@ export default function Home(): FCReturn {
     const [isModalActive, setIsModalActive] = useState(false)
     const features = useRef<ApiFeaturesReponse | null>(null)
     const [featureMarkers, setFeatureMarkers] = useState<Record<text, mapbox.Marker>>({})
-    const [activeFeature, setActiveFeature] = useState<any | null>(null)
+    const [activeFeature, setActiveFeature] = useState<ApiFeature | null>(null)
 
     const hideModal = useCallback(() => {
         setShowControls(true)
@@ -48,9 +47,9 @@ export default function Home(): FCReturn {
             const res = await ClientUtil.retrieveFeature(id)
             if (!res?.success) return
 
-            console.log(res.data)
-
             setActiveFeature(res.data)
+
+            console.log(res.data)
             setShowControls(false)
             setIsModalActive(true)
 
@@ -73,14 +72,19 @@ export default function Home(): FCReturn {
 
         mapbox.accessToken = ClientUtil.MAPBOX_PUBLIC_TOKEN
 
-        // todo: enable this in production
-        // mapRef.current!.addEventListener('contextmenu', (e) => e.preventDefault())
+        if (process.env.NODE_ENV === 'production') {
+            // @ts-ignore addEventListener propery exists!
+            mapRef.current!.addEventListener('contextmenu', (e) => e.preventDefault())
+        }
 
         const _features = await ClientUtil.retrieveAllFeatures()
         // const featureMarkers: Record<text, mapbox.Marker> = {}
 
         if (_features && _features.success) {
             features.current = _features.data
+
+            // TODO: Remove this
+            console.log(features.current)
 
             // for (const pid in points) {
             //     const point = points[pid]
@@ -98,7 +102,11 @@ export default function Home(): FCReturn {
             zoom: 6,
             attributionControl: true,
             boxZoom: false,
-            logoPosition: 'bottom-right'
+            logoPosition: 'bottom-right',
+            // bounds: [
+            //     [35.947835, 23.537402], // SW
+            //     [42.414684, 42.755552] // NE
+            // ]
             // antialias: false
         })
 
@@ -128,6 +136,7 @@ export default function Home(): FCReturn {
                     //   * Blue, 20px circles when point count is less than 100
                     //   * Yellow, 30px circles when point count is between 100 and 750
                     //   * Pink, 40px circles when point count is greater than or equal to 750
+                    // eslint-disable-next-line prettier/prettier
                     'circle-color': [
                         'step',
                         ['get', 'point_count'],
@@ -135,10 +144,11 @@ export default function Home(): FCReturn {
                         '#f1f075', 750,
                         '#f28cb1'
                     ],
+                    // eslint-disable-next-line prettier/prettier
                     'circle-radius': [
                         'step',
                         ['get', 'point_count'],
-                        20, 100 ,
+                        20, 100,
                         30, 750,
                         40
                     ]
@@ -171,35 +181,9 @@ export default function Home(): FCReturn {
             })
 
             map.on('click', 'unclustered-point', (e) => {
-                const __features = map.queryRenderedFeatures(e.point, {
-                    layers: ['unclustered-point']
-                })
-                console.log(e)
-                console.log(__features)
+                const feature = e.features![0]
+                showModal(feature.properties!.id)
             })
-
-            // inspect a cluster on click
-            // map.on('click', 'clusters', (e) => {
-            //     const __features = map.queryRenderedFeatures(e.point, {
-            //         layers: ['clusters']
-            //     })
-
-            //     console.log(e)
-
-            //     // const _id = __features[0].properties!.id
-            //     // console.log(__features[0].geometry.coordinates)
-
-            //     // @ts-ignore getClusterExpansionZoom is not in the types
-            //     // map.getSource('points').getClusterExpansionZoom(_id, (error, zoom) => {
-            //     //     if (error) return
-            //     //     map.easeTo({
-            //     //         // @ts-ignore geometry do have coordinates unlike what ts says
-            //     //         center: [0, 0, 0],
-            //     //         duration: 500,
-            //     //         zoom: zoom
-            //     //     })
-            //     // })
-            // })
         })
 
         if (map.loaded()) TransitorService.hideTransitor()
@@ -222,26 +206,12 @@ export default function Home(): FCReturn {
                 showUserHeading: false
             })
         )
-
-        // setFeatureMarkers(featureMarkers)
-
-        // test marker start
-        // const marker = new mapbox.Marker()
-        //     .setLngLat([27.6377, 38.8217])
-        //     .addTo(map)
-        //     .getElement()
-        //     .addEventListener('click', () => {
-        //         showModal()
-        //     })
-        // // test marker end
     })
 
     if (ClientUtil.isClient) {
         const el = document.querySelector<HTMLDivElement>('.mapboxgl-control-container')
         if (el) el.style.display = showControls ? 'block' : 'none'
     }
-
-    // function onPinpointClick(id: number) { }
 
     // const SW = [34.8, 24.5]
     // const NE = [41.8, 44.8]
@@ -292,7 +262,15 @@ export default function Home(): FCReturn {
                                 in offspring of New Zealand women: Ethnic and gender differences at age 1–3 years in
                                 2005–2009. Annals Of Human Biology, 42(5), 492–497.
                             </li> */}
-                            <li>Commercial 1978</li>
+                            {/* <li>Commercial 1978</li> */}
+                            {activeFeature.sources.map((ref, i) => (
+                                <li key={i}>
+                                    <a href={ref.url ?? '#'}>
+                                        {ref.source}
+                                        {activeFeature.sourceDetail?.p ? ` (p. ${activeFeature.sourceDetail.p}).` : ''}
+                                    </a>
+                                </li>
+                            ))}
                         </ol>
                     </div>
                     <div className="ma-map-modal">

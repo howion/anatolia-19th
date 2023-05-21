@@ -110,6 +110,9 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiF
             }
         })
 
+        // Retrieve all sources
+        const sources = await Database.source.findMany()
+
         return res.status(HTTPStatusCode.OK).json({
             success: true,
             data: {
@@ -118,7 +121,8 @@ export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiF
 
                 GSON,
                 markers,
-                authors
+                authors,
+                sources
             }
         })
     } catch (error) {
