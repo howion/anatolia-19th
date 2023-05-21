@@ -106,8 +106,9 @@ async function main() {
                             shortName: 'AC1889'
                         }
                     },
-                    sourceDetail: { // object of objects if multiple sources
-                        p: _sourcePage,
+                    sourceDetail: {
+                        // object of objects if multiple sources
+                        p: _sourcePage
                     }
                 },
                 create: {
@@ -128,7 +129,7 @@ async function main() {
                         }
                     },
                     sourceDetail: {
-                        p: _sourcePage,
+                        p: _sourcePage
                     }
                 }
             })

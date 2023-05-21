@@ -30,7 +30,6 @@ export interface ApiFeaturesReponse {
     GSON: Record<any, any>
     markers: Record<number, ApiFeaturesMarker>
     authors: Record<number, ApiFeaturesAuthor>
-    sources: Record<number, ApiFeaturesSource>
 }
 
 export interface ApiFeaturesFeature {

@@ -102,7 +102,7 @@ export default function Home(): FCReturn {
             zoom: 6,
             attributionControl: true,
             boxZoom: false,
-            logoPosition: 'bottom-right',
+            logoPosition: 'bottom-right'
             // bounds: [
             //     [35.947835, 23.537402], // SW
             //     [42.414684, 42.755552] // NE
@@ -137,21 +137,9 @@ export default function Home(): FCReturn {
                     //   * Yellow, 30px circles when point count is between 100 and 750
                     //   * Pink, 40px circles when point count is greater than or equal to 750
                     // eslint-disable-next-line prettier/prettier
-                    'circle-color': [
-                        'step',
-                        ['get', 'point_count'],
-                        '#51bbd6', 100,
-                        '#f1f075', 750,
-                        '#f28cb1'
-                    ],
+                    'circle-color': ['step', ['get', 'point_count'], '#51bbd6', 100, '#f1f075', 750, '#f28cb1'],
                     // eslint-disable-next-line prettier/prettier
-                    'circle-radius': [
-                        'step',
-                        ['get', 'point_count'],
-                        20, 100,
-                        30, 750,
-                        40
-                    ]
+                    'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40]
                 }
             })
 

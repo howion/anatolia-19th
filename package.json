@@ -4,12 +4,11 @@
   "private": false,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn prettier && next build",
+    "build": "npx prettier --write . && next build",
     "start": "next start",
     "lint": "npx eslint .",
     "prisma": "npx prisma format && npx prisma migrate dev && npx prisma generate",
     "studio": "npx prisma studio",
-    "prettier": "npx prettier --write .",
     "stylelint:fix": "npx stylelint --fix",
     "bin:match-ids": "npx ts-node ./bin/match-ids",
     "bin:commercials": "npx ts-node ./bin/commercials",

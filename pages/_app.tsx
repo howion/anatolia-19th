@@ -3,11 +3,10 @@ import dynamic from 'next/dynamic'
 import { useDidMount } from 'rooks'
 import { useRef } from 'react'
 import { Inter } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/react'
 import { Meta } from '/components/meta'
 import { Transitor } from '/components/transitor'
 // import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
-
 
 const Easter = dynamic(() => import('/components/easter'), {
     ssr: false
