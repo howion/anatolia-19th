@@ -72,11 +72,6 @@ export default function Home(): FCReturn {
 
         mapbox.accessToken = ClientUtil.MAPBOX_PUBLIC_TOKEN
 
-        if (process.env.NODE_ENV === 'production') {
-            // @ts-ignore addEventListener propery exists!
-            mapRef.current!.addEventListener('contextmenu', (e) => e.preventDefault())
-        }
-
         const _features = await ClientUtil.retrieveAllFeatures()
         // const featureMarkers: Record<text, mapbox.Marker> = {}
 
@@ -111,6 +106,10 @@ export default function Home(): FCReturn {
         })
 
         const map = mapRef.current
+
+        // if (process.env.NODE_ENV === 'production') {
+        // ....addEventListener('contextmenu', (e) => e.preventDefault())
+        // }
 
         map.on('load', () => {
             TransitorService.hideTransitor()
