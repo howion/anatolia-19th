@@ -175,8 +175,8 @@ export default function Home(): FCReturn {
 
         if (map.loaded()) TransitorService.hideTransitor()
 
-        map.dragRotate.disable()
-        map.touchZoomRotate.disableRotation()
+        // map.dragRotate.disable()
+        // map.touchZoomRotate.disableRotation()
 
         map.addControl(
             new mapbox.FullscreenControl({
