@@ -7,9 +7,12 @@ import { Emblem } from '/components/emblem'
 import { TransitorService } from '/services/transitor.service'
 import { Anchor } from '/components/anchor'
 import { ClientUtil } from '/utils/client.util'
+import { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
+
+import { siTwitter } from 'simple-icons'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
+import { MapShare } from '/components/map-share'
 
 function getModalWidth(): number {
     if (!window) return 0
@@ -207,6 +210,7 @@ export default function Home(): FCReturn {
     return (
         <>
             <Meta />
+            {/* <MapShare id="ali-efendi" /> */}
             <div className="ma-map-emblem">
                 <Emblem h={60} textFill="#fff" />
             </div>
