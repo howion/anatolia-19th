@@ -215,16 +215,25 @@ export default function Home(): FCReturn {
                 <Emblem h={60} textFill="#fff" />
             </div>
             <div className="ma-map-search-container">
-                <Anchor href="/" animate>
-                    <button className="btn btn-icon">
-                        <i className="material-icons">arrow_back</i>
-                    </button>
-                </Anchor>
-                <input
-                    className="ma-map-search-input"
-                    type="text"
-                    placeholder="Search in 19th Century Anatolia Project..."
-                />
+                <div className="ma-map-search-lhs">
+                    <Anchor href="/" animate>
+                        <button className="btn btn-icon">
+                            <i className="material-icons">arrow_back</i>
+                        </button>
+                    </Anchor>
+                </div>
+                <div className="ma-map-search-rhs">
+                    <input
+                        className="ma-map-search-input"
+                        type="text"
+                        placeholder="Search in 19th Century Anatolia Project..."
+                    />
+                    <div className="ma-map-search-results">
+                        <div className="ma-map-search-results-label">FEATURES</div>
+                        <div className="ma-map-search-results-result">Mehmet Efendi, Merchant</div>
+                        <div className="ma-map-search-results-result">Muhammed Efendi, Lawyer</div>
+                    </div>
+                </div>
             </div>
             {activeFeature ? (
                 <div className={'ma-map-modal-container' + (isModalActive ? ' --active' : '')}>
@@ -239,7 +248,15 @@ export default function Home(): FCReturn {
                     <div className="ma-map-modal">
                         <span className="ma-map-modal-label">DATA SUMMARY</span>
                         <h1 className="ma-map-modal-title">{activeFeature.name}</h1>
-                        <span className="ma-map-modal-tag">{activeFeature.occupations[0].name}</span>
+                        <span className="ma-map-modal-tag">{activeFeature.city}</span>
+                        {activeFeature.occupations.map((occupation: any, i: any) => (
+                            <span
+                                key={i}
+                                className="ma-map-modal-tag"
+                            >
+                                {occupation.name}
+                            </span>
+                        ))}
                         {/* <span className="ma-map-modal-tag">Writer</span> */}
                         <div className="ma-map-modal-markdown">
                             <p>{activeFeature.markdown}</p>
