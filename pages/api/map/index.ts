@@ -4,7 +4,7 @@ import { checkMethod } from '/utils/api.util'
 import { Database } from '/lib/database'
 import { ApiFeaturesReponse } from '/constants/schemas/feature.schema'
 
-export default async function GETFeatures(req: ApiRequest, res: ApiResponse<ApiFeaturesReponse>): Promise<void> {
+export default async function Handle(req: ApiRequest, res: ApiResponse<ApiFeaturesReponse>): Promise<void> {
     // await CORS(req, res)
     //--------------------------------------------------------------------------
     if (!checkMethod(req, res, ['GET'])) return

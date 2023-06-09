@@ -3,7 +3,7 @@ import { HTTPStatusCode } from '/constants/http-status-code'
 import { checkMethod } from '/utils/api.util'
 import { Database } from '/lib/database'
 
-export default async function GETFeatures(req: ApiRequest, res: ApiResponse<any>): Promise<void> {
+export default async function Handle(req: ApiRequest, res: ApiResponse<any>): Promise<void> {
     // await CORS(req, res)
     //--------------------------------------------------------------------------
     if (!checkMethod(req, res, ['GET'])) return

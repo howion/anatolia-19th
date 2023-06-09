@@ -1,5 +1,5 @@
-import React, { useCallback, useRef, useState } from 'react'
-import { useDidMount } from 'rooks'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useDebounce, useDidMount } from 'rooks'
 import mapbox from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
 import { Meta } from '/components/meta'
@@ -28,8 +28,13 @@ export default function Home(): FCReturn {
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const [isModalActive, setIsModalActive] = useState(false)
     const features = useRef<ApiFeaturesReponse | null>(null)
-    const [featureMarkers, setFeatureMarkers] = useState<Record<text, mapbox.Marker>>({})
+    // const [featureMarkers, setFeatureMarkers] = useState<Record<text, mapbox.Marker>>({})
     const [activeFeature, setActiveFeature] = useState<ApiFeature | null>(null)
+
+    const [searchQuery, setSearchQuery] = useState('')
+    const setValueDebounced = useDebounce(setSearchQuery, 500)
+
+    const [searchResults, setSearchResults] = useState<any[]>([])
 
     const hideModal = useCallback(() => {
         setShowControls(true)
@@ -52,18 +57,20 @@ export default function Home(): FCReturn {
 
             setActiveFeature(res.data)
 
-            console.log(res.data)
             setShowControls(false)
             setIsModalActive(true)
 
             mapRef.current?.easeTo({
+                center: [res.data.lon, res.data.lat],
+                zoom: 12,
+                animate: true,
+                duration: 500,
                 padding: {
                     top: 0,
                     bottom: 0,
                     left: 0,
                     right: getModalWidth()
-                },
-                duration: 500
+                }
             })
         },
         [mapRef]
@@ -207,6 +214,19 @@ export default function Home(): FCReturn {
     // const NE = [41.8, 44.8]
     // const Boundaires = [SE, NE]
 
+    // const handleQueryInput = useCallback((query: text) => {
+    //     setValueDebounced(query)
+    // }, [searchQuery])
+
+    useEffect(() => {
+        if (!searchQuery) return setSearchResults([])
+
+        ClientUtil.searchFeatures(searchQuery).then((res) => {
+            if (!res || !res.success) return setSearchResults([])
+            setSearchResults(res.data)
+        })
+    }, [searchQuery])
+
     return (
         <>
             <Meta />
@@ -224,15 +244,25 @@ export default function Home(): FCReturn {
                 </div>
                 <div className="ma-map-search-rhs">
                     <input
+                        onChange={(e) => setValueDebounced(e.target.value)}
                         className="ma-map-search-input"
                         type="text"
                         placeholder="Search in 19th Century Anatolia Project..."
                     />
-                    <div className="ma-map-search-results">
-                        <div className="ma-map-search-results-label">FEATURES</div>
-                        <div className="ma-map-search-results-result">Mehmet Efendi, Merchant</div>
-                        <div className="ma-map-search-results-result">Muhammed Efendi, Lawyer</div>
-                    </div>
+                    {searchResults && searchResults.length > 0 && (
+                        <div className="ma-map-search-results">
+                            <div className="ma-map-search-results-label">FEATURES</div>
+                            {searchResults.map((result, i) => (
+                                <div
+                                    key={i}
+                                    className="ma-map-search-results-result"
+                                    onClick={() => {showModal(result.id)}}
+                                >
+                                    {`${result.name}, ${result.city}, ${result.occupations.map(s => s.name).join(', ')}`}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
             {activeFeature ? (

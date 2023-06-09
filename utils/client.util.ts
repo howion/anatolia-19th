@@ -24,24 +24,31 @@ export class ClientUtil {
     }
 
     public static async retrieveAllFeatures(): Promise<ApiResponseSchema<ApiFeaturesReponse> | null> {
-        return await ClientUtil.makeApiRequest<ApiFeaturesReponse>('/map')
+        return await ClientUtil.makeApiRequest<ApiFeaturesReponse>('GET', '/map')
     }
 
     public static async retrieveFeature(id: number): Promise<ApiResponseSchema<ApiFeature> | null> {
-        return await ClientUtil.makeApiRequest<any>(`/map/feature/${id}`)
+        return await ClientUtil.makeApiRequest<any>('GET', `/map/feature/${id}`)
+    }
+
+    public static async searchFeatures(query: text): Promise<ApiResponseSchema<ApiFeature[]> | null> {
+        return await ClientUtil.makeApiRequest<any>('GET', '/map/feature/search', {
+            query
+        })
     }
 
     public static async makeApiRequest<T extends Record<text, any> = Record<text, any>>(
+        method: 'GET' | 'POST',
         path: text,
-        method: 'GET' | 'POST' = 'GET',
-        params?: Record<any, any>
+        params?: Record<any, any>,
+        body?: Record<any, any>
     ): Promise<ApiResponseSchema<T> | null> {
         try {
             const res = await axios({
                 method,
                 url: '/api/' + path,
-                data: method === 'POST' ? params : undefined,
-                params: method === 'POST' ? undefined : params
+                data: body,
+                params: params
             })
 
             if (!res) return null
