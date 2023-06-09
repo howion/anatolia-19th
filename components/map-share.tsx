@@ -1,10 +1,6 @@
 import React from 'react'
 
-import {
-    SimpleIcon,
-    siTwitter,
-    siFacebook
- } from 'simple-icons'
+import { SimpleIcon, siTwitter, siFacebook } from 'simple-icons'
 
 interface MapShareProps {
     id: text
@@ -15,7 +11,9 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
         <div className="ma-map-share-container">
             <div className="ma-map-share">
                 <div className="ma-map-share-head">
-                    <h3 className="ma-map-share-head-title"><i className="material-icons">reply</i>Share</h3>
+                    <h3 className="ma-map-share-head-title">
+                        <i className="material-icons">reply</i>Share
+                    </h3>
                     <i className="ma-map-share-head-close material-icons">close</i>
                 </div>
                 <div className="ma-map-share-links">
@@ -26,12 +24,7 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                                 backgroundColor: '#1DA1F2'
                             }}
                         >
-                            <Icon
-                                dark={true}
-                                size={32}
-                                icon={siTwitter}
-                                link="https://twitter.com/share/_"
-                            />
+                            <Icon dark={true} size={32} icon={siTwitter} />
                         </div>
                         <span className="ma-map-share-links-link-text">Twitter</span>
                     </div>
@@ -42,12 +35,7 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                                 backgroundColor: '#3B5998'
                             }}
                         >
-                            <Icon
-                                dark={true}
-                                size={32}
-                                icon={siFacebook}
-                                link="https://facebook.com/share/_"
-                            />
+                            <Icon dark={true} size={32} icon={siFacebook} />
                         </div>
                         <span className="ma-map-share-links-link-text">Facebook</span>
                     </div>

@@ -256,9 +256,13 @@ export default function Home(): FCReturn {
                                 <div
                                     key={i}
                                     className="ma-map-search-results-result"
-                                    onClick={() => {showModal(result.id)}}
+                                    onClick={() => {
+                                        showModal(result.id)
+                                    }}
                                 >
-                                    {`${result.name}, ${result.city}, ${result.occupations.map(s => s.name).join(', ')}`}
+                                    {`${result.name}, ${result.city}, ${result.occupations
+                                        .map((s: any) => s.name)
+                                        .join(', ')}`}
                                 </div>
                             ))}
                         </div>
@@ -280,10 +284,7 @@ export default function Home(): FCReturn {
                         <h1 className="ma-map-modal-title">{activeFeature.name}</h1>
                         <span className="ma-map-modal-tag">{activeFeature.city}</span>
                         {activeFeature.occupations.map((occupation: any, i: any) => (
-                            <span
-                                key={i}
-                                className="ma-map-modal-tag"
-                            >
+                            <span key={i} className="ma-map-modal-tag">
                                 {occupation.name}
                             </span>
                         ))}
