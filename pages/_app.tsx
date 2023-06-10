@@ -12,9 +12,16 @@ const Easter = dynamic(() => import('/components/easter'), {
     ssr: false
 })
 
+// @ts-ignore no type defs
+const LoadingScreen = dynamic(() => import('react-loading'), {
+    ssr: false
+})
+
 // SCSS
 // import 'locomotive-scroll/dist/locomotive-scroll.css'
 import '/scss/_index.scss'
+import { useService } from '/hooks/use-service'
+import { LoadingService } from '/services/loading.service'
 
 /* TODO:
  * smooth scroll
@@ -36,6 +43,7 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
     if (!route) route = 'home'
 
     const appRef = useRef<HTMLDivElement>(null)
+    const isLoading = useService(LoadingService, false)
 
     useDidMount(() => {
         // import('locomotive-scroll').then((LocomotiveScroll) => {
@@ -74,6 +82,15 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
             <div id="app" ref={appRef} className={inter.className}>
                 <Easter />
                 <Transitor />
+                {isLoading && (
+                    <div className="ma-loader-container">
+                        <LoadingScreen
+                            className="ma-loader"
+                            type="bubbles"
+                            color="#fff"
+                        />
+                    </div>
+                )}
                 {/*<FancyCursorProvider>
                         <FancyCursor className="app-cursor-inner"/>
                         <FancyCursor className="app-cursor-outer"/>

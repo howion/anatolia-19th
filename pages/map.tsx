@@ -13,6 +13,7 @@ import { siTwitter } from 'simple-icons'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { MapShare } from '/components/map-share'
+import { LoadingService } from '/services/loading.service'
 
 function getModalWidth(): number {
     if (!window) return 0
@@ -36,6 +37,8 @@ export default function Home(): FCReturn {
 
     const [searchResults, setSearchResults] = useState<any[]>([])
 
+    const [customModalMarker, setCustomModalMarker] = useState<any | null>(null)
+
     const hideModal = useCallback(() => {
         setShowControls(true)
         setIsModalActive(false)
@@ -51,26 +54,43 @@ export default function Home(): FCReturn {
     }, [mapRef])
 
     const showModal = useCallback(
-        async (id: number) => {
-            const res = await ClientUtil.retrieveFeature(id)
-            if (!res?.success) return
+        (id: number) => {
+            LoadingService.set(true)
+            ClientUtil.retrieveFeature(id).then((res: any) => {
+                if (!res?.success) return
 
-            setActiveFeature(res.data)
+                setActiveFeature(res.data)
 
-            setShowControls(false)
-            setIsModalActive(true)
+                setShowControls(false)
+                setIsModalActive(true)
 
-            mapRef.current?.easeTo({
-                center: [res.data.lon, res.data.lat],
-                zoom: 12,
-                animate: true,
-                duration: 500,
-                padding: {
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: getModalWidth()
-                }
+                // if (customModalMarker) // TODO:
+
+                const mk = new mapbox.Marker().setLngLat([res.data.lon, res.data.lat]).addTo(mapRef.current!)
+
+                mk.getElement().addEventListener('click', () => {
+                    showModal(id)
+                })
+
+                setCustomModalMarker(mk)
+
+                mapRef.current!.flyTo({
+                    center: [res.data.lon, res.data.lat],
+                    zoom: 16,
+                    animate: true,
+                    duration: 5000,
+                    pitch: 0,
+                    bearing: 0,
+                    essential: true,
+                    padding: {
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        right: getModalWidth()
+                    }
+                })
+
+                LoadingService.set(false)
             })
         },
         [mapRef]
@@ -107,12 +127,12 @@ export default function Home(): FCReturn {
             zoom: 6,
             attributionControl: true,
             boxZoom: false,
-            logoPosition: 'bottom-right'
+            logoPosition: 'bottom-right',
+            antialias: false
             // bounds: [
             //     [35.947835, 23.537402], // SW
             //     [42.414684, 42.755552] // NE
             // ]
-            // antialias: false
         })
 
         const map = mapRef.current
@@ -220,10 +240,11 @@ export default function Home(): FCReturn {
 
     useEffect(() => {
         if (!searchQuery) return setSearchResults([])
-
+        LoadingService.set(true)
         ClientUtil.searchFeatures(searchQuery).then((res) => {
             if (!res || !res.success) return setSearchResults([])
             setSearchResults(res.data)
+            LoadingService.set(false)
         })
     }, [searchQuery])
 

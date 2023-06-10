@@ -26,6 +26,18 @@
         // }
     }
 
+    &-feature {
+        &-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: $color-trueyellow;
+            clip-path: polygon(50% 100%, 0 0, 100% 0);
+            border: 2px solid red;
+            cursor: pointer;
+        }
+    }
+
     &-emblem {
         position: fixed;
         left: 0;

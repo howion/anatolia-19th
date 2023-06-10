@@ -35,6 +35,8 @@ async function main() {
         // eslint-disable-next-line prefer-const
         let { id, p: isPrecise } = properties
 
+        if (String(isPrecise ?? '').trim() === '?') isPrecise = ''
+
         if (type === 'Point') {
             // typeof coordinates = [lat, lon] here
 
