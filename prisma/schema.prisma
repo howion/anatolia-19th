@@ -28,7 +28,7 @@ model Feature {
   type              FeatureGeometryType @default(POINT)
   points            Json                @default("{}")
   name              String              @db.VarChar(255)
-  sid               String              @unique @db.VarChar(255)
+  sid               String              @db.VarChar(255)
   marker            Marker              @relation(fields: [markerId], references: [id])
   occupations       Occupation[]
   relationsF        Feature[]           @relation("FeatureRelations")
