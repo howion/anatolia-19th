@@ -100,7 +100,7 @@ export default function Contact(): FCReturn {
 
     return (
         <>
-            <Meta />
+            <Meta title="Submit Data" />
 
             {/* <div className="ma-contact-container"> */}
             <section className="ma-contact-map-container">

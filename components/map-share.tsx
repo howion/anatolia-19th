@@ -41,7 +41,7 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                     </div>
                 </div>
                 <div className="ma-map-share-text">
-                    <span className="ma-map-share-text-link">{'https://anatolia19.com/map/' + props.id}</span>
+                    <span className="ma-map-share-text-link">{'https://anatolia19.com/map/index/' + props.id}</span>
                     <button className="ma-map-share-text-button">Copy</button>
                 </div>
             </div>

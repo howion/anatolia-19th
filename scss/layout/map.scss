@@ -79,6 +79,8 @@
 
         &-results {
             display: flex;
+            opacity: 0;
+            visibility: hidden;
             flex-direction: column;
             row-gap: 10px;
             border-radius: 8px;
@@ -86,7 +88,7 @@
             background-color: rgba(#000, 0.5);
             color: #fff;
             padding: 24px 28px;
-            transition: max-width 300ms, background-color 300ms;
+            transition: max-width 300ms, background-color 300ms, opacity 300ms, visibility 300ms;
 
             &-label {
                 text-transform: uppercase;
@@ -103,6 +105,13 @@
                 // background-color: rgba(#000, 0.2);
                 border-radius: 8px;
                 font-size: 16px;
+                height: 16px;
+                line-height: 16px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                display: block;
+                width: 100%;
 
                 &:hover {
                     color: $color-trueyellow;
@@ -112,18 +121,23 @@
 
         &-rhs {
             flex: 1;
-            max-width: 600px;
+            max-width: 500px;
             // max-width: 600px;
             // width: calc;
             transition: max-width 300ms;
         }
 
         &-rhs:focus-within {
-            max-width: 700px;
+            max-width: 600px;
 
             input {
                 background-color: rgba(#000, 0.8);
                 color: $color-trueyellow;
+            }
+
+            .ma-map-search-results {
+                opacity: 1;
+                visibility: visible;
             }
         }
 

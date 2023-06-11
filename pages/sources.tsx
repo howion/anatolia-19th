@@ -5,7 +5,6 @@ import Image, { StaticImageData } from 'next/image'
 import { useDidMount } from 'rooks'
 import { TransitorService } from '/services/transitor.service'
 
-import { Anchor } from '/components/anchor'
 import { Header } from '/components/header'
 import { Footer } from '/components/footer'
 
@@ -44,7 +43,7 @@ export function Source(props: SourceProps): FCReturn {
             <div className="ma-sources-section-rhs">
                 <div className="ma-sources-section-rhs-pics">
                     {props.pics.map((v, i) => (
-                        <Image className="ma-sources-section-rhs-pics-pic" src={v} key={i} alt="" />
+                        <Image key={i} className="ma-sources-section-rhs-pics-pic" src={v} alt="" />
                     ))}
                 </div>
             </div>
@@ -59,7 +58,7 @@ export default function Sources(): FCReturn {
 
     return (
         <>
-            <Meta />
+            <Meta title="Sources" />
             <Header
                 headerImage={sourcesIntroback}
                 subtitle="Sources"

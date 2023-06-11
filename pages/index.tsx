@@ -145,9 +145,9 @@ export default function Home(): FCReturn {
                 {/* PROJECTS */}
                 <section className="ma-home-projects-container">
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
-                    <Project src="/img/projects/digital_map.jpg" txt="Digital Map" href="/map" />
+                    <Project src="/img/projects/digital_map.jpg" txt="Digital Map" href="/map/index" />
                     <Project src="/img/projects/explore_anatolia.jpg" txt="Explore Anatolia" disabled />
-                    <Project src="/img/projects/graphs.png" txt="Graphs" href="/graphs" />
+                    <Project src="/img/projects/graphs.png" txt="Graphs" href="/graphs" disabled />
                     <Project src="/img/sources/newspaper1.jpg" txt="Sources" href="/sources" />
                 </section>
 
@@ -283,7 +283,7 @@ export default function Home(): FCReturn {
                                     contributions. For more detailed information, see the Submit Data section.
                                 </p>
                             </Accordion>
-                            <Accordion title="Why are you doing this project?">
+                            <Accordion title="What is the purpose?">
                                 <p>
                                     The 19th century is an era of transformation all over the world, the ground upon
                                     which the world we now live in was constructed. In the particular case of the

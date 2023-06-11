@@ -28,12 +28,13 @@ model Feature {
   type              FeatureGeometryType @default(POINT)
   points            Json                @default("{}")
   name              String              @db.VarChar(255)
+  sid               String              @unique @db.VarChar(255)
   marker            Marker              @relation(fields: [markerId], references: [id])
   occupations       Occupation[]
   relationsF        Feature[]           @relation("FeatureRelations")
   relationsB        Feature[]           @relation("FeatureRelations")
   sourceDetail      Json                @default("{}")
-  markdown          String              @default("") @db.VarChar(10000)
+  markdown          String?             @db.Text
   sources           Source[]
   author            Author              @relation(fields: [authorId], references: [id])
   contributors      Contributor[]

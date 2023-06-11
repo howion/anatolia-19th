@@ -1,20 +1,20 @@
 {
   "name": "anatolia-19th",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "npx prettier --write . && next build",
     "start": "next start",
     "lint": "npx eslint .",
-    "prisma": "npx prisma format && npx prisma migrate dev && npx prisma generate",
+    "prisma": "npx prisma format && npx prisma db push && npx prisma generate",
     "studio": "npx prisma studio",
     "stylelint:fix": "npx stylelint --fix",
     "bin:match-ids": "npx ts-node ./bin/match-ids",
     "bin:commercials": "npx ts-node ./bin/commercials",
     "bin:console": "npx ts-node ./bin/console",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build",
-    "prisma:generate": "prisma generate"
+    "bin:slugs": "npx ts-node ./bin/slugs",
+    "vercel-build": "npx prisma generate && next build"
   },
   "dependencies": {
     "@prisma/client": "^4.15.0",

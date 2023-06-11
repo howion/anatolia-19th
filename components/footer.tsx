@@ -40,8 +40,7 @@ export function Footer(): FCReturn {
                 <div className="ma-footer-section-container">
                     <FooterSection title="Website">
                         <FooterItem href="/" text="Home" />
-                        <FooterItem href="/map" text="Digital Map" />
-                        {/* <FooterItem href="/map" text="Explore Anatolia" /> */}
+                        <FooterItem href="/map/index" text="Digital Map" />
                         <FooterItem href="/graphs" text="Graphs" />
                         <FooterItem href="/sources" text="Sources" />
                         <FooterItem href="/submit-data" text="Submit Data" />

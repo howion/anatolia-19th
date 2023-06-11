@@ -24,24 +24,36 @@ export default async function Handle(req: ApiRequest, res: ApiResponse<any>): Pr
 
         const features = await Database.feature.findMany({
             where: {
-                OR: [
+                AND: [
                     {
-                        name: {
-                            contains: query
-                        }
-                    },
-                    {
-                        city: {
-                            contains: query
-                        }
-                    },
-                    {
-                        occupations: {
-                            some: {
+                        OR: [
+                            {
                                 name: {
                                     contains: query
                                 }
+                            },
+                            {
+                                city: {
+                                    contains: query
+                                }
+                            },
+                            {
+                                occupations: {
+                                    some: {
+                                        name: {
+                                            contains: query
+                                        }
+                                    }
+                                }
                             }
+                        ]
+                    },
+                    {
+                        lat: {
+                            gt: 0
+                        },
+                        lon: {
+                            gt: 0
                         }
                     }
                 ]

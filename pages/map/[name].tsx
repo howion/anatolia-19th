@@ -9,11 +9,11 @@ import { Anchor } from '/components/anchor'
 import { ClientUtil } from '/utils/client.util'
 import { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
 
-import { siTwitter } from 'simple-icons'
-
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { MapShare } from '/components/map-share'
 import { LoadingService } from '/services/loading.service'
+
+import { useRouter } from 'next/router'
 
 function getModalWidth(): number {
     if (!window) return 0
@@ -22,7 +22,11 @@ function getModalWidth(): number {
     return modalRef.offsetWidth ?? 0
 }
 
-export default function Home(): FCReturn {
+export default function Map(): FCReturn {
+    return <_Map />
+}
+
+export function _Map(): FCReturn {
     // const [viewState, setViewState] = React.useState<DECK_ViewState>(InitialViewState)
     const [showControls, setShowControls] = useState(true)
     const mapRef = useRef<mapbox.Map | null>(null)
@@ -38,6 +42,8 @@ export default function Home(): FCReturn {
     const [searchResults, setSearchResults] = useState<any[]>([])
 
     const [customModalMarker, setCustomModalMarker] = useState<any | null>(null)
+
+    const router = useRouter()
 
     const hideModal = useCallback(() => {
         setShowControls(true)
@@ -59,6 +65,9 @@ export default function Home(): FCReturn {
             ClientUtil.retrieveFeature(id).then((res: any) => {
                 if (!res?.success) return
 
+                // chnage the url with next router but do not reload the page
+                router.push(`/map/${res.data.sid}`, undefined, { shallow: true })
+
                 setActiveFeature(res.data)
 
                 setShowControls(false)
@@ -78,7 +87,7 @@ export default function Home(): FCReturn {
                     center: [res.data.lon, res.data.lat],
                     zoom: 16,
                     animate: true,
-                    duration: 5000,
+                    duration: 4000,
                     pitch: 0,
                     bearing: 0,
                     essential: true,
@@ -250,7 +259,7 @@ export default function Home(): FCReturn {
 
     return (
         <>
-            <Meta />
+            <Meta title="Map" />
             {/* <MapShare id="ali-efendi" /> */}
             <div className="ma-map-emblem">
                 <Emblem h={60} textFill="#fff" />
@@ -277,9 +286,7 @@ export default function Home(): FCReturn {
                                 <div
                                     key={i}
                                     className="ma-map-search-results-result"
-                                    onClick={() => {
-                                        showModal(result.id)
-                                    }}
+                                    onClick={() => showModal(result.id)}
                                 >
                                     {`${result.name}, ${result.city}, ${result.occupations
                                         .map((s: any) => s.name)

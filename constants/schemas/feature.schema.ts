@@ -9,10 +9,11 @@ export interface ApiFeature {
     createdAt: text // in ... format
     updatedAt: text // in ... format
     id: number
+    sid: text
     isLocationPrecise: boolean
     lon: number
     lat: number
-    markdown: text
+    markdown?: text
     markedId: number
     name: text
     occupations: any // TODO
