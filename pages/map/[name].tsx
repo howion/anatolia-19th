@@ -23,10 +23,6 @@ function getModalWidth(): number {
 }
 
 export default function Map(): FCReturn {
-    return <_Map />
-}
-
-export function _Map(): FCReturn {
     // const [viewState, setViewState] = React.useState<DECK_ViewState>(InitialViewState)
     const [showControls, setShowControls] = useState(true)
     const mapRef = useRef<mapbox.Map | null>(null)
@@ -40,8 +36,7 @@ export function _Map(): FCReturn {
     const setValueDebounced = useDebounce(setSearchQuery, 500)
 
     const [searchResults, setSearchResults] = useState<any[]>([])
-
-    const [customModalMarker, setCustomModalMarker] = useState<any | null>(null)
+    const [isShareOpen, setIsShareOpen] = useState(false)
 
     const router = useRouter()
 
@@ -68,6 +63,9 @@ export function _Map(): FCReturn {
                 // chnage the url with next router but do not reload the page
                 router.push(`/map/${res.data.sid}`, undefined, { shallow: true })
 
+                // TODO: Remove this
+                console.log('feature:', res.data)
+
                 setActiveFeature(res.data)
 
                 setShowControls(false)
@@ -81,7 +79,7 @@ export function _Map(): FCReturn {
                     showModal(id)
                 })
 
-                setCustomModalMarker(mk)
+                // setCustomModalMarker(mk)
 
                 mapRef.current!.flyTo({
                     center: [res.data.lon, res.data.lat],
@@ -257,10 +255,15 @@ export function _Map(): FCReturn {
         })
     }, [searchQuery])
 
+
     return (
         <>
             <Meta title="Map" />
-            {/* <MapShare id="ali-efendi" /> */}
+            <MapShare
+                feature={activeFeature}
+                open={isShareOpen}
+                onClose={() => setIsShareOpen(false)}
+            />
             <div className="ma-map-emblem">
                 <Emblem h={60} textFill="#fff" />
             </div>
@@ -304,12 +307,15 @@ export function _Map(): FCReturn {
                             <i className="material-icons">close</i>
                         </button>
                         <button className="btn btn-icon">
-                            <i className="material-icons">share</i>
+                            <i
+                                className="material-icons"
+                                onClick={() => setIsShareOpen(true)}
+                            >share</i>
                         </button>
                     </div>
                     <div className="ma-map-modal">
                         <span className="ma-map-modal-label">DATA SUMMARY</span>
-                        <h1 className="ma-map-modal-title">{activeFeature.name}</h1>
+                        <h1 className="ma-map-modal-title">{activeFeature.name}*</h1>
                         <span className="ma-map-modal-tag">{activeFeature.city}</span>
                         {activeFeature.occupations.map((occupation: any, i: any) => (
                             <span key={i} className="ma-map-modal-tag">
@@ -320,6 +326,12 @@ export function _Map(): FCReturn {
                         <div className="ma-map-modal-markdown">
                             <p>{activeFeature.markdown}</p>
                         </div>
+                        <ul className="ma-map-modal-footnotes">
+                            {!activeFeature.isLocationPrecise && (
+                                <li data-footnote-label="*" className="ma-map-modal-footnotes-footnote">Since the location of this entry not precisely known, approximate location is shown based on ethnicity and socio-economic status. Please visit the source for details.</li>
+                            )}
+                            <li data-footnote-label="*" className="ma-map-modal-footnotes-footnote">{`[lat, lon] = [${activeFeature.lat}, ${activeFeature.lon}]`}</li>
+                        </ul>
                     </div>
                     <div className="ma-map-modal">
                         <span className="ma-map-modal-label">REFERENCES</span>
@@ -332,7 +344,7 @@ export function _Map(): FCReturn {
                             {/* <li>Commercial 1978</li> */}
                             {activeFeature.sources.map((ref, i) => (
                                 <li key={i}>
-                                    <a href={ref.url ?? '#'}>
+                                    <a href={ref.url ?? '#'} target="_blank">
                                         {ref.source}
                                         {activeFeature.sourceDetail?.p ? ` (p. ${activeFeature.sourceDetail.p}).` : ''}
                                     </a>

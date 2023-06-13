@@ -2,24 +2,30 @@
     display: flex;
     flex-direction: column;
     background-color: #212121;
-    padding: 28px 32px;
+    padding: 28px 32px 28px 32px;
     width: 100%;
-    height: 100%;
+    // height: 100%;
     max-width: 600px;
-    max-height: 300px;
+    max-height: auto;
     border-radius: 8px;
 
     &-container {
         position: fixed;
         top: 0;
         left: 0;
-        display: flex;
+        // display: flex;
         width: 100vw;
         height: 100vh;
         justify-content: center;
         align-items: center;
-        background-color: rgba(#000, 0.4);
+        background-color: rgba(#000, 0.8);
         z-index: 999;
+
+        display: none;
+
+        &.is-open {
+            display: flex;
+        }
     }
 
     &-head {
@@ -38,6 +44,8 @@
             display: flex;
             align-items: center;
             column-gap: 12px;
+            font-size: 24px;
+            font-size: $size;
             line-height: $size;
             height: $size;
             font-weight: 600;
@@ -86,7 +94,7 @@
 
             &-text {
                 font-size: 14px;
-                font-weight: 600;
+                font-weight: 500;
                 opacity: 0.5;
                 transition: opacity 300ms;
             }
@@ -124,6 +132,7 @@
             font-weight: 500;
             text-transform: uppercase;
             cursor: pointer;
+            font-weight: 600;
 
             &:hover {
                 background-color: lighten($color-trueyellow, 10%);

@@ -7,6 +7,14 @@ body {
     @include ma-prefer-quality;
 }
 
+.Toastify__toast-body {
+    font-family: inherit !important;
+
+    * {
+        font-family: inherit !important;
+    }
+}
+
 #app {
     position: relative;
     width: 100%;

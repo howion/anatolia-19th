@@ -6,6 +6,8 @@ import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { Meta } from '/components/meta'
 import { Transitor } from '/components/transitor'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 // import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 
 const Easter = dynamic(() => import('/components/easter'), {
@@ -82,6 +84,7 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
             <div id="app" ref={appRef} className={inter.className}>
                 <Easter />
                 <Transitor />
+                <ToastContainer toastClassName={inter.className} />
                 {isLoading && (
                     <div className="ma-loader-container">
                         <LoadingScreen className="ma-loader" type="bubbles" color="#fff" />

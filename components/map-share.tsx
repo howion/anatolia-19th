@@ -1,48 +1,120 @@
 import React from 'react'
-
-import { SimpleIcon, siTwitter, siFacebook } from 'simple-icons'
+import { SimpleIcon, siTwitter, siFacebook, siReddit, siMaildotru, siPinterest } from 'simple-icons'
+import { ApiFeature } from '/constants/schemas/feature.schema'
+import { toast } from 'react-toastify'
 
 interface MapShareProps {
-    id: text
+    feature: ApiFeature | null
+    open: boolean
+    onClose: () => void
 }
 
 export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
+    const link = 'https://anatolia19.com/map/' + props.feature?.sid
+    const text = ''
+    const linkURLSafe = encodeURIComponent(link)
+    const textURLSafe = encodeURIComponent(text)
+
+    function handleCopy() {
+        toast('Copied to clipboard!', {
+            position: 'bottom-center',
+            theme: 'dark',
+            hideProgressBar: true
+        })
+        navigator.clipboard.writeText(link)
+    }
+
     return (
-        <div className="ma-map-share-container">
+        <div className={'ma-map-share-container' + (props.open ? ' is-open' : '')}>
             <div className="ma-map-share">
                 <div className="ma-map-share-head">
                     <h3 className="ma-map-share-head-title">
-                        <i className="material-icons">reply</i>Share
-                    </h3>
-                    <i className="ma-map-share-head-close material-icons">close</i>
+                        <i className="material-icons">reply</i>Share</h3>
+                    <i className="ma-map-share-head-close material-icons" onClick={props.onClose}>close</i>
                 </div>
                 <div className="ma-map-share-links">
-                    <div className="ma-map-share-links-link">
+                    <a
+                        href={`https://twitter.com/intent/tweet?url=${linkURLSafe}&text=${textURLSafe}`}
+                        target="_blank"
+                        className="ma-map-share-links-link"
+                    >
                         <div
                             className="ma-map-share-links-link-icon"
                             style={{
-                                backgroundColor: '#1DA1F2'
+                                backgroundColor: '#' + siTwitter.hex
                             }}
                         >
                             <Icon dark={true} size={32} icon={siTwitter} />
                         </div>
                         <span className="ma-map-share-links-link-text">Twitter</span>
-                    </div>
-                    <div className="ma-map-share-links-link">
+                    </a>
+                    <a
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${linkURLSafe}`}
+                        target="_blank"
+                        className="ma-map-share-links-link"
+                    >
                         <div
                             className="ma-map-share-links-link-icon"
                             style={{
-                                backgroundColor: '#3B5998'
+                                backgroundColor: '#' + siFacebook.hex
                             }}
                         >
                             <Icon dark={true} size={32} icon={siFacebook} />
                         </div>
                         <span className="ma-map-share-links-link-text">Facebook</span>
-                    </div>
+                    </a>
+                    <a
+                        href={`http://www.reddit.com/submit?url=${linkURLSafe}&title=${textURLSafe}`}
+                        target="_blank"
+                        className="ma-map-share-links-link"
+                    >
+                        <div
+                            className="ma-map-share-links-link-icon"
+                            style={{
+                                backgroundColor: '#' + siReddit.hex
+                            }}
+                        >
+                            <Icon dark={true} size={32} icon={siReddit} />
+                        </div>
+                        <span className="ma-map-share-links-link-text">Reddit</span>
+                    </a>
+                    <a
+                        href={`http://pinterest.com/pin/create/button/?url=${linkURLSafe}&media=&description=${textURLSafe}`}
+                        target="_blank"
+                        className="ma-map-share-links-link"
+                    >
+                        <div
+                            className="ma-map-share-links-link-icon"
+                            style={{
+                                backgroundColor: '#' + siPinterest.hex
+                            }}
+                        >
+                            <Icon dark={true} size={32} icon={siPinterest} />
+                        </div>
+                        <span className="ma-map-share-links-link-text">Pinterest</span>
+                    </a>
+                    <a
+                        href={`mailto:?body=${textURLSafe} ${linkURLSafe}}`}
+                        target="_blank"
+                        className="ma-map-share-links-link"
+                    >
+                        <div
+                            className="ma-map-share-links-link-icon"
+                            style={{
+                                backgroundColor: '#' + siMaildotru.hex
+                            }}
+                        >
+                            <Icon dark={true} size={32} icon={siMaildotru} />
+                        </div>
+                        <span className="ma-map-share-links-link-text">Mail</span>
+                    </a>
                 </div>
                 <div className="ma-map-share-text">
-                    <span className="ma-map-share-text-link">{'https://anatolia19.com/map/index/' + props.id}</span>
-                    <button className="ma-map-share-text-button">Copy</button>
+                    <span className="ma-map-share-text-link">{link}</span>
+                    <button
+                        className="ma-map-share-text-button"
+                        onClick={handleCopy}
+                    >Copy</button>
                 </div>
             </div>
         </div>
