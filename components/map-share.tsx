@@ -29,8 +29,11 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
             <div className="ma-map-share">
                 <div className="ma-map-share-head">
                     <h3 className="ma-map-share-head-title">
-                        <i className="material-icons">reply</i>Share</h3>
-                    <i className="ma-map-share-head-close material-icons" onClick={props.onClose}>close</i>
+                        <i className="material-icons">reply</i>Share
+                    </h3>
+                    <i className="ma-map-share-head-close material-icons" onClick={props.onClose}>
+                        close
+                    </i>
                 </div>
                 <div className="ma-map-share-links">
                     <a
@@ -111,10 +114,9 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                 </div>
                 <div className="ma-map-share-text">
                     <span className="ma-map-share-text-link">{link}</span>
-                    <button
-                        className="ma-map-share-text-button"
-                        onClick={handleCopy}
-                    >Copy</button>
+                    <button className="ma-map-share-text-button" onClick={handleCopy}>
+                        Copy
+                    </button>
                 </div>
             </div>
         </div>

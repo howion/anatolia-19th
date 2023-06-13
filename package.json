@@ -54,6 +54,7 @@
     "rooks": "^7.14.1",
     "rxjs": "^7.8.1",
     "sass": "^1.63.3",
+    "sharp": "^0.32.1",
     "simple-icons": "^9.1.0",
     "slugify": "^1.6.6",
     "typescript": "5.1.3"

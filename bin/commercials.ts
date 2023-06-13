@@ -113,6 +113,7 @@ async function main() {
                 },
                 create: {
                     id,
+                    sid: '',
                     city,
                     yearStart: 1889,
                     lat: 0,

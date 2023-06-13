@@ -255,15 +255,10 @@ export default function Map(): FCReturn {
         })
     }, [searchQuery])
 
-
     return (
         <>
             <Meta title="Map" />
-            <MapShare
-                feature={activeFeature}
-                open={isShareOpen}
-                onClose={() => setIsShareOpen(false)}
-            />
+            <MapShare feature={activeFeature} open={isShareOpen} onClose={() => setIsShareOpen(false)} />
             <div className="ma-map-emblem">
                 <Emblem h={60} textFill="#fff" />
             </div>
@@ -307,10 +302,9 @@ export default function Map(): FCReturn {
                             <i className="material-icons">close</i>
                         </button>
                         <button className="btn btn-icon">
-                            <i
-                                className="material-icons"
-                                onClick={() => setIsShareOpen(true)}
-                            >share</i>
+                            <i className="material-icons" onClick={() => setIsShareOpen(true)}>
+                                share
+                            </i>
                         </button>
                     </div>
                     <div className="ma-map-modal">
@@ -328,9 +322,15 @@ export default function Map(): FCReturn {
                         </div>
                         <ul className="ma-map-modal-footnotes">
                             {!activeFeature.isLocationPrecise && (
-                                <li data-footnote-label="*" className="ma-map-modal-footnotes-footnote">Since the location of this entry not precisely known, approximate location is shown based on ethnicity and socio-economic status. Please visit the source for details.</li>
+                                <li data-footnote-label="*" className="ma-map-modal-footnotes-footnote">
+                                    Since the location of this entry not precisely known, approximate location is shown
+                                    based on ethnicity and socio-economic status. Please visit the source for details.
+                                </li>
                             )}
-                            <li data-footnote-label="*" className="ma-map-modal-footnotes-footnote">{`[lat, lon] = [${activeFeature.lat}, ${activeFeature.lon}]`}</li>
+                            <li
+                                data-footnote-label="*"
+                                className="ma-map-modal-footnotes-footnote"
+                            >{`[lat, lon] = [${activeFeature.lat}, ${activeFeature.lon}]`}</li>
                         </ul>
                     </div>
                     <div className="ma-map-modal">
