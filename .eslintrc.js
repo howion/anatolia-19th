@@ -8,7 +8,6 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:unicorn/all',
         'plugin:import/recommended',
         'plugin:sonarjs/recommended',
         'next/core-web-vitals',
@@ -27,15 +26,6 @@ module.exports = {
         'react/prop-types': [0],
         'react/display-name': [0],
         'no-control-regex': [0],
-        'unicorn/prevent-abbreviations': [0],
-        'unicorn/text-encoding-identifier-case': [0],
-        'unicorn/no-abusive-eslint-disable': [0],
-        'unicorn/no-useless-undefined': [0],
-        'unicorn/no-keyword-prefix': [0],
-        'unicorn/prefer-query-selector': [0],
-        'unicorn/consistent-function-scoping': [0],
-        'unicorn/prefer-spread': [0],
-        'unicorn/no-null': [0],
 
         // WARN
         '@typescript-eslint/ban-ts-comment': [

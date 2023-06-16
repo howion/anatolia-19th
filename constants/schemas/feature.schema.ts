@@ -14,7 +14,7 @@ export interface ApiFeature {
     lon: number
     lat: number
     markdown?: text
-    markedId: number
+    markerId: number
     name: text
     occupations: any // TODO
     points: any // TODO

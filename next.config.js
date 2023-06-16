@@ -58,10 +58,11 @@ module.exports = {
                 headers: defaultSecurityHeaders
             }
         ]
-    }
-    // experimental: {
+    },
+    experimental: {
+        largePageDataBytes: 1 * 10**6 // 1 MB
     //     optimizeCss: true,
-    // }
+    }
     // webpack: (config, options) => {
     //     config.plugins.push(new StylelintPlugin())
     //     return config

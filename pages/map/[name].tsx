@@ -14,6 +14,8 @@ import { MapShare } from '/components/map-share'
 import { LoadingService } from '/services/loading.service'
 
 import { useRouter } from 'next/router'
+import { GetServerSidePropsContext } from 'next'
+import { retrieveAllFeatures, retrieveFeatureBySid } from '/models/feature.modal'
 
 function getModalWidth(): number {
     if (!window) return 0
@@ -22,13 +24,33 @@ function getModalWidth(): number {
     return modalRef.offsetWidth ?? 0
 }
 
-export default function Map(): FCReturn {
+export interface MapProps {
+    features: ApiFeaturesReponse
+    activeFeature: null | ApiFeature
+}
+
+export async function getServerSideProps({ params }: GetServerSidePropsContext): Promise<MapProps> {
+    const features = (await retrieveAllFeatures()) as ApiFeaturesReponse
+    const sid = params?.name ?? 'index'
+    let activeFeature = null
+
+    if (sid && sid !== 'index') activeFeature = await retrieveFeatureBySid(sid as text)
+
+    return {
+        props: {
+            features,
+            activeFeature
+        }
+    }
+}
+
+export default function Map({ features, activeFeature: _activeFeature }: any): FCReturn {
     // const [viewState, setViewState] = React.useState<DECK_ViewState>(InitialViewState)
     const [showControls, setShowControls] = useState(true)
     const mapRef = useRef<mapbox.Map | null>(null)
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const [isModalActive, setIsModalActive] = useState(false)
-    const features = useRef<ApiFeaturesReponse | null>(null)
+    // const features = useRef<ApiFeaturesReponse | null>(null)
     // const [featureMarkers, setFeatureMarkers] = useState<Record<text, mapbox.Marker>>({})
     const [activeFeature, setActiveFeature] = useState<ApiFeature | null>(null)
 
@@ -54,6 +76,39 @@ export default function Map(): FCReturn {
         })
     }, [mapRef])
 
+    const setFeatureModal = useCallback((_feature: ApiFeature) => {
+        setActiveFeature(_feature)
+
+        setShowControls(false)
+        setIsModalActive(true)
+
+        // if (customModalMarker) // TODO:
+
+        const mk = new mapbox.Marker().setLngLat([_feature.lon, _feature.lat]).addTo(mapRef.current!)
+
+        mk.getElement().addEventListener('click', () => {
+            showModal(_feature.id)
+        })
+
+        // setCustomModalMarker(mk)
+
+        mapRef.current!.flyTo({
+            center: [_feature.lon, _feature.lat],
+            zoom: 16,
+            animate: true,
+            duration: 4000,
+            pitch: 0,
+            bearing: 0,
+            essential: true,
+            padding: {
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: getModalWidth()
+            }
+        })
+    }, [mapRef])
+
     const showModal = useCallback(
         (id: number) => {
             LoadingService.set(true)
@@ -66,36 +121,7 @@ export default function Map(): FCReturn {
                 // TODO: Remove this
                 console.log('feature:', res.data)
 
-                setActiveFeature(res.data)
-
-                setShowControls(false)
-                setIsModalActive(true)
-
-                // if (customModalMarker) // TODO:
-
-                const mk = new mapbox.Marker().setLngLat([res.data.lon, res.data.lat]).addTo(mapRef.current!)
-
-                mk.getElement().addEventListener('click', () => {
-                    showModal(id)
-                })
-
-                // setCustomModalMarker(mk)
-
-                mapRef.current!.flyTo({
-                    center: [res.data.lon, res.data.lat],
-                    zoom: 16,
-                    animate: true,
-                    duration: 4000,
-                    pitch: 0,
-                    bearing: 0,
-                    essential: true,
-                    padding: {
-                        top: 0,
-                        bottom: 0,
-                        left: 0,
-                        right: getModalWidth()
-                    }
-                })
+                setFeatureModal(res.data)
 
                 LoadingService.set(false)
             })
@@ -109,23 +135,23 @@ export default function Map(): FCReturn {
 
         mapbox.accessToken = ClientUtil.MAPBOX_PUBLIC_TOKEN
 
-        const _features = await ClientUtil.retrieveAllFeatures()
-        // const featureMarkers: Record<text, mapbox.Marker> = {}
+        // const _features = await ClientUtil.retrieveAllFeatures()
+        // // const featureMarkers: Record<text, mapbox.Marker> = {}
 
-        if (_features && _features.success) {
-            features.current = _features.data
+        // if (_features && _features.success) {
+        //     features.current = _features.data
 
-            // TODO: Remove this
-            console.log(features.current)
+        //     // TODO: Remove this
+        //     console.log(features.current)
 
-            // for (const pid in points) {
-            //     const point = points[pid]
-            //     const marker = new mapbox.Marker().setLngLat([point.lon, point.lat]).addTo(map)
-            //     const pidn = Number.parseInt(pid)
-            //     featureMarkers[pidn] = marker
-            //     marker.getElement().addEventListener('click', () => showModal(pidn))
-            // }
-        }
+        //     // for (const pid in points) {
+        //     //     const point = points[pid]
+        //     //     const marker = new mapbox.Marker().setLngLat([point.lon, point.lat]).addTo(map)
+        //     //     const pidn = Number.parseInt(pid)
+        //     //     featureMarkers[pidn] = marker
+        //     //     marker.getElement().addEventListener('click', () => showModal(pidn))
+        //     // }
+        // }
 
         mapRef.current = new mapbox.Map({
             container: mapContainerRef.current!,
@@ -150,8 +176,9 @@ export default function Map(): FCReturn {
 
         map.on('load', () => {
             TransitorService.hideTransitor()
+            if (_activeFeature) setFeatureModal(_activeFeature)
 
-            const { GSON } = features.current!
+            const { GSON } = features
 
             map.addSource('points', {
                 type: 'geojson',
