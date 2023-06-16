@@ -17,6 +17,8 @@ import { useRouter } from 'next/router'
 import { GetServerSidePropsContext } from 'next'
 import { retrieveAllFeatures, retrieveFeatureBySid } from '/models/feature.modal'
 
+import moment from 'moment'
+
 function getModalWidth(): number {
     if (!window) return 0
     const modalRef = window.document.querySelector('.ma-map-modal') as HTMLDivElement | null
@@ -384,7 +386,28 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
                         </ol>
                     </div>
                     <div className="ma-map-modal">
-                        <span className="ma-map-modal-label">ACTIVITIES & NOTES</span>
+                        <span className="ma-map-modal-label">ACTIVITIES</span>
+                        <ul className="ma-map-modal-activities">
+                            <li className="ma-map-modal-activities-activity">
+                                <div className="ma-map-modal-activities-activity-lhs">
+                                    <i
+                                            style={{
+                                            backgroundColor: '#00C34E',
+                                        }}
+                                        className="material-icons ma-map-modal-activities-activity-lhs-icon"
+                                    >place</i>
+                                </div>
+                                <div className="ma-map-modal-activities-activity-rhs">
+                                    <span className="ma-map-modal-activities-activity-rhs-title">
+                                        <em>{activeFeature.author.name}</em> created the record with id #{activeFeature.id}.
+                                    </span>
+                                    <span className="ma-map-modal-activities-activity-rhs-subtitle">
+                                        {moment(activeFeature.createdAt).format('DD MMMM YYYY')}
+                                    </span>
+                                    {/* <div className="ma-map-modal-activities-activity-rhs-content"> */}
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             ) : undefined}

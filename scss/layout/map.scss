@@ -103,7 +103,6 @@
                 // padding: 8px 12px;
                 font-weight: 600;
                 // background-color: rgba(#000, 0.2);
-                border-radius: 8px;
                 font-size: 16px;
                 height: 16px;
                 line-height: 16px;
@@ -305,6 +304,54 @@
 
                 // margin-left: -10px;
                 // margin-bottom: 8px;
+            }
+        }
+
+        &-activities {
+            display: flex;
+            padding: 0;
+            margin: 16px 0 0 0;
+            list-style-type: none;
+
+            &-activity {
+                $icon-size: 40px;
+
+                display: flex;
+                column-gap: 18px;
+
+                &-lhs {
+                    &-icon {
+
+                        width: $icon-size;
+                        height: $icon-size;
+                        text-align: center !important;
+                        font-size: 24px !important;
+                        line-height: $icon-size !important;
+                        border-radius: $icon-size/2;
+                        color: #fff;
+                    }
+                }
+
+                &-rhs {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 2px;
+                    color: #868F8C;
+                    font-weight: 500;
+                    padding-top: 2px;
+                    font-size: 16px;
+
+                    &-title {
+                        >em {
+                            color: #fff;
+                            font-style: normal;
+                        }
+                    }
+
+                    &-subtitle {
+                        margin-bottom: 4px;
+                    }
+                }
             }
         }
 
