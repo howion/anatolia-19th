@@ -60,8 +60,8 @@ module.exports = {
         ]
     },
     experimental: {
-        largePageDataBytes: 1 * 10**6 // 1 MB
-    //     optimizeCss: true,
+        largePageDataBytes: 1 * 10 ** 6 // 1 MB
+        //     optimizeCss: true,
     }
     // webpack: (config, options) => {
     //     config.plugins.push(new StylelintPlugin())

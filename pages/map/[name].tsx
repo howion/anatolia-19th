@@ -25,11 +25,11 @@ function getModalWidth(): number {
 }
 
 export interface MapProps {
-    features: ApiFeaturesReponse
+    features: ApiFeaturesReponse | null
     activeFeature: null | ApiFeature
 }
 
-export async function getServerSideProps({ params }: GetServerSidePropsContext): Promise<MapProps> {
+export async function getServerSideProps({ params }: GetServerSidePropsContext): Promise<{ props: MapProps }> {
     const features = (await retrieveAllFeatures()) as ApiFeaturesReponse
     const sid = params?.name ?? 'index'
     let activeFeature = null
@@ -72,42 +72,46 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
                 left: 0,
                 right: 0
             },
-            duration: 500
+            duration: 1000,
+            essential: true
         })
     }, [mapRef])
 
-    const setFeatureModal = useCallback((_feature: ApiFeature) => {
-        setActiveFeature(_feature)
+    const setFeatureModal = useCallback(
+        (_feature: ApiFeature) => {
+            setActiveFeature(_feature)
 
-        setShowControls(false)
-        setIsModalActive(true)
+            setShowControls(false)
+            setIsModalActive(true)
 
-        // if (customModalMarker) // TODO:
+            // if (customModalMarker) // TODO:
 
-        const mk = new mapbox.Marker().setLngLat([_feature.lon, _feature.lat]).addTo(mapRef.current!)
+            const mk = new mapbox.Marker().setLngLat([_feature.lon, _feature.lat]).addTo(mapRef.current!)
 
-        mk.getElement().addEventListener('click', () => {
-            showModal(_feature.id)
-        })
+            mk.getElement().addEventListener('click', () => {
+                showModal(_feature.id)
+            })
 
-        // setCustomModalMarker(mk)
+            // setCustomModalMarker(mk)
 
-        mapRef.current!.flyTo({
-            center: [_feature.lon, _feature.lat],
-            zoom: 16,
-            animate: true,
-            duration: 4000,
-            pitch: 0,
-            bearing: 0,
-            essential: true,
-            padding: {
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: getModalWidth()
-            }
-        })
-    }, [mapRef])
+            mapRef.current!.flyTo({
+                center: [_feature.lon, _feature.lat],
+                zoom: 16,
+                animate: true,
+                duration: 4000,
+                pitch: 0,
+                bearing: 0,
+                essential: true,
+                padding: {
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: getModalWidth()
+                }
+            })
+        },
+        [mapRef]
+    )
 
     const showModal = useCallback(
         (id: number) => {

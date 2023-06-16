@@ -15,9 +15,18 @@ export default async function Handle(req: ApiRequest, res: ApiResponse<ApiFeatur
     //--------------------------------------------------------------------------
 
     try {
+        const features = await retrieveAllFeatures()
+
+        if (!features) {
+            return res.status(HTTPStatusCode.OK).json({
+                success: false,
+                error: 'Failed to retrieve features.'
+            })
+        }
+
         return res.status(HTTPStatusCode.OK).json({
             success: true,
-            data: await retrieveAllFeatures()
+            data: features
         })
     } catch (error) {
         return res.status(HTTPStatusCode.InternalServerError).json({
