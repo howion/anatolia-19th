@@ -33,6 +33,9 @@ import { siGithub, siTwitter, siLinkedin, siBehance, siOrcid, siDribbble } from 
 import { LoadingService } from '/services/loading.service'
 import { ClientUtil } from '/utils/client.util'
 import Link from 'next/link'
+import { GetServerSidePropsContext } from 'next'
+import { retrieveStats } from '/models/misc.modal'
+import moment from 'moment'
 
 interface ProjectProps {
     disabled?: boolean
@@ -119,7 +122,21 @@ function Person(props: PersonProps): FCReturn<PersonProps> {
     // )
 }
 
-export default function Home(): FCReturn {
+export interface HomeProps {
+    stats: any
+}
+
+export async function getServerSideProps(): Promise<{ props: HomeProps }> {
+    const stats = await retrieveStats()
+
+    return {
+        props: {
+            stats
+        }
+    }
+}
+
+export default function Home(props: HomeProps): FCReturn {
     useDidMount(() => {
         TransitorService.hideTransitor()
     })
@@ -207,7 +224,31 @@ export default function Home(): FCReturn {
             {/* STATS */}
             <section className="ma-home-stats-container">
                 {/* <div className="ma-home-stats-back" /> */}
-                <div className="ma-mwcontainer"></div>
+                <div className="ma-mwcontainer">
+                    <div className="ma-home-stats-wrapper">
+                        <div className="ma-home-stats-stat">
+                            <span className="ma-home-stats-stat-label">Entries</span>
+                            <span className="ma-home-stats-stat-value">{props.stats.entries}</span>
+                        </div>
+                        <div className="ma-home-stats-stat">
+                            <span className="ma-home-stats-stat-label">Last Entry</span>
+                            <span className="ma-home-stats-stat-value">{props.stats.lastEntry.name}</span>
+                            <span className="ma-home-stats-stat-subvalue">
+                                {props.stats.lastEntry.occupations.map((s: any) => s.name).join(', ')}
+                            </span>
+                        </div>
+                        <div className="ma-home-stats-stat">
+                            <span className="ma-home-stats-stat-label">Contributors</span>
+                            <span className="ma-home-stats-stat-value">{props.stats.contributors}</span>
+                        </div>
+                        <div className="ma-home-stats-stat">
+                            <span className="ma-home-stats-stat-label">Last Update</span>
+                            <span className="ma-home-stats-stat-value">
+                                {moment(props.stats.lastUpdate).format('DD MMMM YYYY')}
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </section>
             <div className="ma-mwcontainer">
                 <div className="ma-home-people-wrapper">
