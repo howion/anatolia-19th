@@ -6,7 +6,6 @@ export class LoadingService implements StaticImplements<Service<boolean>, typeof
     protected static subject = new Subject<boolean>() // isActive
 
     public static set(status: boolean): void {
-        ClientUtil.hideBodyScroll()
         LoadingService.subject.next(status)
     }
 

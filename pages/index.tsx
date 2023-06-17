@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Meta } from '/components/meta'
 import { Header } from '/components/header'
@@ -8,7 +8,7 @@ import { Header } from '/components/header'
 import { Footer } from '/components/footer'
 import { Accordion, AccordionContainer } from '/components/accordion'
 import { Anchor } from '/components/anchor'
-import { useDidMount } from 'rooks'
+import { useDebounce, useDidMount } from 'rooks'
 import { TransitorService } from '/services/transitor.service'
 
 import RefOdtu from '/public/img/ref/odtu.png'
@@ -30,6 +30,9 @@ import peopleDoga from '/public/img/people/doga.png'
 import peopleMert from '/public/img/people/mert.png'
 
 import { siGithub, siTwitter, siLinkedin, siBehance, siOrcid, siDribbble } from 'simple-icons'
+import { LoadingService } from '/services/loading.service'
+import { ClientUtil } from '/utils/client.util'
+import Link from 'next/link'
 
 interface ProjectProps {
     disabled?: boolean
@@ -121,6 +124,20 @@ export default function Home(): FCReturn {
         TransitorService.hideTransitor()
     })
 
+    const [searchQuery, setSearchQuery] = useState('')
+    const [searchResults, setSearchResults] = useState<any[]>([])
+    const setValueDebounced = useDebounce(setSearchQuery, 500)
+
+    useEffect(() => {
+        if (!searchQuery) return setSearchResults([])
+        LoadingService.set(true)
+        ClientUtil.searchFeatures(searchQuery).then((res) => {
+            if (!res || !res.success) return setSearchResults([])
+            setSearchResults(res.data)
+            LoadingService.set(false)
+        })
+    }, [searchQuery])
+
     return (
         <>
             <Meta />
@@ -137,16 +154,36 @@ export default function Home(): FCReturn {
                         className="ma-home-search-input"
                         placeholder="Search in the 19th Century Anatolia Project Database..."
                         type="text"
+                        onChange={(e) => setValueDebounced(e.target.value)}
                     />
                     <i className="material-icons ma-home-search-i">search</i>
                     <div className="focuser"></div>
+
+                    {searchResults && searchResults.length > 0 && (
+                        <div className="ma-home-search-results">
+                            <div className="ma-home-search-results-label">FEATURES</div>
+                            {searchResults.map((result, i) => (
+                                <Anchor
+                                    key={i}
+                                    className="ma-home-search-results-result"
+                                    // onClick={() => showModal(result.id)}
+                                    href={'/map/' + result.sid}
+                                    animate={true}
+                                >
+                                    {`${result.name}, ${result.city}, ${result.occupations
+                                        .map((s: any) => s.name)
+                                        .join(', ')}`}
+                                </Anchor>
+                            ))}
+                        </div>
+                    )}
                 </section>
 
                 {/* PROJECTS */}
                 <section className="ma-home-projects-container">
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
-                    <Project src="/img/projects/digital_map.jpg" txt="Digital Map" href="/map/index" />
-                    <Project src="/img/projects/explore_anatolia.jpg" txt="Explore Anatolia" disabled />
+                    <Project src="/img/projects/digital_map.jpg" txt="Socio-Economic Map" href="/map/index" />
+                    <Project src="/img/projects/explore_anatolia.jpg" txt="Emotional Map" disabled />
                     <Project src="/img/projects/graphs.png" txt="Graphs" href="/graphs" disabled />
                     <Project src="/img/sources/newspaper1.jpg" txt="Sources" href="/sources" />
                 </section>

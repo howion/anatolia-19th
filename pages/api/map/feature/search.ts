@@ -62,6 +62,7 @@ export default async function Handle(req: ApiRequest, res: ApiResponse<any>): Pr
             take: 20,
             select: {
                 id: true,
+                sid: true,
                 occupations: true,
                 name: true,
                 city: true,

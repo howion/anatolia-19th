@@ -321,7 +321,6 @@
 
                 &-lhs {
                     &-icon {
-
                         width: $icon-size;
                         height: $icon-size;
                         text-align: center !important;
@@ -336,13 +335,12 @@
                     display: flex;
                     flex-direction: column;
                     row-gap: 2px;
-                    color: #868F8C;
+                    color: #868f8c;
                     font-weight: 500;
-                    padding-top: 2px;
                     font-size: 16px;
 
                     &-title {
-                        >em {
+                        > em {
                             color: #fff;
                             font-style: normal;
                         }

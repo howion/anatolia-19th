@@ -391,15 +391,18 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
                             <li className="ma-map-modal-activities-activity">
                                 <div className="ma-map-modal-activities-activity-lhs">
                                     <i
-                                            style={{
-                                            backgroundColor: '#00C34E',
+                                        style={{
+                                            backgroundColor: '#00C34E'
                                         }}
                                         className="material-icons ma-map-modal-activities-activity-lhs-icon"
-                                    >place</i>
+                                    >
+                                        place
+                                    </i>
                                 </div>
                                 <div className="ma-map-modal-activities-activity-rhs">
                                     <span className="ma-map-modal-activities-activity-rhs-title">
-                                        <em>{activeFeature.author.name}</em> created the record with id #{activeFeature.id}.
+                                        <em>{activeFeature.author.name}</em> created the record with id #
+                                        {activeFeature.id}.
                                     </span>
                                     <span className="ma-map-modal-activities-activity-rhs-subtitle">
                                         {moment(activeFeature.createdAt).format('DD MMMM YYYY')}
