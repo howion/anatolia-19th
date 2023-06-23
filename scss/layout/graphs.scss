@@ -1,7 +1,7 @@
 #app-main-graphs {
     @include ma-prefer-quality;
     overflow: hidden !important;
-    background-color: #000;
+    background-color: #fff;
 }
 
 .react-flow__attribution {
@@ -23,39 +23,55 @@
         height: 100vh;
     }
 
-    &-node {
-        display: flex;
-        flex-direction: column;
-        width: auto;
-        height: auto;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-
-        &.--size-4 {
-            transform: scale(1 + 4 * 0.25);
-        }
-
-        &-image {
-            width: auto;
-            height: auto;
-            max-width: 150px;
-        }
-
-        &-title {
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.25rem;
-            white-space: nowrap;
-            // text-transform: uppercase;
-        }
-
-        &-subtitle {
-            color: rgba(#fff, 0.7);
-            font-size: 1rem;
-            font-weight: 400;
-            margin-top: 4px;
-            white-space: nowrap;
-        }
+    &-embed {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        outline: 0;
     }
+
+    &-back {
+        position: fixed;
+        width: 48px;
+        height: 48px;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 28px;
+    }
+
+    // &-node {
+    //     display: flex;
+    //     flex-direction: column;
+    //     width: auto;
+    //     height: auto;
+    //     text-align: center;
+    //     justify-content: center;
+    //     align-items: center;
+
+    //     &.--size-4 {
+    //         transform: scale(1 + 4 * 0.25);
+    //     }
+
+    //     &-image {
+    //         width: auto;
+    //         height: auto;
+    //         max-width: 150px;
+    //     }
+
+    //     &-title {
+    //         color: #fff;
+    //         font-weight: 700;
+    //         font-size: 1.25rem;
+    //         white-space: nowrap;
+    //         // text-transform: uppercase;
+    //     }
+
+    //     &-subtitle {
+    //         color: rgba(#fff, 0.7);
+    //         font-size: 1rem;
+    //         font-weight: 400;
+    //         margin-top: 4px;
+    //         white-space: nowrap;
+    //     }
+    // }
 }

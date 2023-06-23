@@ -10,13 +10,15 @@
     "prisma": "npx prisma format && npx prisma db push && npx prisma generate",
     "studio": "npx prisma studio",
     "stylelint:fix": "npx stylelint --fix",
+    "vercel-build": "npx prisma generate && next build",
     "bin:match-ids": "npx ts-node ./bin/match-ids",
     "bin:commercials": "npx ts-node ./bin/commercials",
     "bin:console": "npx ts-node ./bin/console",
     "bin:slugs": "npx ts-node ./bin/slugs",
-    "vercel-build": "npx prisma generate && next build"
+    "bin:sentimental-analysis": "npx ts-node ./bin/sentimental-analysis"
   },
   "dependencies": {
+    "@google-cloud/language": "^5.3.0",
     "@prisma/client": "^4.15.0",
     "@prisma/studio": "^0.484.0",
     "@types/locomotive-scroll": "^4.1.0",
@@ -33,6 +35,7 @@
     "cheet.js": "^0.3.3",
     "dotenv": "^16.3.1",
     "flexboxgrid": "^6.3.1",
+    "googleapis": "^118.0.0",
     "gsap": "^3.12.1",
     "locomotive-scroll": "^4.1.4",
     "lodash": "^4.17.21",

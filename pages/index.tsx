@@ -201,7 +201,7 @@ export default function Home(props: HomeProps): FCReturn {
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
                     <Project src="/img/projects/digital_map.jpg" txt="Socio-Economic Map" href="/map/index" />
                     <Project src="/img/projects/explore_anatolia.jpg" txt="Emotional Map" disabled />
-                    <Project src="/img/projects/graphs.png" txt="Graphs" href="/graphs" disabled />
+                    <Project src="/img/projects/graphs.png" txt="Graphs" href="/graphs" />
                     <Project src="/img/sources/newspaper1.jpg" txt="Sources" href="/sources" />
                 </section>
 

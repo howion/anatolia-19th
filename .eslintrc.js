@@ -21,8 +21,6 @@ module.exports = {
         '@typescript-eslint/no-var-requires': [0],
         '@typescript-eslint/no-non-null-assertion': [0],
         'sonarjs/no-duplicate-string': [0],
-        'unicorn/prefer-top-level-await': [0],
-        'unicorn/numeric-separators-style': [0],
         'react/prop-types': [0],
         'react/display-name': [0],
         'no-control-regex': [0],
@@ -39,7 +37,6 @@ module.exports = {
         ],
         'indent': [1, 4, { SwitchCase: 1 }],
         'max-len': [1, { code: 120 }],
-        'unicorn/no-null': [1],
         'prettier/prettier': [1],
 
         // ERROR

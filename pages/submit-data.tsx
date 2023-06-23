@@ -65,8 +65,6 @@ export default function Contact(): FCReturn {
             input_data_lat.current!.value = String(lngLat.lat)
             input_data_lon.current!.value = String(lngLat.lng)
 
-            console.log(lngLat)
-
             //     m.setLngLat(lngLat).addTo(map)
             //     setMarker(m)
 

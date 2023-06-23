@@ -59,6 +59,15 @@ module.exports = {
             }
         ]
     },
+    async redirects() {
+        return [
+          {
+            source: '/map',
+            destination: '/map/index',
+            permanent: true,
+          },
+        ]
+    },
     experimental: {
         largePageDataBytes: 1 * 10 ** 6 // 1 MB
         //     optimizeCss: true,
