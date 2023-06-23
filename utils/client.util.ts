@@ -37,6 +37,10 @@ export class ClientUtil {
         })
     }
 
+    public static async submitData(data: any): Promise<ApiResponseSchema | null> {
+        return await ClientUtil.makeApiRequest<any>('POST', '/contact', undefined, data)
+    }
+
     public static async makeApiRequest<T extends Record<text, any> = Record<text, any>>(
         method: 'GET' | 'POST',
         path: text,

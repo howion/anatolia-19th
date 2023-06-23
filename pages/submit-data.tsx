@@ -11,6 +11,7 @@ import { Input } from '/components/input'
 import { Anchor } from '/components/anchor'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
+import { LoadingService } from '/services/loading.service'
 
 export default function Contact(): FCReturn {
     const mapRef = useRef<mapbox.Map | null>(null)
@@ -98,6 +99,63 @@ export default function Contact(): FCReturn {
         )
     })
 
+    async function handleSubmit(): Promise<void> {
+        const data = {
+            personal: {
+                name: input_personal_name.current!.value,
+                university: input_personal_university.current!.value,
+                email: input_personal_email.current!.value,
+                academicLevel: input_personal_academiclevel.current!.value
+            },
+            data: {
+                name: input_data_name.current!.value,
+                type: input_data_type.current!.value,
+                lat: input_data_lat.current!.value,
+                lon: input_data_lon.current!.value,
+                description: input_data_note.current!.value
+            }
+        }
+
+        if (
+            !data.personal.name ||
+            !data.personal.email ||
+            !data.personal.academicLevel ||
+            !data.data.name ||
+            !data.data.type ||
+            !data.data.lat ||
+            !data.data.lon ||
+            !data.data.description
+        ) {
+            alert('Please fill all the required fields.')
+            return
+        }
+
+        LoadingService.set(true)
+
+        const res = await ClientUtil.submitData(data)
+
+        console.log(res)
+
+        if (!res || !res.success) {
+            alert('An error occured while submitting data. Please try again later.')
+        } else {
+            alert('Success! Your data will be reviewed and added to the map soon. Thank you for your contribution.')
+
+            input_personal_name.current!.value = ''
+            input_personal_university.current!.value = ''
+            input_personal_email.current!.value = ''
+            input_personal_academiclevel.current!.value = ''
+
+            input_data_name.current!.value = ''
+            input_data_type.current!.value = ''
+            input_data_lat.current!.value = ''
+            input_data_lon.current!.value = ''
+            input_data_note.current!.value = ''
+        }
+
+        LoadingService.set(false)
+    }
+
     return (
         <>
             <Meta title="Submit Data" />
@@ -179,7 +237,12 @@ export default function Contact(): FCReturn {
                         />
                     </div>
                     <div className="col-xs">
-                        <Input ref={input_data_type} type="text" label="Data Type" placeholder="Select" />
+                        <Input
+                            ref={input_data_type}
+                            type="text"
+                            label="Data Type"
+                            placeholder="For example: Mine, Merchant etc."
+                        />
                     </div>
                 </div>
                 <div className="row">
@@ -202,10 +265,10 @@ export default function Contact(): FCReturn {
                         <Input
                             ref={input_data_note}
                             type="textarea"
-                            label="Note — Optional"
-                            placeholder="Please write your extra notes related to the data here..."
+                            label="Describe Your Data"
+                            placeholder="Please write your notes related to the data here..."
                             defaultValue=""
-                            optional={true}
+                            optional={false}
                         />
                     </div>
                 </div>
@@ -216,7 +279,7 @@ export default function Contact(): FCReturn {
                         transform: 'translateX(2px)'
                     }}
                 >
-                    <span>SUBMIT</span>
+                    <span onClick={handleSubmit}>SUBMIT</span>
                 </button>
             </section>
             {/* </div> */}
