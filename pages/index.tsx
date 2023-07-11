@@ -12,7 +12,7 @@ import { useDebounce, useDidMount } from 'rooks'
 import { TransitorService } from '/services/transitor.service'
 
 import RefOdtu from '/public/img/ref/odtu.png'
-import RefSalt from '/public/img/ref/salt.svg'
+import RefSalt from '/public/img/ref/salt.png'
 import RefAnamed from '/public/img/ref/anamed.png'
 import RefHafizaMerkezi from '/public/img/ref/hafizamerkezi.png'
 import RefVekam from '/public/img/ref/vekam.svg'
