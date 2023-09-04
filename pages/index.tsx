@@ -305,15 +305,8 @@ export default function Home(props: HomeProps): FCReturn {
                         <Person
                             src={peopleFurkan}
                             name="Furkan Arslan"
-                            role="Ottoman Turkish Translator"
+                            role="Primary Sources Coordinator"
                             start="2023"
-                            end="Present"
-                        />
-                        <Person
-                            src={peopleKadri}
-                            name="Mustafa Kadri Yekeler"
-                            role="Ottoman Turkish Translator"
-                            start="2021"
                             end="Present"
                         />
                     </div>
