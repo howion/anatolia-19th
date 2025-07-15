@@ -2,7 +2,7 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable prettier/prettier */
 import readXlsxFile from 'read-excel-file/node'
-import { Database } from '../lib/database'
+import { Database } from '../../lib/database'
 import cliProgress from 'cli-progress'
 // import slugify from 'slugify'
 
@@ -27,7 +27,7 @@ async function main() {
     // const featureUpserts = []
 
     try {
-        console.log('Eklenecek/Yenilenecek kayıt sayısı: ' + numberOfRecords)
+        console.log(`Eklenecek/Yenilenecek kayıt sayısı: ${numberOfRecords}`)
         console.log('Feature ilk kayıtları yapılıyor...')
         const barFeatureUpserts = new cliProgress.SingleBar({}, cliProgress.Presets.rect)
         barFeatureUpserts.start(numberOfRecords, 0)

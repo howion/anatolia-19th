@@ -1,5 +1,7 @@
+@use '../mixins/performance' as performance;
+
 #app-main-graphs {
-    @include ma-prefer-quality;
+    @include performance.ma-prefer-quality;
     overflow: hidden !important;
     background-color: #fff;
 }

@@ -1,11 +1,13 @@
+@use "sass:meta";
+
 @import 'node_modules/modern-normalize/modern-normalize.css';
 @import 'node_modules/flexboxgrid/dist/flexboxgrid.min.css';
 
-@import '/scss/variables';
-@import '/scss/mixins';
+@include meta.load-css('scss/variables');
+@include meta.load-css('scss/mixins');
 
-@import '/scss/app';
+@include meta.load-css('scss/app');
 
-@import '/scss/keyframes';
-@import '/scss/components';
-@import '/scss/layout';
+@include meta.load-css('scss/keyframes');
+@include meta.load-css('scss/components');
+@include meta.load-css('scss/layout');

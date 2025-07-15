@@ -1,7 +1,7 @@
+import type { ApiRequest, ApiResponse } from '/types/api'
 import NextCors from 'nextjs-cors'
 import { ApiFailureCode } from '/constants/api/api-failure-code'
 import { HTTPStatusCode } from '/constants/http-status-code'
-import { ApiRequest, ApiResponse } from '/types/api'
 
 export async function CORS(req: ApiRequest<any>, res: ApiResponse<any>): Promise<void> {
     await NextCors(req, res, {

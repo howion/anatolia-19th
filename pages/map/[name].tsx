@@ -1,23 +1,24 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+/** biome-ignore-all lint/style/noNonNullAssertion: <explanation> */
+import type { GetServerSidePropsContext } from 'next'
+import type { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
+
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useDebounce, useDidMount } from 'rooks'
-import mapbox from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
+import mapbox from 'mapbox-gl'
+import { useRouter } from 'next/router'
+import moment from 'moment'
 
 import { Meta } from '/components/meta'
 import { Emblem } from '/components/emblem'
 import { TransitorService } from '/services/transitor.service'
 import { Anchor } from '/components/anchor'
-import { ClientUtil } from '/utils/client.util'
-import { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
+import { isClient, MAPBOX_PUBLIC_TOKEN, MAPBOX_STYLE_MAP, retrieveFeature, searchFeatures } from '/utils/client.util'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { MapShare } from '/components/map-share'
 import { LoadingService } from '/services/loading.service'
 
-import { useRouter } from 'next/router'
-import { GetServerSidePropsContext } from 'next'
 import { retrieveAllFeatures, retrieveFeatureBySid } from '/models/feature.modal'
-
-import moment from 'moment'
 
 function getModalWidth(): number {
     if (!window) return 0
@@ -46,10 +47,10 @@ export async function getServerSideProps({ params }: GetServerSidePropsContext):
     }
 }
 
-export default function Map({ features, activeFeature: _activeFeature }: any): FCReturn {
+export default function MapP({ features, activeFeature: _activeFeature }: any): FCReturn {
     // const [viewState, setViewState] = React.useState<DECK_ViewState>(InitialViewState)
     const [showControls, setShowControls] = useState(true)
-    const mapRef = useRef<mapbox.Map | null>(null)
+    const mapRef = useRef<mapboxgl.Map | null>(null)
     const mapContainerRef = useRef<HTMLDivElement>(null)
     const [isModalActive, setIsModalActive] = useState(false)
     // const features = useRef<ApiFeaturesReponse | null>(null)
@@ -77,52 +78,52 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
             duration: 1000,
             essential: true
         })
-    }, [mapRef])
+    }, [])
 
-    const setFeatureModal = useCallback(
-        (_feature: ApiFeature) => {
-            setActiveFeature(_feature)
+    const setFeatureModal = (_feature: ApiFeature) => {
+        setActiveFeature(_feature)
 
-            setShowControls(false)
-            setIsModalActive(true)
+        setShowControls(false)
+        setIsModalActive(true)
 
-            // if (customModalMarker) // TODO:
+        // if (customModalMarker) // TODO:
 
-            const mk = new mapbox.Marker().setLngLat([_feature.lon, _feature.lat]).addTo(mapRef.current!)
+        const mk = new mapbox.Marker().setLngLat([_feature.lon, _feature.lat]).addTo(mapRef.current!)
 
-            mk.getElement().addEventListener('click', () => {
-                showModal(_feature.id)
-            })
+        mk.getElement().addEventListener('click', () => {
+            showModal(_feature.id)
+        })
 
-            // setCustomModalMarker(mk)
+        // setCustomModalMarker(mk)
 
-            mapRef.current!.flyTo({
-                center: [_feature.lon, _feature.lat],
-                zoom: 16,
-                animate: true,
-                duration: 4000,
-                pitch: 0,
-                bearing: 0,
-                essential: true,
-                padding: {
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: getModalWidth()
-                }
-            })
-        },
-        [mapRef]
-    )
+        mapRef.current!.flyTo({
+            center: [_feature.lon, _feature.lat],
+            zoom: 16,
+            animate: true,
+            duration: 4000,
+            pitch: 0,
+            bearing: 0,
+            essential: true,
+            padding: {
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: getModalWidth()
+            }
+        })
+    }
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: invalid deduction
     const showModal = useCallback(
         (id: number) => {
             LoadingService.set(true)
-            ClientUtil.retrieveFeature(id).then((res: any) => {
+            retrieveFeature(id).then((res: any) => {
                 if (!res?.success) return
 
                 // chnage the url with next router but do not reload the page
-                router.push(`/map/${res.data.sid}`, undefined, { shallow: true })
+                router.push(`/map/${res.data.sid}`, undefined, {
+                    shallow: true
+                })
 
                 // TODO: Remove this
                 console.log('feature:', res.data)
@@ -132,14 +133,14 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
                 LoadingService.set(false)
             })
         },
-        [mapRef]
+        [router]
     )
 
     useDidMount(async () => {
         // make sure the map is initialized only once
-        if (!ClientUtil.isClient || mapRef.current) return
+        if (!isClient() || mapRef.current) return
 
-        mapbox.accessToken = ClientUtil.MAPBOX_PUBLIC_TOKEN
+        mapbox.accessToken = MAPBOX_PUBLIC_TOKEN
 
         // const _features = await ClientUtil.retrieveAllFeatures()
         // // const featureMarkers: Record<text, mapbox.Marker> = {}
@@ -161,7 +162,7 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
 
         mapRef.current = new mapbox.Map({
             container: mapContainerRef.current!,
-            style: ClientUtil.MAPBOX_STYLE_MAP,
+            style: MAPBOX_STYLE_MAP,
             center: [35, 39],
             zoom: 6,
             attributionControl: true,
@@ -239,7 +240,7 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
 
             map.on('click', 'unclustered-point', (e) => {
                 const feature = e.features![0]
-                showModal(feature.properties!.id)
+                showModal(feature!.properties!.id)
             })
         })
 
@@ -265,7 +266,7 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
         )
     })
 
-    if (ClientUtil.isClient) {
+    if (isClient()) {
         const el = document.querySelector<HTMLDivElement>('.mapboxgl-control-container')
         if (el) el.style.display = showControls ? 'block' : 'none'
     }
@@ -281,7 +282,7 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
     useEffect(() => {
         if (!searchQuery) return setSearchResults([])
         LoadingService.set(true)
-        ClientUtil.searchFeatures(searchQuery).then((res) => {
+        searchFeatures(searchQuery).then((res) => {
             if (!res || !res.success) return setSearchResults([])
             setSearchResults(res.data)
             LoadingService.set(false)
@@ -298,7 +299,7 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
             <div className="ma-map-search-container">
                 <div className="ma-map-search-lhs">
                     <Anchor href="/" animate>
-                        <button className="btn btn-icon">
+                        <button className="btn btn-icon" type="button">
                             <i className="material-icons">arrow_back</i>
                         </button>
                     </Anchor>
@@ -315,7 +316,7 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
                             <div className="ma-map-search-results-label">FEATURES</div>
                             {searchResults.map((result, i) => (
                                 <div
-                                    key={i}
+                                    key={result.id}
                                     className="ma-map-search-results-result"
                                     onClick={() => showModal(result.id)}
                                 >
@@ -331,10 +332,10 @@ export default function Map({ features, activeFeature: _activeFeature }: any): F
             {activeFeature ? (
                 <div className={'ma-map-modal-container' + (isModalActive ? ' --active' : '')}>
                     <div className="ma-map-modal-buttons">
-                        <button className="btn btn-icon" onClick={hideModal}>
+                        <button className="btn btn-icon" onClick={hideModal} type="button">
                             <i className="material-icons">close</i>
                         </button>
-                        <button className="btn btn-icon">
+                        <button className="btn btn-icon" type="button">
                             <i className="material-icons" onClick={() => setIsShareOpen(true)}>
                                 share
                             </i>

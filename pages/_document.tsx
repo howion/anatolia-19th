@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react'
-import Document, { Html, Head, Main, NextScript, DocumentInitialProps, DocumentContext } from 'next/document'
+import type { ReactElement } from 'react'
+import Document, { type DocumentInitialProps, type DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 import { Splash } from '/components/splash'
 
 /*
@@ -11,7 +11,6 @@ import { Splash } from '/components/splash'
  * JSIFY MATERIAL-ICON
  */
 
-/* eslint max-len: 0 */
 export default class MyDocument extends Document {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
         const initialProps = await Document.getInitialProps(ctx)

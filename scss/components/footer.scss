@@ -1,5 +1,8 @@
+@use '../variables/colors.scss' as colors;
+@use '../variables/defaults.scss' as defaults;
+
 .ma-footer {
-    background-color: $color-islamic-dark;
+    background-color: colors.$color-islamic-dark;
     padding: 64px 0 0 0;
     font-size: 0.875rem;
     user-select: none;
@@ -53,7 +56,7 @@
                 color: rgba(#fff, 0.5);
 
                 &:hover {
-                    color: $color-trueyellow;
+                    color: colors.$color-trueyellow;
                 }
             }
         }
@@ -71,7 +74,7 @@
         justify-content: center;
         text-decoration: none;
         width: 100%;
-        padding: 20px $view-max-width-px;
+        padding: 20px defaults.$view-max-width-px;
 
         &-copyright {
             color: rgba(#fff, 0.4);
@@ -83,7 +86,7 @@
                 color: rgba(#fff, 0.7);
 
                 &:hover {
-                    color: $color-trueyellow;
+                    color: colors.$color-trueyellow;
                 }
             }
         }
@@ -93,7 +96,7 @@
             color: rgba(#fff, 0.7);
 
             &:hover {
-                color: $color-trueyellow;
+                color: colors.$color-trueyellow;
             }
         }
     }

@@ -1,3 +1,6 @@
+@use '../variables/colors.scss' as colors;
+@use 'sass:color';
+
 .ma-map-share {
     display: flex;
     flex-direction: column;
@@ -49,7 +52,7 @@
             line-height: $size;
             height: $size;
             font-weight: 600;
-            color: $color-trueyellow;
+            color: colors.$color-trueyellow;
         }
 
         &-close {
@@ -123,7 +126,7 @@
         }
 
         &-button {
-            background-color: $color-trueyellow;
+            background-color: colors.$color-trueyellow;
             text-align: center;
             border: 0;
             border-radius: 32px;
@@ -135,7 +138,7 @@
             font-weight: 600;
 
             &:hover {
-                background-color: lighten($color-trueyellow, 10%);
+                background-color: color.adjust(colors.$color-trueyellow, $lightness: 10%);
             }
         }
     }

@@ -48,7 +48,7 @@ async function main(): Promise<void> {
     })
 
     const document = {
-        content: 'When I pass around via train of the city Konya, there was a horrible smeel.',
+        content: 'When I pass around via train the city Konya, there was a horrible smeel.',
         type: 'PLAIN_TEXT' as const
     }
 

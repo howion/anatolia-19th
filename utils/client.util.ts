@@ -1,65 +1,64 @@
+import type { ApiResponseSchema } from '/types/api'
+import type { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
+
 import axios from 'axios'
-import { ApiResponseSchema } from '/types/api'
-import { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
 
-export class ClientUtil {
-    public static readonly MAPBOX_PUBLIC_TOKEN =
-        'pk.eyJ1IjoiaG93aW9uIiwiYSI6ImNsYjh6b2gycDBia2ozd21nYjh3Y2JmcWUifQ.DE19OL-ugnq3dq66xKjoEw'
+export const MAPBOX_PUBLIC_TOKEN =
+    'pk.eyJ1IjoiaG93aW9uIiwiYSI6ImNsYjh6b2gycDBia2ozd21nYjh3Y2JmcWUifQ.DE19OL-ugnq3dq66xKjoEw'
 
-    public static readonly MAPBOX_STYLE_MAP = 'mapbox://styles/howion/clbrzux99000p14pmookcim4w'
-    public static readonly MAPBOX_STYLE_CONTACT = 'mapbox://styles/howion/clbrzux99000p14pmookcim4w'
+export const MAPBOX_STYLE_MAP = 'mapbox://styles/howion/clbrzux99000p14pmookcim4w'
+export const MAPBOX_STYLE_CONTACT = 'mapbox://styles/howion/clbrzux99000p14pmookcim4w'
 
-    public static isClient = typeof window !== 'undefined'
+export const isClient = () => typeof window !== 'undefined'
 
-    public static hideBodyScroll(): void {
-        if (window && window.document && window.document.body) {
-            window.document.body.style.overflow = 'hidden'
-        }
+export function hideBodyScroll(): void {
+    if (window?.document?.body) {
+        window.document.body.style.overflow = 'hidden'
     }
+}
 
-    public static showBodyScroll(overflow = 'overlay'): void {
-        if (window && window.document && window.document.body) {
-            window.document.body.style.overflow = overflow
-        }
+export function showBodyScroll(overflow = 'overlay'): void {
+    if (window?.document?.body) {
+        window.document.body.style.overflow = overflow
     }
+}
 
-    public static async retrieveAllFeatures(): Promise<ApiResponseSchema<ApiFeaturesReponse> | null> {
-        return await ClientUtil.makeApiRequest<ApiFeaturesReponse>('GET', '/map')
-    }
-
-    public static async retrieveFeature(id: number): Promise<ApiResponseSchema<ApiFeature> | null> {
-        return await ClientUtil.makeApiRequest<any>('GET', `/map/feature/${id}`)
-    }
-
-    public static async searchFeatures(query: text): Promise<ApiResponseSchema<ApiFeature[]> | null> {
-        return await ClientUtil.makeApiRequest<any>('GET', '/map/feature/search', {
-            query
+export async function makeApiRequest<T extends Record<text, any> = Record<text, any>>(
+    method: 'GET' | 'POST',
+    path: text,
+    params?: Record<any, any>,
+    body?: Record<any, any>
+): Promise<ApiResponseSchema<T> | null> {
+    try {
+        const res = await axios({
+            method,
+            url: `/api/${path}`,
+            data: body,
+            params: params
         })
+
+        if (!res) return null
+
+        return res.data as ApiResponseSchema<T>
+    } catch {
+        return null
     }
+}
 
-    public static async submitData(data: any): Promise<ApiResponseSchema | null> {
-        return await ClientUtil.makeApiRequest<any>('POST', '/contact', undefined, data)
-    }
+export async function retrieveAllFeatures(): Promise<ApiResponseSchema<ApiFeaturesReponse> | null> {
+    return await makeApiRequest<ApiFeaturesReponse>('GET', '/map')
+}
 
-    public static async makeApiRequest<T extends Record<text, any> = Record<text, any>>(
-        method: 'GET' | 'POST',
-        path: text,
-        params?: Record<any, any>,
-        body?: Record<any, any>
-    ): Promise<ApiResponseSchema<T> | null> {
-        try {
-            const res = await axios({
-                method,
-                url: '/api/' + path,
-                data: body,
-                params: params
-            })
+export async function retrieveFeature(id: number): Promise<ApiResponseSchema<ApiFeature> | null> {
+    return await makeApiRequest<any>('GET', `/map/feature/${id}`)
+}
 
-            if (!res) return null
+export async function searchFeatures(query: text): Promise<ApiResponseSchema<ApiFeature[]> | null> {
+    return await makeApiRequest<any>('GET', '/map/feature/search', {
+        query
+    })
+}
 
-            return res.data as ApiResponseSchema<T>
-        } catch {
-            return null
-        }
-    }
+export async function submitData(data: any): Promise<ApiResponseSchema | null> {
+    return await makeApiRequest<any>('POST', '/contact', undefined, data)
 }

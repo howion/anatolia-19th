@@ -4,7 +4,7 @@ import { useDidMount } from 'rooks'
 
 // @ts-ignore type module is broken
 import cheet from 'cheet.js'
-import { ClientUtil } from '/utils/client.util'
+import { ClientUtil, hideBodyScroll, showBodyScroll } from '/utils/client.util'
 
 const CHEETS = {
     // aha: 'aha'.split('').join(' '),
@@ -37,7 +37,7 @@ export default function Easter(): FCReturn {
             if (seq === CHEETS.exit) {
                 setContent('')
                 setDidMount(false)
-                ClientUtil.showBodyScroll()
+                showBodyScroll()
                 return setIsActive(false)
             }
             // if (isActive) return
@@ -54,12 +54,12 @@ export default function Easter(): FCReturn {
     })
 
     if (isActive && !didMount) {
-        ClientUtil.hideBodyScroll()
+        hideBodyScroll()
         setDidMount(true)
     }
 
     if (!isActive && didMount) {
-        ClientUtil.showBodyScroll()
+        showBodyScroll()
         setDidMount(false)
         setContent('')
     }

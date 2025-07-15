@@ -1,24 +1,11 @@
-import React, { useMemo } from 'react'
-import { Meta } from '/components/meta'
-
+import type { useMemo } from 'react'
 import { useDidMount } from 'rooks'
+
+import { Meta } from '/components/meta'
 import { TransitorService } from '/services/transitor.service'
-
-import type { Node, XYPosition } from 'reactflow'
-
-import ReactFlow, {
-    Handle,
-    Position,
-    // MiniMap,
-    Controls,
-    Background,
-    useNodesState,
-    useEdgesState
-    // addEdge,
-} from 'reactflow'
+import { Anchor } from '/components/anchor'
 
 import 'reactflow/dist/style.css'
-import { Anchor } from '/components/anchor'
 
 // function ANode({ data }: { data: any }): FCReturn {
 //     return (
@@ -153,12 +140,13 @@ export default function Graphs(): FCReturn {
                 </ReactFlow> */}
                 <div className="ma-graphs-back">
                     <Anchor href="/" animate>
-                        <button className="btn btn-icon">
+                        <button className="btn btn-icon" type="button">
                             <i className="material-icons">arrow_back</i>
                         </button>
                     </Anchor>
                 </div>
                 <iframe
+                    title="Harita"
                     className="ma-graphs-embed"
                     src="https://app.mural.co/embed/c4ce4adb-e3f9-4daa-90ce-38bfcb850005"
                     width="100%"

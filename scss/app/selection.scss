@@ -1,12 +1,14 @@
+@use '../variables/colors.scss' as colors;
+
 ::-moz-selection {
     // color: red;
-    background: $color-trueyellow;
+    background: colors.$color-trueyellow;
     color: #000;
 }
 
 ::selection {
     // color: rgb(7, 6, 6);
-    background: $color-trueyellow;
+    background: colors.$color-trueyellow;
     color: #000;
 }
 

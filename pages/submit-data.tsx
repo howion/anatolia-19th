@@ -1,22 +1,24 @@
+/** biome-ignore-all lint/style/noNonNullAssertion: for mapbox reference */
+
 import React, { useRef } from 'react'
-import mapbox from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
-import { Meta } from '/components/meta'
-
+import mapbox from 'mapbox-gl'
 import { useDidMount } from 'rooks'
-import { TransitorService } from '/services/transitor.service'
 
-import { ClientUtil } from '/utils/client.util'
+import { Meta } from '/components/meta'
 import { Emblem } from '/components/emblem'
 import { Input } from '/components/input'
 import { Anchor } from '/components/anchor'
 
-import 'mapbox-gl/dist/mapbox-gl.css'
 import { LoadingService } from '/services/loading.service'
+import { TransitorService } from '/services/transitor.service'
+import { isClient, MAPBOX_PUBLIC_TOKEN, MAPBOX_STYLE_MAP, submitData } from '/utils/client.util'
+
+import 'mapbox-gl/dist/mapbox-gl.css'
 
 export default function Contact(): FCReturn {
-    const mapRef = useRef<mapbox.Map | null>(null)
+    const mapRef = useRef<mapboxgl.Map | null>(null)
     const mapContainerRef = React.useRef<HTMLDivElement>(null)
-    const markerRef = React.useRef<mapbox.Marker | null>(null)
+    const markerRef = React.useRef<mapboxgl.Marker | null>(null)
 
     const input_personal_name = useRef<HTMLInputElement>(null)
     const input_personal_university = useRef<HTMLInputElement>(null)
@@ -29,14 +31,14 @@ export default function Contact(): FCReturn {
     const input_data_note = useRef<HTMLInputElement>(null)
 
     useDidMount(() => {
-        if (!ClientUtil.isClient || mapRef.current) return
-        mapbox.accessToken = ClientUtil.MAPBOX_PUBLIC_TOKEN
+        if (!isClient() || mapRef.current) return
+        mapbox.accessToken = MAPBOX_PUBLIC_TOKEN
 
         // mapRef.current!.addEventListener('contextmenu', (e) => e.preventDefault())
 
         mapRef.current = new mapbox.Map({
             container: mapContainerRef.current!,
-            style: ClientUtil.MAPBOX_STYLE_MAP,
+            style: MAPBOX_STYLE_MAP,
             center: [35, 39],
             zoom: 6,
             attributionControl: true,
@@ -130,7 +132,7 @@ export default function Contact(): FCReturn {
 
         LoadingService.set(true)
 
-        const res = await ClientUtil.submitData(data)
+        const res = await submitData(data)
 
         console.log(res)
 
@@ -162,7 +164,7 @@ export default function Contact(): FCReturn {
             <section className="ma-contact-map-container">
                 <div className="ma-map-search-container ma-map-search-container--contact">
                     <Anchor href="/" animate>
-                        <button className="btn btn-icon">
+                        <button className="btn btn-icon" type="button">
                             <i className="material-icons">arrow_back</i>
                         </button>
                     </Anchor>
@@ -276,6 +278,7 @@ export default function Contact(): FCReturn {
                     style={{
                         transform: 'translateX(2px)'
                     }}
+                    type="button"
                 >
                     <span onClick={handleSubmit}>SUBMIT</span>
                 </button>

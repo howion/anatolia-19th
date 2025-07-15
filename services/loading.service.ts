@@ -1,7 +1,7 @@
+import type { Service } from '/services/service'
 import { Subject } from 'rxjs'
-import { Service } from '/services/service'
-import { ClientUtil } from '/utils/client.util'
 
+// biome-ignore lint/complexity/noStaticOnlyClass: -
 export class LoadingService implements StaticImplements<Service<boolean>, typeof LoadingService> {
     protected static subject = new Subject<boolean>() // isActive
 

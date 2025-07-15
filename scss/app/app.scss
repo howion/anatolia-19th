@@ -1,10 +1,12 @@
+@use '../mixins/performance' as performance;
+
 body {
     width: 100%;
     overflow-x: hidden;
     overflow: hidden;
     // overflow: overlay; // onload
 
-    @include ma-prefer-quality;
+    @include performance.ma-prefer-quality;
 }
 
 .Toastify__toast-body {

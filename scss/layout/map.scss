@@ -1,5 +1,10 @@
+@use 'sass:math';
+
+@use '../variables/colors.scss' as colors;
+@use '../mixins/performance.scss' as performance;
+
 #app-main-map {
-    @include ma-prefer-quality;
+    @include performance.ma-prefer-quality;
     overflow: hidden !important;
     background-color: #4c9d8a;
 }
@@ -31,7 +36,7 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background-color: $color-trueyellow;
+            background-color: colors.$color-trueyellow;
             clip-path: polygon(50% 100%, 0 0, 100% 0);
             border: 2px solid red;
             cursor: pointer;
@@ -113,7 +118,7 @@
                 width: 100%;
 
                 &:hover {
-                    color: $color-trueyellow;
+                    color: colors.$color-trueyellow;
                 }
             }
         }
@@ -131,7 +136,7 @@
 
             input {
                 background-color: rgba(#000, 0.8);
-                color: $color-trueyellow;
+                color: colors.$color-trueyellow;
             }
 
             .ma-map-search-results {
@@ -239,7 +244,7 @@
             letter-spacing: 4px;
             user-select: none;
             cursor: pointer;
-            color: $color-trueyellow;
+            color: colors.$color-trueyellow;
 
             &::after {
                 position: absolute;
@@ -247,7 +252,7 @@
                 content: '';
                 width: 20px;
                 height: 1px;
-                background-color: $color-trueyellow;
+                background-color: colors.$color-trueyellow;
                 top: 8px;
                 right: -28px;
                 transition: width 300ms, right 300ms;
@@ -326,7 +331,7 @@
                         text-align: center !important;
                         font-size: 24px !important;
                         line-height: $icon-size !important;
-                        border-radius: $icon-size/2;
+                        border-radius: math.div($icon-size, 2);
                         color: #fff;
                     }
                 }

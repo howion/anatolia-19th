@@ -1,3 +1,5 @@
+import type { NextConfig } from 'next'
+
 const isDev = process.env.NODE_ENV !== 'production'
 
 // See https://nextjs.org/docs/advanced-features/security-headers
@@ -14,11 +16,6 @@ const defaultSecurityHeaders = [
         key: 'X-XSS-Protection',
         value: '1; mode=block'
     },
-    // this is handlend within _document.tsx
-    // {
-    //     key: 'Content-Security-Policy',
-    //     value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
-    // },
     {
         key: 'X-Content-Type-Options',
         value: 'nosniff'
@@ -31,22 +28,19 @@ const defaultSecurityHeaders = [
         key: 'X-Frame-Options',
         value: 'SAMEORIGIN'
     }
-    // {
-    //     key: 'Permissions-Policy',
-    //     value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()'
-    // }
 ]
 
-/** @type {import('next').NextConfig} */
-module.exports = {
-    reactStrictMode: true,
-    swcMinify: true,
-    poweredByHeader: false,
+const nextConf: NextConfig = {
     compress: true, // disable if proxy already compresses
-    optimizeFonts: true,
+    trailingSlash: false,
+    poweredByHeader: false,
+    reactStrictMode: true,
+    generateEtags: true,
+
     eslint: {
         ignoreDuringBuilds: true
     },
+
     async headers() {
         if (isDev) {
             return []
@@ -61,19 +55,17 @@ module.exports = {
     },
     async redirects() {
         return [
-          {
-            source: '/map',
-            destination: '/map/index',
-            permanent: true,
-          },
+            {
+                source: '/map',
+                destination: '/map/index',
+                permanent: true
+            }
         ]
     },
     experimental: {
         largePageDataBytes: 1 * 10 ** 6 // 1 MB
         //     optimizeCss: true,
     }
-    // webpack: (config, options) => {
-    //     config.plugins.push(new StylelintPlugin())
-    //     return config
-    // }
 }
+
+export default nextConf

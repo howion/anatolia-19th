@@ -1,5 +1,8 @@
+@use '../variables/colors.scss' as colors;
+@use '../mixins/performance' as performance;
+
 #app-main-404 {
-    @include ma-prefer-quality;
+    @include performance.ma-prefer-quality;
     background-color: #fff;
 }
 
@@ -9,7 +12,7 @@
         margin: 50px auto;
         font-size: 6rem;
         font-weight: 800;
-        color: $color-trueyellow;
+        color: colors.$color-trueyellow;
         text-align: center;
         text-transform: uppercase;
 
@@ -19,20 +22,20 @@
             top: 0;
             right: 0;
             left: 0;
-            color: $color-trueyellow;
+            color: colors.$color-trueyellow;
             content: '404';
             background-color: #fff;
         }
 
         &::before {
             left: 8px;
-            text-shadow: 2px 0 $color-trueyellow;
+            text-shadow: 2px 0 colors.$color-trueyellow;
             animation: ma-keyframe-glitch 3s infinite linear;
         }
 
         &::after {
             left: 4px;
-            text-shadow: -2px 0 $color-trueyellow;
+            text-shadow: -2px 0 colors.$color-trueyellow;
             animation: ma-keyframe-glitch 2s infinite linear;
         }
 

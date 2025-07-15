@@ -16,7 +16,7 @@ export async function retrieveStats(): Promise<any> {
                     },
                     take: 1
                 })
-                .then((s) => s[0]),
+                .then((s) => s[0] ?? null),
             Database.feature
                 .findMany({
                     select: {
@@ -28,7 +28,7 @@ export async function retrieveStats(): Promise<any> {
                     },
                     take: 1
                 })
-                .then((s) => s[0].updatedAt.toISOString())
+                .then((s) => s[0]?.updatedAt?.toISOString() ?? null)
         ])
 
         return {

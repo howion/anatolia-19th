@@ -1,3 +1,5 @@
+@use '../variables/colors.scss' as colors;
+
 p,
 h1,
 h2,
@@ -30,7 +32,7 @@ p {
     line-height: 1.35;
 
     > a {
-        color: $color-truegreen;
+        color: colors.$color-truegreen;
         font-weight: 500;
     }
 }

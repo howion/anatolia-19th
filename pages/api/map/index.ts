@@ -1,8 +1,8 @@
 import type { ApiRequest, ApiResponse } from '/types/api'
+import type { ApiFeaturesReponse } from '/constants/schemas/feature.schema'
+
 import { HTTPStatusCode } from '/constants/http-status-code'
 import { checkMethod } from '/utils/api.util'
-import { Database } from '/lib/database'
-import { ApiFeaturesReponse } from '/constants/schemas/feature.schema'
 import { retrieveAllFeatures } from '/models/feature.modal'
 
 export default async function Handle(req: ApiRequest, res: ApiResponse<ApiFeaturesReponse>): Promise<void> {

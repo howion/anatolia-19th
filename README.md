@@ -1,11 +1,6 @@
 # Anatolia: 19th Century Project
 
-Official repository for the [**Anatolia: 19th Century Project's**]()  website.
-
-## Todo List
-
-- [ ] Unit tests
-- [ ] See inline "TODO:"s
+Official repository for the [**Anatolia: 19th Century Project**]().
 
 ## License
 

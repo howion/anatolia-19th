@@ -1,5 +1,9 @@
+@use 'sass:math';
+
+@use '../variables/colors.scss' as colors;
+
 $ma-transitor-tiles: 5;
-$ma-transitor-bgc: $color-islamic-dark;
+$ma-transitor-bgc: colors.$color-islamic-dark;
 
 @keyframes maAnimatorFadeAnimation {
     0% {
@@ -39,7 +43,7 @@ $ma-transitor-bgc: $color-islamic-dark;
     }
 
     > .ma-transitor-tile {
-        $h: 100% / $ma-transitor-tiles;
+        $h: math.div(100%, $ma-transitor-tiles);
 
         position: absolute;
         left: 0;

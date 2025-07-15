@@ -1,9 +1,11 @@
+@use '../variables/colors.scss' as colors;
+
 a.ma-anchor {
     text-decoration: none;
 
     &-underline {
         $--color: rgba(#fff, 0.8);
-        $--color-hover: $color-trueyellow;
+        $--color-hover: colors.$color-trueyellow;
         transition: color 300ms;
 
         color: $--color;
@@ -33,7 +35,7 @@ a.ma-anchor {
     }
 
     &-lines {
-        $--color: $color-islamic;
+        $--color: colors.$color-islamic;
         display: inline-block;
         position: relative;
         color: $--color;

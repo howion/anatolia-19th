@@ -1,18 +1,19 @@
+import type { Service } from '/services/service'
 import { Subject } from 'rxjs'
-import { Service } from '/services/service'
-import { ClientUtil } from '/utils/client.util'
+import { hideBodyScroll, showBodyScroll } from '/utils/client.util'
 
+// biome-ignore lint/complexity/noStaticOnlyClass: -
 export class TransitorService implements StaticImplements<Service<boolean>, typeof TransitorService> {
     protected static subject = new Subject<boolean>() // isActive
 
     public static showTransitor(): void {
-        ClientUtil.hideBodyScroll()
+        hideBodyScroll()
         TransitorService.subject.next(true)
     }
 
     public static async hideTransitor(timeout = 300): Promise<void> {
         setTimeout(() => {
-            ClientUtil.showBodyScroll()
+            showBodyScroll()
             TransitorService.subject.next(false)
         }, timeout)
     }

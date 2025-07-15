@@ -1,5 +1,8 @@
+@use '../mixins/performance' as performance;
+@use '../app/scrollbar.scss' as scrollbar;
+
 #app-main-sources {
-    @include ma-prefer-quality;
+    @include performance.ma-prefer-quality;
     background-color: #f5f5f5;
 }
 
@@ -29,7 +32,7 @@
     &-content {
         $px: 55px;
         $py: 48px;
-        padding: $py ($px + $scrollbar-default-width) $py calc($map-vw + $px);
+        padding: $py ($px + scrollbar.$scrollbar-default-width) $py calc($map-vw + $px);
 
         .ma-emblem {
             display: inline-flex;

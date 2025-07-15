@@ -1,5 +1,11 @@
+@use 'sass:color';
+@use 'sass:math';
+
+@use '../variables/colors.scss' as colors;
+@use '../mixins/performance.scss' as performance;
+
 #app-main-home {
-    @include ma-prefer-quality;
+    @include performance.ma-prefer-quality;
     background-color: #f5f5f5;
 }
 
@@ -100,7 +106,7 @@
             right: 1.25rem;
             top: 1.05rem;
             font-size: 1.75rem;
-            color: $color-gray-500;
+            color: colors.$color-gray-500;
         }
     }
 
@@ -141,7 +147,7 @@
 
                 position: relative;
                 z-index: 0;
-                background-color: darken(#fff, 15%);
+                background-color: color.scale(#fff, $lightness: -15%);
                 width: 0;
                 min-width: 200px;
                 flex: 1 1 0;
@@ -258,7 +264,7 @@
             z-index: 0;
             margin: 100px 0 0 0;
             color: #fff;
-            background-color: $color-islamic-dark;
+            background-color: colors.$color-islamic-dark;
 
             &::before {
                 position: absolute;
@@ -291,7 +297,7 @@
             flex-direction: column;
 
             &-label {
-                color: $color-trueyellow;
+                color: colors.$color-trueyellow;
                 font-weight: 600;
                 font-size: 24px;
                 text-transform: uppercase;
@@ -309,7 +315,7 @@
                     position: absolute;
                     display: block;
                     content: '';
-                    border: 2px solid $color-trueyellow;
+                    border: 2px solid colors.$color-trueyellow;
                     border-width: 2px 0 0 2px;
                     top: 0;
                     left: 0;
@@ -335,7 +341,7 @@
         //         left: 0;
         //         width: 100%;
         //         height: 100%;
-        //         background-color: $color-islamic-dark;
+        //         background-color: colors.$color-islamic-dark;
         //     }
         // }
     }
@@ -382,7 +388,7 @@
             &-pic {
                 width: $--pic-size;
                 height: $--pic-size;
-                border-radius: $--pic-size/2;
+                border-radius: math.div($--pic-size,2);
                 filter: grayscale(1);
             }
 
@@ -394,32 +400,32 @@
                 &-name {
                     font-size: 1.5rem;
                     font-weight: 700;
-                    color: $color-primary-title;
+                    color: colors.$color-primary-title;
                     margin-top: 4px;
                 }
 
                 &-years {
                     font-size: 1rem;
-                    color: $color-islamic;
+                    color: colors.$color-islamic;
                     font-weight: 600;
                 }
 
                 &-role {
                     font-size: 1rem;
-                    color: $color-primary-text;
+                    color: colors.$color-primary-text;
                     font-weight: 600;
                     margin-top: 6px;
                 }
 
                 &-email {
                     font-size: 0.875rem;
-                    color: $color-primary-text;
+                    color: colors.$color-primary-text;
                     opacity: 0.7;
                     font-weight: 500;
                     margin-top: 6px;
 
                     &:hover {
-                        color: $color-truegreen;
+                        color: colors.$color-truegreen;
                     }
                 }
 

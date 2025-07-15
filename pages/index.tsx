@@ -1,41 +1,35 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { useDebounce, useDidMount } from 'rooks'
+import moment from 'moment'
+
 import { Meta } from '/components/meta'
 import { Header } from '/components/header'
 
 // IMAGES
-// import adimOdtuLogo from '/public/img/sponsor/adimodtu.png'
 import { Footer } from '/components/footer'
 import { Accordion, AccordionContainer } from '/components/accordion'
 import { Anchor } from '/components/anchor'
-import { useDebounce, useDidMount } from 'rooks'
 import { TransitorService } from '/services/transitor.service'
 
 import RefOdtu from '/public/img/ref/odtu.png'
 import RefSalt from '/public/img/ref/salt.png'
-import RefAnamed from '/public/img/ref/anamed.png'
 import RefHafizaMerkezi from '/public/img/ref/hafizamerkezi.png'
 import RefVekam from '/public/img/ref/vekam.svg'
+// import RefAnamed from '/public/img/ref/anamed.png'
 
 import homeIntroback from '/public/img/home-introback.jpg'
 import sarkTicaret from '/public/img/sark_ticaret.png'
 
 import peopleSelcuk from '/public/img/people/selcuk.png'
-// import peopleEbru from '/public/img/people/ebru.png'
 import peopleAgah from '/public/img/people/agah.png'
-import peopleKadri from '/public/img/people/kadri.png'
-import peopleRasit from '/public/img/people/rasit.png'
 import peopleFurkan from '/public/img/people/furkan.jpeg'
-import peopleDoga from '/public/img/people/doga.png'
 import peopleMert from '/public/img/people/mert.png'
 
-import { siGithub, siTwitter, siLinkedin, siBehance, siOrcid, siDribbble } from 'simple-icons'
+import { siGithub, siX, siBehance, siOrcid, siDribbble } from 'simple-icons'
 import { LoadingService } from '/services/loading.service'
-import { ClientUtil } from '/utils/client.util'
-import Link from 'next/link'
-import { GetServerSidePropsContext } from 'next'
 import { retrieveStats } from '/models/misc.modal'
-import moment from 'moment'
+import { searchFeatures } from '/utils/client.util'
 
 interface ProjectProps {
     disabled?: boolean
@@ -48,7 +42,7 @@ function Project(props: ProjectProps): FCReturn<ProjectProps> {
     return (
         <Anchor
             href={props.href ?? '#'}
-            className={'ma-home-projects-project-container' + (props.disabled ? ' disabled' : '')}
+            className={`ma-home-projects-project-container${props.disabled ? ' disabled' : ''}`}
             animate
         >
             <div
@@ -89,7 +83,12 @@ function Person(props: PersonProps): FCReturn<PersonProps> {
                 {props.links ? (
                     <div className="ma-home-people-card-content-links">
                         {props.links.map((v, i) => (
-                            <a className="ma-home-people-card-content-link" href={v.link} target="_blank" key={i}>
+                            <a
+                                className="ma-home-people-card-content-link"
+                                href={v.link}
+                                target="_blank"
+                                key={`${i}${v.link}`}
+                            >
                                 {typeof v.icon === 'string' ? (
                                     <i className="material-icons">{v.icon}</i>
                                 ) : (
@@ -97,8 +96,9 @@ function Person(props: PersonProps): FCReturn<PersonProps> {
                                         xmlns="http://www.w3.org/2000/svg"
                                         width={24}
                                         height={24}
-                                        fill={'#' + v.icon.hex}
+                                        fill={`#${v.icon.hex}`}
                                         viewBox="0 0 24 24"
+                                        role="img"
                                     >
                                         <path d={v.icon.path} />
                                     </svg>
@@ -148,7 +148,7 @@ export default function Home(props: HomeProps): FCReturn {
     useEffect(() => {
         if (!searchQuery) return setSearchResults([])
         LoadingService.set(true)
-        ClientUtil.searchFeatures(searchQuery).then((res) => {
+        searchFeatures(searchQuery).then((res) => {
             if (!res || !res.success) return setSearchResults([])
             setSearchResults(res.data)
             LoadingService.set(false)
@@ -181,10 +181,10 @@ export default function Home(props: HomeProps): FCReturn {
                             <div className="ma-home-search-results-label">FEATURES</div>
                             {searchResults.map((result, i) => (
                                 <Anchor
-                                    key={i}
+                                    key={result.sid}
                                     className="ma-home-search-results-result"
                                     // onClick={() => showModal(result.id)}
-                                    href={'/map/' + result.sid}
+                                    href={`/map/${result.sid}`}
                                     animate={true}
                                 >
                                     {`${result.name}, ${result.city}, ${result.occupations
@@ -222,34 +222,36 @@ export default function Home(props: HomeProps): FCReturn {
                 </section>
             </div>
             {/* STATS */}
-            <section className="ma-home-stats-container">
-                {/* <div className="ma-home-stats-back" /> */}
-                <div className="ma-mwcontainer">
-                    <div className="ma-home-stats-wrapper">
-                        <div className="ma-home-stats-stat">
-                            <span className="ma-home-stats-stat-label">Entries</span>
-                            <span className="ma-home-stats-stat-value">{props.stats.entries}</span>
-                        </div>
-                        <div className="ma-home-stats-stat">
-                            <span className="ma-home-stats-stat-label">Last Entry</span>
-                            <span className="ma-home-stats-stat-value">{props.stats.lastEntry.name}</span>
-                            <span className="ma-home-stats-stat-subvalue">
-                                {props.stats.lastEntry.occupations.map((s: any) => s.name).join(', ')}
-                            </span>
-                        </div>
-                        <div className="ma-home-stats-stat">
-                            <span className="ma-home-stats-stat-label">Contributors</span>
-                            <span className="ma-home-stats-stat-value">{props.stats.contributors}</span>
-                        </div>
-                        <div className="ma-home-stats-stat">
-                            <span className="ma-home-stats-stat-label">Last Update</span>
-                            <span className="ma-home-stats-stat-value">
-                                {moment(props.stats.lastUpdate).format('DD MMMM YYYY')}
-                            </span>
+            {props.stats?.entries > 0 && (
+                <section className="ma-home-stats-container">
+                    {/* <div className="ma-home-stats-back" /> */}
+                    <div className="ma-mwcontainer">
+                        <div className="ma-home-stats-wrapper">
+                            <div className="ma-home-stats-stat">
+                                <span className="ma-home-stats-stat-label">Entries</span>
+                                <span className="ma-home-stats-stat-value">{props.stats.entries}</span>
+                            </div>
+                            <div className="ma-home-stats-stat">
+                                <span className="ma-home-stats-stat-label">Last Entry</span>
+                                <span className="ma-home-stats-stat-value">{props.stats.lastEntry.name}</span>
+                                <span className="ma-home-stats-stat-subvalue">
+                                    {props.stats.lastEntry.occupations.map((s: any) => s.name).join(', ')}
+                                </span>
+                            </div>
+                            <div className="ma-home-stats-stat">
+                                <span className="ma-home-stats-stat-label">Contributors</span>
+                                <span className="ma-home-stats-stat-value">{props.stats.contributors}</span>
+                            </div>
+                            <div className="ma-home-stats-stat">
+                                <span className="ma-home-stats-stat-label">Last Update</span>
+                                <span className="ma-home-stats-stat-value">
+                                    {moment(props.stats.lastUpdate).format('DD MMMM YYYY')}
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
             <div className="ma-mwcontainer">
                 <div className="ma-home-people-wrapper">
                     <div className="ma-home-people-side-text">
@@ -269,7 +271,12 @@ export default function Home(props: HomeProps): FCReturn {
                             role="Supervisor"
                             start="2021"
                             end="Present"
-                            links={[{ link: 'https://twitter.com/tariHist', icon: siTwitter }]}
+                            links={[
+                                {
+                                    link: 'https://x.com/tariHist',
+                                    icon: siX
+                                }
+                            ]}
                         />
                         <Person
                             src={peopleAgah}
@@ -279,10 +286,9 @@ export default function Home(props: HomeProps): FCReturn {
                             end="Present"
                             links={[
                                 {
-                                    link: 'https://www.linkedin.com/in/ag%C3%A2h-enes-yasa-69887b222/',
-                                    icon: siLinkedin
-                                },
-                                { link: 'https://twitter.com/agahens', icon: siTwitter }
+                                    link: 'https://twitter.com/agahens',
+                                    icon: siX
+                                }
                             ]}
                         />
                         <Person
@@ -294,12 +300,26 @@ export default function Home(props: HomeProps): FCReturn {
                             links={[
                                 { link: 'https://howion.com', icon: 'public' },
                                 { link: 'mailto:me@howion.com', icon: 'mail' },
-                                { link: 'https://github.com/howion', icon: siGithub },
-                                { link: 'https://www.linkedin.com/in/omer-mert-coskun/', icon: siLinkedin },
-                                { link: 'https://orcid.org/0000-0002-8324-2325', icon: siOrcid },
-                                { link: 'https://www.behance.net/howion', icon: siBehance },
-                                { link: 'https://dribbble.com/howion', icon: siDribbble },
-                                { link: 'https://twitter.com/howionwastaken', icon: siTwitter }
+                                {
+                                    link: 'https://github.com/howion',
+                                    icon: siGithub
+                                },
+                                {
+                                    link: 'https://orcid.org/0000-0002-8324-2325',
+                                    icon: siOrcid
+                                },
+                                {
+                                    link: 'https://www.behance.net/howion',
+                                    icon: siBehance
+                                },
+                                {
+                                    link: 'https://dribbble.com/howion',
+                                    icon: siDribbble
+                                },
+                                {
+                                    link: 'https://twitter.com/howionwastaken',
+                                    icon: siX
+                                }
                             ]}
                         />
                         <Person

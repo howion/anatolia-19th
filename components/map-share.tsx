@@ -1,6 +1,5 @@
-import React from 'react'
-import { SimpleIcon, siTwitter, siFacebook, siReddit, siMaildotru, siPinterest } from 'simple-icons'
-import { ApiFeature } from '/constants/schemas/feature.schema'
+import type { ApiFeature } from '/constants/schemas/feature.schema'
+import { type SimpleIcon, siX, siFacebook, siReddit, siMaildotru, siPinterest } from 'simple-icons'
 import { toast } from 'react-toastify'
 
 interface MapShareProps {
@@ -10,7 +9,7 @@ interface MapShareProps {
 }
 
 export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
-    const link = 'https://anatolia19.com/map/' + props.feature?.sid
+    const link = `https://anatolia19.com/map/${props.feature?.sid}`
     const text = ''
     const linkURLSafe = encodeURIComponent(link)
     const textURLSafe = encodeURIComponent(text)
@@ -25,7 +24,7 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
     }
 
     return (
-        <div className={'ma-map-share-container' + (props.open ? ' is-open' : '')}>
+        <div className={`ma-map-share-container${props.open ? ' is-open' : ''}`}>
             <div className="ma-map-share">
                 <div className="ma-map-share-head">
                     <h3 className="ma-map-share-head-title">
@@ -37,19 +36,19 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                 </div>
                 <div className="ma-map-share-links">
                     <a
-                        href={`https://twitter.com/intent/tweet?url=${linkURLSafe}&text=${textURLSafe}`}
+                        href={`https://x.com/intent/post?url=${linkURLSafe}&text=${textURLSafe}`}
                         target="_blank"
                         className="ma-map-share-links-link"
                     >
                         <div
                             className="ma-map-share-links-link-icon"
                             style={{
-                                backgroundColor: '#' + siTwitter.hex
+                                backgroundColor: `#${siX.hex}`
                             }}
                         >
-                            <Icon dark={true} size={32} icon={siTwitter} />
+                            <Icon dark={true} size={32} icon={siX} />
                         </div>
-                        <span className="ma-map-share-links-link-text">Twitter</span>
+                        <span className="ma-map-share-links-link-text">X</span>
                     </a>
                     <a
                         href={`https://www.facebook.com/sharer/sharer.php?u=${linkURLSafe}`}
@@ -59,7 +58,7 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                         <div
                             className="ma-map-share-links-link-icon"
                             style={{
-                                backgroundColor: '#' + siFacebook.hex
+                                backgroundColor: `#${siFacebook.hex}`
                             }}
                         >
                             <Icon dark={true} size={32} icon={siFacebook} />
@@ -74,7 +73,7 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                         <div
                             className="ma-map-share-links-link-icon"
                             style={{
-                                backgroundColor: '#' + siReddit.hex
+                                backgroundColor: `#${siReddit.hex}`
                             }}
                         >
                             <Icon dark={true} size={32} icon={siReddit} />
@@ -89,7 +88,7 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                         <div
                             className="ma-map-share-links-link-icon"
                             style={{
-                                backgroundColor: '#' + siPinterest.hex
+                                backgroundColor: `#${siPinterest.hex}`
                             }}
                         >
                             <Icon dark={true} size={32} icon={siPinterest} />
@@ -104,7 +103,7 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                         <div
                             className="ma-map-share-links-link-icon"
                             style={{
-                                backgroundColor: '#' + siMaildotru.hex
+                                backgroundColor: `#${siMaildotru.hex}`
                             }}
                         >
                             <Icon dark={true} size={32} icon={siMaildotru} />
@@ -114,7 +113,7 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
                 </div>
                 <div className="ma-map-share-text">
                     <span className="ma-map-share-text-link">{link}</span>
-                    <button className="ma-map-share-text-button" onClick={handleCopy}>
+                    <button className="ma-map-share-text-button" onClick={handleCopy} type="button">
                         Copy
                     </button>
                 </div>

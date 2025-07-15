@@ -1,3 +1,5 @@
+@use '../variables/colors.scss' as colors;
+
 .ma-emblem {
     position: relative;
     user-select: none;
@@ -11,10 +13,10 @@
         position: absolute;
         top: 0;
         right: -8%;
-        background-color: $color-trueyellow;
-        border: 1px solid $color-trueyellow;
+        background-color: colors.$color-trueyellow;
+        border: 1px solid colors.$color-trueyellow;
         border-radius: 4px;
-        color: $color-trueyellow;
+        color: colors.$color-trueyellow;
         color: #000;
         padding: 4px 8px 4px 8px;
         font-size: 12px;

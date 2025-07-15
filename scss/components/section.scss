@@ -1,3 +1,5 @@
+@use '../variables/colors.scss' as colors;
+
 .ma-section {
     &-title {
         position: relative;
@@ -5,7 +7,7 @@
         z-index: 0;
         font-size: 3rem;
         font-weight: 800;
-        color: $color-primary-title;
+        color: colors.$color-primary-title;
 
         > span {
             position: absolute;
@@ -19,7 +21,7 @@
         }
 
         > b {
-            color: rgba($color-primary-title, 0.4);
+            color: rgba(colors.$color-primary-title, 0.4);
             font-weight: 800;
         }
 
@@ -54,11 +56,11 @@
 
         &.c2 {
             > span {
-                color: $color-trueyellow;
+                color: colors.$color-trueyellow;
             }
             // &::before,
             // &::after {
-            //     border-color: $color-trueyellow;
+            //     border-color: colors.$color-trueyellow;
             // }
         }
 
@@ -135,7 +137,7 @@
 
     &-text {
         margin-top: 1.5rem;
-        color: $color-primary-text;
+        color: colors.$color-primary-text;
         font-size: 1rem;
         line-height: 1.5;
         padding: 0 10vw;
