@@ -23,10 +23,9 @@ import sarkTicaret from '/public/img/sark_ticaret.png'
 
 import peopleSelcuk from '/public/img/people/selcuk.png'
 import peopleAgah from '/public/img/people/agah.png'
-import peopleFurkan from '/public/img/people/furkan.jpeg'
 import peopleMert from '/public/img/people/mert.png'
 
-import { siGithub, siX, siBehance, siOrcid, siDribbble } from 'simple-icons'
+import { siGithub, siX, siBehance, siDribbble } from 'simple-icons'
 import { LoadingService } from '/services/loading.service'
 import { retrieveStats } from '/models/misc.modal'
 import { searchFeatures } from '/utils/client.util'
@@ -298,15 +297,15 @@ export default function Home(props: HomeProps): FCReturn {
                             end="Present"
                             links={[
                                 { link: 'https://howion.com', icon: 'public' },
-                                { link: 'mailto:me@howion.com', icon: 'mail' },
+                                { link: 'mailto:mert.coskun@metu.edu.tr', icon: 'mail' },
                                 {
                                     link: 'https://github.com/howion',
                                     icon: siGithub
                                 },
-                                {
-                                    link: 'https://orcid.org/0000-0002-8324-2325',
-                                    icon: siOrcid
-                                },
+                                // {
+                                //     link: 'https://orcid.org/0000-0002-8324-2325',
+                                //     icon: siOrcid
+                                // },
                                 {
                                     link: 'https://www.behance.net/howion',
                                     icon: siBehance
@@ -321,13 +320,13 @@ export default function Home(props: HomeProps): FCReturn {
                                 }
                             ]}
                         />
-                        <Person
+                        {/* <Person
                             src={peopleFurkan}
                             name="Furkan Arslan"
                             role="Primary Sources Coordinator"
                             start="2023"
                             end="Present"
-                        />
+                        /> */}
                     </div>
                 </div>
                 {/* <div className="ma-home-people-wrapper is-flipped">
