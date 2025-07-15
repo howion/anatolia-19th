@@ -161,7 +161,6 @@ export default function Home(props: HomeProps): FCReturn {
             <Header
                 headerImage={homeIntroback}
                 subtitle="Web Portal"
-                // eslint-disable-next-line max-len
                 text="Welcome to the 19th Century Anatolia Project’s website. An undergraduate digital humanities project aiming to compile as well as digitize intricate data on the region in this century. Anatolia 19, here, presents its latest work."
             />
             <div className="ma-mwcontainer">
@@ -179,7 +178,7 @@ export default function Home(props: HomeProps): FCReturn {
                     {searchResults && searchResults.length > 0 && (
                         <div className="ma-home-search-results">
                             <div className="ma-home-search-results-label">FEATURES</div>
-                            {searchResults.map((result, i) => (
+                            {searchResults.map((result) => (
                                 <Anchor
                                     key={result.sid}
                                     className="ma-home-search-results-result"

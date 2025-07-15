@@ -1,10 +1,9 @@
 import type { NextSeoProps } from 'next-seo'
-
-import React from 'react'
 import { DefaultSeo } from 'next-seo'
-import { App } from '/constants/app'
 import Head from 'next/head'
 import _ from 'lodash'
+
+import { App } from '/constants/app'
 
 export interface MetaProps extends Omit<NextSeoProps, 'titleTemplate' | 'defaultTitle'> {
     keywords?: text[]

@@ -1,4 +1,3 @@
-import type { useMemo } from 'react'
 import { useDidMount } from 'rooks'
 
 import { Meta } from '/components/meta'

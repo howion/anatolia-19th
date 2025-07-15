@@ -1,5 +1,3 @@
-import React from 'react'
-import { useDidMount } from 'rooks'
 import { Emblem } from './emblem'
 import { useService } from '/hooks/use-service'
 import { TransitorService } from '/services/transitor.service'

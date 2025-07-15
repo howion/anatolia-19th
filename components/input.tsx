@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 interface SelectOption {
     value: any
@@ -18,6 +18,7 @@ interface InputProps {
 export const Input = forwardRef((props: InputProps, ref: any) => {
     return (
         <div className="ma-input-container">
+            {/** biome-ignore lint/a11y/noLabelWithoutControl: - */}
             <label>
                 {props.label}
                 {/* {props.optional ? undefined : ' *'} */}

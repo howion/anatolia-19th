@@ -1,4 +1,3 @@
-import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { TransitorService } from '/services/transitor.service'
@@ -23,12 +22,21 @@ export function Anchor(props: AnchorProps): FCReturn<AnchorProps> {
                     TransitorService.showTransitor()
                     if (router.asPath === props.href) {
                         setTimeout(() => {
-                            router.push(props.href)
+                            if (router.pathname === props.href) {
+                                return router.reload()
+                            } else {
+                                router.push(props.href)
+                            }
+
                             window.location.reload()
                         }, 1500)
                     } else {
                         setTimeout(() => {
-                            router.push(props.href)
+                            if (router.pathname === props.href) {
+                                return router.reload()
+                            } else {
+                                router.push(props.href)
+                            }
                         }, 1500 + 500) // 500ms extra
                     }
                 }

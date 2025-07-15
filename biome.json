@@ -41,7 +41,8 @@
                 "useKeyWithClickEvents": "off"
             },
             "suspicious": {
-                "noExplicitAny": "off"
+                "noExplicitAny": "off",
+                "noEmptyInterface": "off"
             },
             "style": {
                 "noNonNullAssertion": "info"

@@ -1,4 +1,4 @@
-export const enum HTTPStatusCode {
+export enum HTTPStatusCode {
     // 1xx
     Continue = 100,
     SwitchingProtocols = 101,

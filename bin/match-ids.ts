@@ -1,7 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable sonarjs/prefer-single-boolean-return */
-/* eslint-disable prettier/prettier */
 import * as dotenv from 'dotenv'
 import axios from 'axios'
 import { Database } from '../lib/database'
@@ -32,7 +28,6 @@ async function main() {
         const { properties, geometry } = feature
         const { type, coordinates } = geometry
 
-        // eslint-disable-next-line prefer-const
         let { id, p: isPrecise } = properties
 
         if (String(isPrecise ?? '').trim() === '?') isPrecise = ''

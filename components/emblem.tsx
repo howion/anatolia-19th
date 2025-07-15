@@ -1,12 +1,9 @@
-import React from 'react'
-
 interface EmblemProps {
     h: number
     textFill?: text
     numberFill?: text
 }
 
-/* eslint-disable max-len */
 export function Emblem(props: EmblemProps): FCReturn<EmblemProps> {
     const numberFill = props.numberFill ?? '#FBDF56'
     const textFill = props.textFill ?? '#000000'

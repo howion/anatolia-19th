@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable sonarjs/prefer-single-boolean-return */
-/* eslint-disable prettier/prettier */
 import readXlsxFile from 'read-excel-file/node'
 import { Database } from '../../lib/database'
 import cliProgress from 'cli-progress'
@@ -39,7 +36,6 @@ async function main() {
             // Header
             if (i === '0') continue
 
-            // eslint-disable-next-line prefer-const
             let [name, city, year, _occupation, _, _sources, _relations, _address] = row
 
             if (!name) continue

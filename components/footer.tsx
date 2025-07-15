@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import React from 'react'
 import { Anchor } from './anchor'
 import { Emblem } from '/components/emblem'
 
@@ -73,7 +72,11 @@ export function Footer(): FCReturn {
                     <span className="ma-footer-bottom-copyright">
                         {/* by <a href="https://github.com/howion" target="_blank">howion</a> */}
                         Licensed under the{' '}
-                        <a href="https://github.com/howion/anatolia-19th/blob/main/LICENSE" target="_blank">
+                        <a
+                            href="https://github.com/howion/anatolia-19th/blob/main/LICENSE"
+                            target="_blank"
+                            rel="noopener"
+                        >
                             GNU Affero General Public License v3.0
                         </a>
                     </span>

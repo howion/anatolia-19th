@@ -9,10 +9,10 @@ export type {
 } from '@prisma/client'
 
 declare global {
-    // eslint-disable-next-line no-var
     var prisma: PrismaClient | undefined
 }
 
 export const PrismaClientKnownRequestError = Prisma.PrismaClientKnownRequestError
 
+// biome-ignore lint/suspicious/noAssignInExpressions: -
 export const Database: PrismaClient = global.prisma ?? (global.prisma = new PrismaClient())

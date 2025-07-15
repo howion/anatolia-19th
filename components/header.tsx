@@ -1,8 +1,5 @@
-import React from 'react'
+import Image, { type StaticImageData } from 'next/image'
 import { Navbar } from './navbar'
-
-// IMAGES
-import Image, { StaticImageData } from 'next/image'
 
 interface HeaderProps {
     headerImage: StaticImageData

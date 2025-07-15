@@ -1,4 +1,4 @@
-export const enum ApiFailureCode {
+export enum ApiFailureCode {
     // FUNDAMENTAL (1XX)
     Success = 100,
     Unknown = 101,

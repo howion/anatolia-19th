@@ -20,21 +20,21 @@ export default async function Handle(req: ApiRequest, res: ApiResponse): Promise
             'Personal Details',
             '================',
             '',
-            'Full Name: ' + body.personal.name,
-            'Email: ' + body.personal.email,
-            'University?: ' + body.personal.university,
-            'Academic Level: ' + body.personal.academicLevel,
+            `Full Name: ${body.personal.name}`,
+            `Email: ${body.personal.email}`,
+            `University?: ${body.personal.university}`,
+            `Academic Level: ${body.personal.academicLevel}`,
             '',
             '',
             '============',
             'Data Details',
             '============',
             '',
-            'Name: ' + body.data.name,
-            'Type: ' + body.data.type,
-            'Latitude: ' + body.data.lat,
-            'Longitude: ' + body.data.lon,
-            'Description: ' + body.data.description
+            `Name: ${body.data.name}`,
+            `Type: ${body.data.type}`,
+            `Latitude: ${body.data.lat}`,
+            `Longitude: ${body.data.lon}`,
+            `Description: ${body.data.description}`
         ].join('\n')
 
         const r = await sendMail(['yasa.enes@metu.edu.tr'], 'Anatolia 19: Submit Data', text)

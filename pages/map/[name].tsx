@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/style/noNonNullAssertion: <explanation> */
+/** biome-ignore-all lint/style/noNonNullAssertion: - */
 import type { GetServerSidePropsContext } from 'next'
 import type { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
 
@@ -206,9 +206,7 @@ export default function MapP({ features, activeFeature: _activeFeature }: any): 
                     //   * Blue, 20px circles when point count is less than 100
                     //   * Yellow, 30px circles when point count is between 100 and 750
                     //   * Pink, 40px circles when point count is greater than or equal to 750
-                    // eslint-disable-next-line prettier/prettier
                     'circle-color': ['step', ['get', 'point_count'], '#51bbd6', 100, '#f1f075', 750, '#f28cb1'],
-                    // eslint-disable-next-line prettier/prettier
                     'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40]
                 }
             })
@@ -314,7 +312,7 @@ export default function MapP({ features, activeFeature: _activeFeature }: any): 
                     {searchResults && searchResults.length > 0 && (
                         <div className="ma-map-search-results">
                             <div className="ma-map-search-results-label">FEATURES</div>
-                            {searchResults.map((result, i) => (
+                            {searchResults.map((result) => (
                                 <div
                                     key={result.id}
                                     className="ma-map-search-results-result"
@@ -330,7 +328,7 @@ export default function MapP({ features, activeFeature: _activeFeature }: any): 
                 </div>
             </div>
             {activeFeature ? (
-                <div className={'ma-map-modal-container' + (isModalActive ? ' --active' : '')}>
+                <div className={`ma-map-modal-container${isModalActive ? ' --active' : ''}`}>
                     <div className="ma-map-modal-buttons">
                         <button className="btn btn-icon" onClick={hideModal} type="button">
                             <i className="material-icons">close</i>
@@ -345,8 +343,8 @@ export default function MapP({ features, activeFeature: _activeFeature }: any): 
                         <span className="ma-map-modal-label">DATA SUMMARY</span>
                         <h1 className="ma-map-modal-title">{activeFeature.name}*</h1>
                         <span className="ma-map-modal-tag">{activeFeature.city}</span>
-                        {activeFeature.occupations.map((occupation: any, i: any) => (
-                            <span key={i} className="ma-map-modal-tag">
+                        {activeFeature.occupations.map((occupation: any) => (
+                            <span key={occupation.name} className="ma-map-modal-tag">
                                 {occupation.name}
                             </span>
                         ))}
@@ -376,8 +374,8 @@ export default function MapP({ features, activeFeature: _activeFeature }: any): 
                                 2005–2009. Annals Of Human Biology, 42(5), 492–497.
                             </li> */}
                             {/* <li>Commercial 1978</li> */}
-                            {activeFeature.sources.map((ref, i) => (
-                                <li key={i}>
+                            {activeFeature.sources.map((ref) => (
+                                <li key={ref.shortName}>
                                     <a href={ref.url ?? '#'} target="_blank">
                                         {ref.source}
                                         {activeFeature.sourceDetail?.p ? ` (p. ${activeFeature.sourceDetail.p}).` : ''}

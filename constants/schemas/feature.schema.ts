@@ -1,4 +1,4 @@
-import { FeatureGeometryType } from '/lib/database'
+import type { FeatureGeometryType } from '/lib/database'
 
 export interface ApiFeature {
     activities: any // TODO

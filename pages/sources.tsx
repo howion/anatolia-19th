@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDidMount } from 'rooks'
 import Image, { type StaticImageData } from 'next/image'
 
@@ -42,7 +41,7 @@ export function Source(props: SourceProps): FCReturn {
             </div>
             <div className="ma-sources-section-rhs">
                 <div className="ma-sources-section-rhs-pics">
-                    {props.pics.map((v, i) => (
+                    {props.pics.map((v) => (
                         <Image key={v.src} className="ma-sources-section-rhs-pics-pic" src={v} alt="" />
                     ))}
                 </div>

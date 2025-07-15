@@ -1,7 +1,6 @@
 import type { ApiRequest, ApiResponse } from '/types/api'
 import { HTTPStatusCode } from '/constants/http-status-code'
 import { checkMethod } from '/utils/api.util'
-import { Database } from '/lib/database'
 
 export default async function GETFeatures(req: ApiRequest, res: ApiResponse<any>): Promise<void> {
     // await CORS(req, res)

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Emblem } from './emblem'
 
 export function Splash(): FCReturn {

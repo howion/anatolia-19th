@@ -1,10 +1,10 @@
 // import html2canvas from 'html2canvas'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useDidMount } from 'rooks'
 
 // @ts-ignore type module is broken
 import cheet from 'cheet.js'
-import { ClientUtil, hideBodyScroll, showBodyScroll } from '/utils/client.util'
+import { hideBodyScroll, showBodyScroll } from '/utils/client.util'
 
 const CHEETS = {
     // aha: 'aha'.split('').join(' '),
@@ -13,11 +13,9 @@ const CHEETS = {
     exit: 'esc'.split('').join(' ')
 } as const
 
-// eslint-disable-next-line max-len
 const BATMAN_SRC =
     'https://www.youtube.com/embed/R67YWuwKPek?autoplay=1&showinfo=0&controls=0&modestbranding=1&autohide=1&loop=1&playlist=R67YWuwKPek&disablekb=1&rel=0'
 
-// eslint-disable-next-line max-len
 const KIRBY_SRC =
     'https://www.youtube.com/embed/Se1uh3PS78Y?autoplay=1&showinfo=0&controls=0&modestbranding=1&autohide=1&loop=1&playlist=Se1uh3PS78Y&disablekb=1&rel=0'
 
@@ -65,7 +63,7 @@ export default function Easter(): FCReturn {
     }
 
     return (
-        <div ref={easterRef} className={'ma-easter-container' + (didMount ? ' enabled' : '')}>
+        <div ref={easterRef} className={`ma-easter-container${didMount ? ' enabled' : ''}`}>
             <div className="ma-easter-transitor" />
             <div className="ma-easter-content">
                 {didMount ? (
@@ -75,24 +73,22 @@ export default function Easter(): FCReturn {
                                 width="100%"
                                 height="100%"
                                 src={BATMAN_SRC}
-                                title=""
+                                title="Frame"
                                 frameBorder="0"
                                 allow="autoplay; encrypted-media"
                                 allowFullScreen={false}
                             />
                         ) : undefined}
                         {content === 'konami' ? (
-                            <>
-                                <iframe
-                                    width="100%"
-                                    height="100%"
-                                    src={KIRBY_SRC}
-                                    title=""
-                                    frameBorder="0"
-                                    allow="autoplay; encrypted-media"
-                                    allowFullScreen={false}
-                                />
-                            </>
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src={KIRBY_SRC}
+                                title="Frame"
+                                frameBorder="0"
+                                allow="autoplay; encrypted-media"
+                                allowFullScreen={false}
+                            />
                         ) : undefined}
                     </>
                 ) : undefined}

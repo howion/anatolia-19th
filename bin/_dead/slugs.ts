@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable sonarjs/prefer-single-boolean-return */
-/* eslint-disable prettier/prettier */
 import { Database } from '../lib/database'
 import cliProgress from 'cli-progress'
 import slugify from 'slugify'

@@ -1,4 +1,4 @@
-import { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
+import type { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.schema'
 import { Database } from '/lib/database'
 
 export async function retrieveAllFeatures(): Promise<ApiFeaturesReponse | null> {

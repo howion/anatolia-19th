@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDidMount } from 'rooks'
 
 export interface AccordionProps {
@@ -15,7 +15,7 @@ export function Accordion(props: AccordionProps): FCReturn<AccordionProps> {
     })
 
     return (
-        <div className={'ma-accordion' + (isActive ? ' active' : '')}>
+        <div className={`ma-accordion${isActive ? ' active' : ''}`}>
             <div className="ma-accordion-head" onClick={() => setIsActive(!isActive)}>
                 <div className="ma-accordion-head-title">{props.title}</div>
                 <div className="ma-accordion-head-icon" />
