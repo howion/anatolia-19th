@@ -29,19 +29,22 @@ export default async function Handle(req: ApiRequest, res: ApiResponse<any>): Pr
                         OR: [
                             {
                                 name: {
-                                    contains: query
+                                    contains: query,
+                                    mode: 'insensitive'
                                 }
                             },
                             {
                                 city: {
-                                    contains: query
+                                    contains: query,
+                                    mode: 'insensitive'
                                 }
                             },
                             {
                                 occupations: {
                                     some: {
                                         name: {
-                                            contains: query
+                                            contains: query,
+                                            mode: 'insensitive'
                                         }
                                     }
                                 }

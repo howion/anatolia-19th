@@ -4,21 +4,20 @@ import type { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useDebounce, useDidMount } from 'rooks'
-import mapbox from 'mapbox-gl'
 import { useRouter } from 'next/router'
-import moment from 'moment'
+import { format } from 'date-fns'
+import mapbox from 'mapbox-gl'
 
 import { Meta } from '/components/meta'
 import { Emblem } from '/components/emblem'
 import { TransitorService } from '/services/transitor.service'
 import { Anchor } from '/components/anchor'
+import { MapShare } from '/components/map-share'
+import { LoadingService } from '/services/loading.service'
+import { retrieveAllFeatures, retrieveFeatureBySid } from '/models/feature.modal'
 import { isClient, MAPBOX_PUBLIC_TOKEN, MAPBOX_STYLE_MAP, retrieveFeature, searchFeatures } from '/utils/client.util'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { MapShare } from '/components/map-share'
-import { LoadingService } from '/services/loading.service'
-
-import { retrieveAllFeatures, retrieveFeatureBySid } from '/models/feature.modal'
 
 function getModalWidth(): number {
     if (!window) return 0
@@ -404,7 +403,7 @@ export default function MapP({ features, activeFeature: _activeFeature }: any): 
                                         {activeFeature.id}.
                                     </span>
                                     <span className="ma-map-modal-activities-activity-rhs-subtitle">
-                                        {moment(activeFeature.createdAt).format('DD MMMM YYYY')}
+                                        {format(activeFeature.createdAt, 'dd MMMM yyyy')}
                                     </span>
                                     {/* <div className="ma-map-modal-activities-activity-rhs-content"> */}
                                 </div>

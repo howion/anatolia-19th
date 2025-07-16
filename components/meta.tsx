@@ -1,7 +1,7 @@
 import type { NextSeoProps } from 'next-seo'
 import { DefaultSeo } from 'next-seo'
 import Head from 'next/head'
-import _ from 'lodash'
+import { omit } from 'es-toolkit'
 
 import { App } from '/constants/app'
 
@@ -14,7 +14,7 @@ export interface MetaProps extends Omit<NextSeoProps, 'titleTemplate' | 'default
 
 export function Meta(props: MetaProps): FCReturn<MetaProps> {
     const _keywords = props.keywords ?? App.defaults.keywords
-    const _seoProps = _.omit(props, 'title', 'keywords', 'description', 'author', 'themeColor', '_viewport')
+    const _seoProps = omit(props, ['title', 'keywords', 'description', 'author', 'themeColor', '_viewport'])
 
     return (
         <>

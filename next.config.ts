@@ -1,6 +1,15 @@
 import type { NextConfig } from 'next'
+import BundleAnalyzer from '@next/bundle-analyzer'
 
 const isDev = process.env.NODE_ENV !== 'production'
+const isAnalyze = process.env.ANALYZE === 'true'
+
+const withBundleAnalyzer = isAnalyze
+    ? BundleAnalyzer({
+        enabled: true
+    })
+    : (conf: NextConfig) => conf
+
 
 // See https://nextjs.org/docs/advanced-features/security-headers
 const defaultSecurityHeaders = [
@@ -68,4 +77,4 @@ const nextConf: NextConfig = {
     }
 }
 
-export default nextConf
+export default withBundleAnalyzer(nextConf)

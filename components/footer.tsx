@@ -46,14 +46,14 @@ export function Footer(): FCReturn {
                     </FooterSection>
                     <FooterSection title="Socials">
                         <FooterItem href="https://github.com/howion/anatolia-19th/" text="GitHub️" />
-                        <FooterItem href="https://twitter.com/19thanatolia" text="Twitter" />
+                        <FooterItem href="https://x.com/19thanatolia" text="X" />
                         <FooterItem
                             href="https://www.linkedin.com/company/anatolia-19th-century-project/"
                             text="LinkedIn"
                         />
                     </FooterSection>
                     <FooterSection title="Tech Stack">
-                        <FooterItem href="https://nextjs.org/" text="NextJS 13 (React + TS + SASS)" />
+                        <FooterItem href="https://nextjs.org/" text="NextJS 15 (React + TS + SASS)" />
                         <FooterItem href="https://vercel.com/" text="Vercel" />
                         <FooterItem href="https://www.mapbox.com/" text="Mapbox" />
                         <FooterItem href="https://www.openstreetmap.org/" text="OpenStreetMap" />

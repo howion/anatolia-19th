@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useDebounce, useDidMount } from 'rooks'
-import moment from 'moment'
+import { format } from 'date-fns'
 
 import { Meta } from '/components/meta'
 import { Header } from '/components/header'
@@ -243,7 +243,7 @@ export default function Home(props: HomeProps): FCReturn {
                             <div className="ma-home-stats-stat">
                                 <span className="ma-home-stats-stat-label">Last Update</span>
                                 <span className="ma-home-stats-stat-value">
-                                    {moment(props.stats.lastUpdate).format('DD MMMM YYYY')}
+                                    {format(props.stats.lastUpdate, 'dd MMMM yyyy')}
                                 </span>
                             </div>
                         </div>
