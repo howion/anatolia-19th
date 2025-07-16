@@ -9,9 +9,8 @@ export function Navbar(): FCReturn<NavbarProps> {
             <Anchor href="/" animate>
                 <Emblem h={72} />
             </Anchor>
-            <Anchor href="/submit-data" animate>
+            <Anchor href="/submit-data" animate className="ma-navbar-submit">
                 <button className="btn btn-round" type="button">
-                    {/* <i className="material-icons">add</i> */}
                     <span>SUBMIT DATA</span>
                 </button>
             </Anchor>

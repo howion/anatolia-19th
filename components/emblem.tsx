@@ -2,6 +2,7 @@ interface EmblemProps {
     h: number
     textFill?: text
     numberFill?: text
+    hideBeta?: boolean
 }
 
 export function Emblem(props: EmblemProps): FCReturn<EmblemProps> {
@@ -10,7 +11,9 @@ export function Emblem(props: EmblemProps): FCReturn<EmblemProps> {
 
     return (
         <div className="ma-emblem">
-            <div className="ma-emblem-beta">BETA</div>
+            {props.hideBeta !== true && (
+                <div className="ma-emblem-beta">BETA</div>
+            )}
             <svg
                 width={(props.h * 1619) / 463}
                 height={props.h}

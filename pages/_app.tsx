@@ -24,6 +24,8 @@ const Easter = dynamic(() => import('/components/easter'), {
 //     ssr: false
 // })
 
+import { BeatLoader } from 'react-spinners'
+
 /* TODO:
  * smooth scroll
  * text effects
@@ -71,7 +73,10 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
                 <ToastContainer toastClassName={inter.className} />
                 {isLoading && (
                     <div className="ma-loader-container">
-                        aha
+                        <BeatLoader
+                            className="ma-loader"
+                            color="#fff"
+                        />
                         {/* <LoadingScreen className="ma-loader" type="bubbles" color="#fff" /> */}
                     </div>
                 )}

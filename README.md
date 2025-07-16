@@ -30,7 +30,7 @@ To view authors, contributors and supervisors please visit the [**website**](htt
 
 ## Contact
 
-For technical inquiries, please contact us at mert.coskun@metu.edu.tr. For all other questions, feel free to reach out to benagahens@gmail.com.
+For technical inquiries, please contact at mert.coskun@metu.edu.tr. For all other questions, feel free to reach out to anatolia@metu.edu.tr.
 
 ## License
 

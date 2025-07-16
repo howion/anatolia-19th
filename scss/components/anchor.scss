@@ -62,6 +62,7 @@ a.ma-anchor {
             height: 1px;
             background-color: $--color;
             transition: width 300ms;
+            will-change: width;
         }
 
         &:hover::before,

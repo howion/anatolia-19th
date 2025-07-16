@@ -24,6 +24,7 @@ import sarkTicaret from '/public/img/sark_ticaret.png'
 import peopleSelcuk from '/public/img/people/selcuk.png'
 import peopleAgah from '/public/img/people/agah.png'
 import peopleMert from '/public/img/people/mert.png'
+import peopleMuzaffer from '/public/img/people/muzaffer.jpg'
 
 import { siGithub, siX, siBehance, siDribbble } from 'simple-icons'
 import { LoadingService } from '/services/loading.service'
@@ -198,8 +199,8 @@ export default function Home(props: HomeProps): FCReturn {
                 <section className="ma-home-projects-container">
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
                     <Project src="/img/projects/digital_map.jpg" txt="Socio-Economic Map" href="/map/index" />
-                    <Project src="/img/projects/explore_anatolia.jpg" txt="Emotional Map" disabled />
-                    <Project src="/img/projects/graphs.png" txt="Graphs" href="/graphs" disabled />
+                    <Project src="/img/projects/valuation.png" txt="Historical Commodity Price Map" disabled />
+                    <Project src="/img/projects/growth.png" txt="Growth Rate Map" href="/" disabled />
                     <Project src="/img/sources/newspaper1.jpg" txt="Sources" href="/sources" />
                 </section>
 
@@ -286,14 +287,14 @@ export default function Home(props: HomeProps): FCReturn {
                                 {
                                     link: 'https://twitter.com/agahens',
                                     icon: siX
-                                }
+                                },
                             ]}
                         />
                         <Person
                             src={peopleMert}
                             name="Omer Mert Coskun"
                             role="Developer"
-                            start="2022"
+                            start="2021"
                             end="Present"
                             links={[
                                 { link: 'https://howion.com', icon: 'public' },
@@ -318,6 +319,21 @@ export default function Home(props: HomeProps): FCReturn {
                                     link: 'https://twitter.com/howionwastaken',
                                     icon: siX
                                 }
+                            ]}
+                        />
+                            <Person
+                            src={peopleMuzaffer}
+                            name="Muzaffer Cakir"
+                            role="Researcher"
+                            start="2025"
+                            end="Present"
+                            links={[
+                                { link: 'https://www.linkedin.com/in/muzaffer-%C3%A7ak%C4%B1r-7897a026b/', icon: 'link' },
+
+                                // {
+                                //     link: 'https://twitter.com/agahens',
+                                //     icon: siX
+                                // }
                             ]}
                         />
                         {/* <Person

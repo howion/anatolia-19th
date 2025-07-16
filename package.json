@@ -42,6 +42,7 @@
         "react-dom": "^19.1.0",
         "react-fullscreen-loading": "^0.0.4",
         "react-locomotive-scroll": "^0.2.2",
+        "react-spinners": "^0.17.0",
         "react-toastify": "^11.0.5",
         "reactflow": "^11.11.4",
         "rooks": "^8.1.0",

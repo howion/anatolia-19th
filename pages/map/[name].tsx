@@ -291,7 +291,7 @@ export default function MapP({ features, activeFeature: _activeFeature }: any): 
             <Meta title="Map" />
             <MapShare feature={activeFeature} open={isShareOpen} onClose={() => setIsShareOpen(false)} />
             <div className="ma-map-emblem">
-                <Emblem h={60} textFill="#fff" />
+                <Emblem h={48} textFill="#fff" hideBeta={true} />
             </div>
             <div className="ma-map-search-container">
                 <div className="ma-map-search-lhs">

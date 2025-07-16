@@ -32,7 +32,7 @@ export function Source(props: SourceProps): FCReturn {
             <div className="ma-sources-section-lhs">
                 <h2 className="ma-sources-section-lhs-title">{props.title}</h2>
                 {props.subtitle ? <h3 className="ma-sources-section-lhs-subtitle">{props.subtitle}</h3> : undefined}
-                <p>{props.text}</p>
+                <p className="ma-sources-section-p">{props.text}</p>
                 {props.href ? (
                     <a className="ma-anchor ma-anchor-lines" href={props.href} target="_blank">
                         Visit Source

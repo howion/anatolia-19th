@@ -45,6 +45,7 @@ const nextConf: NextConfig = {
     poweredByHeader: false,
     reactStrictMode: true,
     generateEtags: true,
+    devIndicators: false,
 
     eslint: {
         ignoreDuringBuilds: true

@@ -40,9 +40,9 @@ export function Footer(): FCReturn {
                     <FooterSection title="Website">
                         <FooterItem href="/" text="Home" />
                         <FooterItem href="/map/index" text="Digital Map" />
-                        <FooterItem href="/graphs" text="Graphs" />
+                        {/* <FooterItem href="/graphs" text="Graphs" /> */}
                         <FooterItem href="/sources" text="Sources" />
-                        <FooterItem href="/submit-data" text="Submit Data" />
+                        {/* <FooterItem href="/submit-data" text="Submit Data" /> */}
                     </FooterSection>
                     <FooterSection title="Socials">
                         <FooterItem href="https://github.com/howion/anatolia-19th/" text="GitHub️" />
@@ -61,7 +61,8 @@ export function Footer(): FCReturn {
                         <FooterItem href="https://reactflow.dev/" text="React Flow" />
                     </FooterSection>
                     <FooterSection title="Contact">
-                        <FooterItem href="mailto:benagahens@gmail.com" text="benagahens@gmail.com" />
+                        {/* <FooterItem href="mailto:mert.coskun@metu.edu.tr" text="mert.coskun@edu.tr.com" /> */}
+                        <FooterItem href="mailto:anatolia@metu.edu.tr" text="anatolia@metu.edu.tr" />
                         {/* <FooterItem href="me@howion.com" text="me@howion.com" /> */}
                         {/* <FooterItem href="tel:+903127272507" text="(+90) 312 727 2507" /> */}
                     </FooterSection>
