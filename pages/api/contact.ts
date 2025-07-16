@@ -37,7 +37,7 @@ export default async function Handle(req: ApiRequest, res: ApiResponse): Promise
             `Description: ${body.data.description}`
         ].join('\n')
 
-        const r = await sendMail(['yasa.enes@metu.edu.tr'], 'Anatolia 19: Submit Data', text)
+        const r = await sendMail(['benagahens@gmail.com'], 'Anatolia 19: Submit Data', text)
 
         if (!r) {
             return res.status(HTTPStatusCode.OK).json({

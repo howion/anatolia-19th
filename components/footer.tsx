@@ -61,7 +61,7 @@ export function Footer(): FCReturn {
                         <FooterItem href="https://reactflow.dev/" text="React Flow" />
                     </FooterSection>
                     <FooterSection title="Contact">
-                        <FooterItem href="mailto:yasa.enes@metu.edu.tr" text="yasa.enes@metu.edu.tr" />
+                        <FooterItem href="mailto:benagahens@gmail.com" text="benagahens@gmail.com" />
                         {/* <FooterItem href="me@howion.com" text="me@howion.com" /> */}
                         {/* <FooterItem href="tel:+903127272507" text="(+90) 312 727 2507" /> */}
                     </FooterSection>
