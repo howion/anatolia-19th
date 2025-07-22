@@ -7,7 +7,7 @@
         "build": "NODE_ENV=production next build",
         "start": "NODE_ENV=production next start",
         "analyze": "ANALYZE=true next build",
-        "format": "bunx biome format --write",
+        "format": "biome format --write",
         "prisma": "npx prisma format && npx prisma db push && npx prisma generate",
         "studio": "npx prisma studio",
         "vercel-build": "npx prisma generate && next build",

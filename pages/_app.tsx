@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { useDidMount } from 'rooks'
 import { useRef } from 'react'
 import { Inter } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react'
+// import { Analytics } from '@vercel/analytics/react'
 
 import { Meta } from '/components/meta'
 import { Transitor } from '/components/transitor'
@@ -91,7 +91,7 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
                     <Component {...pageProps} />
                 </main>
             </div>
-            <Analytics />
+            {/* <Analytics /> */}
         </>
     )
 }
