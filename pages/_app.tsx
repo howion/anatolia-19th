@@ -5,14 +5,13 @@ import { useDidMount } from 'rooks'
 import { useRef } from 'react'
 import { Inter } from 'next/font/google'
 // import { Analytics } from '@vercel/analytics/react'
+// import { ToastContainer } from 'react-toastify'
 
 import { Meta } from '/components/meta'
 import { Transitor } from '/components/transitor'
-import { ToastContainer } from 'react-toastify'
 import { useService } from '/hooks/use-service'
 import { LoadingService } from '/services/loading.service'
 
-import 'react-toastify/dist/ReactToastify.css'
 import '/scss/_index.scss'
 
 const Easter = dynamic(() => import('/components/easter'), {
@@ -70,7 +69,7 @@ export default function App({ Component, pageProps, router }: FCProps<AppProps>)
             <div id="app" ref={appRef} className={inter.className}>
                 <Easter />
                 <Transitor />
-                <ToastContainer toastClassName={inter.className} />
+                {/* <ToastContainer toastClassName={inter.className} /> */}
                 {isLoading && (
                     <div className="ma-loader-container">
                         <BeatLoader

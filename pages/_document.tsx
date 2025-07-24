@@ -63,6 +63,10 @@ export default class MyDocument extends Document {
                         rel="stylesheet"
                         type="text/css"
                         href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                        media="print"
+                        onLoad={(e) => {
+                            e.currentTarget.media = 'all'
+                        }}
                     />
                 </Head>
                 <body>

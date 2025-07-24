@@ -1,6 +1,5 @@
 import type { ApiFeature } from '/constants/schemas/feature.schema'
 import { type SimpleIcon, siX, siFacebook, siReddit, siMaildotru, siPinterest } from 'simple-icons'
-import { toast } from 'react-toastify'
 
 interface MapShareProps {
     feature: ApiFeature | null
@@ -15,11 +14,11 @@ export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
     const textURLSafe = encodeURIComponent(text)
 
     function handleCopy() {
-        toast('Copied to clipboard!', {
-            position: 'bottom-center',
-            theme: 'dark',
-            hideProgressBar: true
-        })
+        // toast('Copied to clipboard!', {
+        //     position: 'bottom-center',
+        //     theme: 'dark',
+        //     hideProgressBar: true
+        // })
         navigator.clipboard.writeText(link)
     }
 

@@ -4,6 +4,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     overflow: hidden;
+    font-display: swap;
     // overflow: overlay; // onload
 
     @include performance.ma-prefer-quality;
@@ -25,7 +26,7 @@ body {
     //min-height: 100vh;
     //scroll-behavior: smooth;
 
-    > main {
+    >main {
         position: relative;
         z-index: 0;
         min-height: 100vh;

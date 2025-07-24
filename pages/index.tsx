@@ -198,10 +198,10 @@ export default function Home(props: HomeProps): FCReturn {
                 {/* PROJECTS */}
                 <section className="ma-home-projects-container">
                     <div className="ma-home-projects-label">OUR PROJECTS</div>
-                    <Project src="/img/projects/digital_map.jpg" txt="Socio-Economic Map" href="/map/index" />
-                    <Project src="/img/projects/valuation.png" txt="Historical Commodity Price Map" disabled />
-                    <Project src="/img/projects/growth.png" txt="Growth Rate Map" href="/" disabled />
-                    <Project src="/img/sources/newspaper1.jpg" txt="Sources" href="/sources" />
+                    <Project src="/img/projects/digital_map.webp" txt="Socio-Economic Map" href="/map/index" />
+                    <Project src="/img/projects/valuation.webp" txt="Historical Commodity Price Map" disabled />
+                    <Project src="/img/projects/growth.webp" txt="Growth Rate Map" href="/" disabled />
+                    <Project src="/img/sources/newspaper1.webp" txt="Sources" href="/sources" />
                 </section>
 
                 {/* REFERENCES */}
