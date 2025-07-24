@@ -9,7 +9,7 @@ interface MapShareProps {
 }
 
 export function MapShare(props: MapShareProps): FCReturn<MapShareProps> {
-    const link = `https://anatolia19.com/map/${props.feature?.sid}`
+    const link = `https://anatolia19.metu.edu.tr/map/${props.feature?.sid}`
     const text = ''
     const linkURLSafe = encodeURIComponent(link)
     const textURLSafe = encodeURIComponent(text)

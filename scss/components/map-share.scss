@@ -109,14 +109,14 @@
     }
 
     &-text {
-        height: 48px;
         background-color: #000;
         border-radius: 32px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 18px 8px 18px 24px;
+        padding: 8px 8px 8px 24px;
         margin-top: 28px;
+        gap: 16px;
 
         &-link {
             font-size: 16px;

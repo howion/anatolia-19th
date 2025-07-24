@@ -58,9 +58,11 @@
         "@next/bundle-analyzer": "^15.4.1",
         "@types/bun": "latest",
         "@types/cli-progress": "^3.11.6",
+        "@types/next-pwa": "^5.6.9",
         "@types/react": "19.1.8",
         "@types/react-dom": "19.1.6",
         "cli-progress": "^3.12.0",
+        "next-pwa": "^5.6.0",
         "prettier": "^3.6.2",
         "prisma": "^6.11.1",
         "read-excel-file": "^5.8.8"

@@ -34,6 +34,9 @@
         "enabled": true,
         "rules": {
             "recommended": true,
+            "correctness": {
+                "useHookAtTopLevel": "off"
+            },
             "a11y": {
                 "useValidAriaRole": "off",
                 "noSvgWithoutTitle": "off",

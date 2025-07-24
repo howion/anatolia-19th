@@ -4,7 +4,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/howion/anatolia-19th)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/howion/anatolia-19th)
 
-Official source code for the [**Anatolia: 19th Century Project**](https://anatolia-19th.vercel.app/). An undergraduate digital humanities project aiming to compile as well as digitize intricate data on the region in this century.
+Official source code for the [**Anatolia: 19th Century Project**](https://anatolia19.metu.edu.tr/). An undergraduate digital humanities project aiming to compile as well as digitize intricate data on the region in this century.
 
 ## Supporters
 
@@ -19,18 +19,17 @@ Supporters of our project in many ways including but not limited to transporatio
 
 * [**Omer Mert Coskun**](https://github.com/howion/)
 
-To view authors, contributors and supervisors please visit the [**website**](https://anatolia-19th.vercel.app/).
+To view authors, contributors and supervisors please visit the [**website**](https://anatolia19.metu.edu.tr/).
 
 ## Tech Stack
 
 * [**Next.js@15**](https://nextjs.org/)
 * **React@19** on **Typescript**
-* [**Vercel**](https://vercel.com)
 * [**Supabase**](https://supabase.com/)
 
 ## Contact
 
-For technical inquiries, please contact at mert.coskun@metu.edu.tr. For all other questions, feel free to reach out to anatolia@metu.edu.tr.
+For technical inquiries, please contact at <mert.coskun@metu.edu.tr>. For all other questions, feel free to reach out to <anatolia@metu.edu.tr>.
 
 ## License
 

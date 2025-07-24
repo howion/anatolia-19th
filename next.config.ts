@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next'
 import BundleAnalyzer from '@next/bundle-analyzer'
+import withPWA from 'next-pwa'
 
 const isDev = process.env.NODE_ENV !== 'production'
 const isAnalyze = process.env.ANALYZE === 'true'
@@ -9,6 +10,12 @@ const withBundleAnalyzer = isAnalyze
           enabled: true
       })
     : (conf: NextConfig) => conf
+
+const useWithPWA = withPWA({
+    dest: 'public',
+    disable: false,
+    register: true
+})
 
 // See https://nextjs.org/docs/advanced-features/security-headers
 const defaultSecurityHeaders = [
@@ -38,7 +45,7 @@ const defaultSecurityHeaders = [
     }
 ]
 
-const nextConf: NextConfig = {
+let nextConf: NextConfig = {
     compress: false, // disable if proxy already compresses
     trailingSlash: false,
     poweredByHeader: false,
@@ -77,4 +84,13 @@ const nextConf: NextConfig = {
     }
 }
 
-export default withBundleAnalyzer(nextConf)
+if (!isDev) {
+    nextConf = useWithPWA(nextConf as any) as any
+    console.log('PWA is enabled')
+}
+
+if (isAnalyze) {
+    nextConf = withBundleAnalyzer(nextConf)
+}
+
+export default nextConf

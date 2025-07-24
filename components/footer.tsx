@@ -54,11 +54,10 @@ export function Footer(): FCReturn {
                     </FooterSection>
                     <FooterSection title="Tech Stack">
                         <FooterItem href="https://nextjs.org/" text="NextJS 15 (React + TS + SASS)" />
-                        <FooterItem href="https://vercel.com/" text="Vercel" />
                         <FooterItem href="https://www.mapbox.com/" text="Mapbox" />
                         <FooterItem href="https://www.openstreetmap.org/" text="OpenStreetMap" />
                         <FooterItem href="https://www.figma.com/" text="Figma" />
-                        <FooterItem href="https://reactflow.dev/" text="React Flow" />
+                        {/* <FooterItem href="https://reactflow.dev/" text="React Flow" /> */}
                     </FooterSection>
                     <FooterSection title="Contact">
                         {/* <FooterItem href="mailto:mert.coskun@metu.edu.tr" text="mert.coskun@edu.tr.com" /> */}

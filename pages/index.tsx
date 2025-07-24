@@ -12,18 +12,18 @@ import { Accordion, AccordionContainer } from '/components/accordion'
 import { Anchor } from '/components/anchor'
 import { TransitorService } from '/services/transitor.service'
 
-import RefOdtu from '/public/img/ref/odtu.png'
-import RefSalt from '/public/img/ref/salt.png'
-import RefHafizaMerkezi from '/public/img/ref/hafizamerkezi.png'
+import RefOdtu from '/public/img/ref/odtu.webp'
+import RefSalt from '/public/img/ref/salt.webp'
+import RefHafizaMerkezi from '/public/img/ref/hafizamerkezi.webp'
 import RefVekam from '/public/img/ref/vekam.svg'
-// import RefAnamed from '/public/img/ref/anamed.png'
+// import RefAnamed from '/public/img/ref/anamed.webp'
 
-import homeIntroback from '/public/img/home-introback.jpg'
-import sarkTicaret from '/public/img/sark_ticaret.png'
+import homeIntroback from '/public/img/home-introback.webp'
+import sarkTicaret from '/public/img/sark_ticaret.webp'
 
-import peopleSelcuk from '/public/img/people/selcuk.png'
+import peopleSelcuk from '/public/img/people/selcuk.webp'
 import peopleAgah from '/public/img/people/agah2.webp'
-import peopleMert from '/public/img/people/mert.png'
+import peopleMert from '/public/img/people/mert.webp'
 import peopleMuzaffer from '/public/img/people/muzaffer2.webp'
 
 import { siGithub, siX } from 'simple-icons'
@@ -287,7 +287,7 @@ export default function Home(props: HomeProps): FCReturn {
                                 {
                                     link: 'https://twitter.com/agahens',
                                     icon: siX
-                                },
+                                }
                             ]}
                         />
                         <Person
@@ -302,21 +302,24 @@ export default function Home(props: HomeProps): FCReturn {
                                 {
                                     link: 'https://github.com/howion',
                                     icon: siGithub
-                                },
+                                }
                                 // {
                                 //     link: 'https://orcid.org/0000-0002-8324-2325',
                                 //     icon: siOrcid
                                 // },
                             ]}
                         />
-                            <Person
+                        <Person
                             src={peopleMuzaffer}
                             name="Muzaffer Cakir"
                             role="Researcher"
                             start="2025"
                             end="Present"
                             links={[
-                                { link: 'https://www.linkedin.com/in/muzaffer-%C3%A7ak%C4%B1r-7897a026b/', icon: 'link' },
+                                {
+                                    link: 'https://www.linkedin.com/in/muzaffer-%C3%A7ak%C4%B1r-7897a026b/',
+                                    icon: 'link'
+                                }
 
                                 // {
                                 //     link: 'https://twitter.com/agahens',

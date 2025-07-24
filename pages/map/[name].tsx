@@ -290,10 +290,10 @@ export default function MapP({ features, activeFeature: _activeFeature }: any): 
         <>
             <Meta title="Map" />
             <MapShare feature={activeFeature} open={isShareOpen} onClose={() => setIsShareOpen(false)} />
-            <div className="ma-map-emblem">
+            <div className={`ma-map-emblem${isModalActive ? ' is-modal-active' : ''}`}>
                 <Emblem h={48} textFill="#fff" hideBeta={true} />
             </div>
-            <div className="ma-map-search-container">
+            <div className={`ma-map-search-container${isModalActive ? ' is-modal-active' : ''}`}>
                 <div className="ma-map-search-lhs">
                     <Anchor href="/" animate>
                         <button className="btn btn-icon" type="button">
@@ -338,77 +338,82 @@ export default function MapP({ features, activeFeature: _activeFeature }: any): 
                             </i>
                         </button>
                     </div>
-                    <div className="ma-map-modal">
-                        <span className="ma-map-modal-label">DATA SUMMARY</span>
-                        <h1 className="ma-map-modal-title">{activeFeature.name}*</h1>
-                        <span className="ma-map-modal-tag">{activeFeature.city}</span>
-                        {activeFeature.occupations.map((occupation: any) => (
-                            <span key={occupation.name} className="ma-map-modal-tag">
-                                {occupation.name}
-                            </span>
-                        ))}
-                        {/* <span className="ma-map-modal-tag">Writer</span> */}
-                        <div className="ma-map-modal-markdown">
-                            <p>{activeFeature.markdown}</p>
+                    <div className="ma-map-modal-inner">
+                        <div className="ma-map-modal">
+                            <span className="ma-map-modal-label">DATA SUMMARY</span>
+                            <h1 className="ma-map-modal-title">{activeFeature.name}*</h1>
+                            <span className="ma-map-modal-tag">{activeFeature.city}</span>
+                            {activeFeature.occupations.map((occupation: any) => (
+                                <span key={occupation.name} className="ma-map-modal-tag">
+                                    {occupation.name}
+                                </span>
+                            ))}
+                            {/* <span className="ma-map-modal-tag">Writer</span> */}
+                            <div className="ma-map-modal-markdown">
+                                <p>{activeFeature.markdown}</p>
+                            </div>
+                            <ul className="ma-map-modal-footnotes">
+                                {!activeFeature.isLocationPrecise && (
+                                    <li data-footnote-label="*" className="ma-map-modal-footnotes-footnote">
+                                        Since the location of this entry not precisely known, approximate location is
+                                        shown based on ethnicity and socio-economic status. Please visit the source for
+                                        details.
+                                    </li>
+                                )}
+                                <li
+                                    data-footnote-label="*"
+                                    className="ma-map-modal-footnotes-footnote"
+                                >{`[lat, lon] = [${activeFeature.lat}, ${activeFeature.lon}]`}</li>
+                            </ul>
                         </div>
-                        <ul className="ma-map-modal-footnotes">
-                            {!activeFeature.isLocationPrecise && (
-                                <li data-footnote-label="*" className="ma-map-modal-footnotes-footnote">
-                                    Since the location of this entry not precisely known, approximate location is shown
-                                    based on ethnicity and socio-economic status. Please visit the source for details.
-                                </li>
-                            )}
-                            <li
-                                data-footnote-label="*"
-                                className="ma-map-modal-footnotes-footnote"
-                            >{`[lat, lon] = [${activeFeature.lat}, ${activeFeature.lon}]`}</li>
-                        </ul>
-                    </div>
-                    <div className="ma-map-modal">
-                        <span className="ma-map-modal-label">REFERENCES</span>
-                        <ol className="ma-map-modal-references">
-                            {/* <li>
+                        <div className="ma-map-modal">
+                            <span className="ma-map-modal-label">REFERENCES</span>
+                            <ol className="ma-map-modal-references">
+                                {/* <li>
                                 Rush, E. C., Obolonkin, V., Battin, M., Wouldes, T., & Rowan, J. (2015b). Body composition
                                 in offspring of New Zealand women: Ethnic and gender differences at age 1–3 years in
                                 2005–2009. Annals Of Human Biology, 42(5), 492–497.
                             </li> */}
-                            {/* <li>Commercial 1978</li> */}
-                            {activeFeature.sources.map((ref) => (
-                                <li key={ref.shortName}>
-                                    <a href={ref.url ?? '#'} target="_blank">
-                                        {ref.source}
-                                        {activeFeature.sourceDetail?.p ? ` (p. ${activeFeature.sourceDetail.p}).` : ''}
-                                    </a>
+                                {/* <li>Commercial 1978</li> */}
+                                {activeFeature.sources.map((ref) => (
+                                    <li key={ref.shortName}>
+                                        <a href={ref.url ?? '#'} target="_blank">
+                                            {ref.source}
+                                            {activeFeature.sourceDetail?.p
+                                                ? ` (p. ${activeFeature.sourceDetail.p}).`
+                                                : ''}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
+                        <div className="ma-map-modal">
+                            <span className="ma-map-modal-label">ACTIVITIES</span>
+                            <ul className="ma-map-modal-activities">
+                                <li className="ma-map-modal-activities-activity">
+                                    <div className="ma-map-modal-activities-activity-lhs">
+                                        <i
+                                            style={{
+                                                backgroundColor: '#00C34E'
+                                            }}
+                                            className="material-icons ma-map-modal-activities-activity-lhs-icon"
+                                        >
+                                            place
+                                        </i>
+                                    </div>
+                                    <div className="ma-map-modal-activities-activity-rhs">
+                                        <span className="ma-map-modal-activities-activity-rhs-title">
+                                            <em>{activeFeature.author.name}</em> created the record with id #
+                                            {activeFeature.id}.
+                                        </span>
+                                        <span className="ma-map-modal-activities-activity-rhs-subtitle">
+                                            {format(activeFeature.createdAt, 'dd MMMM yyyy')}
+                                        </span>
+                                        {/* <div className="ma-map-modal-activities-activity-rhs-content"> */}
+                                    </div>
                                 </li>
-                            ))}
-                        </ol>
-                    </div>
-                    <div className="ma-map-modal">
-                        <span className="ma-map-modal-label">ACTIVITIES</span>
-                        <ul className="ma-map-modal-activities">
-                            <li className="ma-map-modal-activities-activity">
-                                <div className="ma-map-modal-activities-activity-lhs">
-                                    <i
-                                        style={{
-                                            backgroundColor: '#00C34E'
-                                        }}
-                                        className="material-icons ma-map-modal-activities-activity-lhs-icon"
-                                    >
-                                        place
-                                    </i>
-                                </div>
-                                <div className="ma-map-modal-activities-activity-rhs">
-                                    <span className="ma-map-modal-activities-activity-rhs-title">
-                                        <em>{activeFeature.author.name}</em> created the record with id #
-                                        {activeFeature.id}.
-                                    </span>
-                                    <span className="ma-map-modal-activities-activity-rhs-subtitle">
-                                        {format(activeFeature.createdAt, 'dd MMMM yyyy')}
-                                    </span>
-                                    {/* <div className="ma-map-modal-activities-activity-rhs-content"> */}
-                                </div>
-                            </li>
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             ) : undefined}

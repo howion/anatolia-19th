@@ -83,7 +83,7 @@ import 'reactflow/dist/style.css'
 //         position: circMecidi[1],
 //         type: 'anode',
 //         data: {
-//             image: '/img/madalyonlar/3_rutbe_mecidi.png',
+//             image: '/img/madalyonlar/3_rutbe_mecidi.webp',
 //             title: '3. Derece',
 //             subtitle: 'Mecidi',
 //             size: 2

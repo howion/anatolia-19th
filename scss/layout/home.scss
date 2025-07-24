@@ -84,16 +84,16 @@
             color: #000;
 
             &:focus-within {
-                & ~ .focuser {
+                &~.focuser {
                     visibility: visible;
                     opacity: 0.5;
                 }
 
-                & ~ i {
+                &~i {
                     color: #000;
                 }
 
-                & ~ .ma-home-search-results {
+                &~.ma-home-search-results {
                     opacity: 1;
                     visibility: visible;
                 }
@@ -275,7 +275,7 @@
                 height: 100%;
                 opacity: 0.05;
                 z-index: -1;
-                background-image: url('/img/home-statsback.jpg');
+                background-image: url('/img/home-statsback.webp');
                 background-repeat: no-repeat;
                 background-position: center center;
                 // background-attachment: fixed;
@@ -358,6 +358,7 @@
             &.is-flipped {
                 #{$p}-card {
                     flex-direction: row-reverse;
+
                     &-content {
                         align-items: flex-end;
                     }
@@ -388,7 +389,7 @@
             &-pic {
                 width: $--pic-size;
                 height: $--pic-size;
-                border-radius: math.div($--pic-size,2);
+                border-radius: math.div($--pic-size, 2);
                 filter: grayscale(1);
             }
 
@@ -449,12 +450,12 @@
                     filter: saturate(0);
                     opacity: 0.25;
 
-                    > img {
+                    >img {
                         width: 100%;
                         height: 100%;
                     }
 
-                    > i {
+                    >i {
                         width: 100%;
                         height: 100%;
                         transform: scale(1.19);

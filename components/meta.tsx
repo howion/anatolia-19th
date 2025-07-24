@@ -26,7 +26,7 @@ export function Meta(props: MetaProps): FCReturn<MetaProps> {
                 {props._viewport ? (
                     <meta
                         name="viewport"
-                        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+                        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=1, viewport-fit=cover"
                     />
                 ) : undefined}
             </Head>
