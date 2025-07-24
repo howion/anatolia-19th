@@ -28,6 +28,8 @@ export default class MyDocument extends Document {
 
                     <link rel="shortcut icon" href="/favicon.ico" />
 
+                    <meta name="google-site-verification" content="3uSiikrLJvnbsLiVP6LbkwJ8aT163nK7g0juTz8-3eg" />
+
                     <meta name="application-name" content={App.name} />
                     <meta name="apple-mobile-web-app-capable" content="yes" />
                     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
