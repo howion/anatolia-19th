@@ -64,9 +64,8 @@ export default class MyDocument extends Document {
                         type="text/css"
                         href="https://fonts.googleapis.com/icon?family=Material+Icons"
                         media="print"
-                        onLoad={(e) => {
-                            e.currentTarget.media = 'all'
-                        }}
+                        // @ts-ignore this is a workaround for Next.js
+                        onLoad="this.media='all'"
                     />
                 </Head>
                 <body>
