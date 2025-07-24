@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react'
 import Document, { type DocumentInitialProps, type DocumentContext, Head, Html, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 import { Splash } from '/components/splash'
 import { App } from '/constants/app'
 
@@ -58,20 +59,17 @@ export default class MyDocument extends Document {
                     <meta property="og:site_name" content={App.name} />
                     <meta property="og:url" content={App.site} />
                     <meta property="og:image" content={`${App.site}/og.png`} />
-
-                    <link
-                        rel="stylesheet"
-                        type="text/css"
-                        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-                        media="print"
-                        // @ts-ignore this is a workaround for Next.js
-                        onLoad="this.media='all'"
-                    />
                 </Head>
                 <body>
                     <Main />
                     <Splash />
                     <NextScript />
+
+                    {/* inser material ui css */}
+                    <Script
+                        id="insert-mui"
+                        dangerouslySetInnerHTML={{ __html: `(function(){var link=document.createElement('link');link.rel='stylesheet';link.type='text/css';link.href='https://fonts.googleapis.com/icon?family=Material+Icons';link.media='print';link.onload=function(){this.media='all'};document.head.appendChild(link)})();` }}
+                    />
                 </body>
             </Html>
         )

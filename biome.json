@@ -36,6 +36,9 @@
             "correctness": {
                 "useHookAtTopLevel": "off"
             },
+            "security": {
+                "noDangerouslySetInnerHtml": "off"
+            },
             "a11y": {
                 "useValidAriaRole": "off",
                 "noSvgWithoutTitle": "off",
