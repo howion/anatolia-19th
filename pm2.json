@@ -2,12 +2,13 @@
     "apps": [
         {
             "name": "anatolia-19th-cluster",
-            "script": "npm",
-            "args": "start",
+            "script": "node_modules/next/dist/bin/next",
+            "args": "start --port 3000",
             "exec_mode": "cluster_mode",
             "instances": 8,
-            "log_file": "anatolia-19th.log",
-            "merge_logs": true
+            "merge_logs": true,
+            "watch": false,
+            "env": { "NODE_ENV": "production", "production": true }
         },
         {
             "name": "anatolia-19th-studio",
