@@ -1,13 +1,18 @@
 {
-  "apps": [
-    {
-      "name": "anatolia-19th-cluster",
-      "script": "npm",
-      "args": "start",
-      "exec_mode": "cluster_mode",
-      "instances": 2,
-      "log_file": "anatolia-19th.log",
-      "merge_logs": true
-    }
-  ]
+    "apps": [
+        {
+            "name": "anatolia-19th-cluster",
+            "script": "npm",
+            "args": "start",
+            "exec_mode": "cluster_mode",
+            "instances": 8,
+            "log_file": "anatolia-19th.log",
+            "merge_logs": true
+        },
+        {
+            "name": "anatolia-19th-studio",
+            "script": "npm",
+            "args": "run studio"
+        }
+    ]
 }

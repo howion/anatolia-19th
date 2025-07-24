@@ -22,11 +22,11 @@ import homeIntroback from '/public/img/home-introback.jpg'
 import sarkTicaret from '/public/img/sark_ticaret.png'
 
 import peopleSelcuk from '/public/img/people/selcuk.png'
-import peopleAgah from '/public/img/people/agah.png'
+import peopleAgah from '/public/img/people/agah2.webp'
 import peopleMert from '/public/img/people/mert.png'
-import peopleMuzaffer from '/public/img/people/muzaffer.jpg'
+import peopleMuzaffer from '/public/img/people/muzaffer2.webp'
 
-import { siGithub, siX, siBehance, siDribbble } from 'simple-icons'
+import { siGithub, siX } from 'simple-icons'
 import { LoadingService } from '/services/loading.service'
 import { retrieveStats } from '/models/misc.modal'
 import { searchFeatures } from '/utils/client.util'
@@ -280,7 +280,7 @@ export default function Home(props: HomeProps): FCReturn {
                         <Person
                             src={peopleAgah}
                             name="Agah Enes Yasa"
-                            role="Coordinator"
+                            role="Cofounder & Coordinator"
                             start="2021"
                             end="Present"
                             links={[
@@ -293,7 +293,7 @@ export default function Home(props: HomeProps): FCReturn {
                         <Person
                             src={peopleMert}
                             name="Omer Mert Coskun"
-                            role="Developer"
+                            role="Cofounder & Lead Developer"
                             start="2021"
                             end="Present"
                             links={[
@@ -307,18 +307,6 @@ export default function Home(props: HomeProps): FCReturn {
                                 //     link: 'https://orcid.org/0000-0002-8324-2325',
                                 //     icon: siOrcid
                                 // },
-                                {
-                                    link: 'https://www.behance.net/howion',
-                                    icon: siBehance
-                                },
-                                {
-                                    link: 'https://dribbble.com/howion',
-                                    icon: siDribbble
-                                },
-                                {
-                                    link: 'https://twitter.com/howionwastaken',
-                                    icon: siX
-                                }
                             ]}
                         />
                             <Person

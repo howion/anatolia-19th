@@ -6,10 +6,9 @@ const isAnalyze = process.env.ANALYZE === 'true'
 
 const withBundleAnalyzer = isAnalyze
     ? BundleAnalyzer({
-        enabled: true
-    })
+          enabled: true
+      })
     : (conf: NextConfig) => conf
-
 
 // See https://nextjs.org/docs/advanced-features/security-headers
 const defaultSecurityHeaders = [
@@ -40,7 +39,7 @@ const defaultSecurityHeaders = [
 ]
 
 const nextConf: NextConfig = {
-    compress: true, // disable if proxy already compresses
+    compress: false, // disable if proxy already compresses
     trailingSlash: false,
     poweredByHeader: false,
     reactStrictMode: true,
