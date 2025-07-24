@@ -12,7 +12,7 @@
 
 __*/
 
-bun.lock
+# bun.lock
 yarn.lock
 package-lock.json
 pnpm-lock.yaml

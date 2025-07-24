@@ -68,5 +68,9 @@
     "browserslist": [
         "defaults and fully supports es6-module",
         "maintained node versions"
+    ],
+    "trustedDependencies": [
+        "@parcel/watcher",
+        "protobufjs"
     ]
 }
