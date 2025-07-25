@@ -44,6 +44,7 @@ function Project(props: ProjectProps): FCReturn<ProjectProps> {
             href={props.href ?? '#'}
             className={`ma-home-projects-project-container${props.disabled ? ' disabled' : ''}`}
             animate
+            prefetch={false}
         >
             <div
                 className="ma-home-projects-project-cover"
@@ -184,6 +185,7 @@ export default function Home(props: HomeProps): FCReturn {
                                     className="ma-home-search-results-result"
                                     // onClick={() => showModal(result.id)}
                                     href={`/map/${result.sid}`}
+                                    prefetch={false}
                                     animate={true}
                                 >
                                     {`${result.name}, ${result.city}, ${result.occupations
@@ -397,7 +399,7 @@ export default function Home(props: HomeProps): FCReturn {
                                     Istanbul, Annuaire Commercial Oriental, David Rumsey Map Collection, Istanbul
                                     Municipality Ataturk Library and Bibliothèque Nationale de France. For detailed
                                     information, see the{' '}
-                                    <Anchor href="/sources" animate>
+                                    <Anchor href="/sources" animate prefetch={false}>
                                         sources
                                     </Anchor>{' '}
                                     page.

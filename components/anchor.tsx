@@ -7,6 +7,7 @@ interface AnchorProps {
     href: text
     animate?: boolean
     children: any
+    prefetch?: boolean | "auto" | null
 }
 
 export function Anchor(props: AnchorProps): FCReturn<AnchorProps> {
@@ -16,6 +17,7 @@ export function Anchor(props: AnchorProps): FCReturn<AnchorProps> {
         <Link
             href={props.href}
             className={props.className}
+            prefetch={props.prefetch}
             onClick={(e) => {
                 if (props.animate) {
                     e.preventDefault()
