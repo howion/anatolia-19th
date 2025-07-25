@@ -55,6 +55,7 @@ let nextConf: NextConfig = {
     reactStrictMode: true,
     generateEtags: true,
     devIndicators: false,
+    logging: isDev ? undefined : false,
 
     eslint: {
         ignoreDuringBuilds: true
@@ -82,6 +83,8 @@ let nextConf: NextConfig = {
         ]
     },
     experimental: {
+        reactCompiler: false, // for preact
+        scrollRestoration: true,
         esmExternals: false, // for preact
         largePageDataBytes: 1 * 10 ** 6 // 1 MB
         //     optimizeCss: true,

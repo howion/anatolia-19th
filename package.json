@@ -71,14 +71,18 @@
         "next-pwa": "^5.6.0",
         "prettier": "^3.6.2",
         "prisma": "^6.11.1",
-        "read-excel-file": "^5.8.8"
+        "read-excel-file": "^5.8.8",
+        "terser": "^5.43.1"
     },
-    "browserslist": [
-        "defaults and fully supports es6-module",
-        "maintained node versions"
-    ],
     "trustedDependencies": [
         "@parcel/watcher",
         "protobufjs"
+    ],
+    "browserslist": [
+        "last 2 Chrome versions",
+        "last 2 Firefox versions",
+        "last 2 Safari versions",
+        "not IE 11",
+        "not dead"
     ]
 }
