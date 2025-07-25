@@ -16,7 +16,7 @@ export function Header(props: HeaderProps): FCReturn<HeaderProps> {
                 <p className="ma-header-p">{props.text}</p>
             </div>
             <div className="ma-header-back">
-                <Image className="ma-header-img" src={props.headerImage} alt="" />
+                <Image className="ma-header-img" src={props.headerImage} alt="" fetchPriority="high" />
                 {/* <img src="/img/home-headerback.svg" alt="" /> */}
             </div>
         </header>

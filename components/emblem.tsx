@@ -11,9 +11,9 @@ export function Emblem(props: EmblemProps): FCReturn<EmblemProps> {
 
     return (
         <div className="ma-emblem">
-            {props.hideBeta !== true && (
+            {/* {props.hideBeta !== true && (
                 <div className="ma-emblem-beta">BETA</div>
-            )}
+            )} */}
             <svg
                 width={(props.h * 1619) / 463}
                 height={props.h}

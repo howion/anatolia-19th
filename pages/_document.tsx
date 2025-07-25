@@ -68,7 +68,7 @@ export default class MyDocument extends Document {
                     {/* inser material ui css */}
                     <Script
                         id="insert-mui"
-                        dangerouslySetInnerHTML={{ __html: `(function(){var link=document.createElement('link');link.rel='stylesheet';link.type='text/css';link.href='https://fonts.googleapis.com/icon?family=Material+Icons';link.media='print';link.onload=function(){this.media='all'};document.head.appendChild(link)})();` }}
+                        dangerouslySetInnerHTML={{ __html: `(function(){var link=document.createElement('link');link.rel='stylesheet';link.type='text/css';link.href='/material-icons/font.css';link.media='print';link.onload=function(){this.media='all'};document.head.appendChild(link)})();` }}
                     />
                 </body>
             </Html>
