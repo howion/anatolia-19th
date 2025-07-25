@@ -7,7 +7,7 @@ interface AnchorProps {
     href: text
     animate?: boolean
     children: any
-    prefetch?: boolean | "auto" | null
+    prefetch?: boolean | null
 }
 
 export function Anchor(props: AnchorProps): FCReturn<AnchorProps> {
