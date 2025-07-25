@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next'
 import BundleAnalyzer from '@next/bundle-analyzer'
 import withPWA from 'next-pwa'
+
+// @ts-ignore no type defs available
 import withPreact from 'next-plugin-preact'
 
 const isDev = process.env.NODE_ENV !== 'production'
