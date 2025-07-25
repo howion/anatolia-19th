@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next'
 import BundleAnalyzer from '@next/bundle-analyzer'
 import withPWA from 'next-pwa'
-import withPreact from 'next-plugin-preact'
 
 const isDev = process.env.NODE_ENV !== 'production'
 const isAnalyze = process.env.ANALYZE === 'true'
@@ -80,13 +79,10 @@ let nextConf: NextConfig = {
         ]
     },
     experimental: {
-        esmExternals: false, // for preact
         largePageDataBytes: 1 * 10 ** 6 // 1 MB
         //     optimizeCss: true,
     }
 }
-
-nextConf = withPreact(nextConf)
 
 if (!isDev) {
     nextConf = useWithPWA(nextConf as any) as any
