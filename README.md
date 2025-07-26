@@ -33,4 +33,4 @@ For technical inquiries, please contact at <mert.coskun@metu.edu.tr>. For all ot
 
 ## License
 
-This project is licensed under the [**GNU Affero General Public License v3.0**](https://github.com/howion/anatolia-19th/blob/main/LICENSE).
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPLv3)** with additional terms requiring attribution, change documentation, and full source availability. See [**LICENSE**](https://github.com/howion/anatolia-19th/blob/main/LICENSE) and [**ADDITIONAL_TERMS.txt**](https://github.com/howion/anatolia-19th/blob/main/ADDITIONAL_TERMS.txt) for full details.

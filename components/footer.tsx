@@ -77,7 +77,7 @@ export function Footer(): FCReturn {
                             target="_blank"
                             rel="noopener"
                         >
-                            GNU Affero General Public License v3.0
+                            GNU Affero General Public License v3.0 (AGPLv3) with additional terms.
                         </a>
                     </span>
                     {/* <Link href="#" className="ma-footer-bottom-sitemap">

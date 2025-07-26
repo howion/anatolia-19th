@@ -1,0 +1,23 @@
+Additional Terms Pursuant to Section 7 of the GNU Affero General Public License v3.0
+
+These terms are added by the original author in accordance with Section 7 of the GNU Affero General Public License v3.0 ("AGPLv3"), and apply to all copies, modifications, and public deployments of this software:
+
+1. Attribution Requirement
+   If you publicly deploy or distribute this software (modified or unmodified), you must include a prominent, user-visible link to the original project repository:
+   https://github.com/howion/anatolia-19th
+   This link must appear in the publicly accessible UI, such as in a footer, "About" page, or equivalent location.
+
+2. Modification Disclosure
+   If you modify this software in any way, you must:
+   a. Clearly document all significant changes in a `CHANGELOG.md` or similar file in the root of the repository.
+   b. Retain all existing copyright and license notices.
+   c. Include a notice of your authorship in the documentation or README.
+
+3. Source Code Availability
+   If you publicly deploy a modified version of this software, you must make the complete, corresponding modified source code available under the same AGPLv3 license, including these additional terms.
+
+4. No Misrepresentation of Origin
+   You may not misrepresent the origin of the software. Any modified version must retain a clear acknowledgment of the original author and project.
+
+5. Scope of Terms
+   These additional terms supplement, but do not modify, the AGPLv3 license. If any conflict arises between these terms and the AGPLv3, the terms of the AGPLv3 shall prevail.
