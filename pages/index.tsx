@@ -24,6 +24,7 @@ import sarkTicaret from '/public/img/sark_ticaret.webp'
 import peopleSelcuk from '/public/img/people/selcuk.webp'
 import peopleAgah from '/public/img/people/agah2.webp'
 import peopleMert from '/public/img/people/mert.webp'
+import peopleCem from '/public/img/people/cem.webp'
 import peopleMuzaffer from '/public/img/people/muzaffer2.webp'
 
 import { siGithub, siX } from 'simple-icons'
@@ -305,10 +306,19 @@ export default function Home(props: HomeProps): FCReturn {
                                     link: 'https://github.com/howion',
                                     icon: siGithub
                                 }
-                                // {
-                                //     link: 'https://orcid.org/0000-0002-8324-2325',
-                                //     icon: siOrcid
-                                // },
+                            ]}
+                        />
+                        <Person
+                            src={peopleCem}
+                            name="Cem Curl"
+                            role="Mathematical Modeler"
+                            start="2025"
+                            end="Present"
+                            links={[
+                                {
+                                    link: 'https://www.linkedin.com/in/cem-curl-1a642a26b/',
+                                    icon: 'link'
+                                }
                             ]}
                         />
                         <Person
@@ -322,20 +332,8 @@ export default function Home(props: HomeProps): FCReturn {
                                     link: 'https://www.linkedin.com/in/muzaffer-%C3%A7ak%C4%B1r-7897a026b/',
                                     icon: 'link'
                                 }
-
-                                // {
-                                //     link: 'https://twitter.com/agahens',
-                                //     icon: siX
-                                // }
                             ]}
                         />
-                        {/* <Person
-                            src={peopleFurkan}
-                            name="Furkan Arslan"
-                            role="Primary Sources Coordinator"
-                            start="2023"
-                            end="Present"
-                        /> */}
                     </div>
                 </div>
                 {/* <div className="ma-home-people-wrapper is-flipped">
