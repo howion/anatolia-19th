@@ -26,6 +26,7 @@ import peopleAgah from '/public/img/people/agah2.webp'
 import peopleMert from '/public/img/people/mert.webp'
 import peopleCem from '/public/img/people/cem.webp'
 import peopleMuzaffer from '/public/img/people/muzaffer2.webp'
+import peopleErtas from '/public/img/people/ertas.webp'
 
 import { siGithub, siX } from 'simple-icons'
 import { LoadingService } from '/services/loading.service'
@@ -277,6 +278,23 @@ export default function Home(props: HomeProps): FCReturn {
                                 {
                                     link: 'https://x.com/tariHist',
                                     icon: siX
+                                }
+                            ]}
+                        />
+                        <Person
+                            src={peopleErtas}
+                            name="Deren Ertas"
+                            role="Associate Advisor"
+                            start="2025"
+                            end="Present"
+                            links={[
+                                {
+                                    link: 'https://history.fas.harvard.edu/people/deren-ertas',
+                                    icon: 'public'
+                                },
+                                {
+                                    link: 'mailto:derenertas@g.harvard.edu',
+                                    icon: 'mail'
                                 }
                             ]}
                         />
