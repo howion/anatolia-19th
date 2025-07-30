@@ -4,7 +4,7 @@ import type { ApiFeature, ApiFeaturesReponse } from '/constants/schemas/feature.
 import axios from 'axios'
 
 export const MAPBOX_PUBLIC_TOKEN =
-    'pk.eyJ1IjoiaG93aW9uIiwiYSI6ImNsYjh6b2gycDBia2ozd21nYjh3Y2JmcWUifQ.DE19OL-ugnq3dq66xKjoEw'
+    'pk.eyJ1IjoiaG93aW9uIiwiYSI6ImNtZHFsdzFwcTA4OTUyc3Nha3ZzemlmaGsifQ.pZyPielMiKkQQtZ3174rwQ'
 
 export const MAPBOX_STYLE_MAP = 'mapbox://styles/howion/clbrzux99000p14pmookcim4w'
 export const MAPBOX_STYLE_CONTACT = 'mapbox://styles/howion/clbrzux99000p14pmookcim4w'
