@@ -25,7 +25,6 @@ import peopleSelcuk from '/public/img/people/selcuk.webp'
 import peopleAgah from '/public/img/people/agah2.webp'
 import peopleMert from '/public/img/people/mert.webp'
 import peopleCem from '/public/img/people/cem.webp'
-import peopleMuzaffer from '/public/img/people/muzaffer2.webp'
 import peopleErtas from '/public/img/people/ertas.webp'
 
 import { siGithub, siX } from 'simple-icons'
@@ -335,19 +334,6 @@ export default function Home(props: HomeProps): FCReturn {
                             links={[
                                 {
                                     link: 'https://www.linkedin.com/in/cem-curl-1a642a26b/',
-                                    icon: 'link'
-                                }
-                            ]}
-                        />
-                        <Person
-                            src={peopleMuzaffer}
-                            name="Muzaffer Cakir"
-                            role="Researcher"
-                            start="2025"
-                            end="Present"
-                            links={[
-                                {
-                                    link: 'https://www.linkedin.com/in/muzaffer-%C3%A7ak%C4%B1r-7897a026b/',
                                     icon: 'link'
                                 }
                             ]}
