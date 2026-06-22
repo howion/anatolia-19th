@@ -10,8 +10,8 @@ const isAnalyze = process.env.ANALYZE === 'true'
 
 const withBundleAnalyzer = isAnalyze
     ? BundleAnalyzer({
-          enabled: true
-      })
+        enabled: true
+    })
     : (conf: NextConfig) => conf
 
 const useWithPWA = withPWA({

@@ -205,6 +205,11 @@ export default function Home(props: HomeProps): FCReturn {
                     <Project src="/img/projects/valuation2.webp" txt="Historical Commodity Price Map" disabled />
                     <Project src="/img/projects/growth2.webp" txt="Growth Rate Map" href="/" disabled />
                     <Project src="/img/sources/newspaper1.webp" txt="Sources" href="/sources" />
+                    <Project
+                        src="/img/projects/bursa-ansiklopedik-haritasi.webp"
+                        txt="Bursa Ansiklopedik Haritası"
+                        href="/bursa-ansiklopedik-haritasi"
+                    />
                 </section>
 
                 {/* REFERENCES */}
