@@ -11,7 +11,7 @@ export default function Graphs(): FCReturn {
 
     return (
         <>
-            <Meta title="Bursa Ansiklopedik Haritası" />
+            <Meta title="Bursa Hayalet Yapılar" />
             <div className="ma-graphs-container">
                 <div className="ma-graphs-back">
                     <Anchor href="/" animate>

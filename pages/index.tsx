@@ -206,9 +206,9 @@ export default function Home(props: HomeProps): FCReturn {
                     <Project src="/img/projects/growth2.webp" txt="Growth Rate Map" href="/" disabled />
                     <Project src="/img/sources/newspaper1.webp" txt="Sources" href="/sources" />
                     <Project
-                        src="/img/projects/bursa-ansiklopedik-haritasi.webp"
-                        txt="Bursa Ansiklopedik Haritası"
-                        href="/bursa-ansiklopedik-haritasi"
+                        src="/img/projects/bursa-hayalet-yapilar.webp"
+                        txt="Bursa Hayalet Yapılar"
+                        href="/bursa-hayalet-yapilar"
                     />
                 </section>
 
